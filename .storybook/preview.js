@@ -1,7 +1,21 @@
 /**
  * Developed by Anthony Cox in 2024
  */
-import { addParameters } from '@storybook/react';
-import { previewConfig } from 'ajc-storybook';
 
-addParameters(previewConfig);
+/**
+ * Storybook preview configuration file
+ * @type { import('@storybook/react').Preview }
+ */
+const preview = {
+  parameters: {
+    actions: { argTypesRegex: "^on[A-Z].*" },
+    controls: {
+      matchers: {
+        color: /(background|color)$/i,
+        date: /Date$/i,
+      },
+    },
+  },
+};
+
+export default preview;
