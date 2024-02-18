@@ -21,7 +21,7 @@
     "url": "git+https://github.com/ajc24/ajc-web-ui-reactjs.git"
   },
   "author": "Anthony Cox",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/ajc24/ajc-web-ui-reactjs/issues"
   },
@@ -31,5 +31,9 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.1"
+  },
+  "devDependencies": {
+    "ajc-babel": "git://github.com/ajc24/ajc-babel",
+    "ajc-storybook": "git://github.com/ajc24/ajc-storybook"
   }
 }
