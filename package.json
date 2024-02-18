@@ -1,0 +1,35 @@
+{
+  "name": "ajc-web-ui-react.js",
+  "version": "0.0.1",
+  "description": "ReactJs user interface components store.",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "npm run build-components && npm run build-storybook",
+    "build-components": "babel src --out-dir build --copy-files",
+    "build-storybook": "build-storybook -c .storybook -o ./docs",
+    "storybook": "start-storybook -p 6006",
+    "test": "npm run test-unit-coverage && npm run test-snapshots && npm run test-accessibility && npm run test-integration",
+    "test-accessibility": "jest --config=./tests/jest-config/accessibility.config.js",
+    "test-integration": "jest --config=./tests/jest-config/integration.config.js",
+    "test-snapshots": "jest --config=./tests/jest-config/snapshots.config.js",
+    "test-snapshots-update": "npm run test-snapshots -- -u",
+    "test-unit": "jest --config=./tests/jest-config/unit.config.js",
+    "test-unit-coverage": "npm run test-unit -- --collectCoverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ajc24/ajc-web-ui-reactjs.git"
+  },
+  "author": "Anthony Cox",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ajc24/ajc-web-ui-reactjs/issues"
+  },
+  "homepage": "https://github.com/ajc24/ajc-web-ui-reactjs#readme",
+  "dependencies": {
+    "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.22.1"
+  }
+}
