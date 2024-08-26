@@ -6,8 +6,9 @@
   "scripts": {
     "build": "npm run build-components && npm run build-storybook",
     "build-components": "babel src --out-dir build --copy-files",
-    "build-storybook": "build-storybook -c .storybook -o ./docs",
-    "storybook": "start-storybook -p 6006",
+    "build-storybook": "storybook build",
+    "init-storybook": "storybook init",
+    "storybook": "storybook dev -p 6006",
     "test": "npm run test-unit-coverage && npm run test-snapshots && npm run test-accessibility && npm run test-integration",
     "test-accessibility": "jest --config=./tests/jest-config/accessibility.config.js",
     "test-integration": "jest --config=./tests/jest-config/integration.config.js",
@@ -28,12 +29,24 @@
   "homepage": "https://github.com/ajc24/ajc-web-ui-reactjs#readme",
   "dependencies": {
     "prop-types": "^15.8.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.22.1"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.1"
   },
   "devDependencies": {
+    "@chromatic-com/storybook": "^1.7.0",
+    "@storybook/addon-essentials": "^8.2.9",
+    "@storybook/addon-interactions": "^8.2.9",
+    "@storybook/addon-links": "^8.2.9",
+    "@storybook/addon-onboarding": "^8.2.9",
+    "@storybook/addon-webpack5-compiler-swc": "^1.0.5",
+    "@storybook/blocks": "^8.2.9",
+    "@storybook/manager-api": "^8.2.9",
+    "@storybook/react": "^8.2.9",
+    "@storybook/react-webpack5": "^8.2.9",
+    "@storybook/test": "^8.2.9",
+    "@storybook/theming": "^8.2.9",
     "ajc-babel": "git://github.com/ajc24/ajc-babel",
-    "ajc-storybook": "git://github.com/ajc24/ajc-storybook"
+    "storybook": "^8.2.9"
   }
 }
