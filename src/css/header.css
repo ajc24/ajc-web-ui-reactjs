@@ -1,0 +1,30 @@
+/**
+ * Developed by Anthony Cox in 2024
+ */
+.ajc-header-border-black {
+  border-top: 8px solid #000000;
+}
+
+.ajc-header-border-grey {
+  border-top: 8px solid #757575;
+}
+
+.ajc-header-border-red {
+  border-top: 8px solid #AE1E01;
+}
+
+.ajc-header-root {
+  display: flex;
+  justify-content: flex-start;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  width: inherit;
+}
+
+.ajc-header-root-no-border {
+  height: 144px;
+}
+
+.ajc-header-root-with-border {
+  height: 136px;
+}
