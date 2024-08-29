@@ -2,9 +2,9 @@
  * Developed by Anthony Cox in 2024
  */
 import {
-  Header,
+  HeaderTypeA,
 } from './components';
 
 export {
-  Header,
+  HeaderTypeA,
 };
