@@ -13,6 +13,27 @@
   border-top: 8px solid #AE1E01;
 }
 
+.ajc-header-content {
+  display: flex;
+  height: inherit;
+  width: 100%;
+}
+
+.ajc-header-content-alignment-center {
+  flex-direction: row;
+  justify-content: center;
+}
+
+.ajc-header-content-alignment-left {
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.ajc-header-content-alignment-right {
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
 .ajc-header-root {
   display: flex;
   justify-content: flex-start;
