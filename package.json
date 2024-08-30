@@ -48,6 +48,7 @@
     "@storybook/test": "^8.2.9",
     "@storybook/theming": "^8.2.9",
     "ajc-babel": "git://github.com/ajc24/ajc-babel",
+    "ajc-testing-code": "git://github.com/ajc24/ajc-testing-code",
     "storybook": "^8.2.9"
   }
 }
