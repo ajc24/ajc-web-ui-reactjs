@@ -5,8 +5,8 @@ const { configureUnitTests } = require('ajc-testing-code');
 
 const jestConfig = configureUnitTests();
 jestConfig.coveragePathIgnorePatterns.push('<rootDir>/src/index.js');
+jestConfig.coveragePathIgnorePatterns.push('<rootDir>/src/components/data/storybook.js');
 jestConfig.coveragePathIgnorePatterns.push('<rootDir>/src/components/index.js');
-jestConfig.coveragePathIgnorePatterns.push('<rootDir>/src/data/storybook.js');
 jestConfig.setupFilesAfterEnv.push('<rootDir>/tests/jest-config/document.config.js');
 jestConfig.testMatch = [
   '<rootDir>/tests/unit/**/*.js',
