@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { setupDocumentBodyCss } from '../common';
+import { PageTemplateConfig } from '../common';
 import '../../css/colour.css';
 import '../../css/font.css';
 import '../../css/header.css';
@@ -26,11 +26,12 @@ class HeaderTypeA extends React.Component {
 
   componentDidMount() {
     /* Setup the default CSS styling for the page which is rendering this component */
-    setupDocumentBodyCss();
+    PageTemplateConfig.setupDocumentBodyCss();
 
     /* Render the headers background image if it has been set */
     if (this.props.backgroundImage !== undefined) {
       this.backgroundImageElementRef.current.style.backgroundImage = `url(${this.props.backgroundImage})`;
+      this.backgroundImageElementRef.current.dataset.bgImageLoaded = true;
     }
   }
 
@@ -78,7 +79,7 @@ class HeaderTypeA extends React.Component {
     }
     return (
       <header role="banner" id={`${this.props.id}--container`} className={containerCss}>
-        <div className={containerInnerCss} ref={this.backgroundImageElementRef}>
+        <div id={`${this.props.id}--container-image`} className={containerInnerCss} data-bg-image-loaded={false} ref={this.backgroundImageElementRef}>
           <div id={`${this.props.id}--content-container`} className={contentContainerCss}>
             <div id={`${this.props.id}--content`} className={contentCss}>
               {this.props.children}
