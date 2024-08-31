@@ -34,7 +34,7 @@
   justify-content: flex-end;
 }
 
-.ajc-header-root {
+.ajc-header-content-container {
   display: flex;
   justify-content: flex-start;
   padding-top: 8px;
@@ -42,10 +42,10 @@
   width: inherit;
 }
 
-.ajc-header-root-no-border {
+.ajc-header-content-container-no-border {
   height: 144px;
 }
 
-.ajc-header-root-with-border {
+.ajc-header-content-container-with-border {
   height: 136px;
 }
