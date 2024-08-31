@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header Type A Header with no top border and transparent background (Default Settings) verifies the snapshot for the component 1`] = `"<header role="banner" id="test-default-header-id--container" class="ajc-container-screen ajc-background-transparent"><div class="ajc-container-screen-inner"><div id="test-default-header-id--content-container" class="ajc-header-content-container ajc-header-content-container-no-border"><div id="test-default-header-id--content" class="ajc-header-content ajc-font-default ajc-font-black ajc-header-content-alignment-left">Header text content.</div></div></div></header>"`;
