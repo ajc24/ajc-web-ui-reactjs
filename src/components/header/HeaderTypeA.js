@@ -59,13 +59,13 @@ class HeaderTypeA extends React.Component {
     }
     const containerInnerCss = 'ajc-container-screen-inner';
     /* Build the list of CSS classes to be assigned to the root element */
-    let headerRootCss = 'ajc-header-root';
+    let contentContainerCss = 'ajc-header-content-container';
     if (this.props.showTopBorder === true) {
       /* Render the header at a lesser height to accommodate for the border */
-      headerRootCss += ' ajc-header-root-with-border';
+      contentContainerCss += ' ajc-header-content-container-with-border';
     } else {
       /* Render the header at a full height to compensate for the lack of a border */
-      headerRootCss += ' ajc-header-root-no-border';
+      contentContainerCss += ' ajc-header-content-container-no-border';
     }
     /* Build the list of CSS classes to be assigned to the content element */
     let contentCss = 'ajc-header-content ajc-font-default ajc-font-black';
@@ -79,8 +79,8 @@ class HeaderTypeA extends React.Component {
     return (
       <header role="banner" id={`${this.props.id}--container`} className={containerCss}>
         <div className={containerInnerCss} ref={this.backgroundImageElementRef}>
-          <div id={`${this.props.id}--root`} className={headerRootCss}>
-            <div className={contentCss}>
+          <div id={`${this.props.id}--content-container`} className={contentContainerCss}>
+            <div id={`${this.props.id}--content`} className={contentCss}>
               {this.props.children}
             </div>
           </div> 
