@@ -5,6 +5,7 @@
 import React from 'react';
 import { cleanup, render } from '@testing-library/react';
 import { HeaderTypeA } from '../../../../src';
+import { PageTemplateConfig } from '../../../../src/components/common';
 import headerBackgroundTestImage from '../../../../stories/images/header-background-test.png';
 
 describe('Header Type A', () => {
@@ -228,302 +229,300 @@ describe('Header Type A', () => {
     });
   });
 
-  // describe('Transferred props and rendering - Header with grey top border and white background', () => {
-  //   let componentDidMountSpy;
-  //   const testComponentId = 'test-header-with-top-border-id';
-  //   const testData = [];
+  describe('Header Type A with grey top border, white background, center alignment', () => {
+    let componentDidMountSpy;
+    const testComponentId = 'test-header-border-grey-bg-white-align-center';
+    const testData = [];
 
-  //   beforeAll(() => {
-  //     componentDidMountSpy = jest
-  //       .spyOn(Header.prototype, 'componentDidMount')
-  //       .mockImplementation(() => {});
-  //     const { unmount } = render(
-  //       <React.Fragment>
-  //         <Header id={testComponentId} renderTopBorder={true} topBorderColour="grey" backgroundColour="white">
-  //           Header text content.
-  //         </Header>
-  //       </React.Fragment>
-  //     );
-  //     /* Build the DOM elements required for the tests */
-  //     const headerRoot = document.querySelector(`header[id="${testComponentId}-root"]`);
+    beforeAll(() => {
+      componentDidMountSpy = jest
+        .spyOn(HeaderTypeA.prototype, 'componentDidMount')
+        .mockImplementation(() => {});
+      const { unmount } = render(
+        <React.Fragment>
+          <HeaderTypeA id={testComponentId} showTopBorder={true} topBorderColour="grey" backgroundColour="white" alignment="center">
+            Header text content.
+          </HeaderTypeA>
+        </React.Fragment>
+      );
+      /* Build the DOM elements required for the tests */
+      const headerContainer = document.querySelector(`header[id="${testComponentId}--container"]`);
+      const headerContentContainer = document.querySelector(`div[id="${testComponentId}--content-container"]`);
+      const headerContent = document.querySelector(`div[id="${testComponentId}--content"]`);
       
-  //     /* Verifies that the "ajc-header-border-grey" class is assigned to the root element */
-  //     /* Verifies that the "ajc-header-border-red" class is not assigned to the root element */
-  //     /* Verifies that the "ajc-background-transparent" class is not assigned to the root element */
-  //     /* Verifies that the "ajc-background-grey-1" class is not assigned to the root element */
-  //     /* Verifies that the "ajc-background-white" class is assigned to the root element */
-  //     testData.push(headerRoot.classList);
+      /* Verifies that the "ajc-header-border-black" class is not assigned to the container element */
+      /* Verifies that the "ajc-header-border-grey" class is assigned to the container element */
+      /* Verifies that the "ajc-header-border-red" class is not assigned to the container element */
+      /* Verifies that the "ajc-background-transparent" class is not assigned to the container element */
+      /* Verifies that the "ajc-background-grey-1" class is not assigned to the container element */
+      /* Verifies that the "ajc-background-white" class is assigned to the container element */
+      /* Verifies that the "ajc-background-yellow" class is not assigned to the container element */
+      testData.push(headerContainer.classList);
 
-  //     /* Unmount the component and clean up the test */
-  //     unmount();
-  //     cleanup();
-  //   });
+      /* Verifies that the "ajc-header-content-container-with-border" class is assigned to the content container element */
+      /* Verifies that the "ajc-header-content-container-no-border" class is not assigned to the content container element */
+      testData.push(headerContentContainer.classList);
 
-  //   afterAll(() => {
-  //     componentDidMountSpy.mockRestore();
-  //   });
+      /* Verifies that the "ajc-header-content-alignment-left" class is not assigned to the content element */
+      /* Verifies that the "ajc-header-content-alignment-center" class is assigned to the content element */
+      /* Verifies that the "ajc-header-content-alignment-right" class is not assigned to the content element */
+      testData.push(headerContent.classList);
 
-  //   it('verifies that the "ajc-header-border-grey" class is assigned to the root element', () => {
-  //     expect(testData[0].contains('ajc-header-border-grey')).toBeTruthy();
-  //   });
+      /* Unmount the component and clean up the test */
+      unmount();
+      cleanup();
+    });
 
-  //   it('verifies that the "ajc-header-border-red" class is not assigned to the root element', () => {
-  //     expect(testData[0].contains('ajc-header-border-red')).toBeFalsy();
-  //   });
+    afterAll(() => {
+      componentDidMountSpy.mockRestore();
+    });
 
-  //   it('verifies that the "ajc-background-transparent" class is not assigned to the root element', () => {
-  //     expect(testData[0].contains('ajc-background-transparent')).toBeFalsy();
-  //   });
+    it('verifies that the "ajc-header-border-black" class is not assigned to the container element', () => {
+      expect(testData[0].contains('ajc-header-border-black')).toBeFalsy();
+    });
 
-  //   it('verifies that the "ajc-background-grey-1" class is not assigned to the root element', () => {
-  //     expect(testData[0].contains('ajc-background-grey-1')).toBeFalsy();
-  //   });
+    it('verifies that the "ajc-header-border-grey" class is assigned to the container element', () => {
+      expect(testData[0].contains('ajc-header-border-grey')).toBeTruthy();
+    });
 
-  //   it('verifies that the "ajc-background-white" class is assigned to the root element', () => {
-  //     expect(testData[0].contains('ajc-background-white')).toBeTruthy();
-  //   });
+    it('verifies that the "ajc-header-border-red" class is not assigned to the container element', () => {
+      expect(testData[0].contains('ajc-header-border-red')).toBeFalsy();
+    });
 
-  //   it('verifies that the "ajc-background-yellow" class is not assigned to the root element', () => {
-  //     expect(testData[0].contains('ajc-background-yellow')).toBeFalsy();
-  //   });
-  // });
+    it('verifies that the "ajc-background-transparent" class is not assigned to the container element', () => {
+      expect(testData[0].contains('ajc-background-transparent')).toBeFalsy();
+    });
 
-  // describe('Transferred props and rendering - Header with red top border and image background', () => {
-  //   let componentDidMountSpy;
-  //   const testComponentId = 'test-header-with-top-border-and-bg-image-id';
-  //   const testData = [];
+    it('verifies that the "ajc-background-grey-1" class is not assigned to the container element', () => {
+      expect(testData[0].contains('ajc-background-grey-1')).toBeFalsy();
+    });
 
-  //   beforeAll(() => {
-  //     componentDidMountSpy = jest
-  //       .spyOn(Header.prototype, 'componentDidMount')
-  //       .mockImplementation(() => {});
-  //     const { unmount } = render(
-  //       <React.Fragment>
-  //         <Header id={testComponentId} renderTopBorder={true} topBorderColour="red" renderBackgroundImage={true} backgroundImageData={testImage}>
-  //           Header text content.
-  //         </Header>
-  //       </React.Fragment>
-  //     );
-  //     /* Build the DOM elements required for the tests */
-  //     const headerRoot = document.querySelector(`header[id="${testComponentId}-root"]`);
+    it('verifies that the "ajc-background-white" class is assigned to the container element', () => {
+      expect(testData[0].contains('ajc-background-white')).toBeTruthy();
+    });
+
+    it('verifies that the "ajc-background-yellow" class is not assigned to the container element', () => {
+      expect(testData[0].contains('ajc-background-yellow')).toBeFalsy();
+    });
+
+    it('verifies that the "ajc-header-content-container-with-border" class is assigned to the content container element', () => {
+      expect(testData[1].contains('ajc-header-content-container-with-border')).toBeTruthy();
+    });
+
+    it('verifies that the "ajc-header-content-container-no-border" class is not assigned to the content container element', () => {
+      expect(testData[1].contains('ajc-header-content-container-no-border')).toBeFalsy();
+    });
+
+    it('verifies that the "ajc-header-content-alignment-left" class is not assigned to the content element', () => {
+      expect(testData[2].contains('ajc-header-content-alignment-left')).toBeFalsy();
+    });
+
+    it('verifies that the "ajc-header-content-alignment-center" class is assigned to the content element', () => {
+      expect(testData[2].contains('ajc-header-content-alignment-center')).toBeTruthy();
+    });
+
+    it('verifies that the "ajc-header-content-alignment-right" class is not assigned to the content element', () => {
+      expect(testData[2].contains('ajc-header-content-alignment-right')).toBeFalsy();
+    });
+  });
+
+  describe('Header Type A with red top border, grey background, right alignment', () => {
+    let componentDidMountSpy;
+    const testComponentId = 'test-header-border-red-bg-grey-align-right';
+    const testData = [];
+
+    beforeAll(() => {
+      componentDidMountSpy = jest
+        .spyOn(HeaderTypeA.prototype, 'componentDidMount')
+        .mockImplementation(() => {});
+      const { unmount } = render(
+        <React.Fragment>
+          <HeaderTypeA id={testComponentId} showTopBorder={true} topBorderColour="red" backgroundColour="grey" alignment="right">
+            Header text content.
+          </HeaderTypeA>
+        </React.Fragment>
+      );
+      /* Build the DOM elements required for the tests */
+      const headerContainer = document.querySelector(`header[id="${testComponentId}--container"]`);
+      const headerContentContainer = document.querySelector(`div[id="${testComponentId}--content-container"]`);
+      const headerContent = document.querySelector(`div[id="${testComponentId}--content"]`);
       
-  //     /* Verifies that the "ajc-header-border-grey" class is not assigned to the root element */
-  //     /* Verifies that the "ajc-header-border-red" class is assigned to the root element */
-  //     /* Verifies that the "ajc-background-transparent" class is assigned to the root element */
-  //     /* Verifies that the "ajc-background-grey-1" class is not assigned to the root element */
-  //     /* Verifies that the "ajc-background-white" class is not assigned to the root element */
-  //     /* Verifies that the "ajc-background-yellow" class is not assigned to the root element */
-  //     testData.push(headerRoot.classList);
+      /* Verifies that the "ajc-header-border-black" class is not assigned to the container element */
+      /* Verifies that the "ajc-header-border-grey" class is not assigned to the container element */
+      /* Verifies that the "ajc-header-border-red" class is assigned to the container element */
+      /* Verifies that the "ajc-background-transparent" class is not assigned to the container element */
+      /* Verifies that the "ajc-background-grey-1" class is assigned to the container element */
+      /* Verifies that the "ajc-background-white" class is not assigned to the container element */
+      /* Verifies that the "ajc-background-yellow" class is not assigned to the container element */
+      testData.push(headerContainer.classList);
 
-  //     /* Unmount the component and clean up the test */
-  //     unmount();
-  //     cleanup();
-  //   });
+      /* Verifies that the "ajc-header-content-container-with-border" class is assigned to the content container element */
+      /* Verifies that the "ajc-header-content-container-no-border" class is not assigned to the content container element */
+      testData.push(headerContentContainer.classList);
 
-  //   afterAll(() => {
-  //     componentDidMountSpy.mockRestore();
-  //   });
+      /* Verifies that the "ajc-header-content-alignment-left" class is not assigned to the content element */
+      /* Verifies that the "ajc-header-content-alignment-center" class is not assigned to the content element */
+      /* Verifies that the "ajc-header-content-alignment-right" class is assigned to the content element */
+      testData.push(headerContent.classList);
 
-  //   it('verifies that the "ajc-header-border-grey" class is not assigned to the root element', () => {
-  //     expect(testData[0].contains('ajc-header-border-grey')).toBeFalsy();
-  //   });
+      /* Unmount the component and clean up the test */
+      unmount();
+      cleanup();
+    });
 
-  //   it('verifies that the "ajc-header-border-red" class is assigned to the root element', () => {
-  //     expect(testData[0].contains('ajc-header-border-red')).toBeTruthy();
-  //   });
+    afterAll(() => {
+      componentDidMountSpy.mockRestore();
+    });
 
-  //   it('verifies that the "ajc-background-transparent" class is assigned to the root element', () => {
-  //     expect(testData[0].contains('ajc-background-transparent')).toBeTruthy();
-  //   });
+    it('verifies that the "ajc-header-border-black" class is not assigned to the container element', () => {
+      expect(testData[0].contains('ajc-header-border-black')).toBeFalsy();
+    });
 
-  //   it('verifies that the "ajc-background-grey-1" class is not assigned to the root element', () => {
-  //     expect(testData[0].contains('ajc-background-grey-1')).toBeFalsy();
-  //   });
+    it('verifies that the "ajc-header-border-grey" class is not assigned to the container element', () => {
+      expect(testData[0].contains('ajc-header-border-grey')).toBeFalsy();
+    });
 
-  //   it('verifies that the "ajc-background-white" class is not assigned to the root element', () => {
-  //     expect(testData[0].contains('ajc-background-white')).toBeFalsy();
-  //   });
+    it('verifies that the "ajc-header-border-red" class is assigned to the container element', () => {
+      expect(testData[0].contains('ajc-header-border-red')).toBeTruthy();
+    });
 
-  //   it('verifies that the "ajc-background-yellow" class is not assigned to the root element', () => {
-  //     expect(testData[0].contains('ajc-background-yellow')).toBeFalsy();
-  //   });
-  // });
+    it('verifies that the "ajc-background-transparent" class is not assigned to the container element', () => {
+      expect(testData[0].contains('ajc-background-transparent')).toBeFalsy();
+    });
 
-  // describe('Transferred props and rendering - Header with no top border and grey background', () => {
-  //   let componentDidMountSpy;
-  //   const testComponentId = 'test-header-with-no-top-border-id';
-  //   const testData = [];
+    it('verifies that the "ajc-background-grey-1" class is assigned to the container element', () => {
+      expect(testData[0].contains('ajc-background-grey-1')).toBeTruthy();
+    });
 
-  //   beforeAll(() => {
-  //     componentDidMountSpy = jest
-  //       .spyOn(Header.prototype, 'componentDidMount')
-  //       .mockImplementation(() => {});
-  //     const { unmount } = render(
-  //       <React.Fragment>
-  //         <Header id={testComponentId} renderTopBorder={false} backgroundColour="grey">
-  //           Header text content.
-  //         </Header>
-  //       </React.Fragment>
-  //     );
-  //     /* Build the DOM elements required for the tests */
-  //     const headerRoot = document.querySelector(`header[id="${testComponentId}-root"]`);
-      
-  //     /* Verifies that the "ajc-header-border-grey" class is not assigned to the root element */
-  //     /* Verifies that the "ajc-header-border-red" class is not assigned to the root element */
-  //     /* Verifies that the "ajc-background-transparent" class is not assigned to the root element */
-  //     /* Verifies that the "ajc-background-grey-1" class is assigned to the root element */
-  //     /* Verifies that the "ajc-background-white" class is not assigned to the root element */
-  //     /* Verifies that the "ajc-background-yellow" class is not assigned to the root element */
-  //     testData.push(headerRoot.classList);
+    it('verifies that the "ajc-background-white" class is not assigned to the container element', () => {
+      expect(testData[0].contains('ajc-background-white')).toBeFalsy();
+    });
 
-  //     /* Unmount the component and clean up the test */
-  //     unmount();
-  //     cleanup();
-  //   });
+    it('verifies that the "ajc-background-yellow" class is not assigned to the container element', () => {
+      expect(testData[0].contains('ajc-background-yellow')).toBeFalsy();
+    });
 
-  //   afterAll(() => {
-  //     componentDidMountSpy.mockRestore();
-  //   });
-  
-  //   it('verifies that the "ajc-header-border-grey" class is not assigned to the root element', () => {
-  //     expect(testData[0].contains('ajc-header-border-grey')).toBeFalsy();
-  //   });
+    it('verifies that the "ajc-header-content-container-with-border" class is assigned to the content container element', () => {
+      expect(testData[1].contains('ajc-header-content-container-with-border')).toBeTruthy();
+    });
 
-  //   it('verifies that the "ajc-header-border-red" class is not assigned to the root element', () => {
-  //     expect(testData[0].contains('ajc-header-border-red')).toBeFalsy();
-  //   });
+    it('verifies that the "ajc-header-content-container-no-border" class is not assigned to the content container element', () => {
+      expect(testData[1].contains('ajc-header-content-container-no-border')).toBeFalsy();
+    });
 
-  //   it('verifies that the "ajc-background-transparent" class is not assigned to the root element', () => {
-  //     expect(testData[0].contains('ajc-background-transparent')).toBeFalsy();
-  //   });
+    it('verifies that the "ajc-header-content-alignment-left" class is not assigned to the content element', () => {
+      expect(testData[2].contains('ajc-header-content-alignment-left')).toBeFalsy();
+    });
 
-  //   it('verifies that the "ajc-background-grey-1" class is assigned to the root element', () => {
-  //     expect(testData[0].contains('ajc-background-grey-1')).toBeTruthy();
-  //   });
+    it('verifies that the "ajc-header-content-alignment-center" class is not assigned to the content element', () => {
+      expect(testData[2].contains('ajc-header-content-alignment-center')).toBeFalsy();
+    });
 
-  //   it('verifies that the "ajc-background-white" class is not assigned to the root element', () => {
-  //     expect(testData[0].contains('ajc-background-white')).toBeFalsy();
-  //   });
+    it('verifies that the "ajc-header-content-alignment-right" class is assigned to the content element', () => {
+      expect(testData[2].contains('ajc-header-content-alignment-right')).toBeTruthy();
+    });
+  });
 
-  //   it('verifies that the "ajc-background-yellow" class is not assigned to the root element', () => {
-  //     expect(testData[0].contains('ajc-background-yellow')).toBeFalsy();
-  //   });
-  // });
+  describe('Header Type A with no top border (default), yellow background, background image assigned, left alignment (default)', () => {
+    let setupDocumentBodyCssSpy;
+    const testComponentId = 'test-header-border-none-bg-yellow-align-left--with-bg-image';
+    const testData = [];
 
-  // describe('Transferred props and rendering - Header with grey top border and yellow background', () => {
-  //   let componentDidMountSpy;
-  //   const testComponentId = 'test-header-with-top-border-id';
-  //   const testData = [];
+    beforeAll(() => {
+      setupDocumentBodyCssSpy = jest
+        .spyOn(PageTemplateConfig, 'setupDocumentBodyCss')
+        .mockImplementation(() => {});
+      const { unmount } = render(
+        <React.Fragment>
+          <HeaderTypeA id={testComponentId} backgroundColour="yellow" backgroundImage={headerBackgroundTestImage}>
+            Header text content.
+          </HeaderTypeA>
+        </React.Fragment>
+      );
+      /* Build the DOM elements required for the tests */
+      const headerContainer = document.querySelector(`header[id="${testComponentId}--container"]`);
+      const headerContainerImage = document.querySelector(`div[id="${testComponentId}--container-image"]`);
 
-  //   beforeAll(() => {
-  //     componentDidMountSpy = jest
-  //       .spyOn(Header.prototype, 'componentDidMount')
-  //       .mockImplementation(() => {});
-  //     const { unmount } = render(
-  //       <React.Fragment>
-  //         <Header id={testComponentId} renderTopBorder={true} topBorderColour="grey" backgroundColour="yellow">
-  //           Header text content.
-  //         </Header>
-  //       </React.Fragment>
-  //     );
-  //     /* Build the DOM elements required for the tests */
-  //     const headerRoot = document.querySelector(`header[id="${testComponentId}-root"]`);
-      
-  //     /* Verifies that the "ajc-header-border-grey" class is assigned to the root element */
-  //     /* Verifies that the "ajc-header-border-red" class is not assigned to the root element */
-  //     /* Verifies that the "ajc-background-transparent" class is not assigned to the root element */
-  //     /* Verifies that the "ajc-background-grey-1" class is not assigned to the root element */
-  //     /* Verifies that the "ajc-background-white" class is not assigned to the root element */
-  //     /* Verifies that the "ajc-background-yellow" class is assigned to the root element */
-  //     testData.push(headerRoot.classList);
+      /* Verifies that the "ajc-background-transparent" class is not assigned to the container element */
+      /* Verifies that the "ajc-background-grey-1" class is not assigned to the container element */
+      /* Verifies that the "ajc-background-white" class is not assigned to the container element */
+      /* Verifies that the "ajc-background-yellow" class is assigned to the container element */
+      testData.push(headerContainer.classList);
 
-  //     /* Unmount the component and clean up the test */
-  //     unmount();
-  //     cleanup();
-  //   });
+      /* Verifies that the background image data is correctly assigned to the container image element */
+      testData.push(headerContainerImage.dataset.bgImageLoaded);
 
-  //   afterAll(() => {
-  //     componentDidMountSpy.mockRestore();
-  //   });
+      /* Unmount the component and clean up the test */
+      unmount();
+      cleanup();
+    });
 
-  //   it('verifies that the "ajc-header-border-grey" class is assigned to the root element', () => {
-  //     expect(testData[0].contains('ajc-header-border-grey')).toBeTruthy();
-  //   });
+    afterAll(() => {
+      setupDocumentBodyCssSpy.mockRestore();
+    });
 
-  //   it('verifies that the "ajc-header-border-red" class is not assigned to the root element', () => {
-  //     expect(testData[0].contains('ajc-header-border-red')).toBeFalsy();
-  //   });
+    it('verifies that the "ajc-background-transparent" class is not assigned to the container element', () => {
+      expect(testData[0].contains('ajc-background-transparent')).toBeFalsy();
+    });
 
-  //   it('verifies that the "ajc-background-transparent" class is not assigned to the root element', () => {
-  //     expect(testData[0].contains('ajc-background-transparent')).toBeFalsy();
-  //   });
+    it('verifies that the "ajc-background-grey-1" class is not assigned to the container element', () => {
+      expect(testData[0].contains('ajc-background-grey-1')).toBeFalsy();
+    });
 
-  //   it('verifies that the "ajc-background-grey-1" class is not assigned to the root element', () => {
-  //     expect(testData[0].contains('ajc-background-grey-1')).toBeFalsy();
-  //   });
+    it('verifies that the "ajc-background-white" class is not assigned to the container element', () => {
+      expect(testData[0].contains('ajc-background-white')).toBeFalsy();
+    });
 
-  //   it('verifies that the "ajc-background-white" class is not assigned to the root element', () => {
-  //     expect(testData[0].contains('ajc-background-white')).toBeFalsy();
-  //   });
+    it('verifies that the "ajc-background-yellow" class is assigned to the container element', () => {
+      expect(testData[0].contains('ajc-background-yellow')).toBeTruthy();
+    });
 
-  //   it('verifies that the "ajc-background-yellow" class is assigned to the root element', () => {
-  //     expect(testData[0].contains('ajc-background-yellow')).toBeTruthy();
-  //   });
-  // });
+    it('verifies that the background image data is correctly assigned to the container image element', () => {
+      expect(testData[1]).toBe('true');
+    });
 
-  // describe('componentDidMount method behaviour - No image data set', () => {
-  //   let documentQuerySelectorSpy;
-  //   const testComponentId = 'test-component-did-mount-no-image-id';
+    it('verifies that the page template config functionality is called as expected', () => {
+      expect(setupDocumentBodyCssSpy.mock.calls).toHaveLength(1);
+    });
+  });
 
-  //   beforeAll(() => {
-  //     documentQuerySelectorSpy = jest
-  //       .spyOn(global.document, 'querySelector');
-  //     const { unmount } = render(
-  //       <React.Fragment>
-  //         <Header id={testComponentId} renderTopBorder={true} topBorderColour="red" backgroundColour="grey">
-  //           Header text content.
-  //         </Header>
-  //       </React.Fragment>
-  //     );
-  //     /* Unmount the component and clean up the test */
-  //     unmount();
-  //     cleanup();
-  //   });
+  describe('Header Type A with no top border (default), transparent background (default), no background image assigned, left alignment (default)', () => {
+    let setupDocumentBodyCssSpy;
+    const testComponentId = 'test-header-border-none-bg-transparent-align-left--no-bg-image';
+    const testData = [];
 
-  //   afterAll(() => {
-  //     documentQuerySelectorSpy.mockRestore();
-  //   });
+    beforeAll(() => {
+      setupDocumentBodyCssSpy = jest
+        .spyOn(PageTemplateConfig, 'setupDocumentBodyCss')
+        .mockImplementation(() => {});
+      const { unmount } = render(
+        <React.Fragment>
+          <HeaderTypeA id={testComponentId}>
+            Header text content.
+          </HeaderTypeA>
+        </React.Fragment>
+      );
+      /* Build the DOM elements required for the tests */
+      const headerContainerImage = document.querySelector(`div[id="${testComponentId}--container-image"]`);
 
-  //   it('verifies that the document query selector functionality is not invoked', () => {
-  //     expect(documentQuerySelectorSpy.mock.calls).toHaveLength(0);
-  //   });
-  // });
+      /* Verifies that background image data is not assigned to the container image element */
+      testData.push(headerContainerImage.dataset.bgImageLoaded);
 
-  // describe('componentDidMount method behaviour - Image data set', () => {
-  //   const testComponentId = 'test-component-did-mount-with-image-id';
-  //   const testData = [];
+      /* Unmount the component and clean up the test */
+      unmount();
+      cleanup();
+    });
 
-  //   beforeAll(() => {
-  //     const { unmount } = render(
-  //       <React.Fragment>
-  //         <Header id={testComponentId} renderTopBorder={true} topBorderColour="red" renderBackgroundImage={true} backgroundImageData={testImage}>
-  //           Header text content.
-  //         </Header>
-  //       </React.Fragment>
-  //     );
-  //     /* Build the DOM elements required for the tests */
-  //     const headerOuterChildElement = document.querySelector(`header[id="${testComponentId}-root"] > div`);
+    afterAll(() => {
+      setupDocumentBodyCssSpy.mockRestore();
+    });
 
-  //     /* Verifies that the background image of the header outer child element is set correctly */
-  //     testData.push(headerOuterChildElement);
+    it('verifies that background image data is not assigned to the container image element', () => {
+      expect(testData[0]).toBe('false');
+    });
 
-  //     /* Unmount the component and clean up the test */
-  //     unmount();
-  //     cleanup();
-  //   });
-
-  //   it('verifies that the background image of the header outer child element is set correctly', () => {
-  //     expect(testData[0].style.backgroundImage).toBeDefined();
-  //   });
-  // });
+    it('verifies that the page template config functionality is called as expected', () => {
+      expect(setupDocumentBodyCssSpy.mock.calls).toHaveLength(1);
+    });
+  });
 });
