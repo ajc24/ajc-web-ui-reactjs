@@ -1,7 +1,6 @@
 /**
  * Developed by Anthony Cox in 2024
  */
-// import 'jsdom-global/register';
 import React from 'react';
 import { cleanup, render } from '@testing-library/react';
 import { TestDev } from 'ajc-testing-code';
