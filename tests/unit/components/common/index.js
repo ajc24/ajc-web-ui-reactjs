@@ -25,7 +25,6 @@ describe('Commonly used functionality', () => {
       /* Restore the original document body */
       document.body.classList.remove(ajcBodyDefaultCss);
 
-
       /* Restore all mock spy functionality */
       documentActiveElementBlurSpy.mockRestore();
     });
