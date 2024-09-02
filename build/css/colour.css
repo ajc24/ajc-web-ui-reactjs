@@ -1,0 +1,38 @@
+/**
+ * Developed by Anthony Cox in 2024
+ */
+.ajc-background-grey-1 {
+  background-color: #F6F6F6;
+}
+
+.ajc-background-grey-2 {
+  background-color: #757575;
+}
+
+.ajc-background-red {
+  background-color: #AE1E01;
+}
+
+.ajc-background-transparent {
+  background-color: transparent;
+}
+
+.ajc-background-white {
+  background-color: #FFFFFF;
+}
+
+.ajc-background-yellow {
+  background-color: #FFFBDD;
+}
+
+.ajc-font-black {
+  color: #000000;
+}
+
+.ajc-font-red {
+  color: #AE1E01;
+}
+
+.ajc-font-white {
+  color: #FFFFFF;
+}
