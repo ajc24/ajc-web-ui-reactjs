@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npm run build-components && npm run build-storybook",
     "build-components": "babel src --out-dir build --copy-files",
-    "build-storybook": "storybook build",
+    "build-storybook": "storybook build --output-dir ./build-storybook",
     "init-storybook": "storybook init",
     "storybook": "storybook dev -p 6006",
     "test": "npm run test-unit-coverage && npm run test-snapshots && npm run test-accessibility && npm run test-integration",
