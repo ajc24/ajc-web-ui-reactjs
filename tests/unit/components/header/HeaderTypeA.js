@@ -26,6 +26,7 @@ describe('Header Type A', () => {
       );
       /* Build the DOM elements required for the tests */
       const headerContainer = document.querySelector(`header[id="${testComponentId}--container"]`);
+      const headerContainerImage = document.querySelector(`div[id="${testComponentId}--container-image"]`);
       const headerContentContainer = document.querySelector(`div[id="${testComponentId}--content-container"]`);
       const headerContent = document.querySelector(`div[id="${testComponentId}--content"]`);
       
@@ -40,6 +41,12 @@ describe('Header Type A', () => {
       /* Verifies that the "ajc-background-white" class is not assigned to the container element */
       /* Verifies that the "ajc-background-yellow" class is not assigned to the container element */
       testData.push(headerContainer.classList);
+
+      /* Verifies that the id attribute is set correctly to the container image element */
+      testData.push(headerContainerImage);
+
+      /* Verifies that by default, no background image is loaded to the container image element */
+      testData.push(headerContainerImage.dataset.bgImageLoaded);
 
       /* Verifies that the id attribute is set correctly to the content container element */
       testData.push(headerContentContainer);
@@ -98,36 +105,44 @@ describe('Header Type A', () => {
       expect(testData[1].contains('ajc-background-yellow')).toBeFalsy();
     });
 
-    it('verifies that the id attribute is set correctly to the content container element', () => {
+    it('verifies that the id attribute is set correctly to the container image element', () => {
       expect(testData[2]).not.toBeNull();
     });
 
-    it('verifies that the "ajc-header-content-container-with-border" class is not assigned to the content container element', () => {
-      expect(testData[3].contains('ajc-header-content-container-with-border')).toBeFalsy();
+    it('verifies that by default, no background image is loaded to the container image element', () => {
+      expect(testData[3]).toBe('false');
     });
 
-    it('verifies that the "ajc-header-content-container-no-border" class is assigned to the content container element', () => {
-      expect(testData[3].contains('ajc-header-content-container-no-border')).toBeTruthy();
-    });
-
-    it('verifies that the id attribute is set correctly to the content element', () => {
+    it('verifies that the id attribute is set correctly to the content container element', () => {
       expect(testData[4]).not.toBeNull();
     });
 
+    it('verifies that the "ajc-header-content-container-with-border" class is not assigned to the content container element', () => {
+      expect(testData[5].contains('ajc-header-content-container-with-border')).toBeFalsy();
+    });
+
+    it('verifies that the "ajc-header-content-container-no-border" class is assigned to the content container element', () => {
+      expect(testData[5].contains('ajc-header-content-container-no-border')).toBeTruthy();
+    });
+
+    it('verifies that the id attribute is set correctly to the content element', () => {
+      expect(testData[6]).not.toBeNull();
+    });
+
     it('verifies that the children components are rendered within the content element', () => {
-      expect(testData[4].textContent).toBe('Header text content.');
+      expect(testData[6].textContent).toBe('Header text content.');
     });
 
     it('verifies that the "ajc-header-content-alignment-left" class is assigned to the content element', () => {
-      expect(testData[5].contains('ajc-header-content-alignment-left')).toBeTruthy();
+      expect(testData[7].contains('ajc-header-content-alignment-left')).toBeTruthy();
     });
 
     it('verifies that the "ajc-header-content-alignment-center" class is not assigned to the content element', () => {
-      expect(testData[5].contains('ajc-header-content-alignment-center')).toBeFalsy();
+      expect(testData[7].contains('ajc-header-content-alignment-center')).toBeFalsy();
     });
 
     it('verifies that the "ajc-header-content-alignment-right" class is not assigned to the content element', () => {
-      expect(testData[5].contains('ajc-header-content-alignment-right')).toBeFalsy();
+      expect(testData[7].contains('ajc-header-content-alignment-right')).toBeFalsy();
     });
   });
 
