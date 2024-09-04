@@ -1,0 +1,9 @@
+/**
+ * Developed by Anthony Cox in 2024
+ */
+.ajc-menu-bar-type-a-content {
+  display: flex;
+  justify-content: center;
+  height: 55px;
+  width: 100%;
+}
