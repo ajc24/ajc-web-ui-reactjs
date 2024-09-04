@@ -1,6 +1,10 @@
 /**
  * Developed by Anthony Cox in 2024
  */
+.ajc-background-black {
+  background-color: #000000;
+}
+
 .ajc-background-grey-1 {
   background-color: #F6F6F6;
 }

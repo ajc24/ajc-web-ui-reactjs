@@ -10,4 +10,10 @@ Object.defineProperty(exports, "HeaderTypeA", {
     return _components.HeaderTypeA;
   }
 });
+Object.defineProperty(exports, "MenuBarTypeA", {
+  enumerable: true,
+  get: function get() {
+    return _components.MenuBarTypeA;
+  }
+});
 var _components = require("./components");

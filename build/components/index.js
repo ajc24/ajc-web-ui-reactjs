@@ -10,5 +10,12 @@ Object.defineProperty(exports, "HeaderTypeA", {
     return _HeaderTypeA["default"];
   }
 });
+Object.defineProperty(exports, "MenuBarTypeA", {
+  enumerable: true,
+  get: function get() {
+    return _MenuBarTypeA["default"];
+  }
+});
 var _HeaderTypeA = _interopRequireDefault(require("./header/HeaderTypeA"));
+var _MenuBarTypeA = _interopRequireDefault(require("./menu-bar/MenuBarTypeA"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
