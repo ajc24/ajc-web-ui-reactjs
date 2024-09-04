@@ -97,6 +97,8 @@ HeaderTypeA.propTypes = {
   backgroundColour: PropTypes.oneOf([ 'transparent', 'white', 'grey', 'yellow' ]),
   /** The background image to be displayed in the header. */
   backgroundImage: PropTypes.oneOfType([ PropTypes.node, PropTypes.string, PropTypes.object ]),
+  /** The content to be displayed within the header component */
+  children: PropTypes.any,
   /** The unique identifier for this component. */
   id: PropTypes.string.isRequired,
   /** Switch to display an 8px top / upper border on the header. By default, no border is displayed on the header. */
@@ -108,6 +110,7 @@ HeaderTypeA.defaultProps = {
   alignment: undefined,
   backgroundColour: undefined,
   backgroundImage: undefined,
+  children: undefined,
   showTopBorder: false,
   topBorderColour: 'black',
 };
