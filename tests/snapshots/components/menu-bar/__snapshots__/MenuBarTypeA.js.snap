@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Menu Bar Type A Menu Bar Type A with black background (default) verifies the snapshot for the component 1`] = `"<div role="navigation" id="test-menu-bar-bg-default--container" class="ajc-container-screen ajc-background-black"><div class="ajc-container-screen-inner"><div id="test-menu-bar-bg-default--content" class="ajc-menu-bar-type-a-content ajc-font-default ajc-font-white">Menu bar text content.</div></div></div>"`;
+
+exports[`Menu Bar Type A Menu Bar Type A with grey background verifies the snapshot for the component 1`] = `"<div role="navigation" id="test-menu-bar-bg-grey--container" class="ajc-container-screen ajc-background-grey-2"><div class="ajc-container-screen-inner"><div id="test-menu-bar-bg-grey--content" class="ajc-menu-bar-type-a-content ajc-font-default ajc-font-white">Menu bar text content.</div></div></div>"`;
+
+exports[`Menu Bar Type A Menu Bar Type A with red background verifies the snapshot for the component 1`] = `"<div role="navigation" id="test-menu-bar-bg-red--container" class="ajc-container-screen ajc-background-red"><div class="ajc-container-screen-inner"><div id="test-menu-bar-bg-red--content" class="ajc-menu-bar-type-a-content ajc-font-default ajc-font-white">Menu bar text content.</div></div></div>"`;
