@@ -3,8 +3,10 @@
  */
 import {
   HeaderTypeA,
+  MenuBarTypeA,
 } from './components';
 
 export {
   HeaderTypeA,
+  MenuBarTypeA,
 };
