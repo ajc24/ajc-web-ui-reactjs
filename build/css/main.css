@@ -1,0 +1,12 @@
+/**
+ * Developed by Anthony Cox in 2024
+ */
+.ajc-main-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: auto;
+  min-height: 736px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}

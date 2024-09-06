@@ -10,6 +10,12 @@ Object.defineProperty(exports, "HeaderTypeA", {
     return _components.HeaderTypeA;
   }
 });
+Object.defineProperty(exports, "MainContent", {
+  enumerable: true,
+  get: function get() {
+    return _components.MainContent;
+  }
+});
 Object.defineProperty(exports, "MenuBarTypeA", {
   enumerable: true,
   get: function get() {
