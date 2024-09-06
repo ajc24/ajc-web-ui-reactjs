@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Main Content Main Content with grey background verifies the snapshot for the component 1`] = `"<main id="main-content--container" class="ajc-container-screen ajc-background-grey-1" aria-label="Main Content: Grey Background"><div class="ajc-container-screen-inner"><div id="main-content--content" class="ajc-main-content ajc-font-default ajc-font-black">Main content text content.</div></div></main>"`;
+
+exports[`Main Content Main Content with transparent background (default) verifies the snapshot for the component 1`] = `"<main id="main-content--container" class="ajc-container-screen ajc-background-transparent" aria-label="Main Content: Default"><div class="ajc-container-screen-inner"><div id="main-content--content" class="ajc-main-content ajc-font-default ajc-font-black">Main content text content.</div></div></main>"`;
+
+exports[`Main Content Main Content with white background verifies the snapshot for the component 1`] = `"<main id="main-content--container" class="ajc-container-screen ajc-background-white" aria-label="Main Content: White Background"><div class="ajc-container-screen-inner"><div id="main-content--content" class="ajc-main-content ajc-font-default ajc-font-black">Main content text content.</div></div></main>"`;
+
+exports[`Main Content Main Content with yellow background verifies the snapshot for the component 1`] = `"<main id="main-content--container" class="ajc-container-screen ajc-background-yellow" aria-label="Main Content: Yellow Background"><div class="ajc-container-screen-inner"><div id="main-content--content" class="ajc-main-content ajc-font-default ajc-font-black">Main content text content.</div></div></main>"`;
