@@ -33,11 +33,13 @@ class MainContent extends React.Component {
     /* Build the list of CSS classes to be assigned to the container element */
     let containerCss = 'ajc-container-screen';
     if (this.props.backgroundColour !== undefined && (this.props.backgroundColour === 'white' || this.props.backgroundColour === 'grey' ||
-      this.props.backgroundColour === 'yellow' || this.props.backgroundColour === 'transparent')) {
+      this.props.backgroundColour === 'yellow' || this.props.backgroundColour === 'transparent' || this.props.backgroundColour === 'grey-2')) {
         /* Set the colour for the background of the main content */
         containerCss += ` ajc-background-${this.props.backgroundColour}`;
         if (this.props.backgroundColour === 'grey') {
           containerCss += '-1';
+        } else if (this.props.backgroundColour === 'grey-2') {
+          containerCss = containerCss.replace('-2', '-3').trim();
         }
     } else {
       /* By default - choose a transparent background */
@@ -58,7 +60,7 @@ class MainContent extends React.Component {
 }
 MainContent.propTypes = {
   /** The background colour for the main content. The default for the main content background is transparent. */
-  backgroundColour: PropTypes.oneOf([ 'transparent', 'white', 'grey', 'yellow' ]),
+  backgroundColour: PropTypes.oneOf([ 'transparent', 'white', 'grey', 'grey-2', 'yellow' ]),
   /** The content to be displayed within the main content component */
   children: PropTypes.any,
   /** The title of the web page content to be rendered in the main component. This title will be rendered in the browser tab. */

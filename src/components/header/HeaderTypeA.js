@@ -39,8 +39,8 @@ class HeaderTypeA extends React.Component {
     /* Build the list of CSS classes to be assigned to the container element */
     let containerCss = 'ajc-container-screen';
     if (this.props.showTopBorder === true) {
-      if (this.props.topBorderColour === 'grey' || this.props.topBorderColour === 'red') {
-        /* Render the upper border in grey or red */
+      if (this.props.topBorderColour === 'grey' || this.props.topBorderColour === 'red' || this.props.topBorderColour === 'bright-red') {
+        /* Render the upper border in grey, red or bright red */
         containerCss += ` ajc-header-border-${this.props.topBorderColour}`;
       } else {
         /* By default choose a black border */
@@ -48,11 +48,13 @@ class HeaderTypeA extends React.Component {
       }
     }
     if (this.props.backgroundColour !== undefined && (this.props.backgroundColour === 'white' || this.props.backgroundColour === 'grey' ||
-      this.props.backgroundColour === 'yellow' || this.props.backgroundColour === 'transparent')) {
+      this.props.backgroundColour === 'yellow' || this.props.backgroundColour === 'transparent' || this.props.backgroundColour === 'grey-2')) {
         /* Set the colour for the background of the header */
         containerCss += ` ajc-background-${this.props.backgroundColour}`;
         if (this.props.backgroundColour === 'grey') {
           containerCss += '-1';
+        } else if (this.props.backgroundColour === 'grey-2') {
+          containerCss = containerCss.replace('-2', '-3').trim();
         }
     } else {
       /* By default - choose a transparent background */
@@ -94,7 +96,7 @@ HeaderTypeA.propTypes = {
   /** The alignment for the inner items of the header. By default, the header contents will be left aligned. */
   alignment: PropTypes.oneOf([ 'left', 'center', 'right' ]),
   /** The background colour for the header. The default colour for the background is transparent. */
-  backgroundColour: PropTypes.oneOf([ 'transparent', 'white', 'grey', 'yellow' ]),
+  backgroundColour: PropTypes.oneOf([ 'transparent', 'white', 'grey', 'grey-2', 'yellow' ]),
   /** The background image to be displayed in the header. */
   backgroundImage: PropTypes.oneOfType([ PropTypes.node, PropTypes.string, PropTypes.object ]),
   /** The content to be displayed within the header component */
@@ -104,7 +106,7 @@ HeaderTypeA.propTypes = {
   /** Switch to display an 8px top / upper border on the header. By default, no border is displayed on the header. */
   showTopBorder: PropTypes.bool,
   /** The colour at which the top / upper border is to be rendered (if enabled). The default colour for the border is black. */
-  topBorderColour: PropTypes.oneOf([ 'black', 'grey', 'red' ]),
+  topBorderColour: PropTypes.oneOf([ 'black', 'grey', 'red', 'bright-red' ]),
 };
 HeaderTypeA.defaultProps = {
   alignment: undefined,

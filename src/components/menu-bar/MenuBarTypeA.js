@@ -29,8 +29,8 @@ class MenuBarTypeA extends React.Component {
   render() {
     /* Build the list of CSS classes to be assigned to the container element */
     let containerCss = 'ajc-container-screen';
-    if (this.props.backgroundColour === 'grey' || this.props.backgroundColour === 'red') {
-      /* Render the background colour of the menu bar in grey or red */
+    if (this.props.backgroundColour === 'grey' || this.props.backgroundColour === 'red' || this.props.backgroundColour === 'bright-red') {
+      /* Render the background colour of the menu bar in grey, red or bright red */
       containerCss += ` ajc-background-${this.props.backgroundColour}`;
       if (this.props.backgroundColour === 'grey') {
         containerCss += '-2';
@@ -54,7 +54,7 @@ class MenuBarTypeA extends React.Component {
 }
 MenuBarTypeA.propTypes = {
   /** The background colour for the menu bar. The default colour for the menu bar is black. */
-  backgroundColour: PropTypes.oneOf([ 'black', 'grey', 'red' ]),
+  backgroundColour: PropTypes.oneOf([ 'black', 'grey', 'red', 'bright-red' ]),
   /** The content to be displayed within the menu bar component */
   children: PropTypes.any,
   /** The unique identifier for this component. */
