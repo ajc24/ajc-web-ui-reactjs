@@ -5,6 +5,10 @@
   border-top: 8px solid #000000;
 }
 
+.ajc-header-border-bright-red {
+  border-top: 8px solid #E60000;
+}
+
 .ajc-header-border-grey {
   border-top: 8px solid #757575;
 }
@@ -48,4 +52,11 @@
 
 .ajc-header-content-container-with-border {
   height: 136px;
+}
+
+.ajc-header-logo-container {
+  display: flex;
+  flex-direction: row;
+  height: auto;
+  width: auto;
 }
