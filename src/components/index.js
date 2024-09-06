@@ -2,6 +2,9 @@
  * Developed by Anthony Cox in 2024
  */
 
+/* Export the footer components */
+export { default as FooterTypeA } from './footer/FooterTypeA';
+
 /* Export the header components */
 export { default as HeaderTypeA } from './header/HeaderTypeA';
 
