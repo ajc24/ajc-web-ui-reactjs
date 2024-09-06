@@ -5,12 +5,20 @@
   background-color: #000000;
 }
 
+.ajc-background-bright-red {
+  background-color: #E60000;
+}
+
 .ajc-background-grey-1 {
   background-color: #F6F6F6;
 }
 
 .ajc-background-grey-2 {
   background-color: #757575;
+}
+
+.ajc-background-grey-3 {
+  background-color: #E6E6E6;
 }
 
 .ajc-background-red {
