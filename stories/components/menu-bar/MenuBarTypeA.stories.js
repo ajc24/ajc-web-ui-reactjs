@@ -2,7 +2,7 @@
  * Developed by Anthony Cox in 2024
  */
 import React from 'react';
-import { MenuBarTypeA } from '../../src';
+import { MenuBarTypeA } from '../../../src';
 
 export default {
   title: 'Menu Bar/Menu Bar Type A',

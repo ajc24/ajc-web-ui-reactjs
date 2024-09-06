@@ -2,7 +2,7 @@
  * Developed by Anthony Cox in 2024
  */
 import React from 'react';
-import { FooterTypeA } from '../../src';
+import { FooterTypeA } from '../../../src';
 
 export default {
   title: 'Footer/Footer Type A',

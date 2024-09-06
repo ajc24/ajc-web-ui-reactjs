@@ -2,7 +2,7 @@
  * Developed by Anthony Cox in 2024
  */
 import React from 'react';
-import { MainContent } from '../../src';
+import { MainContent } from '../../../src';
 
 export default {
   title: 'Main/Main Content',

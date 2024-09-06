@@ -2,7 +2,7 @@
  * Developed by Anthony Cox in 2024
  */
 import React from 'react';
-import { HeaderTypeA } from '../../src';
+import { HeaderTypeA } from '../../../src';
 import headerBackgroundTestImage from '../images/header-background-test.png';
 
 export default {
