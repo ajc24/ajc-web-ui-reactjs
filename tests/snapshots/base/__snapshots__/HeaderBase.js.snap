@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header Base Header Base component with custom id verifies the snapshot for the component 1`] = `"<header role="banner" id="custom-id--header-container" class="header-container background-white"><div class="header-content-container background-transparent">Header base text content.</div></header>"`;
+
+exports[`Header Base Header Base component with default id verifies the snapshot for the component 1`] = `"<header role="banner" id="default-id--header-container" class="header-container background-white"><div class="header-content-container background-transparent">Header base text content.</div></header>"`;

@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Footer Type A Footer Type A with black background (default) verifies the snapshot for the component 1`] = `"<footer role="contentinfo" id="test-footer-bg-default--container" class="ajc-container-screen ajc-background-black"><div class="ajc-container-screen-inner"><div id="test-footer-bg-default--content" class="ajc-footer-content ajc-font-default ajc-font-white">Footer text content.</div></div></footer>"`;
-
-exports[`Footer Type A Footer Type A with grey background verifies the snapshot for the component 1`] = `"<footer role="contentinfo" id="test-footer-bg-grey--container" class="ajc-container-screen ajc-background-grey-2"><div class="ajc-container-screen-inner"><div id="test-footer-bg-grey--content" class="ajc-footer-content ajc-font-default ajc-font-white">Footer text content.</div></div></footer>"`;
-
-exports[`Footer Type A Footer Type A with red background verifies the snapshot for the component 1`] = `"<footer role="contentinfo" id="test-footer-bg-red--container" class="ajc-container-screen ajc-background-red"><div class="ajc-container-screen-inner"><div id="test-footer-bg-red--content" class="ajc-footer-content ajc-font-default ajc-font-white">Footer text content.</div></div></footer>"`;
