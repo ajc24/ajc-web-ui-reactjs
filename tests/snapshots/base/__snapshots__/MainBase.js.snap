@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Main Base Component with custom id verifies the snapshot for the component 1`] = `"<main id="custom-id--main-container" class="main-container background-white"><div class="main-content-container background-transparent">Main base text content.</div></main>"`;
+
+exports[`Main Base Component with default id verifies the snapshot for the component 1`] = `"<main id="default-id--main-container" class="main-container background-white"><div class="main-content-container background-transparent">Main base text content.</div></main>"`;
