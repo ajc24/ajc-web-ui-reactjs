@@ -23,7 +23,7 @@ describe('Header Base', () => {
     setupDocumentBodyCssSpy.mockRestore();
   });
 
-  describe('Header Base component with default id', () => {
+  describe('Component with default id and default size', () => {
     let results;
 
     beforeAll(async () => {
@@ -48,13 +48,13 @@ describe('Header Base', () => {
     });
   });
 
-  describe('Header Base component with custom id', () => {
+  describe('Component with custom id and small size', () => {
     let results;
     
     beforeAll(async () => {
       const { unmount } = render(
         <div>
-          <HeaderBase id="custom-id">
+          <HeaderBase id="custom-id" size="small">
             Header base text content.
           </HeaderBase>
           <main id="main-content" aria-label="Accessibility test">
@@ -68,6 +68,31 @@ describe('Header Base', () => {
       results = await TestDev.runAxeCore(html);
     }, testTimeout);
     
+    it('verifies the accessibility standards for the component', () => {
+      expect(results).toBeTruthy();
+    });
+  });
+
+  describe('Component with default id and tall size', () => {
+    let results;
+
+    beforeAll(async () => {
+      const { unmount } = render(
+        <div>
+          <HeaderBase size="tall">
+            Header base text content.
+          </HeaderBase>
+          <main id="main-content" aria-label="Accessibility test">
+            <h1>Header Accessibility Test</h1>
+          </main>
+        </div>
+      );
+      const html = TestDev.getComponentInHTMLTemplate('Header Type A: Test 3');
+      unmount();
+      /* Perform the accessibility checks on this component */
+      results = await TestDev.runAxeCore(html);
+    }, testTimeout);
+
     it('verifies the accessibility standards for the component', () => {
       expect(results).toBeTruthy();
     });
