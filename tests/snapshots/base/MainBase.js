@@ -27,7 +27,7 @@ describe('Main Base', () => {
     beforeAll(() => {
       snapshot = TestDev.createSnapshot(
         <React.Fragment>
-          <MainBase>
+          <MainBase title="Component with default id">
             Main base text content.
           </MainBase>
         </React.Fragment>
@@ -45,7 +45,7 @@ describe('Main Base', () => {
     beforeAll(() => {
       snapshot = TestDev.createSnapshot(
         <React.Fragment>
-          <MainBase id="custom-id">
+          <MainBase id="custom-id" title="Component with custom id">
             Main base text content.
           </MainBase>
         </React.Fragment>

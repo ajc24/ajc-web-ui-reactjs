@@ -31,7 +31,7 @@ describe('Main Base', () => {
     beforeAll(() => {
       const { unmount } = render(
         <React.Fragment>
-          <MainBase>
+          <MainBase title="Component with default id">
             Main base text content.
           </MainBase>
         </React.Fragment>
@@ -66,7 +66,7 @@ describe('Main Base', () => {
     beforeAll(() => {
       const { unmount } = render(
         <React.Fragment>
-          <MainBase id={customId}>
+          <MainBase id={customId} title="Component with custom id">
             Main base text content.
           </MainBase>
         </React.Fragment>

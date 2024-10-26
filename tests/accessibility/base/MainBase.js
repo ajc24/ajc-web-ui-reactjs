@@ -35,7 +35,7 @@ describe('Main Base', () => {
           <div role="navigation">
             Menu bar component
           </div>
-          <MainBase>
+          <MainBase title="Component with default id">
             <h1>Main Base Accessibility Test</h1>
           </MainBase>
         </div>
@@ -63,7 +63,7 @@ describe('Main Base', () => {
           <div role="navigation">
             Menu bar component
           </div>
-          <MainBase id="custom-id">
+          <MainBase id="custom-id" title="Component with custom id">
             <h1>Main Base Accessibility Test</h1>
           </MainBase>
         </div>
