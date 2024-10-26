@@ -9,9 +9,18 @@
   width: 100%;
 }
 
+.header-container-size-small {
+  height: 160px;
+}
+
+.header-container-size-tall {
+  height: 320px;
+}
+
 .header-content-container {
   display: flex;
   flex-direction: row;
+  height: inherit;
   max-width: 1904px;
   min-width: 344px;
   width: inherit;
