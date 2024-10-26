@@ -1,0 +1,18 @@
+/**
+ * Developed by Anthony Cox in 2024
+ */
+.background-transparent {
+  background-color: transparent;
+}
+
+.background-white {
+  background-color: #FFFFFF;
+}
+
+.body-default {
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
