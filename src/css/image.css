@@ -1,9 +1,0 @@
-/**
- * Developed by Anthony Cox in 2024
- */
-.ajc-image-generic {
-  opacity: 0;
-  transition-property: opacity;
-  transition-duration: 0.25s;
-  transition-timing-function: ease-in-out;
-}
