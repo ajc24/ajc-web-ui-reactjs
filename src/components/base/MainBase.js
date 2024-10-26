@@ -19,9 +19,8 @@ const MainBase = props => {
 
   useEffect(() => {
     /* Set the title for the current web page only if it has not already been set */
-    if (document.title !== props.title) {
-      document.title = props.title;
-    }
+    document.title = props.title;
+  
     /* Set the ID for the component */
     if (props.id !== undefined) {
       setId(`${props.id}--main-container`);
