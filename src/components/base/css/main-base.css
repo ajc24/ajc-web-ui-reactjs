@@ -6,7 +6,7 @@
   flex-direction: row;
   height: auto;
   justify-content: center;
-  min-height: 768px;
+  min-height: 652px;
   width: 100%;
 }
 
@@ -15,7 +15,7 @@
   flex-direction: column;
   height: inherit;
   justify-content: flex-start;
-  max-width: 1904px;
-  min-width: 344px;
+  max-width: 1920px;
+  min-width: 360px;
   width: inherit;
 }
