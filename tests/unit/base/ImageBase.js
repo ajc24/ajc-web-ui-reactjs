@@ -186,7 +186,7 @@ describe('Image Base', () => {
       /* Verifies that the height attribute is set correctly to the image element */
       testData.push(image.getAttribute('height'));
 
-      /* Verifies that the alt attribute is set correctly to that of a decorative image element */
+      /* Verifies that the alt attribute is set correctly to that of an informative image element */
       testData.push(image.getAttribute('alt'));
 
       /* Unmount the component and clean up the test */
@@ -206,7 +206,7 @@ describe('Image Base', () => {
       expect(testData[1]).toBe(`${customImageHeight}`);
     });
 
-    it('verifies that the alt attribute is set correctly to that of a decorative image element', () => {
+    it('verifies that the alt attribute is set correctly to that of an informative image element', () => {
       expect(testData[2]).toBe(customImageAlt);
     });
   });
