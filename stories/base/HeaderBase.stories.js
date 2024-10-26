@@ -22,10 +22,8 @@ const Template_HeaderBase = args => {
 		</HeaderBase>
 	</React.Fragment>;
 }
-
-export const WithDefaultId = Template_HeaderBase.bind({});
-
-export const WithCustomId = Template_HeaderBase.bind({});
-WithCustomId.args = {
-  id: 'custom-id',
+export const Default = Template_HeaderBase.bind({});
+Default.args = {
+  id: 'default-id--header-container',
+  size: 'default',
 };
