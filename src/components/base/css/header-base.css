@@ -1,0 +1,18 @@
+/**
+ * Developed by Anthony Cox in 2024
+ */
+.header-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 160px;
+  width: 100%;
+}
+
+.header-content-container {
+  display: flex;
+  flex-direction: row;
+  max-width: 1904px;
+  min-width: 344px;
+  width: inherit;
+}
