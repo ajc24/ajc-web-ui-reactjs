@@ -33,11 +33,11 @@ describe('Header Base', () => {
             Header base text content.
           </HeaderBase>
           <main id="main-content" aria-label="Accessibility test">
-            <h1>Header Accessibility Test</h1>
+            <h1>Header Base Accessibility Test</h1>
           </main>
         </div>
       );
-      const html = TestDev.getComponentInHTMLTemplate('Header Type A: Test 1');
+      const html = TestDev.getComponentInHTMLTemplate('Header Base: Test 1');
       unmount();
       /* Perform the accessibility checks on this component */
       results = await TestDev.runAxeCore(html);
@@ -58,11 +58,11 @@ describe('Header Base', () => {
             Header base text content.
           </HeaderBase>
           <main id="main-content" aria-label="Accessibility test">
-            <h1>Header Accessibility Test</h1>
+            <h1>Header Base Accessibility Test</h1>
           </main>
         </div>
       );
-      const html = TestDev.getComponentInHTMLTemplate('Header Type A: Test 2');
+      const html = TestDev.getComponentInHTMLTemplate('Header Base: Test 2');
       unmount();
       /* Perform the accessibility checks on this component */
       results = await TestDev.runAxeCore(html);
@@ -83,11 +83,11 @@ describe('Header Base', () => {
             Header base text content.
           </HeaderBase>
           <main id="main-content" aria-label="Accessibility test">
-            <h1>Header Accessibility Test</h1>
+            <h1>Header Base Accessibility Test</h1>
           </main>
         </div>
       );
-      const html = TestDev.getComponentInHTMLTemplate('Header Type A: Test 3');
+      const html = TestDev.getComponentInHTMLTemplate('Header Base: Test 3');
       unmount();
       /* Perform the accessibility checks on this component */
       results = await TestDev.runAxeCore(html);
