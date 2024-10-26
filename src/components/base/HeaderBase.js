@@ -10,9 +10,9 @@ import './css/header-base.css';
 const defaultComponentId = 'default-id--header-container';
 
 /**
- * Baseline component setting the template for all Header components to be developed from
- * @param {{id: string|undefined}} props 
- * @returns {React.Component}
+ * Baseline component setting the template for all Header components to be developed from.
+ * This baseline auto-handles screen widths from the most commonly used mobile screen sizes (360x800) to the most commonly used desktop sizes (1920x1080).
+ * The height of the component is 160px.
  */
 const HeaderBase = props => {
   const [id, setId] = useState(defaultComponentId);
