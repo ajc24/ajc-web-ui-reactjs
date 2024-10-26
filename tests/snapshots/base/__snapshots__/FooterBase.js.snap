@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer Base Component with custom id and small size verifies the snapshot for the component 1`] = `"<footer role="contentinfo" id="custom-id--footer-container" class="footer-container background-white footer-container-size-small"><div class="footer-content-container background-transparent">Footer base text content.</div></footer>"`;
+
+exports[`Footer Base Component with default id and default size verifies the snapshot for the component 1`] = `"<footer role="contentinfo" id="default-id--footer-container" class="footer-container background-white footer-container-size-small"><div class="footer-content-container background-transparent">Footer base text content.</div></footer>"`;
+
+exports[`Footer Base Component with default id and tall size verifies the snapshot for the component 1`] = `"<footer role="contentinfo" id="default-id--footer-container" class="footer-container background-white footer-container-size-tall"><div class="footer-content-container background-transparent">Footer base text content.</div></footer>"`;
