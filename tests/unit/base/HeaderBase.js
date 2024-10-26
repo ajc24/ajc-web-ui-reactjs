@@ -7,18 +7,28 @@ import HeaderBase from '../../../src/components/base/HeaderBase';
 import PageTemplateConfig from '../../../src/components/modules/PageTemplateConfig';
 
 describe('Header Base', () => {
+  /* Set the IDs for use in the tests */
   const customId = 'custom-id';
   const defaultHeaderContainerId = 'default-id--header-container';
   const customHeaderContainerId = `${customId}--header-container`;
 
-  describe('Header Base component with default id', () => {
-    let setupDocumentBodyCssSpy;
+  /* Set the spies for use in the tests */
+  let setupDocumentBodyCssSpy;
+
+  beforeAll(() => {
+    setupDocumentBodyCssSpy = jest
+      .spyOn(PageTemplateConfig, 'setupDocumentBodyCss')
+      .mockImplementation(() => {});
+  });
+
+  afterAll(() => {
+    setupDocumentBodyCssSpy.mockRestore();
+  });
+
+  describe('Component with default id', () => {
     const testData = [];
 
     beforeAll(() => {
-      setupDocumentBodyCssSpy = jest
-        .spyOn(PageTemplateConfig, 'setupDocumentBodyCss')
-        .mockImplementation(() => {});
       const { unmount } = render(
         <React.Fragment>
           <HeaderBase>
@@ -36,13 +46,13 @@ describe('Header Base', () => {
       /* Verifies that the children components are rendered within the content container element */
       testData.push(headerContentContainer);
 
+      /* Verifies that the "header-container-size-small" class is set to the container element */
+      /* Verifies that the "header-container-size-tall" class is not set to the container element */
+      testData.push(headerContainer.classList);
+
       /* Unmount the component and clean up the test */
       unmount();
       cleanup();
-    });
-
-    afterAll(() => {
-      setupDocumentBodyCssSpy.mockRestore();
     });
 
     it('verifies that the id attribute is set correctly to the container element', () => {
@@ -52,16 +62,20 @@ describe('Header Base', () => {
     it('verifies that the children components are rendered within the content container element', () => {
       expect(testData[1].textContent).toBe('Header base text content.');
     });
+
+    it('verifies that the "header-container-size-small" class is set to the container element', () => {
+      expect(testData[2].contains('header-container-size-small')).toBeTruthy();
+    });
+
+    it('verifies that the "header-container-size-tall" class is not set to the container element', () => {
+      expect(testData[2].contains('header-container-size-tall')).toBeFalsy();
+    });
   });
 
-  describe('Header Base component with custom id', () => {
-    let setupDocumentBodyCssSpy;
+  describe('Component with custom id', () => {
     const testData = [];
 
     beforeAll(() => {
-      setupDocumentBodyCssSpy = jest
-        .spyOn(PageTemplateConfig, 'setupDocumentBodyCss')
-        .mockImplementation(() => {});
       const { unmount } = render(
         <React.Fragment>
           <HeaderBase id={customId}>
@@ -80,12 +94,112 @@ describe('Header Base', () => {
       cleanup();
     });
 
-    afterAll(() => {
-      setupDocumentBodyCssSpy.mockRestore();
-    });
-
     it('verifies that the id attribute is set correctly to the container element', () => {
       expect(testData[0]).not.toBeNull();
+    });
+  });
+
+  describe('Component with small size', () => {
+    const testData = [];
+
+    beforeAll(() => {
+      const { unmount } = render(
+        <React.Fragment>
+          <HeaderBase size="small">
+            Header base text content.
+          </HeaderBase>
+        </React.Fragment>
+      );
+      /* Build the DOM elements required for the tests */
+      const headerContainer = document.querySelector(`header[id="${defaultHeaderContainerId}"]`);
+      
+      /* Verifies that the "header-container-size-small" class is set to the container element */
+      /* Verifies that the "header-container-size-tall" class is not set to the container element */
+      testData.push(headerContainer.classList);
+
+      /* Unmount the component and clean up the test */
+      unmount();
+      cleanup();
+    });
+
+    it('verifies that the "header-container-size-small" class is set to the container element', () => {
+      expect(testData[0].contains('header-container-size-small')).toBeTruthy();
+    });
+
+    it('verifies that the "header-container-size-tall" class is not set to the container element', () => {
+      expect(testData[0].contains('header-container-size-tall')).toBeFalsy();
+    });
+  });
+
+  describe('Component with tall size', () => {
+    const testData = [];
+
+    beforeAll(() => {
+      const { unmount } = render(
+        <React.Fragment>
+          <HeaderBase size="tall">
+            Header base text content.
+          </HeaderBase>
+        </React.Fragment>
+      );
+      /* Build the DOM elements required for the tests */
+      const headerContainer = document.querySelector(`header[id="${defaultHeaderContainerId}"]`);
+      
+      /* Verifies that the "header-container-size-small" class is not set to the container element */
+      /* Verifies that the "header-container-size-tall" class is set to the container element */
+      testData.push(headerContainer.classList);
+
+      /* Unmount the component and clean up the test */
+      unmount();
+      cleanup();
+    });
+
+    it('verifies that the "header-container-size-small" class is not set to the container element', () => {
+      expect(testData[0].contains('header-container-size-small')).toBeFalsy();
+    });
+
+    it('verifies that the "header-container-size-tall" class is set to the container element', () => {
+      expect(testData[0].contains('header-container-size-tall')).toBeTruthy();
+    });
+  });
+
+  describe('Component with invalid size', () => {
+    let consoleErrorSpy;
+    const testData = [];
+
+    beforeAll(() => {
+      consoleErrorSpy = jest
+        .spyOn(global.console, 'error')
+        .mockImplementation(() => {});
+      const { unmount } = render(
+        <React.Fragment>
+          <HeaderBase size="unsupported_value">
+            Header base text content.
+          </HeaderBase>
+        </React.Fragment>
+      );
+      /* Build the DOM elements required for the tests */
+      const headerContainer = document.querySelector(`header[id="${defaultHeaderContainerId}"]`);
+      
+      /* Verifies that the "header-container-size-small" class is set to the container element */
+      /* Verifies that the "header-container-size-tall" class is not set to the container element */
+      testData.push(headerContainer.classList);
+
+      /* Unmount the component and clean up the test */
+      unmount();
+      cleanup();
+    });
+
+    afterAll(() => {
+      consoleErrorSpy.mockRestore();
+    });
+
+    it('verifies that the "header-container-size-small" class is set to the container element', () => {
+      expect(testData[0].contains('header-container-size-small')).toBeTruthy();
+    });
+
+    it('verifies that the "header-container-size-tall" class is not set to the container element', () => {
+      expect(testData[0].contains('header-container-size-tall')).toBeFalsy();
     });
   });
 });
