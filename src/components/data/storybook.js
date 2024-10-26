@@ -1,11 +1,13 @@
 /**
  * Developed by Anthony Cox in 2024
  */
-const storybookCssClasses = {
-  sbMainPadded: 'sb-main-padded',
-  sbShowMain: 'sb-show-main',
-};
+
+/* List of Storybook-oriented CSS classes */
+const storybookCssClassList = [
+  'sb-main-padded',
+  'sb-show-main',
+];
 
 export {
-  storybookCssClasses,
+  storybookCssClassList,
 };
