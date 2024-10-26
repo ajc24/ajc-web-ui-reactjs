@@ -1,0 +1,29 @@
+/**
+ * Developed by Anthony Cox in 2024
+ */
+ .footer-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.footer-container-size-small {
+  height: 87px;
+  max-height: 87px;
+}
+
+.footer-container-size-tall {
+  height: auto;
+  min-height: 87px;
+}
+
+.footer-content-container {
+  display: flex;
+  flex-direction: column;
+  height: inherit;
+  justify-content: flex-start;
+  max-width: 1904px;
+  min-width: 344px;
+  width: inherit;
+}
