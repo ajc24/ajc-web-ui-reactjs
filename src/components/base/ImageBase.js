@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
+import './css/image-base.css';
 
 /**
  * Baseline component for rendering images in the application.
@@ -52,6 +53,9 @@ class ImageBase extends React.Component {
   }
 
   render() {
+    /* Set the CSS styling for the image */
+    const imageCss = 'image';
+
     /* Set the alternative text for the image - assume a decorative image and only change if it is an informative or functional image */
     let altText = '';
     if (this.props.alt !== undefined && typeof this.props.alt === 'string' && this.props.alt.length > 0) {
@@ -70,7 +74,7 @@ class ImageBase extends React.Component {
     }
     return (
       <React.Fragment>
-        <img id={this.props.id} src={this.props.src} width={imageWidth} height={imageHeight} alt={altText} ref={this.imageRef} />
+        <img id={this.props.id} className={imageCss} src={this.props.src} width={imageWidth} height={imageHeight} alt={altText} ref={this.imageRef} />
       </React.Fragment>
     );
   }
