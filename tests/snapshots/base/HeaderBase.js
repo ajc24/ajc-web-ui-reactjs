@@ -8,14 +8,23 @@ import HeaderBase from '../../../src/components/base/HeaderBase';
 import PageTemplateConfig from '../../../src/components/modules/PageTemplateConfig';
 
 describe('Header Base', () => {
-  describe('Header Base component with default id', () => {
-    let setupDocumentBodyCssSpy;
+  /* Set the spies for use in the tests */
+  let setupDocumentBodyCssSpy;
+
+  beforeAll(() => {
+    setupDocumentBodyCssSpy = jest
+      .spyOn(PageTemplateConfig, 'setupDocumentBodyCss')
+      .mockImplementation(() => {});
+  });
+
+  afterAll(() => {
+    setupDocumentBodyCssSpy.mockRestore();
+  });
+
+  describe('Component with default id and default size', () => {
     let snapshot;
     
     beforeAll(() => {
-      setupDocumentBodyCssSpy = jest
-        .spyOn(PageTemplateConfig, 'setupDocumentBodyCss')
-        .mockImplementation(() => {});
       snapshot = TestDev.createSnapshot(
         <React.Fragment>
           <HeaderBase>
@@ -25,8 +34,22 @@ describe('Header Base', () => {
       );
     });
 
-    afterAll(() => {
-      setupDocumentBodyCssSpy.mockRestore();
+    it('verifies the snapshot for the component', () => {
+      expect(snapshot).toMatchSnapshot();
+    });
+  });
+
+  describe('Component with custom id and small size', () => {
+    let snapshot;
+    
+    beforeAll(() => {
+      snapshot = TestDev.createSnapshot(
+        <React.Fragment>
+          <HeaderBase id="custom-id" size="small">
+            Header base text content.
+          </HeaderBase>
+        </React.Fragment>
+      );
     });
 
     it('verifies the snapshot for the component', () => {
@@ -34,25 +57,17 @@ describe('Header Base', () => {
     });
   });
 
-  describe('Header Base component with custom id', () => {
-    let setupDocumentBodyCssSpy;
+  describe('Component with default id and tall size', () => {
     let snapshot;
     
     beforeAll(() => {
-      setupDocumentBodyCssSpy = jest
-        .spyOn(PageTemplateConfig, 'setupDocumentBodyCss')
-        .mockImplementation(() => {});
       snapshot = TestDev.createSnapshot(
         <React.Fragment>
-          <HeaderBase id="custom-id">
+          <HeaderBase size="tall">
             Header base text content.
           </HeaderBase>
         </React.Fragment>
       );
-    });
-
-    afterAll(() => {
-      setupDocumentBodyCssSpy.mockRestore();
     });
 
     it('verifies the snapshot for the component', () => {
