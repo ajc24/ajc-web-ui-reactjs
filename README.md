@@ -1,6 +1,6 @@
 # ajc-web-ui-reactjs
 A design system containing Web components, developed using ReactJs
 
-### Node JS Versions
-- NodeJs Version: v20.11.1#
-- NPM Version: v10.2.4
+### Node JS Version
+- NodeJs Version: v20.18.0
+- NPM Version: v10.8.2
