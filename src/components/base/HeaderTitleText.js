@@ -7,7 +7,7 @@ import '../css/common.css';
 import './css/title-or-subtitle-text.css';
 
 const maxRem = 3;
-const truncateTextHeightCutoff = 100;
+const truncateTextHeightCutoff = 95;
 
 /**
  * Header title text component which renders the name / title of the web application to the user. The heading text will automatically be reduced in
@@ -21,11 +21,16 @@ class HeaderTitleText extends React.Component {
    */
   constructor(props) {
     super(props);
-
+    this.state = {
+      isWrapped: false,
+    };
+    this.getTitleTextContentRightmostPosition = this.getTitleTextContentRightmostPosition.bind(this);
     this.getHeightOfHeadingElement = this.getHeightOfHeadingElement.bind(this);
     this.getTitleTextContent = this.getTitleTextContent.bind(this);
+    this.getWidthOfHeadingElement = this.getWidthOfHeadingElement.bind(this);
     this.handleScreenWidth = this.handleScreenWidth.bind(this);
     this.reduceFontSizeAndWrapTextIfRequired = this.reduceFontSizeAndWrapTextIfRequired.bind(this);
+    this.setIsWrapped = this.setIsWrapped.bind(this);
     this.setTitleTextContent = this.setTitleTextContent.bind(this);
     this.setTitleTextContentToFullTitle = this.setTitleTextContentToFullTitle.bind(this);
     this.truncateTextByRemovingCharacters = this.truncateTextByRemovingCharacters.bind(this);
@@ -48,7 +53,10 @@ class HeaderTitleText extends React.Component {
    * @returns {number}
    */
   getHeightOfHeadingElement() {
-    return this.textRef.current.parentNode.getBoundingClientRect().height;
+    if (this.textRef.current !== null) {
+      return this.textRef.current.parentNode.getBoundingClientRect().height;
+    }
+    return 0;
   }
 
   /**
@@ -56,7 +64,32 @@ class HeaderTitleText extends React.Component {
    * @returns {string}
    */
   getTitleTextContent() {
-    return this.textRef.current.textContent;
+    if (this.textRef.current !== null) {
+      return this.textRef.current.textContent;
+    }
+    return '';
+  }
+
+  /**
+   * Determines the rightmost position of the heading element text content as it is currently rendered
+   * @returns {number}
+   */
+  getTitleTextContentRightmostPosition() {
+    if (this.textRef.current !== null) {
+      return this.textRef.current.getBoundingClientRect().right;
+    }
+    return 0;
+  }
+
+  /**
+   * Determines the width of the heading element as it is currently rendered
+   * @returns {number}
+   */
+  getWidthOfHeadingElement() {
+    if (this.textRef.current !== null) {
+      return this.textRef.current.parentNode.getBoundingClientRect().right;
+    }
+    return 0;
   }
 
   /**
@@ -88,22 +121,34 @@ class HeaderTitleText extends React.Component {
    */
   reduceFontSizeAndWrapTextIfRequired() {
     /* Determine the positions of the text and the current screen width */
-    let h1RightPos = this.textRef.current.getBoundingClientRect().right;
-    let screenWidth = this.textRef.current.parentNode.getBoundingClientRect().right;
+    let h1RightPos = this.getTitleTextContentRightmostPosition();
+    let screenWidth = this.getWidthOfHeadingElement();
 
     /* Steadily reduce the font size until the text fits on-screen - do not drop below 2rem font size */
     let rem = maxRem;
     while (rem > 2 && screenWidth < h1RightPos) {
       this.textRef.current.style.fontSize = `${rem}rem`;
-      h1RightPos = this.textRef.current.getBoundingClientRect().right;
+      h1RightPos = this.getTitleTextContentRightmostPosition();
       rem -= 0.1;
     }
     /* If 2rem font size was not enough for the title text to fit on-screen - wrap the text */
-    screenWidth = this.textRef.current.parentNode.getBoundingClientRect().right;
+    screenWidth = this.getWidthOfHeadingElement();
     if (screenWidth < h1RightPos) {
+      /* Set the text to wrap and center align */
       this.textRef.current.style.textAlign = 'center';
       this.textRef.current.style.whiteSpace = 'normal';
+      this.setIsWrapped(true);
     }
+  }
+
+  /**
+   * Sets whether the element text is wrapped or not
+   * @param {boolean} newIsWrapped 
+   */
+  setIsWrapped(newIsWrapped) {
+    this.setState({
+      isWrapped: newIsWrapped,
+    });
   }
 
   /**
@@ -125,6 +170,7 @@ class HeaderTitleText extends React.Component {
       /* Set the text to its maximum potential size and judge the height of the component when there is no text wrap */
       this.textRef.current.style.fontSize = `${maxRem}rem`;
       this.textRef.current.style.whiteSpace = 'nowrap';
+      this.setIsWrapped(false);
 
       /* Set the text alignment based on which type of header component is being used */
       if (this.props.isTallHeader === true) {
@@ -139,8 +185,8 @@ class HeaderTitleText extends React.Component {
    * Truncates the heading element text content by gradually cutting off each character one by one
    */
   truncateTextByRemovingCharacters() {
-    let h1RightPos = this.textRef.current.getBoundingClientRect().right;
-    let screenWidth = this.textRef.current.parentNode.getBoundingClientRect().right;
+    let h1RightPos = this.getTitleTextContentRightmostPosition();
+    let screenWidth = this.getWidthOfHeadingElement();
     let titleTextString = this.getTitleTextContent();
     while (screenWidth < h1RightPos) {
       /* Truncate the text - in this case the word wrap has gone beyond two lines */
@@ -149,7 +195,7 @@ class HeaderTitleText extends React.Component {
       this.setTitleTextContent(titleTextString);
       
       /* Get the new right position of the element */
-      h1RightPos = this.textRef.current.getBoundingClientRect().right;
+      h1RightPos = this.getTitleTextContentRightmostPosition();
       if (screenWidth < h1RightPos) {
         /* Remove the obsolete three dots at the end of the string for the next character truncation */
         titleTextString = titleTextString.substring(0, titleTextString.length - 3).trim();
@@ -209,7 +255,7 @@ class HeaderTitleText extends React.Component {
       textOutputCss += ' title-text-font-black';
     }
     return (
-      <div id={`${this.props.id}--title-text`} className={containerCss}>
+      <div id={`${this.props.id}--title-text`} className={containerCss} data-wrap={`${this.state.isWrapped}`}>
         <h1 className={textOutputCss} ref={this.textRef} title={this.props.children}>
           {this.props.children}
         </h1>
