@@ -16,7 +16,8 @@ class ImageBase extends React.Component {
    */
   constructor(props) {
     super(props);
-    this.mouseDownDisableAllEvents = this.mouseDownDisableAllEvents.bind(this);
+    this.mouseDownCustomFunction = this.mouseDownCustomFunction.bind(this);
+    this.mouseDownDisableLeftAndCenterEvents = this.mouseDownDisableLeftAndCenterClickEvents.bind(this);
     this.onLoadSetImageOpacityToVisible = this.onLoadSetImageOpacityToVisible.bind(this);
 
     /* Create the references for this component */
@@ -29,18 +30,33 @@ class ImageBase extends React.Component {
 
     /* Set the functionality to be executed when the on mouse down event is fired */
     if (this.props.onClick !== undefined) {
-      this.imageRef.current.addEventListener('mousedown', this.props.onClick);
+      this.imageRef.current.addEventListener('mousedown', this.mouseDownCustomFunction);
     } else {
-      this.imageRef.current.addEventListener('mousedown', this.mouseDownDisableAllEvents);
+      this.imageRef.current.addEventListener('mousedown', this.mouseDownDisableLeftAndCenterClickEvents);
     }
   }
 
   /**
-   * Disables all mouse down events on the image
+   * Executes the custom specified functionality for left click events on the image
    * @param {Event} event 
    */
-  mouseDownDisableAllEvents(event) {
-    event.preventDefault();
+  mouseDownCustomFunction(event) {
+    this.mouseDownDisableLeftAndCenterClickEvents(event);
+    if (event.button === 0) {
+      /* Only execute the custom functionality for left click events */
+      this.props.onClick();
+    }
+  }
+
+  /**
+   * Disables all default mouse down events on the image for center (scroll wheel) and left mouse clicks
+   * @param {Event} event 
+   */
+  mouseDownDisableLeftAndCenterClickEvents(event) {
+    if (event.button === 0 || event.button === 1) {
+      /* Disable the left click / scroll wheel click action */
+      event.preventDefault();
+    }
   }
 
   /**
@@ -80,7 +96,7 @@ class ImageBase extends React.Component {
   }
 }
 ImageBase.propTypes = {
-  /** The alternate text to be displayed / read out by screen readers. */
+  /** The alternate text to be attached to the image and read out by screen readers. */
   alt: PropTypes.string,
   /** The height of the image. */
   height: PropTypes.number,
