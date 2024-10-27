@@ -242,7 +242,7 @@ describe('Image Base', () => {
     });
   });
 
-  describe('mouseDownDisableAllEvents functionality - default function invoked', () => {
+  describe('mouseDownDisableLeftAndCenterClickEvents functionality - left click event on the image', () => {
     let eventPreventDefaultSpy;
     const mockPreventDefault = jest.fn();
 
@@ -259,7 +259,7 @@ describe('Image Base', () => {
       const image = document.querySelector(`img[id="${testImageId}"]`);
 
       /* Fire the click event on the image */
-      image.dispatchEvent(new MouseEvent('mousedown'));
+      image.dispatchEvent(new MouseEvent('mousedown', { button: 0 }));
 
       /* Unmount the component and clean up the test */
       unmount();
@@ -275,10 +275,79 @@ describe('Image Base', () => {
     });
   });
 
-  describe('mouseDownDisableAllEvents functionality - custom function invoked', () => {
-    const customOnClick = jest.fn();
+  describe('mouseDownDisableLeftAndCenterClickEvents functionality - middle / auxiliary click event on the image', () => {
+    let eventPreventDefaultSpy;
+    const mockPreventDefault = jest.fn();
 
     beforeAll(() => {
+      eventPreventDefaultSpy = jest
+        .spyOn(Event.prototype, 'preventDefault')
+        .mockImplementation(() => mockPreventDefault());
+      const { unmount } = render(
+        <React.Fragment>
+          <ImageBase id={testImageId} src={benjiLogo} height={customImageHeight} width={customImageWidth} alt={customImageAlt} />
+        </React.Fragment>
+      );
+      /* Build the DOM elements required for the tests */
+      const image = document.querySelector(`img[id="${testImageId}"]`);
+
+      /* Fire the click event on the image */
+      image.dispatchEvent(new MouseEvent('mousedown', { button: 1 }));
+
+      /* Unmount the component and clean up the test */
+      unmount();
+      cleanup();
+    });
+
+    afterAll(() => {
+      eventPreventDefaultSpy.mockRestore();
+    });
+
+    it('verifies that the mouseDownDisableAllEvents functionality is correctly invoked after clicking on the image', () => {
+      expect(mockPreventDefault.mock.calls).toHaveLength(1);
+    });
+  });
+
+  describe('mouseDownDisableLeftAndCenterClickEvents functionality - right click event on the image', () => {
+    let eventPreventDefaultSpy;
+    const mockPreventDefault = jest.fn();
+
+    beforeAll(() => {
+      eventPreventDefaultSpy = jest
+        .spyOn(Event.prototype, 'preventDefault')
+        .mockImplementation(() => mockPreventDefault());
+      const { unmount } = render(
+        <React.Fragment>
+          <ImageBase id={testImageId} src={benjiLogo} height={customImageHeight} width={customImageWidth} alt={customImageAlt} />
+        </React.Fragment>
+      );
+      /* Build the DOM elements required for the tests */
+      const image = document.querySelector(`img[id="${testImageId}"]`);
+
+      /* Fire the click event on the image */
+      image.dispatchEvent(new MouseEvent('mousedown', { button: 2 }));
+
+      /* Unmount the component and clean up the test */
+      unmount();
+      cleanup();
+    });
+
+    afterAll(() => {
+      eventPreventDefaultSpy.mockRestore();
+    });
+
+    it('verifies that the mouseDownDisableAllEvents functionality is not invoked after clicking on the image', () => {
+      expect(mockPreventDefault.mock.calls).toHaveLength(0);
+    });
+  });
+
+  describe('mouseDownCustomFunction functionality - left click event on the image', () => {
+    const customOnClick = jest.fn();
+    let mouseDownDisableLeftAndCenterClickEventsSpy;
+
+    beforeAll(() => {
+      mouseDownDisableLeftAndCenterClickEventsSpy = jest
+        .spyOn(ImageBase.prototype, 'mouseDownDisableLeftAndCenterClickEvents');
       const { unmount } = render(
         <React.Fragment>
           <ImageBase id={testImageId} src={benjiLogo} onClick={customOnClick} />
@@ -288,15 +357,95 @@ describe('Image Base', () => {
       const image = document.querySelector(`img[id="${testImageId}"]`);
 
       /* Fire the click event on the image */
-      image.dispatchEvent(new MouseEvent('mousedown'));
+      image.dispatchEvent(new MouseEvent('mousedown', { button: 0 }));
 
       /* Unmount the component and clean up the test */
       unmount();
       cleanup();
     });
 
+    afterAll(() => {
+      mouseDownDisableLeftAndCenterClickEventsSpy.mockRestore();
+    });
+
+    it('verifies that the mouseDownDisableLeftAndCenterClickEvents functionality is correctly invoked after clicking on the image', () => {
+      expect(mouseDownDisableLeftAndCenterClickEventsSpy.mock.calls).toHaveLength(1);
+    });
+
     it('verifies that the custom functionality is correctly invoked after clicking on the image', () => {
       expect(customOnClick.mock.calls).toHaveLength(1);
+    });
+  });
+
+  describe('mouseDownCustomFunction functionality - middle / auxiliary click event on the image', () => {
+    const customOnClick = jest.fn();
+    let mouseDownDisableLeftAndCenterClickEventsSpy;
+
+    beforeAll(() => {
+      mouseDownDisableLeftAndCenterClickEventsSpy = jest
+        .spyOn(ImageBase.prototype, 'mouseDownDisableLeftAndCenterClickEvents');
+      const { unmount } = render(
+        <React.Fragment>
+          <ImageBase id={testImageId} src={benjiLogo} onClick={customOnClick} />
+        </React.Fragment>
+      );
+      /* Build the DOM elements required for the tests */
+      const image = document.querySelector(`img[id="${testImageId}"]`);
+
+      /* Fire the click event on the image */
+      image.dispatchEvent(new MouseEvent('mousedown', { button: 1 }));
+
+      /* Unmount the component and clean up the test */
+      unmount();
+      cleanup();
+    });
+
+    afterAll(() => {
+      mouseDownDisableLeftAndCenterClickEventsSpy.mockRestore();
+    });
+
+    it('verifies that the mouseDownDisableLeftAndCenterClickEvents functionality is correctly invoked after clicking on the image', () => {
+      expect(mouseDownDisableLeftAndCenterClickEventsSpy.mock.calls).toHaveLength(1);
+    });
+
+    it('verifies that the custom functionality is not invoked after clicking on the image', () => {
+      expect(customOnClick.mock.calls).toHaveLength(0);
+    });
+  });
+
+  describe('mouseDownCustomFunction functionality - right click event on the image', () => {
+    const customOnClick = jest.fn();
+    let mouseDownDisableLeftAndCenterClickEventsSpy;
+
+    beforeAll(() => {
+      mouseDownDisableLeftAndCenterClickEventsSpy = jest
+        .spyOn(ImageBase.prototype, 'mouseDownDisableLeftAndCenterClickEvents');
+      const { unmount } = render(
+        <React.Fragment>
+          <ImageBase id={testImageId} src={benjiLogo} onClick={customOnClick} />
+        </React.Fragment>
+      );
+      /* Build the DOM elements required for the tests */
+      const image = document.querySelector(`img[id="${testImageId}"]`);
+
+      /* Fire the click event on the image */
+      image.dispatchEvent(new MouseEvent('mousedown', { button: 2 }));
+
+      /* Unmount the component and clean up the test */
+      unmount();
+      cleanup();
+    });
+
+    afterAll(() => {
+      mouseDownDisableLeftAndCenterClickEventsSpy.mockRestore();
+    });
+
+    it('verifies that the mouseDownDisableLeftAndCenterClickEvents functionality is correctly invoked after clicking on the image', () => {
+      expect(mouseDownDisableLeftAndCenterClickEventsSpy.mock.calls).toHaveLength(1);
+    });
+
+    it('verifies that the custom functionality is not invoked after clicking on the image', () => {
+      expect(customOnClick.mock.calls).toHaveLength(0);
     });
   });
 });
