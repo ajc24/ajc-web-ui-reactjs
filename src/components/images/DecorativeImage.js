@@ -30,7 +30,7 @@ const DecorativeImage = props => {
 
   return (
     <React.Fragment>
-      <ImageBase id={props.id} src={props.src} height={height} width={width} alt="" onClick={undefined} />
+      <ImageBase id={`${props.id}--decorative-image`} src={props.src} height={height} width={width} alt="" onClick={undefined} />
     </React.Fragment>
   );
 }

@@ -31,7 +31,7 @@ const InformativeImage = props => {
 
   return (
     <React.Fragment>
-      <ImageBase id={props.id} src={props.src} height={height} width={width} alt={props.alt} onClick={defaultComponentOnClick} />
+      <ImageBase id={`${props.id}--informative-image`} src={props.src} height={height} width={width} alt={props.alt} onClick={defaultComponentOnClick} />
     </React.Fragment>
   );
 }

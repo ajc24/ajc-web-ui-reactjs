@@ -30,7 +30,7 @@ const FunctionalImage = props => {
 
   return (
     <React.Fragment>
-      <ImageBase id={props.id} src={props.src} height={height} width={width} alt={props.alt} onClick={props.onClick} />
+      <ImageBase id={`${props.id}--functional-image`} src={props.src} height={height} width={width} alt={props.alt} onClick={props.onClick} />
     </React.Fragment>
   );
 }
