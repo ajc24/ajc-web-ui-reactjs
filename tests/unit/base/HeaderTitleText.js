@@ -1256,4 +1256,263 @@ describe('Header Title Text', () => {
       expect(testData[0]).toBe(editedTextAlign);
     });
   });
+
+  describe('truncateTextByRemovingCharacters functionality', () => {
+    let editedTitleTextContent;
+    let getTitleTextContentSpy;
+    let getTitleTextContentRightmostPositionSpy;
+    let getWidthOfHeadingElementSpy;
+    let setTitleTextContentSpy;
+    const testTitleTextContent = 'ThisIsTestTitleText12345';
+
+    beforeAll(() => {
+      /* Set the spies for use in the test */
+      getTitleTextContentRightmostPositionSpy = jest
+        .spyOn(HeaderTitleText.prototype, 'getTitleTextContentRightmostPosition')
+        .mockImplementationOnce(() => {
+          /* Pre loop truncation */
+          return 900;
+        })
+        .mockImplementationOnce(() => {
+          /* After 1 character is removed from the string */
+          return 890;
+        })
+        .mockImplementationOnce(() => {
+          /* After 2 characters are removed from the string */
+          return 880;
+        })
+        .mockImplementationOnce(() => {
+          /* After 3 characters are removed from the string */
+          return 870;
+        })
+        .mockImplementationOnce(() => {
+          /* After 4 characters are removed from the string */
+          return 860;
+        })
+        .mockImplementationOnce(() => {
+          /* After 5 characters are removed from the string */
+          return 850;
+        });
+      getWidthOfHeadingElementSpy = jest
+        .spyOn(HeaderTitleText.prototype, 'getWidthOfHeadingElement')
+        .mockImplementation(() => {
+          return 850;
+        });
+      getTitleTextContentSpy = jest
+        .spyOn(HeaderTitleText.prototype, 'getTitleTextContent')
+        .mockImplementation(() => {
+          return testTitleTextContent;
+        });
+      setTitleTextContentSpy = jest
+        .spyOn(HeaderTitleText.prototype, 'setTitleTextContent')
+        .mockImplementation(newTitleTextContent => {
+          editedTitleTextContent = `${newTitleTextContent}`;
+        });
+      /* Invoke the function being tested */
+      HeaderTitleText.prototype.truncateTextByRemovingCharacters();
+
+      /* Clean up the test */
+      cleanup();
+    });
+
+    afterAll(() => {
+      getTitleTextContentSpy.mockRestore();
+      getTitleTextContentRightmostPositionSpy.mockRestore();
+      getWidthOfHeadingElementSpy.mockRestore();
+      setTitleTextContentSpy.mockRestore();
+    });
+
+    it('verifies that the truncation successfully removes characters from the end of the title text', () => {
+      expect(editedTitleTextContent).toBe(testTitleTextContent.replace('12345', '...').trim());
+    });
+  });
+
+  describe('truncateTextByRemovingSpaces functionality - heading element height not above the default or threshold (no truncation)', () => {
+    let getHeightOfHeadingElementSpy;
+    let getTitleTextContentSpy;
+    let isTextTruncated;
+    const testDefaultHeadingHeight = 68;
+    const testTitleTextContent = 'ThisIsTestTitleTextContent. One Two Three Four Five';
+
+    beforeAll(() => {
+      /* Set the spies for use in the test */
+      getHeightOfHeadingElementSpy = jest
+        .spyOn(HeaderTitleText.prototype, 'getHeightOfHeadingElement')
+        .mockImplementation(() => {
+          return testDefaultHeadingHeight;
+        });
+      getTitleTextContentSpy = jest
+        .spyOn(HeaderTitleText.prototype, 'getTitleTextContent')
+        .mockImplementation(() => {
+          return testTitleTextContent;
+        });
+      /* Invoke the function being tested */
+      isTextTruncated = HeaderTitleText.prototype.truncateTextByRemovingSpaces(testDefaultHeadingHeight);
+
+      /* Clean up the test */
+      cleanup();
+    });
+
+    afterAll(() => {
+      getHeightOfHeadingElementSpy.mockRestore();
+      getTitleTextContentSpy.mockRestore();
+    });
+
+    it('verifies that no title text truncated was carried out', () => {
+      expect(isTextTruncated).toBeFalsy();
+    });
+  });
+
+  describe('truncateTextByRemovingSpaces functionality - heading element height is above the default, not above the threshold (no truncation)', () => {
+    let getHeightOfHeadingElementSpy;
+    let getTitleTextContentSpy;
+    let isTextTruncated;
+    const testDefaultHeadingHeight = 68;
+    const testTitleTextContent = 'ThisIsTestTitleTextContent. One Two Three Four Five';
+
+    beforeAll(() => {
+      /* Set the spies for use in the test */
+      getHeightOfHeadingElementSpy = jest
+        .spyOn(HeaderTitleText.prototype, 'getHeightOfHeadingElement')
+        .mockImplementation(() => {
+          return testDefaultHeadingHeight + 1;
+        });
+      getTitleTextContentSpy = jest
+        .spyOn(HeaderTitleText.prototype, 'getTitleTextContent')
+        .mockImplementation(() => {
+          return testTitleTextContent;
+        });
+      /* Invoke the function being tested */
+      isTextTruncated = HeaderTitleText.prototype.truncateTextByRemovingSpaces(testDefaultHeadingHeight);
+
+      /* Clean up the test */
+      cleanup();
+    });
+
+    afterAll(() => {
+      getHeightOfHeadingElementSpy.mockRestore();
+      getTitleTextContentSpy.mockRestore();
+    });
+
+    it('verifies that no title text truncated was carried out', () => {
+      expect(isTextTruncated).toBeFalsy();
+    });
+  });
+
+  describe('truncateTextByRemovingSpaces functionality - heading element height is above the default, is above the threshold (not enough truncation)', () => {
+    let editedTitleTextContent;
+    let getHeightOfHeadingElementSpy;
+    let getTitleTextContentSpy;
+    let isTextTruncated;
+    let setTitleTextContentSpy;
+    const testDefaultHeadingHeight = 68;
+    const testTitleTextContent = 'ThisIsTestTitleTextContent. One Two Three Four Five';
+
+    beforeAll(() => {
+      /* Set the spies for use in the test */
+      getHeightOfHeadingElementSpy = jest
+        .spyOn(HeaderTitleText.prototype, 'getHeightOfHeadingElement')
+        .mockImplementation(() => {
+          return 96;
+        });
+      getTitleTextContentSpy = jest
+        .spyOn(HeaderTitleText.prototype, 'getTitleTextContent')
+        .mockImplementation(() => {
+          return testTitleTextContent;
+        });
+      setTitleTextContentSpy = jest
+        .spyOn(HeaderTitleText.prototype, 'setTitleTextContent')
+        .mockImplementation(newTitleTextContent => {
+          editedTitleTextContent = `${newTitleTextContent}`;
+        });
+      /* Invoke the function being tested */
+      isTextTruncated = HeaderTitleText.prototype.truncateTextByRemovingSpaces(testDefaultHeadingHeight);
+
+      /* Clean up the test */
+      cleanup();
+    });
+
+    afterAll(() => {
+      getHeightOfHeadingElementSpy.mockRestore();
+      getTitleTextContentSpy.mockRestore();
+      setTitleTextContentSpy.mockRestore();
+    });
+
+    it('verifies that the level of title text truncation carried out is not enough for the text to fit within the screen width', () => {
+      expect(isTextTruncated).toBeFalsy();
+    });
+
+    it('verifies the truncated title text is of the expected value', () => {
+      expect(editedTitleTextContent).toBe(testTitleTextContent.replace('One Two Three Four Five', '').trim());
+    });
+  });
+
+  describe('truncateTextByRemovingSpaces functionality - heading element height is above the default, is above the threshold (full truncation)', () => {
+    let editedTitleTextContent;
+    let getHeightOfHeadingElementSpy;
+    let getTitleTextContentSpy;
+    let isTextTruncated;
+    let setTitleTextContentSpy;
+    const testDefaultHeadingHeight = 68;
+    const testTitleTextContent = 'ThisIsTestTitleTextContent. One Two Three Four Five';
+
+    beforeAll(() => {
+      /* Set the spies for use in the test */
+      getHeightOfHeadingElementSpy = jest
+        .spyOn(HeaderTitleText.prototype, 'getHeightOfHeadingElement')
+        .mockImplementationOnce(() => {
+          /* Pre loop height */
+          return 100;
+        })
+        .mockImplementationOnce(() => {
+          /* After 1 word cut off the end of the string */
+          return 99;
+        })
+        .mockImplementationOnce(() => {
+          /* After 2 words cut off the end of the string */
+          return 98;
+        })
+        .mockImplementationOnce(() => {
+          /* After 3 words cut off the end of the string */
+          return 97;
+        })
+        .mockImplementationOnce(() => {
+          /* After 4 words cut off the end of the string */
+          return 96;
+        })
+        .mockImplementationOnce(() => {
+          /* After 5 words cut off the end of the string */
+          return 94;
+        });
+      getTitleTextContentSpy = jest
+        .spyOn(HeaderTitleText.prototype, 'getTitleTextContent')
+        .mockImplementation(() => {
+          return testTitleTextContent;
+        });
+      setTitleTextContentSpy = jest
+        .spyOn(HeaderTitleText.prototype, 'setTitleTextContent')
+        .mockImplementation(newTitleTextContent => {
+          editedTitleTextContent = `${newTitleTextContent}`;
+        });
+      /* Invoke the function being tested */
+      isTextTruncated = HeaderTitleText.prototype.truncateTextByRemovingSpaces(testDefaultHeadingHeight);
+
+      /* Clean up the test */
+      cleanup();
+    });
+
+    afterAll(() => {
+      getHeightOfHeadingElementSpy.mockRestore();
+      getTitleTextContentSpy.mockRestore();
+      setTitleTextContentSpy.mockRestore();
+    });
+
+    it('verifies that the level of title text truncation carried out is adequate for the text to fit within the screen width', () => {
+      expect(isTextTruncated).toBeTruthy();
+    });
+
+    it('verifies the truncated title text is of the expected value', () => {
+      expect(editedTitleTextContent).toBe(testTitleTextContent.replace(' One Two Three Four Five', '...').trim());
+    });
+  });
 });
