@@ -126,10 +126,13 @@ class HeaderTitleText extends React.Component {
 
     /* Steadily reduce the font size until the text fits on-screen - do not drop below 2rem font size */
     let rem = maxRem;
-    while (rem > 2 && screenWidth < h1RightPos) {
+    while (rem >= 2 && screenWidth < h1RightPos) {
       this.textRef.current.style.fontSize = `${rem}rem`;
       h1RightPos = this.getTitleTextContentRightmostPosition();
+
+      /* Reduce the rem value by 0.1 and ensure the value remains at one decimal place at the most after editing (ie. 2.9, 2.8, 2.7 etc.) */
       rem -= 0.1;
+      rem = parseFloat(rem.toFixed(1));
     }
     /* If 2rem font size was not enough for the title text to fit on-screen - wrap the text */
     screenWidth = this.getWidthOfHeadingElement();
