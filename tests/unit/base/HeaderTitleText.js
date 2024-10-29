@@ -9,6 +9,15 @@ describe('Header Title Text', () => {
   /* Set the IDs for use in the tests */
   const testComponentId = 'test-header-title-text-id';
 
+  /* Set the default CSS styling for the title text element */
+  const defaultFontSize = '3rem';
+  const defaultTextAlign = 'left';
+  const defaultWhiteSpace = 'nowrap';
+
+  /* Set the edited CSS styling for the title text element */
+  const editedTextAlign = 'center';
+  const editedWhiteSpace = 'normal';
+
   describe('componentDidMount functionality', () => {
     let handleScreenWidthSpy;
     const testData = [];
@@ -24,9 +33,6 @@ describe('Header Title Text', () => {
           </HeaderTitleText>
         </React.Fragment>
       );
-      /* Build the DOM elements required for the tests */
-      // const titleTextElement = document.querySelector(`div[id="${testComponentId}--title-text"]`);
-
       /* Verifies that the handle screen width functionality is invoked by default on mounting the component */
       testData.push(handleScreenWidthSpy.mock.calls.length === 1);
 
@@ -488,9 +494,6 @@ describe('Header Title Text', () => {
 
   describe('reduceFontSizeAndWrapTextIfRequired functionality - screen resized, no font size reduction, no text wrapping', () => {
     let componentDidMountSpy;
-    const defaultFontSize = '3rem';
-    const defaultTextAlign = 'left';
-    const defaultWhiteSpace = 'nowrap';
     let getTitleTextContentRightmostPositionSpy;
     let getWidthOfHeadingElementSpy;
     let setIsWrappedSpy;
@@ -605,9 +608,6 @@ describe('Header Title Text', () => {
 
   describe('reduceFontSizeAndWrapTextIfRequired functionality - screen resized, with font size reduction, no text wrapping', () => {
     let componentDidMountSpy;
-    const defaultFontSize = '3rem';
-    const defaultTextAlign = 'left';
-    const defaultWhiteSpace = 'nowrap';
     const editedFontSize = '2.5rem';
     let getTitleTextContentRightmostPositionSpy;
     let getWidthOfHeadingElementSpy;
@@ -741,12 +741,7 @@ describe('Header Title Text', () => {
 
   describe('reduceFontSizeAndWrapTextIfRequired functionality - screen resized, with font size reduction, with text wrapping', () => {
     let componentDidMountSpy;
-    const defaultFontSize = '3rem';
-    const defaultTextAlign = 'left';
-    const defaultWhiteSpace = 'nowrap';
     const editedFontSize = '2rem';
-    const editedTextAlign = 'center';
-    const editedWhiteSpace = 'normal';
     let getTitleTextContentRightmostPositionSpy;
     let getWidthOfHeadingElementSpy;
     let setIsWrappedSpy;
@@ -912,13 +907,13 @@ describe('Header Title Text', () => {
       /* Invoke the function being tested */
       HeaderTitleText.prototype.setIsWrapped(false);
 
-      /* Verifies that the component state is correctly changed to disable text wrapping */
+      /* Verifies that the component state is correctly updated to disable text wrapping */
       testData.push(testIsWrapped);
 
       /* Invoke the function being tested again */
       HeaderTitleText.prototype.setIsWrapped(true);
 
-      /* Verifies that the component state is correctly changed to enable text wrapping */
+      /* Verifies that the component state is correctly updated to enable text wrapping */
       testData.push(testIsWrapped);
 
       /* Clean up the test */
@@ -929,12 +924,188 @@ describe('Header Title Text', () => {
       setStateSpy.mockRestore();
     });
 
-    it('verifies that the component state is correctly changed to disable text wrapping', () => {
+    it('verifies that the component state is correctly updated to disable text wrapping', () => {
       expect(testData[0]).toBeFalsy();
     });
 
-    it('verifies that the component state is correctly changed to enable text wrapping', () => {
+    it('verifies that the component state is correctly updated to enable text wrapping', () => {
       expect(testData[1]).toBeTruthy();
+    });
+  });
+
+  describe('setTitleTextContent functionality', () => {
+    let componentDidMountSpy;
+    const testData = [];
+    const updatedTextContent = 'Updated heading element text content';
+
+    beforeAll(() => {
+      componentDidMountSpy = jest
+        .spyOn(HeaderTitleText.prototype, 'componentDidMount')
+        .mockImplementation(() => {});
+      const { unmount } = render(
+        <React.Fragment>
+          <HeaderTitleText id={testComponentId}>
+            Header title text component text content.
+          </HeaderTitleText>
+        </React.Fragment>
+      );
+      /* Build the DOM elements required for the tests */
+      const headingElement = document.querySelector(`div[id="${testComponentId}--title-text"] > h1`);
+
+      /* Set the text reference element for this test */
+      HeaderTitleText.prototype.textRef = {
+        current: headingElement,
+      };
+
+      /* Verifies the text content of the heading element before invoking the function */
+      testData.push(headingElement.textContent);
+
+      /* Invoke the function being tested */
+      HeaderTitleText.prototype.setTitleTextContent(updatedTextContent);
+
+      /* Verifies the text content of the heading element after invoking the function */
+      testData.push(headingElement.textContent);
+
+      /* Unmount the component and clean up the test */
+      unmount();
+      cleanup();
+    });
+
+    afterAll(() => {
+      componentDidMountSpy.mockRestore();
+    });
+
+    it('verifies the text content of the heading element before invoking the function', () => {
+      expect(testData[0]).toBe('Header title text component text content.');
+    });
+
+    it('verifies the text content of the heading element after invoking the function', () => {
+      expect(testData[1]).toBe(updatedTextContent);
+    });
+  });
+
+  describe('setTitleTextContentToFullTitle functionality - invalid title text element', () => {
+    let setIsWrappedSpy;
+
+    beforeAll(() => {
+      setIsWrappedSpy = jest
+        .spyOn(HeaderTitleText.prototype, 'setIsWrapped')
+        .mockImplementation(() => {});
+
+      /* Set the title text element reference to a null value */
+      HeaderTitleText.prototype.textRef = { current: null };
+
+      /* Invoke the function being tested */
+      HeaderTitleText.prototype.setTitleTextContentToFullTitle();
+
+      /* Clean up the test */
+      cleanup();
+    });
+
+    afterAll(() => {
+      setIsWrappedSpy.mockRestore();
+    });
+
+    it('verifies that the setIsWrapped functionality is not invoked', () => {
+      expect(setIsWrappedSpy.mock.calls).toHaveLength(0);
+    });
+  });
+
+  describe('setTitleTextContentToFullTitle functionality - valid title text element, small header component', () => {
+    let componentDidMountSpy;
+    const editedFontSize = '2rem';
+    let setIsWrappedSpy;
+    const testData = [];
+    let testIsWrapped;
+    const testTitle = 'Test-related title attribute text content';
+
+    beforeAll(() => {
+      componentDidMountSpy = jest
+        .spyOn(HeaderTitleText.prototype, 'componentDidMount')
+        .mockImplementation(() => {});
+      setIsWrappedSpy = jest
+        .spyOn(HeaderTitleText.prototype, 'setIsWrapped')
+        .mockImplementation(newIsWrapped => {
+          testIsWrapped = newIsWrapped;
+        });
+      const { unmount } = render(
+        <React.Fragment>
+          <HeaderTitleText id={testComponentId}>
+            Header title text component text content.
+          </HeaderTitleText>
+        </React.Fragment>
+      );
+      /* Build the DOM elements required for the tests */
+      const headingElement = document.querySelector(`div[id="${testComponentId}--title-text"] > h1`);
+
+      /* Set a test value for the title attribute of the heading element */
+      headingElement.setAttribute('title', testTitle);
+
+      /* Set the edited CSS styling data for the heading element */
+      headingElement.style.fontSize = editedFontSize;
+      headingElement.style.textAlign = editedTextAlign;
+      headingElement.style.whiteSpace = editedWhiteSpace;
+
+      /* Set the text reference element for this test */
+      HeaderTitleText.prototype.textRef = {
+        current: headingElement,
+      };
+
+      /* Set the header type for this test */
+      HeaderTitleText.prototype.state = {
+        headerType: 'small',
+      };
+
+      /* Invoke the function being tested */
+      HeaderTitleText.prototype.setTitleTextContentToFullTitle();
+
+      /* Verifies that the text content of the heading element is set to match that of its title attribute */
+      testData.push(headingElement.textContent);
+
+      /* Verifies that the font size CSS property of the heading element is restored to its default value */
+      testData.push(headingElement.style.fontSize);
+
+      /* Verifies that the white space CSS property of the heading element is restored to its default value */
+      testData.push(headingElement.style.whiteSpace);
+
+      /* Verifies that the value for whether the title text has been wrapped indicates that wrapping is disabled */
+      testData.push(testIsWrapped);
+
+      /* Verifies that the text align CSS property of the heading element is restored to its default value */
+      testData.push(headingElement.style.textAlign);
+
+      /* Unmount the component and clean up the test */
+      unmount();
+      cleanup();
+    });
+
+    afterAll(() => {
+      componentDidMountSpy.mockRestore();
+      setIsWrappedSpy.mockRestore();
+    });
+
+    it('verifies that the text content of the heading element is set to match that of its title attribute', () => {
+      expect(testData[0]).toBe(testTitle);
+    });
+
+    it('verifies that the font size CSS property of the heading element is restored to its default value', () => {
+      expect(testData[1]).toBe(defaultFontSize);
+    });
+
+    it('verifies that the white space CSS property of the heading element is restored to its default value', () => {
+      expect(testData[2]).toBe(defaultWhiteSpace);
+    });
+
+    it('verifies that the setIsWrapped functionality is invoked', () => {
+      expect(setIsWrappedSpy.mock.calls).toHaveLength(1);
+    });
+
+    it('verifies that the value for whether the title text has been wrapped indicates that wrapping is disabled', () => {
+      expect(testData[3]).toBeFalsy();
+    });
+
+    it('verifies that the text align CSS property of the heading element is restored to its default value', () => {
+      expect(testData[4]).toBe(defaultTextAlign);
     });
   });
 });
