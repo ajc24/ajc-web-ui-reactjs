@@ -18,6 +18,124 @@ describe('Header Title Text', () => {
   const editedTextAlign = 'center';
   const editedWhiteSpace = 'normal';
 
+  describe('Component with undefined text colour', () => {
+    const testData = [];
+
+    beforeAll(() => {
+      const { unmount } = render(
+        <React.Fragment>
+          <HeaderTitleText id={testComponentId}>
+            Header title text component text content.
+          </HeaderTitleText>
+        </React.Fragment>
+      );
+      /* Build the DOM elements required for the tests */
+      const titleTextElement = document.querySelector(`div[id="${testComponentId}--title-text"]`);
+      const headingElement = document.querySelector(`div[id="${testComponentId}--title-text"] > h1`);
+
+      /* Verifies that the id attribute is set correctly to the container element */
+      testData.push(titleTextElement);
+
+      /* Verifies that the "title-text-font-black" class is set to the heading element */
+      /* Verifies that the "title text-font-white" class is not set to the heading element */
+      testData.push(headingElement.classList);
+
+      /* Verifies that the title attribute is set correctly to the heading element */
+      testData.push(headingElement.getAttribute('title'));
+
+      /* Verifies that the children components are rendered within the heading element */
+      testData.push(headingElement.textContent);
+  
+      /* Unmount the component and clean up the test */
+      unmount();
+      cleanup();
+    });
+
+    it('verifies that the id attribute is set correctly to the container element', () => {
+      expect(testData[0]).not.toBeNull();
+    });
+
+    it('verifies that the "title-text-font-black" class is set to the heading element', () => {
+      expect(testData[1].contains('title-text-font-black')).toBeTruthy();
+    });
+
+    it('verifies that the "title text-font-white" class is not set to the heading element', () => {
+      expect(testData[1].contains('title-text-font-white')).toBeFalsy();
+    });
+
+    it('verifies that the title attribute is set correctly to the heading element', () => {
+      expect(testData[2]).toBe('Header title text component text content.');
+    });
+
+    it('verifies that the children components are rendered within the heading element', () => {
+      expect(testData[3]).toBe('Header title text component text content.');
+    });
+  });
+
+  describe('Component with black text colour', () => {
+    const testData = [];
+
+    beforeAll(() => {
+      const { unmount } = render(
+        <React.Fragment>
+          <HeaderTitleText id={testComponentId} textColour="black">
+            Header title text component text content.
+          </HeaderTitleText>
+        </React.Fragment>
+      );
+      /* Build the DOM elements required for the tests */
+      const headingElement = document.querySelector(`div[id="${testComponentId}--title-text"] > h1`);
+
+      /* Verifies that the "title-text-font-black" class is set to the heading element */
+      /* Verifies that the "title text-font-white" class is not set to the heading element */
+      testData.push(headingElement.classList);
+
+      /* Unmount the component and clean up the test */
+      unmount();
+      cleanup();
+    });
+
+    it('verifies that the "title-text-font-black" class is set to the heading element', () => {
+      expect(testData[0].contains('title-text-font-black')).toBeTruthy();
+    });
+
+    it('verifies that the "title text-font-white" class is not set to the heading element', () => {
+      expect(testData[0].contains('title-text-font-white')).toBeFalsy();
+    });
+  });
+
+  describe('Component with white text colour', () => {
+    const testData = [];
+
+    beforeAll(() => {
+      const { unmount } = render(
+        <React.Fragment>
+          <HeaderTitleText id={testComponentId} textColour="white">
+            Header title text component text content.
+          </HeaderTitleText>
+        </React.Fragment>
+      );
+      /* Build the DOM elements required for the tests */
+      const headingElement = document.querySelector(`div[id="${testComponentId}--title-text"] > h1`);
+
+      /* Verifies that the "title-text-font-black" class is not set to the heading element */
+      /* Verifies that the "title text-font-white" class is set to the heading element */
+      testData.push(headingElement.classList);
+
+      /* Unmount the component and clean up the test */
+      unmount();
+      cleanup();
+    });
+
+    it('verifies that the "title-text-font-black" class is not set to the heading element', () => {
+      expect(testData[0].contains('title-text-font-black')).toBeFalsy();
+    });
+
+    it('verifies that the "title text-font-white" class is set to the heading element', () => {
+      expect(testData[0].contains('title-text-font-white')).toBeTruthy();
+    });
+  });
+
   describe('componentDidMount functionality', () => {
     let handleScreenWidthSpy;
     let setHeaderTypeSpy;
