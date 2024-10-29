@@ -31,11 +31,11 @@ const MenuBarBase = props => {
   const menuBarContentContainerCss = 'menu-bar-content-container background-transparent';
 
   return (
-    <div role="navigation" id={id} className={menuBarContainerCss}>
+    <nav id={id} className={menuBarContainerCss}>
       <div className={menuBarContentContainerCss}>
         {props.children}
       </div>
-    </div>
+    </nav>
   );
 }
 MenuBarBase.propTypes = {
