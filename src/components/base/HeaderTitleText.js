@@ -249,7 +249,7 @@ class HeaderTitleText extends React.Component {
         }
       }
     }
-    if (truncatedString === false && titleTextString.indexOf('...') === titleTextString.length - 3) {
+    if (truncatedString === false && titleTextString.lastIndexOf('...') === titleTextString.length - 3) {
       /* Remove the obsolete three dots at the end of the string since the truncation by removing spaces was not enough for the text to fit the screen */
       titleTextString = titleTextString.substring(0, titleTextString.length - 3).trim();
       this.setTitleTextContent(titleTextString);
