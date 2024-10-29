@@ -22,6 +22,7 @@ class HeaderTitleText extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      headerType: 'small',
       isWrapped: false,
     };
     this.getTitleTextContentRightmostPosition = this.getTitleTextContentRightmostPosition.bind(this);
@@ -30,6 +31,7 @@ class HeaderTitleText extends React.Component {
     this.getWidthOfHeadingElement = this.getWidthOfHeadingElement.bind(this);
     this.handleScreenWidth = this.handleScreenWidth.bind(this);
     this.reduceFontSizeAndWrapTextIfRequired = this.reduceFontSizeAndWrapTextIfRequired.bind(this);
+    this.setHeaderType = this.setHeaderType.bind(this);
     this.setIsWrapped = this.setIsWrapped.bind(this);
     this.setTitleTextContent = this.setTitleTextContent.bind(this);
     this.setTitleTextContentToFullTitle = this.setTitleTextContentToFullTitle.bind(this);
@@ -41,6 +43,9 @@ class HeaderTitleText extends React.Component {
   }
 
   componentDidMount() {
+    /* Sets the header type in which this element will be rendered */
+    this.setHeaderType(this.props.isTallHeader);
+
     /* Set the initial screen size */
     this.handleScreenWidth();
 
@@ -145,6 +150,18 @@ class HeaderTitleText extends React.Component {
   }
 
   /**
+   * Sets whether the header type is that of a small header or a tall header
+   * @param {boolean} isTallHeader 
+   */
+  setHeaderType(isTallHeader) {
+    if (isTallHeader !== undefined && isTallHeader === true) {
+      this.setState({
+        headerType: 'tall',
+      });
+    }
+  }
+
+  /**
    * Sets whether the element text is wrapped or not
    * @param {boolean} newIsWrapped 
    */
@@ -176,7 +193,7 @@ class HeaderTitleText extends React.Component {
       this.setIsWrapped(false);
 
       /* Set the text alignment based on which type of header component is being used */
-      if (this.props.isTallHeader === true) {
+      if (this.state.headerType === 'tall') {
         this.textRef.current.style.textAlign = 'center';
       } else {
         this.textRef.current.style.textAlign = 'left';
