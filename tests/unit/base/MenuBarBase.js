@@ -37,8 +37,8 @@ describe('Menu Bar Base', () => {
         </React.Fragment>
       );
       /* Build the DOM elements required for the tests */
-      const menuBarContainer = document.querySelector(`div[id="${defaultMenuBarContainerId}"]`);
-      const menuBarContentContainer = document.querySelector(`div[id="${defaultMenuBarContainerId}"] > div`);
+      const menuBarContainer = document.querySelector(`nav[id="${defaultMenuBarContainerId}"]`);
+      const menuBarContentContainer = document.querySelector(`nav[id="${defaultMenuBarContainerId}"] > div`);
       
       /* Verifies that the id attribute is set correctly to the container element */
       testData.push(menuBarContainer);
@@ -72,7 +72,7 @@ describe('Menu Bar Base', () => {
         </React.Fragment>
       );
       /* Build the DOM elements required for the tests */
-      const menuBarContainer = document.querySelector(`div[id="${customMenuBarContainerId}"]`);
+      const menuBarContainer = document.querySelector(`nav[id="${customMenuBarContainerId}"]`);
        
       /* Verifies that the id attribute is set correctly to the container element */
       testData.push(menuBarContainer);
