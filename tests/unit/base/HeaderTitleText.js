@@ -20,19 +20,29 @@ describe('Header Title Text', () => {
 
   describe('componentDidMount functionality', () => {
     let handleScreenWidthSpy;
+    let setHeaderTypeSpy;
     const testData = [];
+    let testIsTallHeader;
 
     beforeAll(() => {
       handleScreenWidthSpy = jest
         .spyOn(HeaderTitleText.prototype, 'handleScreenWidth')
         .mockImplementation(() => {});
+      setHeaderTypeSpy = jest
+        .spyOn(HeaderTitleText.prototype, 'setHeaderType')
+        .mockImplementation(newIsTallHeader => {
+          testIsTallHeader = newIsTallHeader;
+        });
       const { unmount } = render(
         <React.Fragment>
-          <HeaderTitleText id={testComponentId}>
+          <HeaderTitleText id={testComponentId} isTallHeader={true}>
             Header title text component text content.
           </HeaderTitleText>
         </React.Fragment>
       );
+      /* Verifies that the setHeaderType functionality is invoked */
+      testData.push(setHeaderTypeSpy.mock.calls.length);
+      
       /* Verifies that the handle screen width functionality is invoked by default on mounting the component */
       testData.push(handleScreenWidthSpy.mock.calls.length === 1);
 
@@ -49,14 +59,23 @@ describe('Header Title Text', () => {
 
     afterAll(() => {
       handleScreenWidthSpy.mockRestore();
+      setHeaderTypeSpy.mockRestore();
     });
 
     it('verifies that the handle screen width functionality is invoked by default on mounting the component', () => {
-      expect(testData[0]).toBeTruthy();
+      expect(testData[0]).toBe(1);
+    });
+
+    it('verifies that the isTaller property is correctly passed to the setHeaderType functionality', () => {
+      expect(testIsTallHeader).toBeTruthy();
+    });
+
+    it('verifies that the handle screen width functionality is invoked by default on mounting the component', () => {
+      expect(testData[1]).toBeTruthy();
     });
 
     it('verifies that window resize events correctly invoke the handle screen width functionality', () => {
-      expect(testData[1]).toBeTruthy();
+      expect(testData[2]).toBeTruthy();
     });
   });
 
@@ -892,6 +911,79 @@ describe('Header Title Text', () => {
     });
   });
 
+  describe('setHeaderType functionality - small header element', () => {
+    let setStateSpy;
+    const testData = [];
+
+    beforeAll(() => {
+      setStateSpy = jest
+        .spyOn(HeaderTitleText.prototype, 'setState')
+        .mockImplementation(() => {});
+      
+      /* Invoke the function being tested - using undefined parameter */
+      HeaderTitleText.prototype.setHeaderType();
+
+      /* Verifies that the setState functionality is not invoked when the tall header parameter is undefined */
+      testData.push(setStateSpy.mock.calls.length);
+
+      /* Invoke the function being tested again - using false parameter */
+      HeaderTitleText.prototype.setHeaderType();
+
+      /* Verifies that the setState functionality is not invoked when the tall header parameter is set to false */
+      testData.push(setStateSpy.mock.calls.length);
+
+      /* Clean up the test */
+      cleanup();
+    });
+
+    afterAll(() => {
+      setStateSpy.mockRestore();
+    });
+
+    it('verifies that the setState functionality is not invoked when the tall header parameter is undefined', () => {
+      expect(testData[0]).toBe(0);
+    });
+
+    it('verifies that the setState functionality is not invoked when the tall header parameter is set to false', () => {
+      expect(testData[1]).toBe(0);
+    });
+  });
+
+  describe('setHeaderType functionality - tall header element', () => {
+    let setStateSpy;
+    const testData = [];
+    let testHeaderType;
+
+    beforeAll(() => {
+      setStateSpy = jest
+        .spyOn(HeaderTitleText.prototype, 'setState')
+        .mockImplementation(newHeaderType => {
+          testHeaderType = newHeaderType.headerType;
+        });
+      
+      /* Invoke the function being tested */
+      HeaderTitleText.prototype.setHeaderType(true);
+
+      /* Verifies that the setState functionality is correctly invoked, changing the header element type */
+      testData.push(setStateSpy.mock.calls.length);
+
+      /* Clean up the test */
+      cleanup();
+    });
+
+    afterAll(() => {
+      setStateSpy.mockRestore();
+    });
+
+    it('verifies that the setState functionality is correctly invoked, changing the header element type', () => {
+      expect(testData[0]).toBe(1);
+    });
+
+    it('verifies that the header type value is correctly changed to indicate that of a tall header element being used', () => {
+      expect(testHeaderType).toBe('tall');
+    });
+  });
+
   describe('setIsWrapped functionality', () => {
     let setStateSpy;
     const testData = [];
@@ -1011,7 +1103,7 @@ describe('Header Title Text', () => {
     });
   });
 
-  describe('setTitleTextContentToFullTitle functionality - valid title text element, small header component', () => {
+  describe('setTitleTextContentToFullTitle functionality - valid title text element, small header type', () => {
     let componentDidMountSpy;
     const editedFontSize = '2rem';
     let setIsWrappedSpy;
@@ -1106,6 +1198,62 @@ describe('Header Title Text', () => {
 
     it('verifies that the text align CSS property of the heading element is restored to its default value', () => {
       expect(testData[4]).toBe(defaultTextAlign);
+    });
+  });
+
+  describe('setTitleTextContentToFullTitle functionality - valid title text element, tall header type', () => {
+    let componentDidMountSpy;
+    let setIsWrappedSpy;
+    const testData = [];
+
+    beforeAll(() => {
+      componentDidMountSpy = jest
+        .spyOn(HeaderTitleText.prototype, 'componentDidMount')
+        .mockImplementation(() => {});
+      setIsWrappedSpy = jest
+        .spyOn(HeaderTitleText.prototype, 'setIsWrapped')
+        .mockImplementation(() => {});
+      const { unmount } = render(
+        <React.Fragment>
+          <HeaderTitleText id={testComponentId}>
+            Header title text component text content.
+          </HeaderTitleText>
+        </React.Fragment>
+      );
+      /* Build the DOM elements required for the tests */
+      const headingElement = document.querySelector(`div[id="${testComponentId}--title-text"] > h1`);
+
+      /* Set the edited CSS styling data for the heading element */
+      headingElement.style.textAlign = editedTextAlign;
+  
+      /* Set the text reference element for this test */
+      HeaderTitleText.prototype.textRef = {
+        current: headingElement,
+      };
+
+      /* Set the header type for this test */
+      HeaderTitleText.prototype.state = {
+        headerType: 'tall',
+      };
+
+      /* Invoke the function being tested */
+      HeaderTitleText.prototype.setTitleTextContentToFullTitle();
+
+      /* Verifies that the text align CSS property of the heading element is set to central alignment */
+      testData.push(headingElement.style.textAlign);
+
+      /* Unmount the component and clean up the test */
+      unmount();
+      cleanup();
+    });
+
+    afterAll(() => {
+      componentDidMountSpy.mockRestore();
+      setIsWrappedSpy.mockRestore();
+    });
+
+    it('verifies that the text align CSS property of the heading element is set to central alignment', () => {
+      expect(testData[0]).toBe(editedTextAlign);
     });
   });
 });
