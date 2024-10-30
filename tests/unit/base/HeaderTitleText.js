@@ -22,7 +22,7 @@ describe('Header Title Text', () => {
   /* Set the default heights and widths for the component */
   const defaultHeaderHeight = 68;
 
-  describe('Component with undefined text colour', () => {
+  describe('Component with undefined header type and undefined text colour', () => {
     let componentDidMountSpy;
     const testData = [];
 
@@ -43,6 +43,10 @@ describe('Header Title Text', () => {
 
       /* Verifies that the id attribute is set correctly to the container element */
       testData.push(containerElement);
+
+      /* Verifies that the "title-or-subtitle-text-container-small-header" class is set to the container element */
+      /* Verifies that the "title-or-subtitle-text-container-tall-header" class is not set to the container element */
+      testData.push(containerElement.classList);
 
       /* Verifies that the "title-text-font-black" class is set to the heading element */
       /* Verifies that the "title text-font-white" class is not set to the heading element */
@@ -67,24 +71,32 @@ describe('Header Title Text', () => {
       expect(testData[0]).not.toBeNull();
     });
 
+    it('verifies that the "title-or-subtitle-text-container-small-header" class is set to the container element', () => {
+      expect(testData[1].contains('title-or-subtitle-text-container-small-header')).toBeTruthy();
+    });
+
+    it('verifies that the "title-or-subtitle-text-container-tall-header" class is not set to the container element', () => {
+      expect(testData[1].contains('title-or-subtitle-text-container-tall-header')).toBeFalsy();
+    });
+
     it('verifies that the "title-text-font-black" class is set to the heading element', () => {
-      expect(testData[1].contains('title-text-font-black')).toBeTruthy();
+      expect(testData[2].contains('title-text-font-black')).toBeTruthy();
     });
 
     it('verifies that the "title text-font-white" class is not set to the heading element', () => {
-      expect(testData[1].contains('title-text-font-white')).toBeFalsy();
+      expect(testData[2].contains('title-text-font-white')).toBeFalsy();
     });
 
     it('verifies that the aria-label attribute is set correctly to the heading element', () => {
-      expect(testData[2]).toBe('Header title text component text content.');
+      expect(testData[3]).toBe('Header title text component text content.');
     });
 
     it('verifies that the children components are rendered within the heading element', () => {
-      expect(testData[3]).toBe('Header title text component text content.');
+      expect(testData[4]).toBe('Header title text component text content.');
     });
   });
 
-  describe('Component with black text colour', () => {
+  describe('Component with small header type and black text colour', () => {
     let componentDidMountSpy;
     const testData = [];
 
@@ -94,13 +106,18 @@ describe('Header Title Text', () => {
         .mockImplementation(() => {});
       const { unmount } = render(
         <React.Fragment>
-          <HeaderTitleText id={testComponentId} textColour="black">
+          <HeaderTitleText id={testComponentId} isTallHeader={false} textColour="black">
             Header title text component text content.
           </HeaderTitleText>
         </React.Fragment>
       );
       /* Build the DOM elements required for the tests */
+      const containerElement = document.querySelector(`div[id="${testComponentId}--title-text"]`);
       const headingElement = document.querySelector(`div[id="${testComponentId}--title-text"] > h1`);
+
+      /* Verifies that the "title-or-subtitle-text-container-small-header" class is set to the container element */
+      /* Verifies that the "title-or-subtitle-text-container-tall-header" class is not set to the container element */
+      testData.push(containerElement.classList);
 
       /* Verifies that the "title-text-font-black" class is set to the heading element */
       /* Verifies that the "title text-font-white" class is not set to the heading element */
@@ -115,16 +132,24 @@ describe('Header Title Text', () => {
       componentDidMountSpy.mockRestore();
     });
 
+    it('verifies that the "title-or-subtitle-text-container-small-header" class is set to the container element', () => {
+      expect(testData[0].contains('title-or-subtitle-text-container-small-header')).toBeTruthy();
+    });
+
+    it('verifies that the "title-or-subtitle-text-container-tall-header" class is not set to the container element', () => {
+      expect(testData[0].contains('title-or-subtitle-text-container-tall-header')).toBeFalsy();
+    });
+
     it('verifies that the "title-text-font-black" class is set to the heading element', () => {
-      expect(testData[0].contains('title-text-font-black')).toBeTruthy();
+      expect(testData[1].contains('title-text-font-black')).toBeTruthy();
     });
 
     it('verifies that the "title text-font-white" class is not set to the heading element', () => {
-      expect(testData[0].contains('title-text-font-white')).toBeFalsy();
+      expect(testData[1].contains('title-text-font-white')).toBeFalsy();
     });
   });
 
-  describe('Component with white text colour', () => {
+  describe('Component with tall header type and white text colour', () => {
     let componentDidMountSpy;
     const testData = [];
 
@@ -134,13 +159,18 @@ describe('Header Title Text', () => {
         .mockImplementation(() => {});
       const { unmount } = render(
         <React.Fragment>
-          <HeaderTitleText id={testComponentId} textColour="white">
+          <HeaderTitleText id={testComponentId} isTallHeader={true} textColour="white">
             Header title text component text content.
           </HeaderTitleText>
         </React.Fragment>
       );
       /* Build the DOM elements required for the tests */
+      const containerElement = document.querySelector(`div[id="${testComponentId}--title-text"]`);
       const headingElement = document.querySelector(`div[id="${testComponentId}--title-text"] > h1`);
+
+      /* Verifies that the "title-or-subtitle-text-container-small-header" class is not set to the container element */
+      /* Verifies that the "title-or-subtitle-text-container-tall-header" class is set to the container element */
+      testData.push(containerElement.classList);
 
       /* Verifies that the "title-text-font-black" class is not set to the heading element */
       /* Verifies that the "title text-font-white" class is set to the heading element */
@@ -155,12 +185,20 @@ describe('Header Title Text', () => {
       componentDidMountSpy.mockRestore();
     });
 
+    it('verifies that the "title-or-subtitle-text-container-small-header" class is not set to the container element', () => {
+      expect(testData[0].contains('title-or-subtitle-text-container-small-header')).toBeFalsy();
+    });
+
+    it('verifies that the "title-or-subtitle-text-container-tall-header" class is set to the container element', () => {
+      expect(testData[0].contains('title-or-subtitle-text-container-tall-header')).toBeTruthy();
+    });
+
     it('verifies that the "title-text-font-black" class is not set to the heading element', () => {
-      expect(testData[0].contains('title-text-font-black')).toBeFalsy();
+      expect(testData[1].contains('title-text-font-black')).toBeFalsy();
     });
 
     it('verifies that the "title text-font-white" class is set to the heading element', () => {
-      expect(testData[0].contains('title-text-font-white')).toBeTruthy();
+      expect(testData[1].contains('title-text-font-white')).toBeTruthy();
     });
   });
 
