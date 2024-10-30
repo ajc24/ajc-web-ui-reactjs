@@ -41,3 +41,11 @@ WithExtraLongTitle.args = {
 	isTallHeader: false,
 	textColour: 'black',
 };
+
+export const InTallHeader = Template_HeaderTitleText.bind({});
+InTallHeader.args = {
+	children: 'Title Text Will Be Centered Inside A Tall Header Component',
+	id: 'in-tall-header-id',
+	isTallHeader: true,
+	textColour: 'black',
+};
