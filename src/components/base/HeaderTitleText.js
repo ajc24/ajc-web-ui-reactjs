@@ -266,8 +266,20 @@ class HeaderTitleText extends React.Component {
       /* Set the text colour to be that of white text with a black outline */
       textColour = 'white';
     }
+    /* Determine whether a small or tall header component is being used to render this component */
+    let headerType = 'small';
+    if (this.props.isTallHeader && this.props.isTallHeader === true) {
+      headerType = 'tall';
+    }
     /* Set the CSS styling for this component */
-    const containerCss = 'title-or-subtitle-text-container background-transparent';
+    let containerCss = 'title-or-subtitle-text-container background-transparent';
+    if (headerType === 'tall') {
+      /* Align the title text for a tall header */
+      containerCss += ' title-or-subtitle-text-container-tall-header';
+    } else {
+      /* Align the title text for a small header */
+      containerCss += ' title-or-subtitle-text-container-small-header';
+    }
     let textOutputCss = 'title-text-container';
     if (textColour === 'white') {
       /* Render white text with a black outline */

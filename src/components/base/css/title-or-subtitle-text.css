@@ -75,6 +75,14 @@
 
 .title-or-subtitle-text-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: flex-start;
+}
+
+.title-or-subtitle-text-container-small-header {
+  justify-content: flex-start;
+}
+
+.title-or-subtitle-text-container-tall-header {
+  justify-content: center;
 }
