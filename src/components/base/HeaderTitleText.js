@@ -43,11 +43,8 @@ class HeaderTitleText extends React.Component {
   }
 
   componentDidMount() {
-    /* Sets the header type in which this element will be rendered */
-    this.setHeaderType(this.props.isTallHeader);
-
-    /* Set the initial screen size */
-    this.handleScreenWidth();
+    /* Sets the header type in which this element will be rendered - following that handle the current screen width */
+    this.setHeaderType(this.props.isTallHeader, this.handleScreenWidth);
 
     /* Watch over all future window resize events - we will want to alter the text to suit the screen size */
     window.addEventListener('resize', this.handleScreenWidth);
@@ -151,14 +148,18 @@ class HeaderTitleText extends React.Component {
 
   /**
    * Sets whether the header type is that of a small header or a tall header
-   * @param {boolean} isTallHeader 
+   * @param {boolean} isTallHeader
+   * @param {Function} callbackFunction
    */
-  setHeaderType(isTallHeader) {
+  setHeaderType(isTallHeader, callbackFunction) {
+    const updatedState = {
+      headerType: 'small',
+      isWrapped: this.state.isWrapped,
+    };
     if (isTallHeader !== undefined && isTallHeader === true) {
-      this.setState({
-        headerType: 'tall',
-      });
+      updatedState.headerType = 'tall';
     }
+    this.setState(updatedState, callbackFunction);
   }
 
   /**
@@ -167,6 +168,7 @@ class HeaderTitleText extends React.Component {
    */
   setIsWrapped(newIsWrapped) {
     this.setState({
+      headerType: this.state.headerType,
       isWrapped: newIsWrapped,
     });
   }
@@ -185,7 +187,7 @@ class HeaderTitleText extends React.Component {
   setTitleTextContentToFullTitle() {
     if (this.textRef.current !== null) {
       /* Restore the full text content to the heading element */
-      this.textRef.current.textContent = this.textRef.current.title;
+      this.textRef.current.textContent = this.textRef.current.ariaLabel;
 
       /* Set the text to its maximum potential size and judge the height of the component when there is no text wrap */
       this.textRef.current.style.fontSize = `${maxRem}rem`;
@@ -276,7 +278,7 @@ class HeaderTitleText extends React.Component {
     }
     return (
       <div id={`${this.props.id}--title-text`} className={containerCss} data-wrap={`${this.state.isWrapped}`}>
-        <h1 className={textOutputCss} ref={this.textRef} title={this.props.children}>
+        <h1 className={textOutputCss} ref={this.textRef} aria-label={`${this.props.children}`}>
           {this.props.children}
         </h1>
       </div>
