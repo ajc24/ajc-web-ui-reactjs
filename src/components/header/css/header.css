@@ -20,3 +20,11 @@
   padding-top: 8px;
   width: inherit;
 }
+
+.header-content-title-subtitle-text-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+}
