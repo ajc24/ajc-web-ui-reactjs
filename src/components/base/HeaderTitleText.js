@@ -298,7 +298,7 @@ class HeaderTitleText extends React.Component {
   }
 }
 HeaderTitleText.propTypes = {
-  /** The content to be displayed as the title or subtitle text. */
+  /** The content to be displayed as the title text. */
   children: PropTypes.string,
   /** The unique identifier for this component. */
   id: PropTypes.string.isRequired,
