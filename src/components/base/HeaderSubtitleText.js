@@ -22,10 +22,14 @@ class HeaderSubtitleText extends React.Component {
     this.state = {
       headerTitleTextId: undefined,
       isHidden: false,
+      isResizing: false,
       paragraphRightPos: 0,
     };
     this.handleVisibility = this.handleVisibility.bind(this);
     this.setHeaderTitleTextId = this.setHeaderTitleTextId.bind(this);
+    this.setIsHidden = this.setIsHidden.bind(this);
+    this.setIsResizingEnd = this.setIsResizingEnd.bind(this);
+    this.setIsResizingStart = this.setIsResizingStart.bind(this);
     this.setRightmostSubtitleTextPosition = this.setRightmostSubtitleTextPosition.bind(this);
 
     /* Create the references for this component */
@@ -33,24 +37,21 @@ class HeaderSubtitleText extends React.Component {
   }
 
   componentDidMount() {
-    /* Sets the rightmost position of the subtitle text element */
-    this.setRightmostSubtitleTextPosition();
-
     /* Sets the header title text id which is displayed alongside the subtitle text - following that handle the current visibility state of this component */
-    this.setHeaderTitleTextId(this.props.headerTitleTextId, this.handleVisibility);
+    this.setHeaderTitleTextId(this.props.headerTitleTextId);
 
     /* Watch over all future window resize events - we will want to alter the visibility of the text to suit whether the title text is wrapped or not */
-    window.addEventListener('resize', this.handleVisibility);
+    window.addEventListener('resize', this.setRightmostSubtitleTextPosition);
   }
 
   /**
    * Handles the visibility of the subtitle text component. When the header title text component
-   * is marked as having its text wrapped, this component will be set to hidden. Otherwise it is visible.
+   * is marked as having its text wrapped, this component will be set to hidden. Also if the
+   * subtitle text element itself extends beyond the end of the screen, it will also be set to hidden.
+   * In all other cases, the subtitle text will be marked as visible.
    */
   handleVisibility() {
-    const newState = {
-      isHidden: false,
-    }
+    let isHidden = false;
     const subtitleContainerElement = document.querySelector(`[id="${this.props.id}--subtitle-text"]`);;
     
     if (subtitleContainerElement !== null) {
@@ -61,43 +62,89 @@ class HeaderSubtitleText extends React.Component {
       if (paragraphRightPos > 0 && containerRightPos > 0) {
         if (paragraphRightPos > containerRightPos) {
           /* The subtitle will exceed the screen limits - hide the subtitle component */
-          newState.isHidden = true;
+          isHidden = true;
         }
         /* Check 2: Does the title text element have text that has wrapped */
-        if (newState.isHidden === false) {
+        if (isHidden === false) {
           /* Determine whether text wrapping has occurred in the title text element */
           const headerTitleTextElement = document.querySelector(`[id="${this.state.headerTitleTextId}--title-text"]`);
-          const dataWrap = headerTitleTextElement.dataset.wrap;
+          let dataWrap = 'false';
+          if (headerTitleTextElement !== null) {
+            dataWrap = headerTitleTextElement.dataset.wrap;
+          }
           if (dataWrap === 'true') {
             /* The title text has wrapped text - hide the subtitle component */
-            newState.isHidden = true; 
+            isHidden = true; 
           }
         }
-        /* Update component state to reflect whether this component is visible or hidden */
-        this.setState(newState);
       }
     }
+    /* Update component state to reflect whether this component is visible or hidden */
+    this.setIsHidden(isHidden);
   }
 
   /**
    * Sets the id for the header title text component linked to this subtitle text.
-   * @param {string} newHeaderTitleTextId 
-   * @param {Function} callbackFunction 
+   * Follows this action by setting the rightmost position of the subtitle text element.
+   * @param {string} newHeaderTitleTextId
    */
-  setHeaderTitleTextId(newHeaderTitleTextId, callbackFunction) {
+  setHeaderTitleTextId(newHeaderTitleTextId) {
     this.setState({
       headerTitleTextId: newHeaderTitleTextId,
-    }, callbackFunction);
+    }, this.setRightmostSubtitleTextPosition);
   }
 
   /**
-   * Sets the rightmost position of the subtitle text element
+   * Sets a new component value for whether the subtitle text is hidden or not. Only
+   * alters this component state if required to. Follows this action by marking the resizing
+   * process as completed.
+   * @param {boolean} newisHidden
+   */
+  setIsHidden(newisHidden) {
+    if (newisHidden !== this.state.isHidden) {
+      /* Only alter state in this case if state has changed */
+      this.setState({
+        isHidden: newisHidden,
+      }, this.setIsResizingEnd);
+    } else {
+      /* Mark the resizing process as completed */
+      this.setIsResizingEnd();
+    }
+  }
+
+  /**
+   * Marks the resizing process as completed.
+   */
+  setIsResizingEnd() {
+    this.setState({
+      isResizing: false,
+    });
+  }
+
+  /**
+   * Marks the resizing process as starting.
+   */
+  setIsResizingStart() {
+    this.setState({
+      isResizing: true,
+    }, this.handleVisibility);
+  }
+
+  /**
+   * Sets the rightmost position of the subtitle text element. This is only changed if another resizing
+   * process is not already active in the browser. Follows this action by marking the resizing process as active.
    */
   setRightmostSubtitleTextPosition() {
-    if (this.subtitleTextRef.current !== null) {
-      this.setState({
-        paragraphRightPos: this.subtitleTextRef.current.getBoundingClientRect().right,
-      });
+    if (this.subtitleTextRef.current !== null && this.state.isResizing === false) {
+      if (this.state.isHidden === false) {
+        /* The subtitle text element is visible - set the rightmost position of the element and then start resizing process */
+        this.setState({
+          paragraphRightPos: this.subtitleTextRef.current.getBoundingClientRect().right,
+        }, this.setIsResizingStart);
+      } else {
+        /* The subtitle text is hidden so we can not set a new rightmost position - go straight to the resizing process */
+        this.setIsResizingStart();
+      }
     }
   }
 
