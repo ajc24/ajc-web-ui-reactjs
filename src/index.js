@@ -3,7 +3,8 @@
  */
 
 /* Import the header components */
-import Header from './components/header/Header';
+import SmallHeader from './components/header/SmallHeader';
+import TallHeader from './components/header/TallHeader';
 
 /* Import the image components */
 import DecorativeImage from './components/images/DecorativeImage';
@@ -15,5 +16,6 @@ export {
   DecorativeImage,
   FunctionalImage,
   InformativeImage,
-  Header,
+  SmallHeader,
+  TallHeader,
 };
