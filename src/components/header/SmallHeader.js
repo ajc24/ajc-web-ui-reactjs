@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import HeaderBase from '../base/HeaderBase';
 import HeaderSubtitleText from '../base/HeaderSubtitleText';
 import HeaderTitleText from '../base/HeaderTitleText';
+import SmallHeaderLogo from '../images/SmallHeaderLogo';
 import '../css/common.css';
 import './css/header.css';
 
@@ -24,6 +25,8 @@ class SmallHeader extends React.Component {
   }
 
   render() {
+    let isTopBorderDisplayed = false;
+
     /* Set the CSS styling for the content container element */
     let contentContainerCss = 'header-content';
     if (this.props.backgroundColour === 'grey') {
@@ -37,6 +40,7 @@ class SmallHeader extends React.Component {
     if (this.props.topBorder === 'grey' || this.props.topBorder === 'red') {
       /* Enable and render the upper border for the header in the specified colour */
       contentContainerCss += ` header-border-top-${this.props.topBorder}`;
+      isTopBorderDisplayed = true;
     }
 
     /* Set the CSS styling for the title and subtitle container element */
@@ -49,6 +53,13 @@ class SmallHeader extends React.Component {
               /* No logo or title text has been specified - render custom content as provided by the developer */
               <React.Fragment>
                 {this.props.children}
+              </React.Fragment>
+          }
+          {
+            this.props.logoSrc !== undefined && this.props.titleText === undefined &&
+              /* Render only a header logo without any title text */
+              <React.Fragment>
+                <SmallHeaderLogo id={this.props.id} isTopBorderDisplayed={isTopBorderDisplayed} logoAlignment="center" src={this.props.logoSrc} />
               </React.Fragment>
           }
           {

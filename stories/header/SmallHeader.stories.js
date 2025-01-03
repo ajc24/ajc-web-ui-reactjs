@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import { SmallHeader } from '../../src';
+import benjiLogo from '../../src/components/images/files/logo-benji.png';
 
 export default {
   title: 'Header/Small Header',
@@ -24,7 +25,6 @@ export const Default = Template_SmallHeader.bind({});
 Default.args = {
   children: 'Default header component with a white background. By not specifying a logo or title text, custom content will be displayed like in this example.',
   id: 'default-header',
-  size: 'default',
 };
 
 export const WithGreyUpperBorder = Template_SmallHeader.bind({});
@@ -58,4 +58,20 @@ WithTitleAndSubtitleTextOnly.args = {
   subtitleTextColour: 'black',
   titleText: 'Header component with Title Text and Grey Background',
   titleTextColour: 'black',
+};
+
+export const WithHeaderLogo = Template_SmallHeader.bind({});
+WithHeaderLogo.args = {
+  backgroundColour: 'grey',
+  id: 'with-header-logo--no-top-border',
+  logoSrc: benjiLogo,
+  topBorder: 'off',
+};
+
+export const WithHeaderLogoAndUpperBorder = Template_SmallHeader.bind({});
+WithHeaderLogoAndUpperBorder.args = {
+  backgroundColour: 'grey',
+  id: 'with-header-logo--with-top-border',
+  logoSrc: benjiLogo,
+  topBorder: 'red',
 };
