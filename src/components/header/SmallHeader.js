@@ -59,7 +59,8 @@ class SmallHeader extends React.Component {
             this.props.logoSrc !== undefined && this.props.titleText === undefined &&
               /* Render only a header logo without any title text */
               <React.Fragment>
-                <SmallHeaderLogo id={this.props.id} isTopBorderDisplayed={isTopBorderDisplayed} logoAlignment="center" src={this.props.logoSrc} />
+                <SmallHeaderLogo id={this.props.id} isTopBorderDisplayed={isTopBorderDisplayed} logoAlignment="center" logoType={this.props.logoType || 'square'}
+                  src={this.props.logoSrc} />
               </React.Fragment>
           }
           {
@@ -97,6 +98,15 @@ SmallHeader.propTypes = {
   id: PropTypes.string.isRequired,
   /** The header logo image data to be displayed. */
   logoSrc: PropTypes.oneOfType([ PropTypes.string, PropTypes.object ]),
+  /**
+   * The type of logo to be displayed in the header.
+   * 
+   * If the small header logo is rendered without any title or subtitle text content beside it, this logo can be rendered in both square and rectangular forms.
+   * 
+   * By default, a square logo type is chosen. You can override this setting by choosing the "rectangle" logo type. When a rectangular logo is rendered, the maximum width
+   * it will be rendered at is 328px to suit rendering on smaller screens.
+   */
+  logoType: PropTypes.oneOf([ 'rectangle', 'square' ]),
   /** 
    * The text content to be displayed as the subtitle text.
    * 
