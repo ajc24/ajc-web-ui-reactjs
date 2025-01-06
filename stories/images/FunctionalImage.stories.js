@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import { FunctionalImage } from '../../src';
-import benjiLogo from '../../src/components/images/files/logo-benji.png';
+import storybookLogo from '../../src/components/images/files/storybook-logo.svg';
 
 export default {
   title: 'Images/Functional Image',
@@ -23,18 +23,18 @@ const Template_FunctionalImage = args => {
 }
 export const Default = Template_FunctionalImage.bind({});
 Default.args = {
-  alt: 'A picture of Benji, our ruby Cavalier King Charles Spaniel. His photo acts as a logo.',
+  alt: 'A picture of the Storybook logo.',
   id: 'default-image-id',
   onClick: () => { alert('You have successfully clicked the image.')},
-  src: benjiLogo,
+  src: storybookLogo,
 };
 
 export const AtACustomSize = Template_FunctionalImage.bind({});
 AtACustomSize.args = {
-  alt: 'A picture of Benji, our ruby Cavalier King Charles Spaniel. His photo acts as a logo.',
+  alt: 'A picture of the Storybook logo.',
   height: 350,
   id: 'custom-image-id',
   onClick: () => { alert('You have successfully clicked the image.')},
-  src: benjiLogo,
+  src: storybookLogo,
   width: 350,
 };

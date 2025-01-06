@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import { SmallHeader } from '../../src';
-import benjiLogo from '../../src/components/images/files/logo-benji.png';
+import storybookLogo from '../../src/components/images/files/storybook-logo.svg';
 
 export default {
   title: 'Header/Small Header',
@@ -64,7 +64,7 @@ export const WithHeaderLogo = Template_SmallHeader.bind({});
 WithHeaderLogo.args = {
   backgroundColour: 'grey',
   id: 'with-header-logo--no-top-border',
-  logoSrc: benjiLogo,
+  logoSrc: storybookLogo,
   topBorder: 'off',
 };
 
@@ -72,6 +72,6 @@ export const WithHeaderLogoAndUpperBorder = Template_SmallHeader.bind({});
 WithHeaderLogoAndUpperBorder.args = {
   backgroundColour: 'grey',
   id: 'with-header-logo--with-top-border',
-  logoSrc: benjiLogo,
+  logoSrc: storybookLogo,
   topBorder: 'red',
 };

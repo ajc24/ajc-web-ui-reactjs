@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import { DecorativeImage } from '../../src';
-import benjiLogo from '../../src/components/images/files/logo-benji.png';
+import storybookLogo from '../../src/components/images/files/storybook-logo.svg';
 
 export default {
   title: 'Images/Decorative Image',
@@ -24,13 +24,13 @@ const Template_DecorativeImage = args => {
 export const Default = Template_DecorativeImage.bind({});
 Default.args = {
   id: 'default-image-id',
-  src: benjiLogo,
+  src: storybookLogo,
 };
 
 export const AtACustomSize = Template_DecorativeImage.bind({});
 AtACustomSize.args = {
   height: 350,
   id: 'custom-image-id',
-  src: benjiLogo,
+  src: storybookLogo,
   width: 350,
 };
