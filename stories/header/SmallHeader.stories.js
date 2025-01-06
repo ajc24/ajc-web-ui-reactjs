@@ -3,8 +3,8 @@
  */
 import React from 'react';
 import { SmallHeader } from '../../src';
-import storybookLogo from '../../src/components/images/files/storybook-logo.svg';
-import storybookLogoLong from '../../src/components/images/files/storybook-logo-long.svg';
+import storybookLogo from '../images/files/storybook-logo.svg';
+import storybookLogoLong from '../images/files/storybook-logo-long.svg';
 
 export default {
   title: 'Header/Small Header',

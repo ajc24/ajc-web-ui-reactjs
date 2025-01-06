@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import { FunctionalImage } from '../../src';
-import storybookLogo from '../../src/components/images/files/storybook-logo.svg';
+import storybookLogo from './files/storybook-logo.svg';
 
 export default {
   title: 'Images/Functional Image',

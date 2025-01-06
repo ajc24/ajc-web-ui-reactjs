@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import ImageBase from '../../src/components/base/ImageBase';
-import benjiLogo from '../../src/components/images/files/logo-benji.png';
+import storybookLogo from '../images/files/storybook-logo.svg';
 
 export default {
   title: 'Base/Image Base',
@@ -24,15 +24,15 @@ const Template_ImageBase = args => {
 export const Default = Template_ImageBase.bind({});
 Default.args = {
   id: 'default-image-id',
-  src: benjiLogo,
+  src: storybookLogo,
 };
 
 export const AtACustomSize = Template_ImageBase.bind({});
 AtACustomSize.args = {
-  alt: 'A picture of Benji, our ruby Cavalier King Charles Spaniel. His photo acts as a logo.',
+  alt: 'A picture of the Storybook logo.',
   height: 350,
   id: 'custom-image-id',
-  src: benjiLogo,
+  src: storybookLogo,
   width: 350,
 };
 
@@ -41,6 +41,6 @@ WithCustomOnClick.args = {
   height: 250,
   id: 'image-with-custom-click-id',
   onClick: () => { alert('Clicked on the image.') },
-  src: benjiLogo,
+  src: storybookLogo,
   width: 250,
 };
