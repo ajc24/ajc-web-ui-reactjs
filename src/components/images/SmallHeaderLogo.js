@@ -14,6 +14,7 @@ const smallHeaderLogoDimensions = {
   },
   width: {
     noUpperBorder: 144,
+    rectangle: 328,
     withUpperBorder: 140,
   },
 };
@@ -44,6 +45,9 @@ const SmallHeaderLogo = props => {
     logoHeight = smallHeaderLogoDimensions.height.noUpperBorder;
     logoWidth = smallHeaderLogoDimensions.width.noUpperBorder;
   }
+  if (props.logoType !== undefined && props.logoType === 'rectangle') {
+    logoWidth = smallHeaderLogoDimensions.width.rectangle;
+  }
 
   return (
     <div className={containerCss}>
@@ -63,6 +67,15 @@ SmallHeaderLogo.propTypes = {
    * If title text is rendered within the Small Header, this logo will be left aligned within the Small Header.
    */
   logoAlignment: PropTypes.oneOf([ 'center', 'left' ]),
+  /**
+   * The type of logo to be displayed in the header.
+   * 
+   * If the small header logo is rendered without any title or subtitle text content beside it, this logo can be rendered in both square and rectangular forms.
+   * 
+   * By default, a square logo type is chosen. You can override this setting by choosing the "rectangle" logo type. When a rectangular logo is rendered, the maximum width
+   * it will be rendered at is 328px to suit rendering on smaller screens.
+   */
+  logoType: PropTypes.oneOf([ 'rectangle', 'square' ]),
   /** The image data to be displayed. */
   src: PropTypes.oneOfType([ PropTypes.string, PropTypes.object ]).isRequired,
 };
