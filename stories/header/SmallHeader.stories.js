@@ -4,6 +4,7 @@
 import React from 'react';
 import { SmallHeader } from '../../src';
 import storybookLogo from '../../src/components/images/files/storybook-logo.svg';
+import storybookLogoLong from '../../src/components/images/files/storybook-logo-long.svg';
 
 export default {
   title: 'Header/Small Header',
@@ -60,18 +61,36 @@ WithTitleAndSubtitleTextOnly.args = {
   titleTextColour: 'black',
 };
 
-export const WithHeaderLogo = Template_SmallHeader.bind({});
-WithHeaderLogo.args = {
+export const WithSquareLogoAndNoTopBorder = Template_SmallHeader.bind({});
+WithSquareLogoAndNoTopBorder.args = {
   backgroundColour: 'grey',
-  id: 'with-header-logo--no-top-border',
+  id: 'with-square-logo--no-top-border',
   logoSrc: storybookLogo,
   topBorder: 'off',
 };
 
-export const WithHeaderLogoAndUpperBorder = Template_SmallHeader.bind({});
-WithHeaderLogoAndUpperBorder.args = {
+export const WithSquareLogoAndWithTopBorder = Template_SmallHeader.bind({});
+WithSquareLogoAndWithTopBorder.args = {
   backgroundColour: 'grey',
-  id: 'with-header-logo--with-top-border',
+  id: 'with-square-logo--with-top-border',
   logoSrc: storybookLogo,
   topBorder: 'red',
+};
+
+export const WithRectangularLogoAndNoTopBorder = Template_SmallHeader.bind({});
+WithRectangularLogoAndNoTopBorder.args = {
+  backgroundColour: 'grey',
+  id: 'with-rectangle-logo--no-top-border',
+  logoSrc: storybookLogoLong,
+  logoType: 'rectangle',
+  topBorder: 'off',
+};
+
+export const WithRectangularLogoAndWithTopBorder = Template_SmallHeader.bind({});
+WithRectangularLogoAndWithTopBorder.args = {
+  backgroundColour: 'grey',
+  id: 'with-rectangle-logo--with-top-border',
+  logoSrc: storybookLogoLong,
+  logoType: 'rectangle',
+  topBorder: 'grey',
 };
