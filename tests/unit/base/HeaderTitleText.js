@@ -282,6 +282,9 @@ describe('Header Title Text', () => {
     const testData = [];
 
     beforeAll(() => {
+      /* Set up the mock viewport width for the test */
+      global.window.innerWidth = 750;
+
       /* Set up the spies for the test */
       const getBoundingClientRectSpy = jest
         .spyOn(Element.prototype, 'getBoundingClientRect')
@@ -292,10 +295,6 @@ describe('Header Title Text', () => {
         .mockImplementationOnce(() => {
           /* handleScreenWidth > reduceFontSizeAndWrapTextIfRequired > getTitleTextContentRightmostPosition (pre loop) */
           return { right: 800 };
-        })
-        .mockImplementationOnce(() => {
-          /* handleScreenWidth > reduceFontSizeAndWrapTextIfRequired > getWidthOfHeadingElement (pre loop) */
-          return { right: 750 };
         })
         .mockImplementationOnce(() => {
           /* handleScreenWidth > reduceFontSizeAndWrapTextIfRequired > getTitleTextContentRightmostPosition (in loop call 1) */
@@ -339,10 +338,6 @@ describe('Header Title Text', () => {
         })
         .mockImplementationOnce(() => {
           /* handleScreenWidth > reduceFontSizeAndWrapTextIfRequired > getTitleTextContentRightmostPosition (in loop call 11) */
-          return { right: 750 };
-        })
-        .mockImplementationOnce(() => {
-          /* handleScreenWidth > reduceFontSizeAndWrapTextIfRequired > getWidthOfHeadingElement (after loop) */
           return { right: 750 };
         })
         .mockImplementationOnce(() => {
@@ -414,10 +409,6 @@ describe('Header Title Text', () => {
           return { right: 800 };
         })
         .mockImplementationOnce(() => {
-          /* handleScreenWidth > reduceFontSizeAndWrapTextIfRequired > getWidthOfHeadingElement (pre loop) */
-          return { right: 750 };
-        })
-        .mockImplementationOnce(() => {
           /* handleScreenWidth > reduceFontSizeAndWrapTextIfRequired > getTitleTextContentRightmostPosition (in loop call 1) */
           return { right: 790 };
         })
@@ -442,13 +433,13 @@ describe('Header Title Text', () => {
           return { right: 750 };
         })
         .mockImplementationOnce(() => {
-          /* handleScreenWidth > reduceFontSizeAndWrapTextIfRequired > getWidthOfHeadingElement (after loop) */
-          return { right: 740 };
-        })
-        .mockImplementationOnce(() => {
           /* handleScreenWidth > truncateTextByRemovingSpaces > getHeightOfHeadingElement */
           return { height: defaultHeaderHeight };
         });
+      const getScreenWidthSpy = jest
+        .spyOn(HeaderTitleText.prototype, 'getScreenWidth')
+        .mockImplementationOnce(() => { return 750; })
+        .mockImplementationOnce(() => { return 740; });
       /* Mount the component*/
       const { unmount } = render(
         <React.Fragment>
@@ -463,6 +454,9 @@ describe('Header Title Text', () => {
 
       /* Restore the getBoundingClientRect functionality */
       getBoundingClientRectSpy.mockRestore();
+
+      /* Restore the getScreenWidth functionality */
+      getScreenWidthSpy.mockRestore();
 
       /* Verifies that the data-wrap attribute of the container element indicates that text wrapping is occurring */
       testData.push(containerElement.dataset.wrap);
@@ -514,10 +508,6 @@ describe('Header Title Text', () => {
           return { right: 800 };
         })
         .mockImplementationOnce(() => {
-          /* handleScreenWidth > reduceFontSizeAndWrapTextIfRequired > getWidthOfHeadingElement (pre loop) */
-          return { right: 750 };
-        })
-        .mockImplementationOnce(() => {
           /* handleScreenWidth > reduceFontSizeAndWrapTextIfRequired > getTitleTextContentRightmostPosition (in loop call 1) */
           return { right: 785 };
         })
@@ -528,10 +518,6 @@ describe('Header Title Text', () => {
         .mockImplementationOnce(() => {
           /* handleScreenWidth > reduceFontSizeAndWrapTextIfRequired > getTitleTextContentRightmostPosition (in loop call 3) */
           return { right: 750 };
-        })
-        .mockImplementationOnce(() => {
-          /* handleScreenWidth > reduceFontSizeAndWrapTextIfRequired > getWidthOfHeadingElement (after loop) */
-          return { right: 740 };
         })
         .mockImplementationOnce(() => {
           /* handleScreenWidth > truncateTextByRemovingSpaces > getHeightOfHeadingElement (pre loop) */
@@ -557,6 +543,10 @@ describe('Header Title Text', () => {
           /* handleScreenWidth > truncateTextByRemovingSpaces > getHeightOfHeadingElement (in loop call 5) */
           return { height: defaultHeaderHeight };
         });
+      const getScreenWidthSpy = jest
+        .spyOn(HeaderTitleText.prototype, 'getScreenWidth')
+        .mockImplementationOnce(() => { return 750; })
+        .mockImplementationOnce(() => { return 740; });
       /* Mount the component*/
       const { unmount } = render(
         <React.Fragment>
@@ -570,6 +560,9 @@ describe('Header Title Text', () => {
 
       /* Restore the getBoundingClientRect functionality */
       getBoundingClientRectSpy.mockRestore();
+
+      /* Restore the getScreenWidth functionality */
+      getScreenWidthSpy.mockRestore();
 
       /* Verifies that the heading elements font size CSS property is set to a lower value */
       testData.push(headingElement.style.fontSize);
@@ -607,16 +600,8 @@ describe('Header Title Text', () => {
           return { right: 800 };
         })
         .mockImplementationOnce(() => {
-          /* handleScreenWidth > reduceFontSizeAndWrapTextIfRequired > getWidthOfHeadingElement (pre loop) */
-          return { right: 750 };
-        })
-        .mockImplementationOnce(() => {
           /* handleScreenWidth > reduceFontSizeAndWrapTextIfRequired > getTitleTextContentRightmostPosition (in loop call 1) */
           return { right: 750 };
-        })
-        .mockImplementationOnce(() => {
-          /* handleScreenWidth > reduceFontSizeAndWrapTextIfRequired > getWidthOfHeadingElement (after loop) */
-          return { right: 740 };
         })
         .mockImplementationOnce(() => {
           /* handleScreenWidth > truncateTextByRemovingSpaces > getHeightOfHeadingElement (pre loop) */
@@ -629,10 +614,6 @@ describe('Header Title Text', () => {
         .mockImplementationOnce(() => {
           /* handleScreenWidth > truncateTextByRemovingCharacters > getTitleTextContentRightmostPosition (pre loop) */
           return { right: 700 };
-        })
-        .mockImplementationOnce(() => {
-          /* handleScreenWidth > truncateTextByRemovingCharacters > getWidthOfHeadingElement (pre loop) */
-          return { right: 650 };
         })
         .mockImplementationOnce(() => {
           /* handleScreenWidth > truncateTextByRemovingCharacters > getTitleTextContentRightmostPosition (in loop call 1) */
@@ -654,6 +635,11 @@ describe('Header Title Text', () => {
           /* handleScreenWidth > truncateTextByRemovingCharacters > getTitleTextContentRightmostPosition (in loop call 5) */
           return { right: 650 };
         });
+      const getScreenWidthSpy = jest
+        .spyOn(HeaderTitleText.prototype, 'getScreenWidth')
+        .mockImplementationOnce(() => { return 750; })
+        .mockImplementationOnce(() => { return 740; })
+        .mockImplementationOnce(() => { return 650; });
       /* Mount the component*/
       const { unmount } = render(
         <React.Fragment>
@@ -667,6 +653,9 @@ describe('Header Title Text', () => {
 
       /* Restore the getBoundingClientRect functionality */
       getBoundingClientRectSpy.mockRestore();
+
+      /* Restore the getScreenWidth functionality */
+      getScreenWidthSpy.mockRestore();
 
       /* Verifies that the heading elements font size CSS property is set to a lower value */
       testData.push(headingElement.style.fontSize);

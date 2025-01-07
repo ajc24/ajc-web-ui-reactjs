@@ -27,8 +27,8 @@ class HeaderTitleText extends React.Component {
     };
     this.getTitleTextContentRightmostPosition = this.getTitleTextContentRightmostPosition.bind(this);
     this.getHeightOfHeadingElement = this.getHeightOfHeadingElement.bind(this);
+    this.getScreenWidth = this.getScreenWidth.bind(this);
     this.getTitleTextContent = this.getTitleTextContent.bind(this);
-    this.getWidthOfHeadingElement = this.getWidthOfHeadingElement.bind(this);
     this.handleScreenWidth = this.handleScreenWidth.bind(this);
     this.reduceFontSizeAndWrapTextIfRequired = this.reduceFontSizeAndWrapTextIfRequired.bind(this);
     this.setHeaderType = this.setHeaderType.bind(this);
@@ -62,6 +62,14 @@ class HeaderTitleText extends React.Component {
   }
 
   /**
+   * Gets the current screen width which also refers to the windows rightmost position
+   * @returns {number}
+   */
+  getScreenWidth() {
+    return window.innerWidth;
+  }
+
+  /**
    * Gets the text content currently set to the heading element
    * @returns {string}
    */
@@ -79,17 +87,6 @@ class HeaderTitleText extends React.Component {
   getTitleTextContentRightmostPosition() {
     if (this.textRef.current !== null) {
       return this.textRef.current.getBoundingClientRect().right;
-    }
-    return 0;
-  }
-
-  /**
-   * Determines the width of the heading element as it is currently rendered
-   * @returns {number}
-   */
-  getWidthOfHeadingElement() {
-    if (this.textRef.current !== null) {
-      return this.textRef.current.parentNode.getBoundingClientRect().right;
     }
     return 0;
   }
@@ -124,7 +121,7 @@ class HeaderTitleText extends React.Component {
   reduceFontSizeAndWrapTextIfRequired() {
     /* Determine the positions of the text and the current screen width */
     let h1RightPos = this.getTitleTextContentRightmostPosition();
-    let screenWidth = this.getWidthOfHeadingElement();
+    let screenWidth = this.getScreenWidth();
 
     /* Steadily reduce the font size until the text fits on-screen - do not drop below 2rem font size */
     let rem = maxRem;
@@ -137,7 +134,7 @@ class HeaderTitleText extends React.Component {
       rem = parseFloat(rem.toFixed(1));
     }
     /* If 2rem font size was not enough for the title text to fit on-screen - wrap the text */
-    screenWidth = this.getWidthOfHeadingElement();
+    screenWidth = this.getScreenWidth();
     if (screenWidth < h1RightPos) {
       /* Set the text to wrap and center align */
       this.textRef.current.style.textAlign = 'center';
@@ -208,7 +205,7 @@ class HeaderTitleText extends React.Component {
    */
   truncateTextByRemovingCharacters() {
     let h1RightPos = this.getTitleTextContentRightmostPosition();
-    let screenWidth = this.getWidthOfHeadingElement();
+    let screenWidth = this.getScreenWidth();
     let titleTextString = this.getTitleTextContent();
     while (screenWidth < h1RightPos) {
       /* Truncate the text - in this case the word wrap has gone beyond two lines */
