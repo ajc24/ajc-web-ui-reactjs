@@ -76,6 +76,21 @@ class SmallHeader extends React.Component {
               </React.Fragment>
           }
           {
+            this.props.logoSrc !== undefined && this.props.titleText !== undefined && this.props.subtitleText !== undefined &&
+              /* Render a header logo component with only a title text component alongside it */
+              <React.Fragment>
+                <SmallHeaderLogo id={this.props.id} isTopBorderDisplayed={isTopBorderDisplayed} logoAlignment="left" logoType="square" src={this.props.logoSrc} />
+                <div className={titleAndSubtitleContainerCss}>
+                  <HeaderTitleText id={this.props.id} titleTextColour={this.props.titleTextColour || 'black'} isTallHeader={false}>
+                    {this.props.titleText}
+                  </HeaderTitleText>
+                  <HeaderSubtitleText id={this.props.id} headerTitleTextId={this.props.id} subtitleTextColour={this.props.subtitleTextColour || 'black'} isTallHeader={false}>
+                    {this.props.subtitleText}
+                  </HeaderSubtitleText>
+                </div>
+              </React.Fragment>
+          }
+          {
             this.props.logoSrc === undefined && this.props.titleText !== undefined && this.props.subtitleText === undefined &&
               /* Render only a title text component */
               <div className={titleAndSubtitleContainerCss}>
