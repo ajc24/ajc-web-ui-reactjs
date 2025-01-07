@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Small Header Logo Default logo image with left alignment, no header upper border rendered, square image verifies the snapshot for the component 1`] = `"<div class="image-small-header-logo-alignment-left"><img id="small-header-logo--small-header-logo--decorative-image" class="image" width="144" height="144" alt="" src="[object Object]"></div>"`;
+
+exports[`Small Header Logo Logo image with center alignment, with header upper border rendered, rectangle image verifies the snapshot for the component 1`] = `"<div class="image-small-header-logo-alignment-center"><img id="small-header-logo-center-border-rectangle--small-header-logo--decorative-image" class="image" width="328" height="140" alt="" src="[object Object]"></div>"`;
+
+exports[`Small Header Logo Logo image with center alignment, with header upper border rendered, square image verifies the snapshot for the component 1`] = `"<div class="image-small-header-logo-alignment-center"><img id="small-header-logo-center-border-square--small-header-logo--decorative-image" class="image" width="140" height="140" alt="" src="[object Object]"></div>"`;
