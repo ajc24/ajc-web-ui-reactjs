@@ -61,6 +61,17 @@ WithTitleAndSubtitleTextOnly.args = {
   titleTextColour: 'black',
 };
 
+export const WithTitleAndVeryLongSubtitleText = Template_SmallHeader.bind({});
+WithTitleAndVeryLongSubtitleText.args = {
+  backgroundColour: 'grey',
+  headerTitleTextId: 'with-title-text-and-very-long-subtitle-text',
+  id: 'with-title-text-and-very-long-subtitle-text',
+  subtitleText: 'This is very long subtitle text, much longer than the title text above it. This will be hidden if the viewport is too small.',
+  subtitleTextColour: 'black',
+  titleText: 'Title Text',
+  titleTextColour: 'black',
+};
+
 export const WithSquareLogoAndNoTopBorder = Template_SmallHeader.bind({});
 WithSquareLogoAndNoTopBorder.args = {
   backgroundColour: 'grey',
@@ -93,4 +104,13 @@ WithRectangularLogoAndWithTopBorder.args = {
   logoSrc: storybookLogoLong,
   logoType: 'rectangle',
   topBorder: 'grey',
+};
+
+export const WithLogoAndTitleTextOnly = Template_SmallHeader.bind({});
+WithLogoAndTitleTextOnly.args = {
+  backgroundColour: 'grey',
+  id: 'with-logo--title-text-only',
+  logoSrc: storybookLogo,
+  titleText: 'Test Title Text',
+  titleTextColour: 'black',
 };
