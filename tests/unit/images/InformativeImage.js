@@ -5,7 +5,7 @@ import React from 'react';
 import { cleanup, render } from '@testing-library/react';
 import { InformativeImage } from '../../../src';
 import ImageBase from '../../../src/components/base/ImageBase';
-import benjiLogo from '../../../src/components/images/files/logo-benji.png';
+import storybookLogo from '../../../stories/images/files/storybook-logo.svg';
 
 describe('Informative Image', () => {
   /* Set the IDs for use in the tests */
@@ -24,7 +24,7 @@ describe('Informative Image', () => {
     beforeAll(() => {
       const { unmount } = render(
         <React.Fragment>
-          <InformativeImage id={testImageId} src={benjiLogo} alt={customImageAlt} />
+          <InformativeImage id={testImageId} src={storybookLogo} alt={customImageAlt} />
         </React.Fragment>
       );
       /* Build the DOM elements required for the tests */
@@ -77,7 +77,7 @@ describe('Informative Image', () => {
     beforeAll(() => {
       const { unmount } = render(
         <React.Fragment>
-          <InformativeImage id={testImageId} src={benjiLogo} height={customImageHeight} width={customImageWidth} alt={customImageAlt} />
+          <InformativeImage id={testImageId} src={storybookLogo} height={customImageHeight} width={customImageWidth} alt={customImageAlt} />
         </React.Fragment>
       );
       /* Build the DOM elements required for the tests */
@@ -112,7 +112,7 @@ describe('Informative Image', () => {
         .spyOn(ImageBase.prototype, 'mouseDownDisableLeftAndCenterClickEvents')
       const { unmount } = render(
         <React.Fragment>
-          <InformativeImage id={testImageId} src={benjiLogo} height={customImageHeight} width={customImageWidth} alt={customImageAlt} />
+          <InformativeImage id={testImageId} src={storybookLogo} height={customImageHeight} width={customImageWidth} alt={customImageAlt} />
         </React.Fragment>
       );
       /* Build the DOM elements required for the tests */

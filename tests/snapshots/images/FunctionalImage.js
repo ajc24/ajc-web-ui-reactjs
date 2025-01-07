@@ -5,7 +5,7 @@ import 'jsdom-global/register';
 import React from 'react';
 import { TestDev } from 'ajc-testing-code';
 import { FunctionalImage } from '../../../src';
-import benjiLogo from '../../../src/components/images/files/logo-benji.png';
+import storybookLogo from '../../../stories/images/files/storybook-logo.svg';
 
 describe('Functional Image', () => {
   describe('With default parameters', () => {
@@ -14,7 +14,7 @@ describe('Functional Image', () => {
     beforeAll(() => {
       snapshot = TestDev.createSnapshot(
         <React.Fragment>
-          <FunctionalImage id="functional-image-1" src={benjiLogo} alt="Default functional component alt text" onClick={() => {}} />
+          <FunctionalImage id="functional-image-1" src={storybookLogo} alt="Default functional component alt text" onClick={() => {}} />
         </React.Fragment>
       );
     });
@@ -30,7 +30,7 @@ describe('Functional Image', () => {
     beforeAll(() => {
       snapshot = TestDev.createSnapshot(
         <React.Fragment>
-          <FunctionalImage id="functional-image-2" src={benjiLogo} alt="Custom functional component alt text" onClick={() => {}} height={300} width={500} />
+          <FunctionalImage id="functional-image-2" src={storybookLogo} alt="Custom functional component alt text" onClick={() => {}} height={300} width={500} />
         </React.Fragment>
       );
     });

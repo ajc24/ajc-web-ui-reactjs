@@ -5,7 +5,7 @@ import React from 'react';
 import { cleanup, render } from '@testing-library/react';
 import { TestDev } from 'ajc-testing-code';
 import { FunctionalImage } from '../../../src';
-import benjiLogo from '../../../src/components/images/files/logo-benji.png';
+import storybookLogo from '../../../stories/images/files/storybook-logo.svg';
 
 describe('Functional Image', () => {
   const testTimeout = TestDev.getAxeTestTimeout();
@@ -29,7 +29,7 @@ describe('Functional Image', () => {
           </div>
           <main id="main-content" aria-label="Accessibility test">
             <h1>Functional Image Accessibility Test</h1>
-            <FunctionalImage id="functional-image-1" src={benjiLogo} alt="Default functional component alt text" onClick={() => {}} />
+            <FunctionalImage id="functional-image-1" src={storybookLogo} alt="Default functional component alt text" onClick={() => {}} />
           </main>
           <footer role="contentinfo">
             Footer component
@@ -61,7 +61,7 @@ describe('Functional Image', () => {
           </div>
           <main id="main-content" aria-label="Accessibility test">
             <h1>Functional Image Accessibility Test</h1>
-            <FunctionalImage id="functional-image-2" src={benjiLogo} alt="Custom functional component alt text" onClick={() => {}} height={300} width={500} />
+            <FunctionalImage id="functional-image-2" src={storybookLogo} alt="Custom functional component alt text" onClick={() => {}} height={300} width={500} />
           </main>
           <footer role="contentinfo">
             Footer component

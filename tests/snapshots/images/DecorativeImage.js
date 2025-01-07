@@ -5,7 +5,7 @@ import 'jsdom-global/register';
 import React from 'react';
 import { TestDev } from 'ajc-testing-code';
 import { DecorativeImage } from '../../../src';
-import benjiLogo from '../../../src/components/images/files/logo-benji.png';
+import storybookLogo from '../../../stories/images/files/storybook-logo.svg';
 
 describe('Decorative Image', () => {
   describe('With default parameters', () => {
@@ -14,7 +14,7 @@ describe('Decorative Image', () => {
     beforeAll(() => {
       snapshot = TestDev.createSnapshot(
         <React.Fragment>
-          <DecorativeImage id="decorative-image-1" src={benjiLogo} />
+          <DecorativeImage id="decorative-image-1" src={storybookLogo} />
         </React.Fragment>
       );
     });
@@ -30,7 +30,7 @@ describe('Decorative Image', () => {
     beforeAll(() => {
       snapshot = TestDev.createSnapshot(
         <React.Fragment>
-          <DecorativeImage id="decorative-image-2" src={benjiLogo} height={300} width={500} />
+          <DecorativeImage id="decorative-image-2" src={storybookLogo} height={300} width={500} />
         </React.Fragment>
       );
     });

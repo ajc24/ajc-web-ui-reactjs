@@ -5,7 +5,7 @@ import React from 'react';
 import { cleanup, render } from '@testing-library/react';
 import { TestDev } from 'ajc-testing-code';
 import { InformativeImage } from '../../../src';
-import benjiLogo from '../../../src/components/images/files/logo-benji.png';
+import storybookLogo from '../../../stories/images/files/storybook-logo.svg';
 
 describe('Informative Image', () => {
   const testTimeout = TestDev.getAxeTestTimeout();
@@ -29,7 +29,7 @@ describe('Informative Image', () => {
           </div>
           <main id="main-content" aria-label="Accessibility test">
             <h1>Informative Image Accessibility Test</h1>
-            <InformativeImage id="informative-image-1" src={benjiLogo} alt="Default informative component alt text" />
+            <InformativeImage id="informative-image-1" src={storybookLogo} alt="Default informative component alt text" />
           </main>
           <footer role="contentinfo">
             Footer component
@@ -61,7 +61,7 @@ describe('Informative Image', () => {
           </div>
           <main id="main-content" aria-label="Accessibility test">
             <h1>Informative Image Accessibility Test</h1>
-            <InformativeImage id="informative-image-2" src={benjiLogo} alt="Custom informative component alt text" height={300} width={500} />
+            <InformativeImage id="informative-image-2" src={storybookLogo} alt="Custom informative component alt text" height={300} width={500} />
           </main>
           <footer role="contentinfo">
             Footer component

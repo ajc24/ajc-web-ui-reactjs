@@ -5,7 +5,7 @@ import React from 'react';
 import { cleanup, render } from '@testing-library/react';
 import { FunctionalImage } from '../../../src';
 import ImageBase from '../../../src/components/base/ImageBase';
-import benjiLogo from '../../../src/components/images/files/logo-benji.png';
+import storybookLogo from '../../../stories/images/files/storybook-logo.svg';
 
 describe('Functional Image', () => {
   /* Set the IDs for use in the tests */
@@ -28,7 +28,7 @@ describe('Functional Image', () => {
         .spyOn(ImageBase.prototype, 'mouseDownCustomFunction')
       const { unmount } = render(
         <React.Fragment>
-          <FunctionalImage id={testImageId} src={benjiLogo} alt={customImageAlt} onClick={mockOnClick} />
+          <FunctionalImage id={testImageId} src={storybookLogo} alt={customImageAlt} onClick={mockOnClick} />
         </React.Fragment>
       );
       /* Build the DOM elements required for the tests */
@@ -136,7 +136,7 @@ describe('Functional Image', () => {
     beforeAll(() => {
       const { unmount } = render(
         <React.Fragment>
-          <FunctionalImage id={testImageId} src={benjiLogo} height={customImageHeight} width={customImageWidth} alt={customImageAlt} onClick={() => {}} />
+          <FunctionalImage id={testImageId} src={storybookLogo} height={customImageHeight} width={customImageWidth} alt={customImageAlt} onClick={() => {}} />
         </React.Fragment>
       );
       /* Build the DOM elements required for the tests */
