@@ -111,6 +111,18 @@ WithLogoAndTitleTextOnly.args = {
   backgroundColour: 'grey',
   id: 'with-logo--title-text-only',
   logoSrc: storybookLogo,
-  titleText: 'Test Title Text',
+  titleText: 'Header Component With Title Text',
+  titleTextColour: 'black',
+};
+
+export const WithLogoAndTitleAndSubtitleText = Template_SmallHeader.bind({});
+WithLogoAndTitleAndSubtitleText.args = {
+  backgroundColour: 'grey',
+  headerTitleTextId: 'with-logo-title-text-and-subtitle-text',
+  id: 'with-logo-title-text-and-subtitle-text',
+  logoSrc: storybookLogo,
+  subtitleText: 'Header component with subtitle text',
+  subtitleTextColour: 'black',
+  titleText: 'Header Component With Title Text',
   titleTextColour: 'black',
 };
