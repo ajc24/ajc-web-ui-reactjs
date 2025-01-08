@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import HeaderBase from '../../src/components/base/HeaderBase';
+import headerBgImage from '../images/files/header-bg-image.png';
 
 export default {
   title: 'Base/Header Base',
@@ -24,6 +25,13 @@ const Template_HeaderBase = args => {
 }
 export const Default = Template_HeaderBase.bind({});
 Default.args = {
-  id: 'default-id--header-container',
+  id: 'default-header-base',
+  size: 'default',
+};
+
+export const WithBackgroundImage = Template_HeaderBase.bind({});
+WithBackgroundImage.args = {
+  backgroundImageSrc: headerBgImage,
+  id: 'header-base-with-background-image',
   size: 'default',
 };
