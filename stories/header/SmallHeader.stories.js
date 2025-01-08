@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import { SmallHeader } from '../../src';
+import headerBgImage from '../images/files/header-bg-image.png';
 import storybookLogo from '../images/files/storybook-logo.svg';
 import storybookLogoLong from '../images/files/storybook-logo-long.svg';
 
@@ -120,6 +121,19 @@ WithLogoAndTitleAndSubtitleText.args = {
   backgroundColour: 'grey',
   headerTitleTextId: 'with-logo-title-text-and-subtitle-text',
   id: 'with-logo-title-text-and-subtitle-text',
+  logoSrc: storybookLogo,
+  subtitleText: 'Header component with subtitle text',
+  subtitleTextColour: 'black',
+  titleText: 'Header Component With Title Text',
+  titleTextColour: 'black',
+};
+
+export const WithAllFeaturesTogether = Template_SmallHeader.bind({});
+WithAllFeaturesTogether.args = {
+  backgroundColour: 'grey',
+  backgroundImageSrc: headerBgImage,
+  headerTitleTextId: 'with-all-features-together',
+  id: 'with-all-features-together',
   logoSrc: storybookLogo,
   subtitleText: 'Header component with subtitle text',
   subtitleTextColour: 'black',
