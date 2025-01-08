@@ -6,6 +6,7 @@ import { cleanup, render } from '@testing-library/react';
 import { TestDev } from 'ajc-testing-code';
 import HeaderBase from '../../../src/components/base/HeaderBase';
 import PageTemplateConfig from '../../../src/components/modules/PageTemplateConfig';
+import headerBgImage from '../../../stories/images/files/header-bg-image.png';
 
 describe('Header Base', () => {
   let setupDocumentBodyCssSpy;
@@ -88,6 +89,31 @@ describe('Header Base', () => {
         </div>
       );
       const html = TestDev.getComponentInHTMLTemplate('Header Base: Test 3');
+      unmount();
+      /* Perform the accessibility checks on this component */
+      results = await TestDev.runAxeCore(html);
+    }, testTimeout);
+
+    it('verifies the accessibility standards for the component', () => {
+      expect(results).toBeTruthy();
+    });
+  });
+
+  describe('Component with background image', () => {
+    let results;
+
+    beforeAll(async () => {
+      const { unmount } = render(
+        <div>
+          <HeaderBase backgroundImageSrc={headerBgImage}>
+            Header base text content.
+          </HeaderBase>
+          <main id="main-content" aria-label="Accessibility test">
+            <h1>Header Base Accessibility Test</h1>
+          </main>
+        </div>
+      );
+      const html = TestDev.getComponentInHTMLTemplate('Header Base: Test 4');
       unmount();
       /* Perform the accessibility checks on this component */
       results = await TestDev.runAxeCore(html);
