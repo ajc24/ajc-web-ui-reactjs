@@ -1,7 +1,7 @@
 /**
  * Developed by Anthony Cox in 2024
  */
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import PageTemplateConfig from '../modules/PageTemplateConfig';
 import '../css/common.css';
