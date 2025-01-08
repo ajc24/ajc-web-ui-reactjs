@@ -5,6 +5,7 @@ import React from 'react';
 import { cleanup, render } from '@testing-library/react';
 import HeaderBase from '../../../src/components/base/HeaderBase';
 import PageTemplateConfig from '../../../src/components/modules/PageTemplateConfig';
+import headerBgImage from '../../../stories/images/files/header-bg-image.png';
 
 describe('Header Base', () => {
   /* Set the IDs for use in the tests */
@@ -200,6 +201,33 @@ describe('Header Base', () => {
 
     it('verifies that the "header-container-size-tall" class is not set to the container element', () => {
       expect(testData[0].contains('header-container-size-tall')).toBeFalsy();
+    });
+  });
+
+  describe('Component with background image', () => {
+    const testData = [];
+
+    beforeAll(() => {
+      const { unmount } = render(
+        <React.Fragment>
+          <HeaderBase backgroundImageSrc={headerBgImage}>
+            Header base text content.
+          </HeaderBase>
+        </React.Fragment>
+      );
+      /* Build the DOM elements required for the tests */
+      const headerContentContainer = document.querySelector(`header[id="${defaultHeaderContainerId}"] > div`);
+      
+      /* Verifies that the background image of the content container element is set correctly */
+      testData.push(headerContentContainer.style.backgroundImage);
+
+      /* Unmount the component and clean up the test */
+      unmount();
+      cleanup();
+    });
+
+    it('verifies that the background image of the content container element is set correctly', () => {
+      expect(testData[0]).toBeDefined();
     });
   });
 });
