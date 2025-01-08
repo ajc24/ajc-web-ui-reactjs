@@ -6,6 +6,7 @@ import React from 'react';
 import { TestDev } from 'ajc-testing-code';
 import HeaderBase from '../../../src/components/base/HeaderBase';
 import PageTemplateConfig from '../../../src/components/modules/PageTemplateConfig';
+import headerBgImage from '../../../stories/images/files/header-bg-image.png';
 
 describe('Header Base', () => {
   /* Set the spies for use in the tests */
@@ -64,6 +65,24 @@ describe('Header Base', () => {
       snapshot = TestDev.createSnapshot(
         <React.Fragment>
           <HeaderBase size="tall">
+            Header base text content.
+          </HeaderBase>
+        </React.Fragment>
+      );
+    });
+
+    it('verifies the snapshot for the component', () => {
+      expect(snapshot).toMatchSnapshot();
+    });
+  });
+
+  describe('Component with background image', () => {
+    let snapshot;
+    
+    beforeAll(() => {
+      snapshot = TestDev.createSnapshot(
+        <React.Fragment>
+          <HeaderBase backgroundImageSrc={headerBgImage}>
             Header base text content.
           </HeaderBase>
         </React.Fragment>
