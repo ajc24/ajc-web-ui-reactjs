@@ -145,8 +145,8 @@ SmallHeader.propTypes = {
    * and text wrapping are not sufficient then the text will also be truncated.
    * 
    * The title text content will appear left aligned on larger screens and will automatically appear center aligned horizontally on smaller screens whenever text wrapping
-   * is necessary. If displayed with a logo, the logo will appear to the left of the title text on larger screens. On smaller screens the logo will be moved to a position
-   * above the title text, with the title text rendering at the bottom of the header.
+   * is necessary. If displayed with a logo, the logo will appear to the left of the title text on both larger and smaller screens. Normal title text font size reduction,
+   * text wrapping and text truncation rules apply when rendered beside a logo.
    */
   titleText: PropTypes.string,
   /** The colour of the title text, either that of black with a white outline or white with a black outline. By default, black with a while outline is pre-selected */
