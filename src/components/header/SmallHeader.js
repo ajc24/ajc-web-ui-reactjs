@@ -15,110 +15,105 @@ import './css/header.css';
  * The border colours range from grey to red. This component auto-handles screen widths from the most commonly used mobile screen sizes (360x800) to the most
  * commonly used desktop sizes (1920x1080). The height of the component is 160px.
  */
-class SmallHeader extends React.Component {
-  /**
-   * Initialises the Header component
-   * @param {any} props 
-   */
-  constructor(props) {
-    super(props);
-  }
+const SmallHeader = props => {
+  const backgroundImageSrc = props.backgroundImageSrc || undefined;
+  let isTopBorderDisplayed = false;
 
-  render() {
-    let isTopBorderDisplayed = false;
-
-    /* Set the CSS styling for the content container element */
-    let contentContainerCss = 'header-content';
-    if (this.props.backgroundColour === 'grey') {
+  /* Set the CSS styling for the content container element */
+  let contentContainerCss = 'header-content';
+  if (backgroundImageSrc === undefined) {
+    if (props.backgroundColour === 'grey') {
       /* Set the background colour to grey */
       contentContainerCss += ' background-grey';
     } else {
       /* By default choose a white background */
       contentContainerCss += ' background-white';
     }
-    contentContainerCss += ' header-content-small-size';
-    if (this.props.topBorder === 'grey' || this.props.topBorder === 'red') {
-      /* Enable and render the upper border for the header in the specified colour */
-      contentContainerCss += ` header-border-top-${this.props.topBorder}`;
-      isTopBorderDisplayed = true;
-    }
+  }
+  contentContainerCss += ' header-content-small-size';
+  if (props.topBorder === 'grey' || props.topBorder === 'red') {
+    /* Enable and render the upper border for the header in the specified colour */
+    contentContainerCss += ` header-border-top-${props.topBorder}`;
+    isTopBorderDisplayed = true;
+  }
 
-    /* Set the CSS styling for the title and subtitle container element */
-    const titleAndSubtitleContainerCss = 'header-content-title-subtitle-text-container header-content-title-subtitle-text-container-small-size';
-    return (
-      <HeaderBase id={this.props.id} size="small">
-        <div id={`${this.props.id}--header-content`} className={contentContainerCss}>
-          {
-            this.props.logoSrc === undefined && this.props.titleText === undefined &&
-              /* No logo or title text has been specified - render custom content as provided by the developer */
-              <React.Fragment>
-                {this.props.children}
-              </React.Fragment>
-          }
-          {
-            this.props.logoSrc !== undefined && this.props.titleText === undefined &&
-              /* Render only a header logo without any title text */
-              <React.Fragment>
-                <SmallHeaderLogo id={this.props.id} isTopBorderDisplayed={isTopBorderDisplayed} logoAlignment="center" logoType={this.props.logoType || 'square'}
-                  src={this.props.logoSrc} />
-              </React.Fragment>
-          }
-          {
-            this.props.logoSrc !== undefined && this.props.titleText !== undefined && this.props.subtitleText === undefined &&
-              /* Render a header logo component with only a title text component alongside it */
-              <React.Fragment>
-                <SmallHeaderLogo id={this.props.id} isTopBorderDisplayed={isTopBorderDisplayed} logoAlignment="left" logoType="square" src={this.props.logoSrc} />
-                <div className={titleAndSubtitleContainerCss}>
-                  <HeaderTitleText id={this.props.id} titleTextColour={this.props.titleTextColour || 'black'} isTallHeader={false}>
-                    {this.props.titleText}
-                  </HeaderTitleText>
-                </div>
-              </React.Fragment>
-          }
-          {
-            this.props.logoSrc !== undefined && this.props.titleText !== undefined && this.props.subtitleText !== undefined &&
-              /* Render a header logo component with only a title text component alongside it */
-              <React.Fragment>
-                <SmallHeaderLogo id={this.props.id} isTopBorderDisplayed={isTopBorderDisplayed} logoAlignment="left" logoType="square" src={this.props.logoSrc} />
-                <div className={titleAndSubtitleContainerCss}>
-                  <HeaderTitleText id={this.props.id} titleTextColour={this.props.titleTextColour || 'black'} isTallHeader={false}>
-                    {this.props.titleText}
-                  </HeaderTitleText>
-                  <HeaderSubtitleText id={this.props.id} headerTitleTextId={this.props.id} subtitleTextColour={this.props.subtitleTextColour || 'black'} isTallHeader={false}>
-                    {this.props.subtitleText}
-                  </HeaderSubtitleText>
-                </div>
-              </React.Fragment>
-          }
-          {
-            this.props.logoSrc === undefined && this.props.titleText !== undefined && this.props.subtitleText === undefined &&
-              /* Render only a title text component */
+  /* Set the CSS styling for the title and subtitle container element */
+  const titleAndSubtitleContainerCss = 'header-content-title-subtitle-text-container header-content-title-subtitle-text-container-small-size';
+  return (
+    <HeaderBase id={props.id} size="small" backgroundImageSrc={props.backgroundImageSrc || undefined}>
+      <div id={`${props.id}--header-content`} className={contentContainerCss}>
+        {
+          props.logoSrc === undefined && props.titleText === undefined &&
+            /* No logo or title text has been specified - render custom content as provided by the developer */
+            <React.Fragment>
+              {props.children}
+            </React.Fragment>
+        }
+        {
+          props.logoSrc !== undefined && props.titleText === undefined &&
+            /* Render only a header logo without any title text */
+            <React.Fragment>
+              <SmallHeaderLogo id={props.id} isTopBorderDisplayed={isTopBorderDisplayed} logoAlignment="center" logoType={props.logoType || 'square'}
+                src={props.logoSrc} />
+            </React.Fragment>
+        }
+        {
+          props.logoSrc !== undefined && props.titleText !== undefined && props.subtitleText === undefined &&
+            /* Render a header logo component with only a title text component alongside it */
+            <React.Fragment>
+              <SmallHeaderLogo id={props.id} isTopBorderDisplayed={isTopBorderDisplayed} logoAlignment="left" logoType="square" src={props.logoSrc} />
               <div className={titleAndSubtitleContainerCss}>
-                <HeaderTitleText id={this.props.id} titleTextColour={this.props.titleTextColour || 'black'} isTallHeader={false}>
-                  {this.props.titleText}
+                <HeaderTitleText id={props.id} titleTextColour={props.titleTextColour || 'black'} isTallHeader={false}>
+                  {props.titleText}
                 </HeaderTitleText>
               </div>
-          }
-          {
-            this.props.logoSrc === undefined && this.props.titleText !== undefined && this.props.subtitleText !== undefined &&
-              /* Render both title text and subtitle text components */
+            </React.Fragment>
+        }
+        {
+          props.logoSrc !== undefined && props.titleText !== undefined && props.subtitleText !== undefined &&
+            /* Render a header logo component with only a title text component alongside it */
+            <React.Fragment>
+              <SmallHeaderLogo id={props.id} isTopBorderDisplayed={isTopBorderDisplayed} logoAlignment="left" logoType="square" src={props.logoSrc} />
               <div className={titleAndSubtitleContainerCss}>
-                <HeaderTitleText id={this.props.id} titleTextColour={this.props.titleTextColour || 'black'} isTallHeader={false}>
-                  {this.props.titleText}
+                <HeaderTitleText id={props.id} titleTextColour={props.titleTextColour || 'black'} isTallHeader={false}>
+                  {props.titleText}
                 </HeaderTitleText>
-                <HeaderSubtitleText id={this.props.id} headerTitleTextId={this.props.id} subtitleTextColour={this.props.subtitleTextColour || 'black'} isTallHeader={false}>
-                  {this.props.subtitleText}
+                <HeaderSubtitleText id={props.id} headerTitleTextId={props.id} subtitleTextColour={props.subtitleTextColour || 'black'} isTallHeader={false}>
+                  {props.subtitleText}
                 </HeaderSubtitleText>
               </div>
-          }
-        </div>
-      </HeaderBase>
-    );
-  }
+            </React.Fragment>
+        }
+        {
+          props.logoSrc === undefined && props.titleText !== undefined && props.subtitleText === undefined &&
+            /* Render only a title text component */
+            <div className={titleAndSubtitleContainerCss}>
+              <HeaderTitleText id={props.id} titleTextColour={props.titleTextColour || 'black'} isTallHeader={false}>
+                {props.titleText}
+              </HeaderTitleText>
+            </div>
+        }
+        {
+          props.logoSrc === undefined && props.titleText !== undefined && props.subtitleText !== undefined &&
+            /* Render both title text and subtitle text components */
+            <div className={titleAndSubtitleContainerCss}>
+              <HeaderTitleText id={props.id} titleTextColour={props.titleTextColour || 'black'} isTallHeader={false}>
+                {props.titleText}
+              </HeaderTitleText>
+              <HeaderSubtitleText id={props.id} headerTitleTextId={props.id} subtitleTextColour={props.subtitleTextColour || 'black'} isTallHeader={false}>
+                {props.subtitleText}
+              </HeaderSubtitleText>
+            </div>
+        }
+      </div>
+    </HeaderBase>
+  );
 }
 SmallHeader.propTypes = {
   /** The background colour for the header. The default colour for the background is white. */
   backgroundColour: PropTypes.oneOf([ 'white', 'grey' ]),
+  /** The background image data to be displayed. */
+  backgroundImageSrc: PropTypes.oneOfType([ PropTypes.string, PropTypes.object ]),
   /** The custom content to be displayed inside the header. */
   children: PropTypes.any,
   /** The unique identifier for this component. */
