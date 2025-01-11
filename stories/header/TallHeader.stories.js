@@ -3,6 +3,8 @@
  */
 import React from 'react';
 import { TallHeader } from '../../src';
+import headerBgImage from '../images/files/tall-header-bg-image.jpg';
+import storybookLogoLongTall from '../images/files/storybook-logo-long-tall.svg';
 
 export default {
   title: 'Header/Tall Header',
@@ -60,9 +62,10 @@ WithTitleTextOnlyAndBottomAlignment.args = {
   titleTextColour: 'black',
 };
 
-export const WithTitleAndSubtitleTextOnlyAndBottomAlignment = Template_TallHeader.bind({});
-WithTitleAndSubtitleTextOnlyAndBottomAlignment.args = {
+export const WithImageBackgroundAndTitleTextAndSubtitleTextAndBottomAlignment = Template_TallHeader.bind({});
+WithImageBackgroundAndTitleTextAndSubtitleTextAndBottomAlignment.args = {
   backgroundColour: 'grey',
+  backgroundImageSrc: headerBgImage,
   headerTitleTextId: 'tall-with-title-text-and-subtitle-text-only',
   id: 'tall-with-title-text-and-subtitle-text-only',
   subtitleText: 'Header component with subtitle text',
@@ -70,4 +73,20 @@ WithTitleAndSubtitleTextOnlyAndBottomAlignment.args = {
   titleText: 'Header component with Title Text',
   titleTextAlignment: 'bottom',
   titleTextColour: 'black',
+};
+
+export const WithLogoAndNoTopBorder = Template_TallHeader.bind({});
+WithLogoAndNoTopBorder.args = {
+  backgroundColour: 'grey',
+  id: 'with-logo--no-top-border',
+  logoSrc: storybookLogoLongTall,
+  topBorder: 'off',
+};
+
+export const WithLogoAndWithTopBorder = Template_TallHeader.bind({});
+WithLogoAndWithTopBorder.args = {
+  backgroundColour: 'grey',
+  id: 'with-logo--with-top-border',
+  logoSrc: storybookLogoLongTall,
+  topBorder: 'red',
 };
