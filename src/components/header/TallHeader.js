@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import HeaderBase from '../base/HeaderBase';
 import HeaderSubtitleText from '../base/HeaderSubtitleText';
 import HeaderTitleText from '../base/HeaderTitleText';
+import TallHeaderLogo from '../images/TallHeaderLogo';
 import '../css/common.css';
 import './css/header.css';
 
@@ -24,19 +25,25 @@ class TallHeader extends React.Component {
   }
 
   render() {
+    const backgroundImageSrc = this.props.backgroundImageSrc || undefined;
+    let isTopBorderDisplayed = false;
+
     /* Set the CSS styling for the content container element */
     let contentCss = 'header-content';
-    if (this.props.backgroundColour === 'grey') {
-      /* Set the background colour to grey */
-      contentCss += ' background-grey';
-    } else {
-      /* By default choose a white background */
-      contentCss += ' background-white';
+    if (backgroundImageSrc === undefined) {
+      if (this.props.backgroundColour === 'grey') {
+        /* Set the background colour to grey */
+        contentCss += ' background-grey';
+      } else {
+        /* By default choose a white background */
+        contentCss += ' background-white';
+      }
     }
     /* Set all relevant styling for a tall header */
     contentCss += ' header-content-tall-size';
     if (this.props.logoSrc !== undefined) {
       /* Set the relevant alignment for when an image has been specified */
+      contentCss += ' header-content-tall-size-alignment-bottom';
     } else {
       /* Set the relevant alignment for whether a top, middle or bottom setting has been requested */
       if (this.props.titleTextAlignment === 'bottom') {
@@ -50,17 +57,25 @@ class TallHeader extends React.Component {
     if (this.props.topBorder === 'grey' || this.props.topBorder === 'red') {
       /* Enable and render the upper border for the header in the specified colour */
       contentCss += ` header-border-top-${this.props.topBorder}`;
+      isTopBorderDisplayed = true;
     }
     /* Set the CSS styling for the title and subtitle container element */
     const titleAndSubtitleContainerCss = 'header-content-title-subtitle-text-container header-content-title-subtitle-text-container-tall-size';
     return (
-      <HeaderBase id={this.props.id} size="tall">
+      <HeaderBase id={this.props.id} size="tall" backgroundImageSrc={backgroundImageSrc}>
         <div id={`${this.props.id}--header-content`} className={contentCss}>
           {
             this.props.logoSrc === undefined && this.props.titleText === undefined &&
               /* No logo or title text has been specified - render custom content as provided by the developer */
               <React.Fragment>
                 {this.props.children}
+              </React.Fragment>
+          }
+          {
+            this.props.logoSrc !== undefined && this.props.titleText === undefined &&
+              /* Render only a header logo without any title text */
+              <React.Fragment>
+                <TallHeaderLogo id={this.props.id} isTopBorderDisplayed={isTopBorderDisplayed} src={this.props.logoSrc} />
               </React.Fragment>
           }
           {
@@ -92,11 +107,13 @@ class TallHeader extends React.Component {
 TallHeader.propTypes = {
   /** The background colour for the header. The default colour for the background is white. */
   backgroundColour: PropTypes.oneOf([ 'white', 'grey' ]),
+  /** The background image data to be displayed. For best results, the image you choose should be 1920px wide and 320px high. */
+  backgroundImageSrc: PropTypes.oneOfType([ PropTypes.string, PropTypes.object ]),
   /** The custom content to be displayed inside the header. */
   children: PropTypes.any,
   /** The unique identifier for this component. */
   id: PropTypes.string.isRequired,
-  /** The header logo image data to be displayed. */
+  /** The header logo image data to be displayed. For best results, the logo you choose should be at most 328px wide and 140px high.*/
   logoSrc: PropTypes.oneOfType([ PropTypes.string, PropTypes.object ]),
   /** 
    * The text content to be displayed as the subtitle text.
