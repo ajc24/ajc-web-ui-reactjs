@@ -40,7 +40,7 @@ const SmallHeader = props => {
   /* Set the CSS styling for the title and subtitle container element */
   const titleAndSubtitleContainerCss = 'header-content-title-subtitle-text-container header-content-title-subtitle-text-container-small-size';
   return (
-    <HeaderBase id={props.id} size="small" backgroundImageSrc={props.backgroundImageSrc || undefined}>
+    <HeaderBase id={props.id} size="small" backgroundImageSrc={backgroundImageSrc}>
       <div id={`${props.id}--header-content`} className={contentContainerCss}>
         {
           props.logoSrc === undefined && props.titleText === undefined &&
@@ -112,13 +112,13 @@ const SmallHeader = props => {
 SmallHeader.propTypes = {
   /** The background colour for the header. The default colour for the background is white. */
   backgroundColour: PropTypes.oneOf([ 'white', 'grey' ]),
-  /** The background image data to be displayed. */
+  /** The background image data to be displayed. For best results, the image you choose should be 1920px wide and 160px high. */
   backgroundImageSrc: PropTypes.oneOfType([ PropTypes.string, PropTypes.object ]),
   /** The custom content to be displayed inside the header. */
   children: PropTypes.any,
   /** The unique identifier for this component. */
   id: PropTypes.string.isRequired,
-  /** The header logo image data to be displayed. */
+  /** The header logo image data to be displayed. For best results, the logo you choose should be at most 328px wide and 140px high.*/
   logoSrc: PropTypes.oneOfType([ PropTypes.string, PropTypes.object ]),
   /**
    * The type of logo to be displayed in the header.
