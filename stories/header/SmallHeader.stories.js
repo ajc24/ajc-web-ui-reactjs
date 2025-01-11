@@ -43,6 +43,13 @@ WithRedUpperBorder.args = {
   topBorder: 'red',
 };
 
+export const WithImageBackground = Template_SmallHeader.bind({});
+WithImageBackground.args = {
+  backgroundImageSrc: headerBgImage,
+  children: 'Header component with an image background.',
+  id: 'with-image-background',
+};
+
 export const WithTitleTextOnly = Template_SmallHeader.bind({});
 WithTitleTextOnly.args = {
   backgroundColour: 'grey',
