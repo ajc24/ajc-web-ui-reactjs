@@ -60,7 +60,14 @@ class TallHeader extends React.Component {
       isTopBorderDisplayed = true;
     }
     /* Set the CSS styling for the title and subtitle container element */
-    const titleAndSubtitleContainerCss = 'header-content-title-subtitle-text-container header-content-title-subtitle-text-container-tall-size';
+    let titleAndSubtitleContainerCss = 'header-content-title-subtitle-text-container';
+    if (this.props.logoSrc !== undefined && this.props.titleText !== undefined) {
+      /* Ensure correct title text alignment if rendered with a logo */
+      titleAndSubtitleContainerCss += ' header-content-title-subtitle-text-container-tall-size-with-logo';
+    } else {
+      /* Correct alignment for all other circumstances */
+      titleAndSubtitleContainerCss += ' header-content-title-subtitle-text-container-tall-size';
+    }
     return (
       <HeaderBase id={this.props.id} size="tall" backgroundImageSrc={backgroundImageSrc}>
         <div id={`${this.props.id}--header-content`} className={contentCss}>
@@ -76,6 +83,18 @@ class TallHeader extends React.Component {
               /* Render only a header logo without any title text */
               <React.Fragment>
                 <TallHeaderLogo id={this.props.id} isTopBorderDisplayed={isTopBorderDisplayed} src={this.props.logoSrc} />
+              </React.Fragment>
+          }
+          {
+            this.props.logoSrc !== undefined && this.props.titleText !== undefined && this.props.subtitleText === undefined &&
+              /* Render a header logo component with only a title text component alongside it */
+              <React.Fragment>
+                <TallHeaderLogo headerTitleTextId={this.props.id} id={this.props.id} isTopBorderDisplayed={isTopBorderDisplayed} src={this.props.logoSrc} />
+                <div className={titleAndSubtitleContainerCss}>
+                  <HeaderTitleText id={this.props.id} titleTextColour={this.props.titleTextColour || 'black'} isTallHeader={true}>
+                    {this.props.titleText}
+                  </HeaderTitleText>
+                </div>
               </React.Fragment>
           }
           {
