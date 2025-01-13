@@ -54,3 +54,7 @@
 .header-content-title-subtitle-text-container-tall-size {
   justify-content: inherit;
 }
+
+.header-content-title-subtitle-text-container-tall-size-with-logo {
+  justify-content: center;
+}
