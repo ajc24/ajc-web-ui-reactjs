@@ -41,12 +41,37 @@ class TallHeaderLogo extends React.Component {
       height: tallHeaderLogoDimensions.height.solo.noUpperBorder,
       width: tallHeaderLogoDimensions.width.default,
     }
+    this.handleScreenWidth = this.handleScreenWidth.bind(this);
     this.setHeight = this.setHeight.bind(this);
   }
 
   componentDidMount() {
     if (this.props.isTopBorderDisplayed === true) {
       this.setHeight(tallHeaderLogoDimensions.height.solo.withUpperBorder);
+    }
+    /* Initial set of the header logo size based on the screens current size */
+    this.handleScreenWidth();
+
+    /* Watch over all future window resize events - we will want to alter the height of the logo depending on how the title text and subtitle text elements are rendered */
+    window.addEventListener('resize', this.handleScreenWidth);
+  }
+
+  handleScreenWidth() {
+    if (this.props.headerTitleTextId !== undefined) {
+      /* Get the title text heading element and determine its height */
+      const titleTextElement = document.querySelector(`div[id="${this.props.headerTitleTextId}"] > h1`);
+      const titleTextElementHeight = titleTextElement.getBoundingClientRect().height;
+
+      if (this.props.subtitleTextId === undefined) {
+        /* No subtitle text is rendered - base the height of the logo on the height of the title text alone */
+        let newLogoHeight = tallHeaderLogoDimensions.height.solo.noUpperBorder;
+        if (this.props.isTopBorderDisplayed === true) {
+          newLogoHeight = tallHeaderLogoDimensions.height.solo.withUpperBorder;
+        }
+        this.setHeight({
+          height: (newLogoHeight - titleTextElementHeight),
+        });
+      }
     }
   }
 
@@ -70,11 +95,15 @@ class TallHeaderLogo extends React.Component {
   }
 }
 TallHeaderLogo.propTypes = {
+  /** The unique identifier which was given to the header title text component. */
+  headerTitleTextId: PropTypes.string,
   /** The unique identifier for this component. */
   id: PropTypes.string.isRequired,
   /* Switch to indicate whether the Small Header components top border is displayed or not */
   isTopBorderDisplayed: PropTypes.bool,
   /** The image data to be displayed. */
   src: PropTypes.oneOfType([ PropTypes.string, PropTypes.object ]).isRequired,
+  /** The unique identifier which was given to the subtitle text component. */
+  subtitleTextId: PropTypes.string,
 };
 export default TallHeaderLogo;
