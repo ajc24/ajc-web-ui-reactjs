@@ -13,13 +13,6 @@ const tallHeaderLogoDimensions = {
       noUpperBorder: 304,
       withUpperBorder: 300,
     },
-    withTitleAndSubtitleText: {
-      default: 0,
-    },
-    withTitleText: {
-      noWrap: 0,
-      withWrap: 0,
-    },
   },
   width: {
     default: 328,
@@ -59,18 +52,18 @@ class TallHeaderLogo extends React.Component {
   handleScreenWidth() {
     if (this.props.headerTitleTextId !== undefined) {
       /* Get the title text heading element and determine its height */
-      const titleTextElement = document.querySelector(`div[id="${this.props.headerTitleTextId}"] > h1`);
-      const titleTextElementHeight = titleTextElement.getBoundingClientRect().height;
+      const titleTextElement = document.querySelector(`div[id="${this.props.headerTitleTextId}--title-text"] > h1`);
+      if (titleTextElement !== null) {
+        const titleTextElementHeight = titleTextElement.getBoundingClientRect().height;
 
-      if (this.props.subtitleTextId === undefined) {
-        /* No subtitle text is rendered - base the height of the logo on the height of the title text alone */
-        let newLogoHeight = tallHeaderLogoDimensions.height.solo.noUpperBorder;
-        if (this.props.isTopBorderDisplayed === true) {
-          newLogoHeight = tallHeaderLogoDimensions.height.solo.withUpperBorder;
+        if (this.props.subtitleTextId === undefined) {
+          /* No subtitle text is rendered - base the height of the logo on the height of the title text alone */
+          let newLogoHeight = tallHeaderLogoDimensions.height.solo.noUpperBorder;
+          if (this.props.isTopBorderDisplayed === true) {
+            newLogoHeight = tallHeaderLogoDimensions.height.solo.withUpperBorder;
+          }
+          this.setHeight(newLogoHeight - titleTextElementHeight);
         }
-        this.setHeight({
-          height: (newLogoHeight - titleTextElementHeight),
-        });
       }
     }
   }
