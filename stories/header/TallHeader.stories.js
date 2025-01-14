@@ -4,6 +4,7 @@
 import React from 'react';
 import { TallHeader } from '../../src';
 import headerBgImage from '../images/files/tall-header-bg-image.jpg';
+import headerBgImageSky from '../images/files/header-bg-image-sky.png';
 import storybookLogoLongTall from '../images/files/storybook-logo-long-tall.svg';
 
 export default {
@@ -123,4 +124,16 @@ WithLogoAndTitleTextAndSubtitleText.args = {
   titleText: 'Header Component With Title Text',
   titleTextColour: 'black',
   topBorder: 'grey',
+};
+
+export const WithAllFeaturesTogether = Template_TallHeader.bind({});
+WithAllFeaturesTogether.args = {
+  backgroundColour: 'grey',
+  backgroundImageSrc: headerBgImageSky,
+  id: 'with-all-features-together',
+  logoSrc: storybookLogoLongTall,
+  subtitleText: 'Header component with subtitle text',
+  subtitleTextColour: 'black',
+  titleText: 'Header Component With Title Text',
+  titleTextColour: 'black',
 };
