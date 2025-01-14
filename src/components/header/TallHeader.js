@@ -98,6 +98,22 @@ class TallHeader extends React.Component {
               </React.Fragment>
           }
           {
+            this.props.logoSrc !== undefined && this.props.titleText !== undefined && this.props.subtitleText !== undefined &&
+              /* Render a header logo component with both title text and subtitle text components alongside it */
+              <React.Fragment>
+                <TallHeaderLogo headerTitleTextId={this.props.id} id={this.props.id} isTopBorderDisplayed={isTopBorderDisplayed} src={this.props.logoSrc}
+                  subtitleTextId={this.props.id} />
+                <div className={titleAndSubtitleContainerCss}>
+                  <HeaderTitleText id={this.props.id} titleTextColour={this.props.titleTextColour || 'black'} isTallHeader={true}>
+                    {this.props.titleText}
+                  </HeaderTitleText>
+                  <HeaderSubtitleText id={this.props.id} headerTitleTextId={this.props.id} subtitleTextColour={this.props.subtitleTextColour || 'black'} isTallHeader={true}>
+                    {this.props.subtitleText}
+                  </HeaderSubtitleText>
+                </div>
+              </React.Fragment>
+          }
+          {
             this.props.logoSrc === undefined && this.props.titleText !== undefined && this.props.subtitleText === undefined &&
               /* Render only a title text component */
               <div className={titleAndSubtitleContainerCss}>
