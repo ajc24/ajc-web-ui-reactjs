@@ -39,9 +39,6 @@ class TallHeaderLogo extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.isTopBorderDisplayed === true) {
-      this.setHeight(tallHeaderLogoDimensions.height.solo.withUpperBorder);
-    }
     /* Initial set of the header logo size based on the screens current size */
     this.handleScreenWidth();
 
@@ -49,23 +46,41 @@ class TallHeaderLogo extends React.Component {
     window.addEventListener('resize', this.handleScreenWidth);
   }
 
+  /**
+   * Handles resize events in the browser. This function will reduce the alter the logo size
+   * depending on whether the logo is rendered with header title text and what size the title text is
+   * currently being rendered at (ie. whether it is max size, reduced in size, is truncated)
+   */
   handleScreenWidth() {
+    /* Set the initial height of the logo based on whether the top border is rendered or not */
+    let newLogoHeight = tallHeaderLogoDimensions.height.solo.noUpperBorder;
+    if (this.props.isTopBorderDisplayed === true) {
+      newLogoHeight = tallHeaderLogoDimensions.height.solo.withUpperBorder;
+    }
     if (this.props.headerTitleTextId !== undefined) {
-      /* Get the title text heading element and determine its height */
+      /* Title text is rendered with the logo - get the title text heading element and determine its height */
       const titleTextElement = document.querySelector(`div[id="${this.props.headerTitleTextId}--title-text"] > h1`);
       if (titleTextElement !== null) {
         const titleTextElementHeight = titleTextElement.getBoundingClientRect().height;
 
-        if (this.props.subtitleTextId === undefined) {
-          /* No subtitle text is rendered - base the height of the logo on the height of the title text alone */
-          let newLogoHeight = tallHeaderLogoDimensions.height.solo.noUpperBorder;
-          if (this.props.isTopBorderDisplayed === true) {
-            newLogoHeight = tallHeaderLogoDimensions.height.solo.withUpperBorder;
+        /* Set the initial new logo height based on the height of the title text element */
+        newLogoHeight -= titleTextElementHeight;
+        if (this.props.subtitleTextId !== undefined) {
+          /* Subtitle text is also rendered with the logo - alter the logo height to suit */
+          const subtitleTextElement = document.querySelector(`div[id="${this.props.subtitleTextId}--subtitle-text"] > p`);
+          if (subtitleTextElement !== null) {
+            const isHidden = subtitleTextElement.getAttribute('aria-hidden');
+            if (isHidden === 'false') {
+              /* Set the final new logo height based on the height of the subtitle text element */
+              const subtitleTextElementHeight = subtitleTextElement.getBoundingClientRect().height;
+              newLogoHeight -= subtitleTextElementHeight;
+            }
           }
-          this.setHeight(newLogoHeight - titleTextElementHeight);
         }
       }
     }
+    /* Set the height of the logo now we have taken the top border and both the title text and subtitle text elements into account */ 
+    this.setHeight(newLogoHeight);
   }
 
   /**
