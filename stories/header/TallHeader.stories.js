@@ -75,8 +75,8 @@ WithImageBackgroundAndTitleTextAndSubtitleTextAndBottomAlignment.args = {
   titleTextColour: 'black',
 };
 
-export const WithTitleAndVeryLongSubtitleText = Template_TallHeader.bind({});
-WithTitleAndVeryLongSubtitleText.args = {
+export const WithTitleAndVeryLongSubtitleTextAndMiddleAlignment = Template_TallHeader.bind({});
+WithTitleAndVeryLongSubtitleTextAndMiddleAlignment.args = {
   backgroundColour: 'grey',
   headerTitleTextId: 'with-title-text-and-very-long-subtitle-text',
   id: 'with-title-text-and-very-long-subtitle-text',
@@ -109,6 +109,18 @@ WithLogoAndTitleTextOnly.args = {
   id: 'with-logo-and-title-text-only',
   logoSrc: storybookLogoLongTall,
   titleText: 'Title Text is Rendered Underneath the Logo',
+  titleTextColour: 'black',
+  topBorder: 'grey',
+};
+
+export const WithLogoAndTitleTextAndSubtitleText = Template_TallHeader.bind({});
+WithLogoAndTitleTextAndSubtitleText.args = {
+  backgroundColour: 'grey',
+  id: 'with-logo-and-title-text-and-subtitle-text',
+  logoSrc: storybookLogoLongTall,
+  subtitleText: 'Header component with subtitle text',
+  subtitleTextColour: 'black',
+  titleText: 'Header Component With Title Text',
   titleTextColour: 'black',
   topBorder: 'grey',
 };
