@@ -71,7 +71,7 @@ const SmallHeader = props => {
         }
         {
           props.logoSrc !== undefined && props.titleText !== undefined && props.subtitleText !== undefined &&
-            /* Render a header logo component with only a title text component alongside it */
+            /* Render a header logo component with both title text and subtitle text components alongside it */
             <React.Fragment>
               <SmallHeaderLogo id={props.id} isTopBorderDisplayed={isTopBorderDisplayed} logoAlignment="left" logoType="square" src={props.logoSrc} />
               <div className={titleAndSubtitleContainerCss}>
