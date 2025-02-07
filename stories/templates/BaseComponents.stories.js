@@ -13,11 +13,11 @@ export default {
 };
 
 /**
- * Footer Base component template to be used in all stories
+ * Full page template built from all base components
  * @param {JSON} args 
  * @returns {React.Component}
  */
-const Template_BaseComponents = args => {
+const Template_BaseComponents = () => {
 	return <React.Fragment>
 		<HeaderBase id="custom-header-id">
       This is a HeaderBase component.
