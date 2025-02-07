@@ -7,6 +7,7 @@ import '../css/common.css';
 import './css/title-or-subtitle-text.css';
 
 const maxRem = 3;
+const paddingRight = 8;
 const truncateTextHeightCutoff = 95;
 
 /**
@@ -86,7 +87,8 @@ class HeaderTitleText extends React.Component {
    */
   getTitleTextContentRightmostPosition() {
     if (this.textRef.current !== null) {
-      return this.textRef.current.getBoundingClientRect().right;
+      const boundingClientRectRight = this.textRef.current.getBoundingClientRect().right;
+      return (boundingClientRectRight + paddingRight);
     }
     return 0;
   }
@@ -122,6 +124,11 @@ class HeaderTitleText extends React.Component {
     /* Determine the positions of the text and the current screen width */
     let h1RightPos = this.getTitleTextContentRightmostPosition();
     let screenWidth = this.getScreenWidth();
+
+    console.log('*****');
+    console.log(h1RightPos);
+    console.log(screenWidth);
+    console.log('*****');
 
     /* Steadily reduce the font size until the text fits on-screen - do not drop below 2rem font size */
     let rem = maxRem;
