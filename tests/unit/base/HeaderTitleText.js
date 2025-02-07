@@ -206,6 +206,9 @@ describe('Header Title Text', () => {
     const testData = [];
 
     beforeAll(() => {
+      /* Set up the mock viewport width for the test */
+      global.window.innerWidth = 808;
+
       /* Set up the spies for the test */
       const getBoundingClientRectSpy = jest
         .spyOn(Element.prototype, 'getBoundingClientRect')
@@ -215,14 +218,6 @@ describe('Header Title Text', () => {
         })
         .mockImplementationOnce(() => {
           /* handleScreenWidth > reduceFontSizeAndWrapTextIfRequired > getTitleTextContentRightmostPosition (pre loop) */
-          return { right: 800 };
-        })
-        .mockImplementationOnce(() => {
-          /* handleScreenWidth > reduceFontSizeAndWrapTextIfRequired > getWidthOfHeadingElement (pre loop) */
-          return { right: 800 };
-        })
-        .mockImplementationOnce(() => {
-          /* handleScreenWidth > reduceFontSizeAndWrapTextIfRequired > getWidthOfHeadingElement (after loop) */
           return { right: 800 };
         })
         .mockImplementationOnce(() => {
@@ -283,7 +278,7 @@ describe('Header Title Text', () => {
 
     beforeAll(() => {
       /* Set up the mock viewport width for the test */
-      global.window.innerWidth = 750;
+      global.window.innerWidth = 758;
 
       /* Set up the spies for the test */
       const getBoundingClientRectSpy = jest
@@ -438,8 +433,8 @@ describe('Header Title Text', () => {
         });
       const getScreenWidthSpy = jest
         .spyOn(HeaderTitleText.prototype, 'getScreenWidth')
-        .mockImplementationOnce(() => { return 750; })
-        .mockImplementationOnce(() => { return 740; });
+        .mockImplementationOnce(() => { return 758; })
+        .mockImplementationOnce(() => { return 748; });
       /* Mount the component*/
       const { unmount } = render(
         <React.Fragment>
@@ -545,8 +540,8 @@ describe('Header Title Text', () => {
         });
       const getScreenWidthSpy = jest
         .spyOn(HeaderTitleText.prototype, 'getScreenWidth')
-        .mockImplementationOnce(() => { return 750; })
-        .mockImplementationOnce(() => { return 740; });
+        .mockImplementationOnce(() => { return 758; })
+        .mockImplementationOnce(() => { return 748; });
       /* Mount the component*/
       const { unmount } = render(
         <React.Fragment>
@@ -637,9 +632,9 @@ describe('Header Title Text', () => {
         });
       const getScreenWidthSpy = jest
         .spyOn(HeaderTitleText.prototype, 'getScreenWidth')
-        .mockImplementationOnce(() => { return 750; })
-        .mockImplementationOnce(() => { return 740; })
-        .mockImplementationOnce(() => { return 650; });
+        .mockImplementationOnce(() => { return 758; })
+        .mockImplementationOnce(() => { return 748; })
+        .mockImplementationOnce(() => { return 658; });
       /* Mount the component*/
       const { unmount } = render(
         <React.Fragment>
