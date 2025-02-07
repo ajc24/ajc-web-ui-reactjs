@@ -25,6 +25,9 @@ const config = {
     "../stories/images/FunctionalImage.stories.js",
     "../stories/images/InformativeImage.stories.js",
 
+    /* Mock page component stories */
+    "../stories/mock-pages/TullowhillCavaliersHome.stories.js",
+
     /* Template component stories */
     "../stories/templates/BaseComponents.stories.js",
   ],
