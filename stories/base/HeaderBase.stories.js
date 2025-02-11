@@ -49,6 +49,12 @@ TallSizeGreyBackgroundRedTopBorder.args = {
   topBorder: 'red',
 };
 
+export const DefaultSizeWhiteBackgroundGreenTopBorder = Template_HeaderBase.bind({});
+DefaultSizeWhiteBackgroundGreenTopBorder.args = {
+  backgroundColour: 'white',
+  topBorder: 'green',
+};
+
 export const TallSizeBackgroundImage = Template_HeaderBase.bind({});
 TallSizeBackgroundImage.args = {
   backgroundImageSrc: tallHeaderBgImage,

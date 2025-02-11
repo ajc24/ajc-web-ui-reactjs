@@ -4,6 +4,7 @@
 /* Import the base components */
 import HeaderBase from './components/base/HeaderBase';
 import ImageBase from './components/base/ImageBase';
+import MenuBarBase from './components/base/MenuBarBase';
 
 // /* Import the header components */
 // import SmallHeader from './components/header/SmallHeader';
@@ -18,6 +19,7 @@ import ImageBase from './components/base/ImageBase';
 export {
   HeaderBase,
   ImageBase,
+  MenuBarBase,
   // DecorativeImage,
   // FunctionalImage,
   // InformativeImage,

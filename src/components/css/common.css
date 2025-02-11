@@ -5,8 +5,20 @@
   background-color: transparent;
 } */
 
+.background-green {
+  background-color: #1F862F;
+}
+
 .background-grey {
   background-color: #F6F6F6;
+}
+
+.background-grey-2 {
+  background-color: #757575;
+}
+
+.background-red {
+  background-color: #EC0000;
 }
 
 .background-white {
@@ -23,13 +35,7 @@
 
 /* .hidden {
   display: none;
-}
-
-.inner-content {
-  max-width: 992px;
-  min-width: 328px;
-  width: 100%;
-} */
+}*/
 
 .screen-width-content-inner {
   max-width: 1248px;

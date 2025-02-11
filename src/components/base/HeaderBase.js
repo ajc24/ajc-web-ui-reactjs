@@ -56,7 +56,9 @@ const HeaderBase = props => {
     props.backgroundColour === 'grey' ? outerContentCss += ' background-grey' : outerContentCss += ' background-white';
   }
   /* Set the top border for the outer content element if required */
-  (props.topBorder === 'grey' || props.topBorder === 'red') ? outerContentCss += ` header-border-top-${props.topBorder}` : outerContentCss += ''.trim();
+  (props.topBorder === 'grey' || props.topBorder === 'red' || props.topBorder === 'green')
+    ? outerContentCss += ` header-border-top-${props.topBorder}`
+    : outerContentCss += ''.trim();
 
   /* Set the styling for the inner content element */
   const innerContentCss = 'header-content-inner screen-width-content-inner';
@@ -82,6 +84,6 @@ HeaderBase.propTypes = {
   /** The size of the header ranging from default / small (160px) to tall (320px). */
   size: PropTypes.oneOf([ 'default', 'small', 'tall' ]),
   /** Whether to enable the headers upper / top border and the colour at which the border is to be rendered if enabled. The default setting for the border is off. */
-  topBorder: PropTypes.oneOf([ 'off', 'grey', 'red' ]),
+  topBorder: PropTypes.oneOf([ 'off', 'green', 'grey', 'red' ]),
 };
 export default HeaderBase;

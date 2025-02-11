@@ -7,6 +7,10 @@
   justify-content: center;
 }
 
+.header-border-top-green {
+  border-top: 4px solid #1F862F;
+}
+
 .header-border-top-grey {
   border-top: 4px solid #757575;
 }
@@ -32,9 +36,10 @@
 
 .header-small {
   height: 160px;
+  overflow-y: hidden;
 }
 
 .header-tall {
-  overflow-y: hidden;
   height: 320px;
+  overflow-y: hidden;
 }
