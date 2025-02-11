@@ -1,11 +1,11 @@
 /**
- * Developed by Anthony Cox in 2024
+ * Developed by Anthony Cox in 2025
  */
 import React from 'react';
 import { cleanup, render } from '@testing-library/react';
 import { TestDev } from 'ajc-testing-code';
-import ImageBase from '../../../src/components/base/ImageBase';
-import benjiLogo from '../../../src/components/images/files/logo-benji.png';
+import { ImageBase } from '../../../src';
+import storybookLogo from '../../../stories/images/files/storybook-logo.svg';
 
 describe('Image Base', () => {
   const testTimeout = TestDev.getAxeTestTimeout();
@@ -29,7 +29,7 @@ describe('Image Base', () => {
           </div>
           <main id="main-content" aria-label="Accessibility test">
             <h1>Image Base Accessibility Test</h1>
-            <ImageBase id="decorative-image-1" src={benjiLogo} />
+            <ImageBase id="decorative-image-1" src={storybookLogo} />
           </main>
           <footer role="contentinfo">
             Footer component
@@ -61,7 +61,7 @@ describe('Image Base', () => {
           </div>
           <main id="main-content" aria-label="Accessibility test">
             <h1>Image Base Accessibility Test</h1>
-            <ImageBase id="informative-image-1" src={benjiLogo} height={500} width={300} alt="Informative image alt text" />
+            <ImageBase id="informative-image-1" src={storybookLogo} height={500} width={300} alt="Informative image alt text" />
           </main>
           <footer role="contentinfo">
             Footer component

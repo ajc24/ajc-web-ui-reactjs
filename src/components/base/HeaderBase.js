@@ -1,13 +1,13 @@
 /**
- * Developed by Anthony Cox in 2024
+ * Developed by Anthony Cox in 2025
  */
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import PageTemplateConfig from '../modules/PageTemplateConfig';
 import '../css/common.css';
-import './css/header-base.css';
+import './css/base-header.css';
 
-const defaultComponentId = 'default-id--header-container';
+const defaultComponentId = 'default-id--header-base';
 const defaultComponentSize = 'default';
 
 /**
@@ -15,97 +15,73 @@ const defaultComponentSize = 'default';
  * This baseline auto-handles screen widths from the most commonly used mobile screen sizes (360x800) to the most commonly used desktop sizes (1920x1080).
  * The default and small heights of the component is 160px. The tall height of the component is 320px.
  */
-class HeaderBase extends React.Component {
-  /**
-   * Initialise the Header Base component
-   * @param {any} props 
-   */
-  constructor(props) {
-    super(props);
-    this.state = {
-      id: defaultComponentId,
-      size: defaultComponentSize,
-    };
-    this.setId = this.setId.bind(this);
-    this.setSize = this.setSize.bind(this);
+const HeaderBase = props => {
+  const [id, setId] = useState(defaultComponentId);
+  const [size, setSize] = useState(defaultComponentSize);
+  const outerContentRef = useRef(null);
 
-    /* Create the references for this component */
-    this.contentContainerRef = React.createRef();
-  }
-
-  componentDidMount() {
-    /* Set the ID for the component */
-    if (this.props.id !== undefined) {
-      this.setId(`${this.props.id}--header-container`);
-    }
-    /* Set the size for the component */
-    if (this.props.size !== undefined) {
-      if (this.props.size === 'default' || this.props.size === 'small' || this.props.size === 'tall') {
-        /* Set the declared supported size for this component */
-        this.setSize(this.props.size);
-      } else {
-        /* An invalid size was specified - set to default size */
-        this.setSize('default');
-      }
-    }
+  useEffect(() => {
     /* Setup the default CSS styling for the page which is rendering this component */
     PageTemplateConfig.setupDocumentBodyCss();
 
-    /* Set the background image to the header component */
-    if (this.props.backgroundImageSrc !== undefined) {
-      this.contentContainerRef.current.style.backgroundImage = `url(${this.props.backgroundImageSrc})`;
+    /* Set the ID for the component */
+    if (props.id !== undefined) {
+      setId(`${props.id}--header-base`);
     }
-  }
-
-  /**
-   * Sets the ID for the base header component
-   * @param {string} newId 
-   */
-  setId(newId) {
-    this.setState({
-      id: newId,
-    });
-  }
-
-  /**
-   * Sets the size for the base header component
-   * @param {'default'|'small'|'tall'} newSize 
-   */
-  setSize(newSize) {
-    this.setState({
-      size: newSize,
-    });
-  }
-
-  render() {
-    /* Set the CSS class lists for all DOM elements */
-    let headerContainerCss = 'header-container background-white';
-    if (this.state.size === 'tall') {
-      /* Set the taller header baseline to be rendered */
-      headerContainerCss += ' header-container-size-tall';
-    } else {
-      /* Set the smaller header baseline to be rendered as a default */
-      headerContainerCss += ' header-container-size-small';
+    /* Set the size for the component */
+    if (props.size !== undefined) {
+      if (props.size === 'default' || props.size === 'small' || props.size === 'tall') {
+        /* Set the declared supported size for this component */
+        setSize(props.size);
+      } else {
+        /* An invalid size was specified - set to default size */
+        setSize('default');
+      }
     }
-    const headerContentContainerCss = 'header-content-container background-transparent';
+    /* Set the background image to the outer content element */
+    if (props.backgroundImageSrc !== undefined) {
+      outerContentRef.current.style.backgroundImage = `url(${props.backgroundImageSrc})`;
+      outerContentRef.current.dataset.bgimage = 'true';
+    }
+  });
 
-    return (
-      <header role="banner" id={this.state.id} className={headerContainerCss}>
-        <div className={headerContentContainerCss} ref={this.contentContainerRef}>
-          {this.props.children}
+  /* Set the styling for the header element */
+  let headerCss = 'header screen-width-root background-white';
+  size === 'tall' ? headerCss += ' header-tall' : headerCss += ' header-small';
+  
+  /* Set the styling for the outer content element */
+  let outerContentCss = 'header-content-outer screen-width-content-outer';
+  if (props.backgroundImageSrc === undefined) {
+    /* Set the background colour for the header only if a background image is not defined */
+    props.backgroundColour === 'grey' ? outerContentCss += ' background-grey' : outerContentCss += ' background-white';
+  }
+  /* Set the top border for the outer content element if required */
+  (props.topBorder === 'grey' || props.topBorder === 'red') ? outerContentCss += ` header-border-top-${props.topBorder}` : outerContentCss += ''.trim();
+
+  /* Set the styling for the inner content element */
+  const innerContentCss = 'header-content-inner screen-width-content-inner';
+  return (
+    <header role="banner" id={id} className={headerCss}>
+      <div className={outerContentCss} ref={outerContentRef} data-bgimage="false">
+        <div className={innerContentCss}>
+          {props.children}
         </div>
-      </header>
-    );
-  };
+      </div>
+    </header>
+  );
 }
 HeaderBase.propTypes = {
-  /** The background image data to be displayed. */
+  /** The background colour for the header. The default colour for the background is white. */
+  backgroundColour: PropTypes.oneOf([ 'white', 'grey' ]),
+  /** The background image data to be displayed. Depending on your choice of header size, your background image should suit the dimensions0 of 1920x160 (small) or 1920x320 (tall). */
   backgroundImageSrc: PropTypes.oneOfType([ PropTypes.string, PropTypes.object ]),
-  /** The content to be displayed within the header template component. */
+  /** The content to be displayed within the header component. */
   children: PropTypes.any,
-  /** The unique identifier for this component. */
+  /** The unique identifier for the header. */
   id: PropTypes.string,
-  /** The size of the component ranging from default / small (160px) to tall (320px). */
+  /** The size of the header ranging from default / small (160px) to tall (320px). */
   size: PropTypes.oneOf([ 'default', 'small', 'tall' ]),
+  /** Whether to enable the headers upper / top border and the colour at which the border is to be rendered if enabled. The default setting for the border is off. */
+  topBorder: PropTypes.oneOf([ 'off', 'grey', 'red' ]),
 };
 export default HeaderBase;

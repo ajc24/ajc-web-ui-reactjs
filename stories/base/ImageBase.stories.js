@@ -2,17 +2,17 @@
  * Developed by Anthony Cox in 2024
  */
 import React from 'react';
-import ImageBase from '../../src/components/base/ImageBase';
+import { ImageBase } from '../../src';
 import storybookLogo from '../images/files/storybook-logo.svg';
 
 export default {
-  title: 'Base/Image Base',
+  title: 'Base Components/Image Base',
   component: ImageBase,
   tags: ['autodocs'],
 };
 
 /**
- * Image Base component template to be used in all stories
+ * Image Base component template
  * @param {JSON} args 
  * @returns {React.Component}
  */

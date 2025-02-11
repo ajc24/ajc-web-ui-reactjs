@@ -1,9 +1,9 @@
 /**
- * Developed by Anthony Cox in 2024
+ * Developed by Anthony Cox in 2025
  */
-.background-transparent {
+/* .background-transparent {
   background-color: transparent;
-}
+} */
 
 .background-grey {
   background-color: #F6F6F6;
@@ -21,6 +21,30 @@
   overflow-y: scroll;
 }
 
-.hidden {
+/* .hidden {
   display: none;
+}
+
+.inner-content {
+  max-width: 992px;
+  min-width: 328px;
+  width: 100%;
+} */
+
+.screen-width-content-inner {
+  max-width: 1248px;
+  min-width: 312px;
+  padding-left: 16px;
+  padding-right: 16px;
+  width: 100%;
+}
+
+.screen-width-content-outer {
+  max-width: 1920px;
+  min-width: 344px;
+  width: inherit;
+}
+
+.screen-width-root {
+  width: 100%;
 }

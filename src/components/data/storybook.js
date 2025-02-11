@@ -1,5 +1,5 @@
 /**
- * Developed by Anthony Cox in 2024
+ * Developed by Anthony Cox in 2025
  */
 
 /* List of Storybook-oriented CSS classes */

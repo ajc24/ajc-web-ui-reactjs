@@ -4,8 +4,8 @@
 import 'jsdom-global/register';
 import React from 'react';
 import { TestDev } from 'ajc-testing-code';
-import ImageBase from '../../../src/components/base/ImageBase';
-import benjiLogo from '../../../src/components/images/files/logo-benji.png';
+import { ImageBase } from '../../../src';
+import storybookLogo from '../../../stories/images/files/storybook-logo.svg';
 
 describe('Image Base', () => {
   describe('Decorative image with default parameters', () => {
@@ -14,7 +14,7 @@ describe('Image Base', () => {
     beforeAll(() => {
       snapshot = TestDev.createSnapshot(
         <React.Fragment>
-          <ImageBase id="decorative-image-1" src={benjiLogo} />
+          <ImageBase id="decorative-image-1" src={storybookLogo} />
         </React.Fragment>
       );
     });
@@ -30,7 +30,7 @@ describe('Image Base', () => {
     beforeAll(() => {
       snapshot = TestDev.createSnapshot(
         <React.Fragment>
-          <ImageBase id="informative-image-1" src={benjiLogo} height={500} width={300} alt="Informative image alt text" />
+          <ImageBase id="informative-image-1" src={storybookLogo} height={500} width={300} alt="Informative image alt text" />
         </React.Fragment>
       );
     });

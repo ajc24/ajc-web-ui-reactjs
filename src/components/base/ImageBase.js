@@ -1,9 +1,9 @@
 /**
- * Developed by Anthony Cox in 2024
+ * Developed by Anthony Cox in 2025
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import './css/image-base.css';
+import './css/base-image.css';
 
 /**
  * Baseline component for rendering images in the application.

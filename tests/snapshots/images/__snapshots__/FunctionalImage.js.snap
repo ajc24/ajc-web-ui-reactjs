@@ -1,5 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Functional Image With custom parameters verifies the snapshot for the component 1`] = `"<img id="functional-image-2--functional-image" class="image" width="500" height="300" alt="Custom functional component alt text" src="[object Object]">"`;
-
-exports[`Functional Image With default parameters verifies the snapshot for the component 1`] = `"<img id="functional-image-1--functional-image" class="image" width="100" height="100" alt="Default functional component alt text" src="[object Object]">"`;

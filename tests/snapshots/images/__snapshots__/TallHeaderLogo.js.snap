@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Tall Header Logo Default logo image with no header upper border rendered verifies the snapshot for the component 1`] = `"<div class="image-tall-header-logo-alignment"><img id="tall-header-logo--tall-header-logo--decorative-image" class="image" width="328" height="304" alt="" src="[object Object]"></div>"`;
-
-exports[`Tall Header Logo Tall header logo image with header upper border rendered verifies the snapshot for the component 1`] = `"<div class="image-tall-header-logo-alignment"><img id="tall-header-logo--tall-header-logo--decorative-image" class="image" width="328" height="300" alt="" src="[object Object]"></div>"`;
-
-exports[`Tall Header Logo Tall header logo image with no header upper border rendered verifies the snapshot for the component 1`] = `"<div class="image-tall-header-logo-alignment"><img id="tall-header-logo--tall-header-logo--decorative-image" class="image" width="328" height="304" alt="" src="[object Object]"></div>"`;

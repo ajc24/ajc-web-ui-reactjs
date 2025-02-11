@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Header Subtitle Text Component with small header element type, default text colour verifies the snapshot for the component 1`] = `"<div id="test-header-subtitle-text-id--subtitle-text" class="title-or-subtitle-text-container background-transparent title-or-subtitle-text-container-small-header"><p class="subtitle-text-container title-text-font-black" aria-hidden="false">Header subtitle text component text content.</p></div>"`;
-
-exports[`Header Subtitle Text Component with small header element type, white text colour, element marked as hidden verifies the snapshot for the component 1`] = `"<div id="test-header-subtitle-text-id--subtitle-text" class="title-or-subtitle-text-container background-transparent title-or-subtitle-text-container-small-header"><p class="subtitle-text-container title-text-font-white hidden" aria-hidden="true">Header subtitle text component text content.</p></div>"`;
-
-exports[`Header Subtitle Text Component with tall header element type, black text colour verifies the snapshot for the component 1`] = `"<div id="test-header-subtitle-text-id--subtitle-text" class="title-or-subtitle-text-container background-transparent title-or-subtitle-text-container-tall-header"><p class="subtitle-text-container title-text-font-black" aria-hidden="false">Header subtitle text component text content.</p></div>"`;
-
-exports[`Header Subtitle Text Component with undefined / default header element type, default text colour verifies the snapshot for the component 1`] = `"<div id="test-header-subtitle-text-id--subtitle-text" class="title-or-subtitle-text-container background-transparent title-or-subtitle-text-container-small-header"><p class="subtitle-text-container title-text-font-black" aria-hidden="false">Header subtitle text component text content.</p></div>"`;

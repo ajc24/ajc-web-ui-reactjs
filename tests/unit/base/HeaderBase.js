@@ -1,5 +1,5 @@
 /**
- * Developed by Anthony Cox in 2024
+ * Developed by Anthony Cox in 2025
  */
 import React from 'react';
 import { cleanup, render } from '@testing-library/react';
@@ -10,8 +10,8 @@ import headerBgImage from '../../../stories/images/files/header-bg-image.png';
 describe('Header Base', () => {
   /* Set the IDs for use in the tests */
   const customId = 'custom-id';
-  const defaultHeaderContainerId = 'default-id--header-container';
-  const customHeaderContainerId = `${customId}--header-container`;
+  const defaultHeaderBaseId = 'default-id--header-base';
+  const customHeaderBaseId = `${customId}--header-base`;
 
   /* Set the spies for use in the tests */
   let setupDocumentBodyCssSpy;
@@ -26,10 +26,11 @@ describe('Header Base', () => {
     setupDocumentBodyCssSpy.mockRestore();
   });
 
-  describe('Component with default id', () => {
+  describe('Default component', () => {
     const testData = [];
 
     beforeAll(() => {
+      /* Mount the component */
       const { unmount } = render(
         <React.Fragment>
           <HeaderBase>
@@ -38,196 +39,311 @@ describe('Header Base', () => {
         </React.Fragment>
       );
       /* Build the DOM elements required for the tests */
-      const headerContainer = document.querySelector(`header[id="${defaultHeaderContainerId}"]`);
-      const headerContentContainer = document.querySelector(`header[id="${defaultHeaderContainerId}"] > div`);
+      const header = document.querySelector(`header[id="${defaultHeaderBaseId}"]`);
+      const outerContent = document.querySelector(`header[id="${defaultHeaderBaseId}"] > div`);
+      const innerContent = document.querySelector(`header[id="${defaultHeaderBaseId}"] > div > div`);
       
-      /* Verifies that the id attribute is set correctly to the container element */
-      testData.push(headerContainer);
-      
-      /* Verifies that the children components are rendered within the content container element */
-      testData.push(headerContentContainer);
+      /* Verifies that the id attribute is set correctly to the header element */
+      testData.push(header);
 
-      /* Verifies that the "header-container-size-small" class is set to the container element */
-      /* Verifies that the "header-container-size-tall" class is not set to the container element */
-      testData.push(headerContainer.classList);
+      /* Verifies that the "header-small" class is set to the header element */
+      /* Verifies that the "header-tall" class is not set to the header element */
+      testData.push(header.classList);
+
+      /* Verifies that the "background-grey" class is not set to the outer content element */
+      /* Verifies that the "background-white" class is set to the outer content element */
+      /* Verifies that the "header-border-top-grey" class is not set to the outer content element */
+      /* Verifies that the "header-border-top-red" class is not set to the outer content element */
+      testData.push(outerContent.classList);
+
+      /* Verifies that no background image is rendered in the outer content element */
+      testData.push(outerContent.dataset.bgimage);
+
+      /* Verifies that the children components are rendered within the inner content element */
+      testData.push(innerContent.textContent);
+
+      /* Verifies that by default the PageTemplateConfig.setupDocumentBodyCss functionality is invoked once */
+      testData.push(setupDocumentBodyCssSpy.mock.calls.length);
 
       /* Unmount the component and clean up the test */
       unmount();
       cleanup();
     });
 
-    it('verifies that the id attribute is set correctly to the container element', () => {
+    it('verifies that the id attribute is set correctly to the header element', () => {
       expect(testData[0]).not.toBeNull();
     });
 
-    it('verifies that the children components are rendered within the content container element', () => {
-      expect(testData[1].textContent).toBe('Header base text content.');
+    it('verifies that the "header-small" class is set to the header element', () => {
+      expect(testData[1].contains('header-small')).toBeTruthy();
     });
 
-    it('verifies that the "header-container-size-small" class is set to the container element', () => {
-      expect(testData[2].contains('header-container-size-small')).toBeTruthy();
+    it('verifies that the "header-tall" class is not set to the header element', () => {
+      expect(testData[1].contains('header-tall')).toBeFalsy();
     });
 
-    it('verifies that the "header-container-size-tall" class is not set to the container element', () => {
-      expect(testData[2].contains('header-container-size-tall')).toBeFalsy();
+    it('verifies that the "background-grey" class is not set to the outer content element', () => {
+      expect(testData[2].contains('background-grey')).toBeFalsy();
+    });
+
+    it('verifies that the "background-white" class is set to the outer content element', () => {
+      expect(testData[2].contains('background-white')).toBeTruthy();
+    });
+
+    it('verifies that the "header-border-top-grey" class is not set to the outer content element', () => {
+      expect(testData[2].contains('header-border-top-grey')).toBeFalsy();
+    });
+
+    it('verifies that the "header-border-top-red" class is not set to the outer content element', () => {
+      expect(testData[2].contains('header-border-top-red')).toBeFalsy();
+    });
+
+    it('verifies that no background image is rendered in the outer content element', () => {
+      expect(testData[3]).toBe('false');
+    });
+
+    it('verifies that the children components are rendered within the inner content element', () => {
+      expect(testData[4]).toBe('Header base text content.');
+    });
+
+    it('verifies that by default the PageTemplateConfig.setupDocumentBodyCss functionality is invoked once', () => {
+      expect(testData[5]).toBe(1);
     });
   });
 
-  describe('Component with custom id', () => {
+  describe('Component with custom id, invalid size, no background image, grey background, invalid top border', () => {
     const testData = [];
 
     beforeAll(() => {
+      /* Mount the component */
       const { unmount } = render(
         <React.Fragment>
-          <HeaderBase id={customId}>
+          <HeaderBase id={customId} size="invalid" backgroundImageSrc={undefined} backgroundColour="grey" topBorder="invalid">
             Header base text content.
           </HeaderBase>
         </React.Fragment>
       );
       /* Build the DOM elements required for the tests */
-      const headerContainer = document.querySelector(`header[id="${customHeaderContainerId}"]`);
-       
-      /* Verifies that the id attribute is set correctly to the container element */
-      testData.push(headerContainer);
-      
+      const header = document.querySelector(`header[id="${customHeaderBaseId}"]`);
+      const outerContent = document.querySelector(`header[id="${customHeaderBaseId}"] > div`);
+
+      /* Verifies that the id attribute is set correctly to the header element */
+      testData.push(header);
+
+      /* Verifies that the "header-small" class is set to the header element */
+      /* Verifies that the "header-tall" class is not set to the header element */
+      testData.push(header.classList);
+
+      /* Verifies that the "background-grey" class is set to the outer content element */
+      /* Verifies that the "background-white" class is not set to the outer content element */
+      /* Verifies that the "header-border-top-grey" class is not set to the outer content element */
+      /* Verifies that the "header-border-top-red" class is not set to the outer content element */
+      testData.push(outerContent.classList);
+
+      /* Verifies that no background image is rendered in the outer content element */
+      testData.push(outerContent.dataset.bgimage);
+
       /* Unmount the component and clean up the test */
       unmount();
       cleanup();
     });
 
-    it('verifies that the id attribute is set correctly to the container element', () => {
+    it('verifies that the id attribute is set correctly to the header element', () => {
       expect(testData[0]).not.toBeNull();
     });
+
+    it('verifies that the "header-small" class is set to the header element', () => {
+      expect(testData[1].contains('header-small')).toBeTruthy();
+    });
+
+    it('verifies that the "header-tall" class is not set to the header element', () => {
+      expect(testData[1].contains('header-tall')).toBeFalsy();
+    });
+
+    it('verifies that the "background-grey" class is set to the outer content element', () => {
+      expect(testData[2].contains('background-grey')).toBeTruthy();
+    });
+
+    it('verifies that the "background-white" class is not set to the outer content element', () => {
+      expect(testData[2].contains('background-white')).toBeFalsy();
+    });
+
+    it('verifies that the "header-border-top-grey" class is not set to the outer content element', () => {
+      expect(testData[2].contains('header-border-top-grey')).toBeFalsy();
+    });
+
+    it('verifies that the "header-border-top-red" class is not set to the outer content element', () => {
+      expect(testData[2].contains('header-border-top-red')).toBeFalsy();
+    });
+
+    it('verifies that no background image is rendered in the outer content element', () => {
+      expect(testData[3]).toBe('false');
+    });
   });
 
-  describe('Component with small size', () => {
+  describe('Component with default id, small size, no background image, white background, grey top border', () => {
     const testData = [];
 
     beforeAll(() => {
+      /* Mount the component */
       const { unmount } = render(
         <React.Fragment>
-          <HeaderBase size="small">
+          <HeaderBase size="small" backgroundImageSrc={undefined} backgroundColour="white" topBorder="grey">
             Header base text content.
           </HeaderBase>
         </React.Fragment>
       );
       /* Build the DOM elements required for the tests */
-      const headerContainer = document.querySelector(`header[id="${defaultHeaderContainerId}"]`);
-      
-      /* Verifies that the "header-container-size-small" class is set to the container element */
-      /* Verifies that the "header-container-size-tall" class is not set to the container element */
-      testData.push(headerContainer.classList);
+      const header = document.querySelector(`header[id="${defaultHeaderBaseId}"]`);
+      const outerContent = document.querySelector(`header[id="${defaultHeaderBaseId}"] > div`);
+
+      /* Verifies that the "header-small" class is set to the header element */
+      /* Verifies that the "header-tall" class is not set to the header element */
+      testData.push(header.classList);
+
+      /* Verifies that the "background-grey" class is not set to the outer content element */
+      /* Verifies that the "background-white" class is set to the outer content element */
+      /* Verifies that the "header-border-top-grey" class is set to the outer content element */
+      /* Verifies that the "header-border-top-red" class is not set to the outer content element */
+      testData.push(outerContent.classList);
+
+      /* Verifies that no background image is rendered in the outer content element */
+      testData.push(outerContent.dataset.bgimage);
 
       /* Unmount the component and clean up the test */
       unmount();
       cleanup();
     });
 
-    it('verifies that the "header-container-size-small" class is set to the container element', () => {
-      expect(testData[0].contains('header-container-size-small')).toBeTruthy();
+    it('verifies that the "header-small" class is set to the header element', () => {
+      expect(testData[0].contains('header-small')).toBeTruthy();
     });
 
-    it('verifies that the "header-container-size-tall" class is not set to the container element', () => {
-      expect(testData[0].contains('header-container-size-tall')).toBeFalsy();
+    it('verifies that the "header-tall" class is not set to the header element', () => {
+      expect(testData[0].contains('header-tall')).toBeFalsy();
+    });
+
+    it('verifies that the "background-grey" class is not set to the outer content element', () => {
+      expect(testData[1].contains('background-grey')).toBeFalsy();
+    });
+
+    it('verifies that the "background-white" class is set to the outer content element', () => {
+      expect(testData[1].contains('background-white')).toBeTruthy();
+    });
+
+    it('verifies that the "header-border-top-grey" class is set to the outer content element', () => {
+      expect(testData[1].contains('header-border-top-grey')).toBeTruthy();
+    });
+
+    it('verifies that the "header-border-top-red" class is not set to the outer content element', () => {
+      expect(testData[1].contains('header-border-top-red')).toBeFalsy();
+    });
+
+    it('verifies that no background image is rendered in the outer content element', () => {
+      expect(testData[2]).toBe('false');
     });
   });
 
-  describe('Component with tall size', () => {
+  describe('Component with default id, tall size, no background image, default background, red top border', () => {
     const testData = [];
 
     beforeAll(() => {
+      /* Mount the component */
       const { unmount } = render(
         <React.Fragment>
-          <HeaderBase size="tall">
+          <HeaderBase size="tall" backgroundImageSrc={undefined} topBorder="red">
             Header base text content.
           </HeaderBase>
         </React.Fragment>
       );
       /* Build the DOM elements required for the tests */
-      const headerContainer = document.querySelector(`header[id="${defaultHeaderContainerId}"]`);
-      
-      /* Verifies that the "header-container-size-small" class is not set to the container element */
-      /* Verifies that the "header-container-size-tall" class is set to the container element */
-      testData.push(headerContainer.classList);
+      const header = document.querySelector(`header[id="${defaultHeaderBaseId}"]`);
+      const outerContent = document.querySelector(`header[id="${defaultHeaderBaseId}"] > div`);
+
+      /* Verifies that the "header-small" class is not set to the header element */
+      /* Verifies that the "header-tall" class is set to the header element */
+      testData.push(header.classList);
+
+      /* Verifies that the "header-border-top-grey" class is not set to the outer content element */
+      /* Verifies that the "header-border-top-red" class is set to the outer content element */
+      testData.push(outerContent.classList);
+
+      /* Verifies that no background image is rendered in the outer content element */
+      testData.push(outerContent.dataset.bgimage);
 
       /* Unmount the component and clean up the test */
       unmount();
       cleanup();
     });
 
-    it('verifies that the "header-container-size-small" class is not set to the container element', () => {
-      expect(testData[0].contains('header-container-size-small')).toBeFalsy();
+    it('verifies that the "header-small" class is not set to the header element', () => {
+      expect(testData[0].contains('header-small')).toBeFalsy();
     });
 
-    it('verifies that the "header-container-size-tall" class is set to the container element', () => {
-      expect(testData[0].contains('header-container-size-tall')).toBeTruthy();
+    it('verifies that the "header-tall" class is not set to the header element', () => {
+      expect(testData[0].contains('header-tall')).toBeTruthy();
+    });
+
+    it('verifies that the "header-border-top-grey" class is not set to the outer content element', () => {
+      expect(testData[1].contains('header-border-top-grey')).toBeFalsy();
+    });
+
+    it('verifies that the "header-border-top-red" class is set to the outer content element', () => {
+      expect(testData[1].contains('header-border-top-red')).toBeTruthy();
+    });
+
+    it('verifies that no background image is rendered in the outer content element', () => {
+      expect(testData[2]).toBe('false');
     });
   });
 
-  describe('Component with invalid size', () => {
-    let consoleErrorSpy;
+  describe('Component with default id, small size, with background image, default background, no top border', () => {
     const testData = [];
 
     beforeAll(() => {
-      consoleErrorSpy = jest
-        .spyOn(global.console, 'error')
-        .mockImplementation(() => {});
+      /* Mount the component */
       const { unmount } = render(
         <React.Fragment>
-          <HeaderBase size="unsupported_value">
+          <HeaderBase size="small" backgroundImageSrc={headerBgImage} topBorder="off">
             Header base text content.
           </HeaderBase>
         </React.Fragment>
       );
       /* Build the DOM elements required for the tests */
-      const headerContainer = document.querySelector(`header[id="${defaultHeaderContainerId}"]`);
-      
-      /* Verifies that the "header-container-size-small" class is set to the container element */
-      /* Verifies that the "header-container-size-tall" class is not set to the container element */
-      testData.push(headerContainer.classList);
+      const outerContent = document.querySelector(`header[id="${defaultHeaderBaseId}"] > div`);
+
+      /* Verifies that the "background-grey" class is not set to the outer content element */
+      /* Verifies that the "background-white" class is not set to the outer content element */
+      /* Verifies that the "header-border-top-grey" class is not set to the outer content element */
+      /* Verifies that the "header-border-top-red" class is not set to the outer content element */
+      testData.push(outerContent.classList);
+
+      /* Verifies that a background image is correctly rendered in the outer content element */
+      testData.push(outerContent.dataset.bgimage);
 
       /* Unmount the component and clean up the test */
       unmount();
       cleanup();
     });
 
-    afterAll(() => {
-      consoleErrorSpy.mockRestore();
+    it('verifies that the "background-grey" class is not set to the outer content element', () => {
+      expect(testData[0].contains('background-grey')).toBeFalsy();
     });
 
-    it('verifies that the "header-container-size-small" class is set to the container element', () => {
-      expect(testData[0].contains('header-container-size-small')).toBeTruthy();
+    it('verifies that the "background-white" class is not set to the outer content element', () => {
+      expect(testData[0].contains('background-white')).toBeFalsy();
     });
 
-    it('verifies that the "header-container-size-tall" class is not set to the container element', () => {
-      expect(testData[0].contains('header-container-size-tall')).toBeFalsy();
-    });
-  });
-
-  describe('Component with background image', () => {
-    const testData = [];
-
-    beforeAll(() => {
-      const { unmount } = render(
-        <React.Fragment>
-          <HeaderBase backgroundImageSrc={headerBgImage}>
-            Header base text content.
-          </HeaderBase>
-        </React.Fragment>
-      );
-      /* Build the DOM elements required for the tests */
-      const headerContentContainer = document.querySelector(`header[id="${defaultHeaderContainerId}"] > div`);
-      
-      /* Verifies that the background image of the content container element is set correctly */
-      testData.push(headerContentContainer.style.backgroundImage);
-
-      /* Unmount the component and clean up the test */
-      unmount();
-      cleanup();
+    it('verifies that the "header-border-top-grey" class is not set to the outer content element', () => {
+      expect(testData[0].contains('header-border-top-grey')).toBeFalsy();
     });
 
-    it('verifies that the background image of the content container element is set correctly', () => {
-      expect(testData[0]).toBeDefined();
+    it('verifies that the "header-border-top-red" class is not set to the outer content element', () => {
+      expect(testData[0].contains('header-border-top-red')).toBeFalsy();
+    });
+
+    it('verifies that a background image is correctly rendered in the outer content element', () => {
+      expect(testData[1]).toBe('true');
     });
   });
 });

@@ -3,8 +3,8 @@
  */
 import React from 'react';
 import { cleanup, render } from '@testing-library/react';
-import ImageBase from '../../../src/components/base/ImageBase';
-import benjiLogo from '../../../src/components/images/files/logo-benji.png';
+import { ImageBase } from '../../../src';
+import storybookLogo from '../../../stories/images/files/storybook-logo.svg';
 
 describe('Image Base', () => {
   /* Set the IDs for use in the tests */
@@ -28,7 +28,7 @@ describe('Image Base', () => {
         .mockImplementation(() => {});
       const { unmount } = render(
         <React.Fragment>
-          <ImageBase id={testImageId} src={benjiLogo} />
+          <ImageBase id={testImageId} src={storybookLogo} />
         </React.Fragment>
       );
       /* Build the DOM elements required for the tests */
@@ -93,7 +93,7 @@ describe('Image Base', () => {
         .mockImplementation(() => {});
       const { unmount } = render(
         <React.Fragment>
-          <ImageBase id={testImageId} src={benjiLogo} height="hello" width="world" alt={12345} />
+          <ImageBase id={testImageId} src={storybookLogo} height="hello" width="world" alt={12345} />
         </React.Fragment>
       );
       /* Build the DOM elements required for the tests */
@@ -141,7 +141,7 @@ describe('Image Base', () => {
         .mockImplementation(() => {});
       const { unmount } = render(
         <React.Fragment>
-          <ImageBase id={testImageId} src={benjiLogo} alt="" />
+          <ImageBase id={testImageId} src={storybookLogo} alt="" />
         </React.Fragment>
       );
       /* Build the DOM elements required for the tests */
@@ -174,7 +174,7 @@ describe('Image Base', () => {
         .mockImplementation(() => {});
       const { unmount } = render(
         <React.Fragment>
-          <ImageBase id={testImageId} src={benjiLogo} height={customImageHeight} width={customImageWidth} alt={customImageAlt} />
+          <ImageBase id={testImageId} src={storybookLogo} height={customImageHeight} width={customImageWidth} alt={customImageAlt} />
         </React.Fragment>
       );
       /* Build the DOM elements required for the tests */
@@ -217,7 +217,7 @@ describe('Image Base', () => {
     beforeAll(() => {
       const { unmount } = render(
         <React.Fragment>
-          <ImageBase id={testImageId} src={benjiLogo} height={customImageHeight} width={customImageWidth} alt={customImageAlt} />
+          <ImageBase id={testImageId} src={storybookLogo} height={customImageHeight} width={customImageWidth} alt={customImageAlt} />
         </React.Fragment>
       );
       /* Build the DOM elements required for the tests */
@@ -252,7 +252,7 @@ describe('Image Base', () => {
         .mockImplementation(() => mockPreventDefault());
       const { unmount } = render(
         <React.Fragment>
-          <ImageBase id={testImageId} src={benjiLogo} height={customImageHeight} width={customImageWidth} alt={customImageAlt} />
+          <ImageBase id={testImageId} src={storybookLogo} height={customImageHeight} width={customImageWidth} alt={customImageAlt} />
         </React.Fragment>
       );
       /* Build the DOM elements required for the tests */
@@ -285,7 +285,7 @@ describe('Image Base', () => {
         .mockImplementation(() => mockPreventDefault());
       const { unmount } = render(
         <React.Fragment>
-          <ImageBase id={testImageId} src={benjiLogo} height={customImageHeight} width={customImageWidth} alt={customImageAlt} />
+          <ImageBase id={testImageId} src={storybookLogo} height={customImageHeight} width={customImageWidth} alt={customImageAlt} />
         </React.Fragment>
       );
       /* Build the DOM elements required for the tests */
@@ -318,7 +318,7 @@ describe('Image Base', () => {
         .mockImplementation(() => mockPreventDefault());
       const { unmount } = render(
         <React.Fragment>
-          <ImageBase id={testImageId} src={benjiLogo} height={customImageHeight} width={customImageWidth} alt={customImageAlt} />
+          <ImageBase id={testImageId} src={storybookLogo} height={customImageHeight} width={customImageWidth} alt={customImageAlt} />
         </React.Fragment>
       );
       /* Build the DOM elements required for the tests */
@@ -350,7 +350,7 @@ describe('Image Base', () => {
         .spyOn(ImageBase.prototype, 'mouseDownDisableLeftAndCenterClickEvents');
       const { unmount } = render(
         <React.Fragment>
-          <ImageBase id={testImageId} src={benjiLogo} onClick={customOnClick} />
+          <ImageBase id={testImageId} src={storybookLogo} onClick={customOnClick} />
         </React.Fragment>
       );
       /* Build the DOM elements required for the tests */
@@ -386,7 +386,7 @@ describe('Image Base', () => {
         .spyOn(ImageBase.prototype, 'mouseDownDisableLeftAndCenterClickEvents');
       const { unmount } = render(
         <React.Fragment>
-          <ImageBase id={testImageId} src={benjiLogo} onClick={customOnClick} />
+          <ImageBase id={testImageId} src={storybookLogo} onClick={customOnClick} />
         </React.Fragment>
       );
       /* Build the DOM elements required for the tests */
@@ -422,7 +422,7 @@ describe('Image Base', () => {
         .spyOn(ImageBase.prototype, 'mouseDownDisableLeftAndCenterClickEvents');
       const { unmount } = render(
         <React.Fragment>
-          <ImageBase id={testImageId} src={benjiLogo} onClick={customOnClick} />
+          <ImageBase id={testImageId} src={storybookLogo} onClick={customOnClick} />
         </React.Fragment>
       );
       /* Build the DOM elements required for the tests */

@@ -1,5 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Menu Bar Base Component with custom id verifies the snapshot for the component 1`] = `"<nav id="custom-id--menu-bar-container" class="menu-bar-container background-white"><div class="menu-bar-content-container background-transparent">Menu bar base text content.</div></nav>"`;
-
-exports[`Menu Bar Base Component with default id verifies the snapshot for the component 1`] = `"<nav id="default-id--menu-bar-container" class="menu-bar-container background-white"><div class="menu-bar-content-container background-transparent">Menu bar base text content.</div></nav>"`;
