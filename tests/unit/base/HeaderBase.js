@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import { cleanup, render } from '@testing-library/react';
-import HeaderBase from '../../../src/components/base/HeaderBase';
+import { HeaderBase } from '../../../src';
 import PageTemplateConfig from '../../../src/components/modules/PageTemplateConfig';
 import headerBgImage from '../../../stories/images/files/header-bg-image.png';
 

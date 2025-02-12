@@ -6,8 +6,6 @@ import { cleanup, render } from '@testing-library/react';
 import { TestDev } from 'ajc-testing-code';
 import { MenuBarBase } from '../../../src';
 import PageTemplateConfig from '../../../src/components/modules/PageTemplateConfig';
-import headerBgImage from '../../../stories/images/files/header-bg-image.png';
-import tallHeaderBgImage from '../../../stories/images/files/tall-header-bg-image.jpg';
 
 describe('Menu Bar Base', () => {
   let setupDocumentBodyCssSpy;
