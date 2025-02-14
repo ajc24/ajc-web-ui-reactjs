@@ -7,29 +7,29 @@
  */
 const config = {
   stories: [
-    /* Base component stories */
-    "../stories/base/FooterBase.stories.js",
-    // "../stories/base/HeaderBase.stories.js",
-    // "../stories/base/HeaderSubtitleText.stories.js",
-    // "../stories/base/HeaderTitleText.stories.js",
-    // "../stories/base/ImageBase.stories.js",
+    /* Page template stories */
+    "../stories/base/HeaderBase.stories.js",
     "../stories/base/MainBase.stories.js",
     "../stories/base/MenuBarBase.stories.js",
+    "../stories/mock-pages/FullPageTemplate.stories.js",
 
+    /* Base component stories */
+    "../stories/base/ImageBase.stories.js",
+    // "../stories/base/FooterBase.stories.js",
+    // "../stories/base/HeaderSubtitleText.stories.js",
+    // "../stories/base/HeaderTitleText.stories.js",
+    
     /* Header component stories */
-    "../stories/header/SmallHeader.stories.js",
-    "../stories/header/TallHeader.stories.js",
+    // "../stories/header/SmallHeader.stories.js",
+    // "../stories/header/TallHeader.stories.js",
 
     /* Image component stories */
-    "../stories/images/DecorativeImage.stories.js",
-    "../stories/images/FunctionalImage.stories.js",
-    "../stories/images/InformativeImage.stories.js",
+    // "../stories/images/DecorativeImage.stories.js",
+    // "../stories/images/FunctionalImage.stories.js",
+    // "../stories/images/InformativeImage.stories.js",
 
     /* Mock page component stories */
-    "../stories/mock-pages/TullowhillCavaliersHome.stories.js",
-
-    /* Template component stories */
-    "../stories/templates/BaseComponents.stories.js",
+    // "../stories/mock-pages/TullowhillCavaliersHome.stories.js",
   ],
   addons: [
     '@chromatic-com/storybook',
