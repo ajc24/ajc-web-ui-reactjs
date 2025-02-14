@@ -8,6 +8,7 @@
 const config = {
   stories: [
     /* Page template stories */
+    "../stories/base/FooterBase.stories.js",
     "../stories/base/HeaderBase.stories.js",
     "../stories/base/MainBase.stories.js",
     "../stories/base/MenuBarBase.stories.js",
@@ -15,7 +16,7 @@ const config = {
 
     /* Base component stories */
     "../stories/base/ImageBase.stories.js",
-    // "../stories/base/FooterBase.stories.js",
+    
     // "../stories/base/HeaderSubtitleText.stories.js",
     // "../stories/base/HeaderTitleText.stories.js",
     
