@@ -46,10 +46,6 @@ describe('Header Base', () => {
       /* Verifies that the id attribute is set correctly to the header element */
       testData.push(header);
 
-      /* Verifies that the "header-small" class is set to the header element */
-      /* Verifies that the "header-tall" class is not set to the header element */
-      testData.push(header.classList);
-
       /* Verifies that the "background-grey" class is not set to the outer content element */
       /* Verifies that the "background-white" class is set to the outer content element */
       /* Verifies that the "header-border-top-grey" class is not set to the outer content element */
@@ -58,6 +54,12 @@ describe('Header Base', () => {
 
       /* Verifies that no background image is rendered in the outer content element */
       testData.push(outerContent.dataset.bgimage);
+      
+      /* Verifies that the "header-tall-height-with-border" class is not set to the inner content element */
+      /* Verifies that the "header-small-height-with-border" class is not set to the inner content element */
+      /* Verifies that the "header-tall-height-no-border" class is not set to the inner content element */
+      /* Verifies that the "header-small-height-no-border" class is set to the inner content element */
+      testData.push(innerContent.classList);
 
       /* Verifies that the children components are rendered within the inner content element */
       testData.push(innerContent.textContent);
@@ -74,32 +76,40 @@ describe('Header Base', () => {
       expect(testData[0]).not.toBeNull();
     });
 
-    it('verifies that the "header-small" class is set to the header element', () => {
-      expect(testData[1].contains('header-small')).toBeTruthy();
-    });
-
-    it('verifies that the "header-tall" class is not set to the header element', () => {
-      expect(testData[1].contains('header-tall')).toBeFalsy();
-    });
-
     it('verifies that the "background-grey" class is not set to the outer content element', () => {
-      expect(testData[2].contains('background-grey')).toBeFalsy();
+      expect(testData[1].contains('background-grey')).toBeFalsy();
     });
 
     it('verifies that the "background-white" class is set to the outer content element', () => {
-      expect(testData[2].contains('background-white')).toBeTruthy();
+      expect(testData[1].contains('background-white')).toBeTruthy();
     });
 
     it('verifies that the "header-border-top-grey" class is not set to the outer content element', () => {
-      expect(testData[2].contains('header-border-top-grey')).toBeFalsy();
+      expect(testData[1].contains('header-border-top-grey')).toBeFalsy();
     });
 
     it('verifies that the "header-border-top-red" class is not set to the outer content element', () => {
-      expect(testData[2].contains('header-border-top-red')).toBeFalsy();
+      expect(testData[1].contains('header-border-top-red')).toBeFalsy();
     });
 
     it('verifies that no background image is rendered in the outer content element', () => {
-      expect(testData[3]).toBe('false');
+      expect(testData[2]).toBe('false');
+    });
+
+    it('verifies that the "header-tall-height-with-border" class is not set to the inner content element', () => {
+      expect(testData[3].contains('header-tall-height-with-border')).toBeFalsy();
+    });
+
+    it('verifies that the "header-small-height-with-border" class is not set to the inner content element', () => {
+      expect(testData[3].contains('header-small-height-with-border')).toBeFalsy();
+    });
+
+    it('verifies that the "header-tall-height-no-border" class is not set to the inner content element', () => {
+      expect(testData[3].contains('header-tall-height-no-border')).toBeFalsy();
+    });
+
+    it('verifies that the "header-small-height-no-border" class is set to the inner content element', () => {
+      expect(testData[3].contains('header-small-height-no-border')).toBeTruthy();
     });
 
     it('verifies that the children components are rendered within the inner content element', () => {
@@ -126,13 +136,10 @@ describe('Header Base', () => {
       /* Build the DOM elements required for the tests */
       const header = document.querySelector(`header[id="${customHeaderBaseId}"]`);
       const outerContent = document.querySelector(`header[id="${customHeaderBaseId}"] > div`);
+      const innerContent = document.querySelector(`header[id="${customHeaderBaseId}"] > div > div`);
 
       /* Verifies that the id attribute is set correctly to the header element */
       testData.push(header);
-
-      /* Verifies that the "header-small" class is set to the header element */
-      /* Verifies that the "header-tall" class is not set to the header element */
-      testData.push(header.classList);
 
       /* Verifies that the "background-grey" class is set to the outer content element */
       /* Verifies that the "background-white" class is not set to the outer content element */
@@ -143,6 +150,12 @@ describe('Header Base', () => {
       /* Verifies that no background image is rendered in the outer content element */
       testData.push(outerContent.dataset.bgimage);
 
+      /* Verifies that the "header-tall-height-with-border" class is not set to the inner content element */
+      /* Verifies that the "header-small-height-with-border" class is not set to the inner content element */
+      /* Verifies that the "header-tall-height-no-border" class is not set to the inner content element */
+      /* Verifies that the "header-small-height-no-border" class is set to the inner content element */
+      testData.push(innerContent.classList);
+
       /* Unmount the component and clean up the test */
       unmount();
       cleanup();
@@ -152,32 +165,40 @@ describe('Header Base', () => {
       expect(testData[0]).not.toBeNull();
     });
 
-    it('verifies that the "header-small" class is set to the header element', () => {
-      expect(testData[1].contains('header-small')).toBeTruthy();
-    });
-
-    it('verifies that the "header-tall" class is not set to the header element', () => {
-      expect(testData[1].contains('header-tall')).toBeFalsy();
-    });
-
     it('verifies that the "background-grey" class is set to the outer content element', () => {
-      expect(testData[2].contains('background-grey')).toBeTruthy();
+      expect(testData[1].contains('background-grey')).toBeTruthy();
     });
 
     it('verifies that the "background-white" class is not set to the outer content element', () => {
-      expect(testData[2].contains('background-white')).toBeFalsy();
+      expect(testData[1].contains('background-white')).toBeFalsy();
     });
 
     it('verifies that the "header-border-top-grey" class is not set to the outer content element', () => {
-      expect(testData[2].contains('header-border-top-grey')).toBeFalsy();
+      expect(testData[1].contains('header-border-top-grey')).toBeFalsy();
     });
 
     it('verifies that the "header-border-top-red" class is not set to the outer content element', () => {
-      expect(testData[2].contains('header-border-top-red')).toBeFalsy();
+      expect(testData[1].contains('header-border-top-red')).toBeFalsy();
     });
 
     it('verifies that no background image is rendered in the outer content element', () => {
-      expect(testData[3]).toBe('false');
+      expect(testData[2]).toBe('false');
+    });
+
+    it('verifies that the "header-tall-height-with-border" class is not set to the inner content element', () => {
+      expect(testData[3].contains('header-tall-height-with-border')).toBeFalsy();
+    });
+
+    it('verifies that the "header-small-height-with-border" class is not set to the inner content element', () => {
+      expect(testData[3].contains('header-small-height-with-border')).toBeFalsy();
+    });
+
+    it('verifies that the "header-tall-height-no-border" class is not set to the inner content element', () => {
+      expect(testData[3].contains('header-tall-height-no-border')).toBeFalsy();
+    });
+
+    it('verifies that the "header-small-height-no-border" class is set to the inner content element', () => {
+      expect(testData[3].contains('header-small-height-no-border')).toBeTruthy();
     });
   });
 
@@ -194,12 +215,8 @@ describe('Header Base', () => {
         </React.Fragment>
       );
       /* Build the DOM elements required for the tests */
-      const header = document.querySelector(`header[id="${defaultHeaderBaseId}"]`);
       const outerContent = document.querySelector(`header[id="${defaultHeaderBaseId}"] > div`);
-
-      /* Verifies that the "header-small" class is set to the header element */
-      /* Verifies that the "header-tall" class is not set to the header element */
-      testData.push(header.classList);
+      const innerContent = document.querySelector(`header[id="${defaultHeaderBaseId}"] > div > div`);
 
       /* Verifies that the "background-grey" class is not set to the outer content element */
       /* Verifies that the "background-white" class is set to the outer content element */
@@ -210,37 +227,51 @@ describe('Header Base', () => {
       /* Verifies that no background image is rendered in the outer content element */
       testData.push(outerContent.dataset.bgimage);
 
+      /* Verifies that the "header-tall-height-with-border" class is not set to the inner content element */
+      /* Verifies that the "header-small-height-with-border" class is set to the inner content element */
+      /* Verifies that the "header-tall-height-no-border" class is not set to the inner content element */
+      /* Verifies that the "header-small-height-no-border" class is not set to the inner content element */
+      testData.push(innerContent.classList);
+
       /* Unmount the component and clean up the test */
       unmount();
       cleanup();
     });
 
-    it('verifies that the "header-small" class is set to the header element', () => {
-      expect(testData[0].contains('header-small')).toBeTruthy();
-    });
-
-    it('verifies that the "header-tall" class is not set to the header element', () => {
-      expect(testData[0].contains('header-tall')).toBeFalsy();
-    });
-
     it('verifies that the "background-grey" class is not set to the outer content element', () => {
-      expect(testData[1].contains('background-grey')).toBeFalsy();
+      expect(testData[0].contains('background-grey')).toBeFalsy();
     });
 
     it('verifies that the "background-white" class is set to the outer content element', () => {
-      expect(testData[1].contains('background-white')).toBeTruthy();
+      expect(testData[0].contains('background-white')).toBeTruthy();
     });
 
     it('verifies that the "header-border-top-grey" class is set to the outer content element', () => {
-      expect(testData[1].contains('header-border-top-grey')).toBeTruthy();
+      expect(testData[0].contains('header-border-top-grey')).toBeTruthy();
     });
 
     it('verifies that the "header-border-top-red" class is not set to the outer content element', () => {
-      expect(testData[1].contains('header-border-top-red')).toBeFalsy();
+      expect(testData[0].contains('header-border-top-red')).toBeFalsy();
     });
 
     it('verifies that no background image is rendered in the outer content element', () => {
-      expect(testData[2]).toBe('false');
+      expect(testData[1]).toBe('false');
+    });
+
+    it('verifies that the "header-tall-height-with-border" class is not set to the inner content element', () => {
+      expect(testData[2].contains('header-tall-height-with-border')).toBeFalsy();
+    });
+
+    it('verifies that the "header-small-height-with-border" class is set to the inner content element', () => {
+      expect(testData[2].contains('header-small-height-with-border')).toBeTruthy();
+    });
+
+    it('verifies that the "header-tall-height-no-border" class is not set to the inner content element', () => {
+      expect(testData[2].contains('header-tall-height-no-border')).toBeFalsy();
+    });
+
+    it('verifies that the "header-small-height-no-border" class is not set to the inner content element', () => {
+      expect(testData[2].contains('header-small-height-no-border')).toBeFalsy();
     });
   });
 
@@ -257,12 +288,8 @@ describe('Header Base', () => {
         </React.Fragment>
       );
       /* Build the DOM elements required for the tests */
-      const header = document.querySelector(`header[id="${defaultHeaderBaseId}"]`);
       const outerContent = document.querySelector(`header[id="${defaultHeaderBaseId}"] > div`);
-
-      /* Verifies that the "header-small" class is not set to the header element */
-      /* Verifies that the "header-tall" class is set to the header element */
-      testData.push(header.classList);
+      const innerContent = document.querySelector(`header[id="${defaultHeaderBaseId}"] > div > div`);
 
       /* Verifies that the "header-border-top-grey" class is not set to the outer content element */
       /* Verifies that the "header-border-top-red" class is set to the outer content element */
@@ -271,46 +298,61 @@ describe('Header Base', () => {
       /* Verifies that no background image is rendered in the outer content element */
       testData.push(outerContent.dataset.bgimage);
 
+      /* Verifies that the "header-tall-height-with-border" class is set to the inner content element */
+      /* Verifies that the "header-small-height-with-border" class is not set to the inner content element */
+      /* Verifies that the "header-tall-height-no-border" class is not set to the inner content element */
+      /* Verifies that the "header-small-height-no-border" class is not set to the inner content element */
+      testData.push(innerContent.classList);
+
       /* Unmount the component and clean up the test */
       unmount();
       cleanup();
     });
 
-    it('verifies that the "header-small" class is not set to the header element', () => {
-      expect(testData[0].contains('header-small')).toBeFalsy();
-    });
-
-    it('verifies that the "header-tall" class is not set to the header element', () => {
-      expect(testData[0].contains('header-tall')).toBeTruthy();
-    });
-
     it('verifies that the "header-border-top-grey" class is not set to the outer content element', () => {
-      expect(testData[1].contains('header-border-top-grey')).toBeFalsy();
+      expect(testData[0].contains('header-border-top-grey')).toBeFalsy();
     });
 
     it('verifies that the "header-border-top-red" class is set to the outer content element', () => {
-      expect(testData[1].contains('header-border-top-red')).toBeTruthy();
+      expect(testData[0].contains('header-border-top-red')).toBeTruthy();
     });
 
     it('verifies that no background image is rendered in the outer content element', () => {
-      expect(testData[2]).toBe('false');
+      expect(testData[1]).toBe('false');
+    });
+
+    it('verifies that the "header-tall-height-with-border" class is set to the inner content element', () => {
+      expect(testData[2].contains('header-tall-height-with-border')).toBeTruthy();
+    });
+
+    it('verifies that the "header-small-height-with-border" class is not set to the inner content element', () => {
+      expect(testData[2].contains('header-small-height-with-border')).toBeFalsy();
+    });
+
+    it('verifies that the "header-tall-height-no-border" class is not set to the inner content element', () => {
+      expect(testData[2].contains('header-tall-height-no-border')).toBeFalsy();
+    });
+
+    it('verifies that the "header-small-height-no-border" class is not set to the inner content element', () => {
+      expect(testData[2].contains('header-small-height-no-border')).toBeFalsy();
     });
   });
 
-  describe('Component with default id, small size, with background image, default background, no top border', () => {
+  describe('Component with default id, tall size, with background image, default background, no top border', () => {
     const testData = [];
 
     beforeAll(() => {
       /* Mount the component */
       const { unmount } = render(
         <React.Fragment>
-          <HeaderBase size="small" backgroundImageSrc={headerBgImage} topBorder="off">
+          <HeaderBase size="tall" backgroundImageSrc={headerBgImage} topBorder="off">
             Header base text content.
           </HeaderBase>
         </React.Fragment>
       );
       /* Build the DOM elements required for the tests */
       const outerContent = document.querySelector(`header[id="${defaultHeaderBaseId}"] > div`);
+      const innerContent = document.querySelector(`header[id="${defaultHeaderBaseId}"] > div > div`);
 
       /* Verifies that the "background-grey" class is not set to the outer content element */
       /* Verifies that the "background-white" class is not set to the outer content element */
@@ -320,6 +362,12 @@ describe('Header Base', () => {
 
       /* Verifies that a background image is correctly rendered in the outer content element */
       testData.push(outerContent.dataset.bgimage);
+
+      /* Verifies that the "header-tall-height-with-border" class is not set to the inner content element */
+      /* Verifies that the "header-small-height-with-border" class is not set to the inner content element */
+      /* Verifies that the "header-tall-height-no-border" class is set to the inner content element */
+      /* Verifies that the "header-small-height-no-border" class is not set to the inner content element */
+      testData.push(innerContent.classList);
 
       /* Unmount the component and clean up the test */
       unmount();
@@ -344,6 +392,22 @@ describe('Header Base', () => {
 
     it('verifies that a background image is correctly rendered in the outer content element', () => {
       expect(testData[1]).toBe('true');
+    });
+
+    it('verifies that the "header-tall-height-with-border" class is not set to the inner content element', () => {
+      expect(testData[2].contains('header-tall-height-with-border')).toBeFalsy();
+    });
+
+    it('verifies that the "header-small-height-with-border" class is not set to the inner content element', () => {
+      expect(testData[2].contains('header-small-height-with-border')).toBeFalsy();
+    });
+
+    it('verifies that the "header-tall-height-no-border" class is set to the inner content element', () => {
+      expect(testData[2].contains('header-tall-height-no-border')).toBeTruthy();
+    });
+
+    it('verifies that the "header-small-height-no-border" class is not set to the inner content element', () => {
+      expect(testData[2].contains('header-small-height-no-border')).toBeFalsy();
     });
   });
 });
