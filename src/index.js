@@ -2,6 +2,7 @@
  * Developed by Anthony Cox in 2025
  */
 /* Import the base components */
+import FooterBase from './components/base/FooterBase';
 import HeaderBase from './components/base/HeaderBase';
 import ImageBase from './components/base/ImageBase';
 import MainBase from './components/base/MainBase';
@@ -18,6 +19,7 @@ import MenuBarBase from './components/base/MenuBarBase';
 
 /* Export all components */
 export {
+  FooterBase,
   HeaderBase,
   ImageBase,
   MainBase,
