@@ -112,4 +112,22 @@ describe('Header Base', () => {
       expect(snapshot).toMatchSnapshot();
     });
   });
+
+  describe('Component with default id, tall size, no background image, default background, green top border', () => {
+    let snapshot;
+    
+    beforeAll(() => {
+      snapshot = TestDev.createSnapshot(
+        <React.Fragment>
+          <HeaderBase size="tall" topBorder="green">
+            Header base text content.
+          </HeaderBase>
+        </React.Fragment>
+      );
+    });
+
+    it('verifies the snapshot for the component', () => {
+      expect(snapshot).toMatchSnapshot();
+    });
+  });
 });
