@@ -2,7 +2,7 @@
  * Developed by Anthony Cox in 2025
  */
 import React from 'react';
-import { HeaderBase, MainBase, MenuBarBase } from '../../src';
+import { FooterBase, HeaderBase, MainBase, MenuBarBase } from '../../src';
 
 export default {
   title: 'Page Template/Full Page Template',
@@ -25,6 +25,9 @@ const Template_FullPageTemplate = args => {
     <MainBase backgroundColour="grey" title={args.title}>
       This component is designed to act as a baseline / template on which all main components can be developed.
     </MainBase>
+    <FooterBase backgroundColour={args.backgroundColour ? args.backgroundColour : 'grey'}>
+      This component is designed to act as a baseline / template on which all footer components can be developed.
+    </FooterBase>
   </React.Fragment>;
 }
 export const Example1 = Template_FullPageTemplate.bind({});
