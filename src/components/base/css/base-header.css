@@ -4,7 +4,9 @@
 .header {
   display: flex;
   flex-direction: row;
+  height: auto;
   justify-content: center;
+  overflow-y: hidden;
 }
 
 .header-border-top-green {
@@ -22,7 +24,6 @@
 .header-content-inner {
   display: flex;
   flex-direction: column;
-  height: calc(100% - 16px);
   justify-content: flex-start;
   padding-top: 8px;
   padding-bottom: 8px;
@@ -34,12 +35,18 @@
   height: 100%;
 }
 
-.header-small {
-  height: 160px;
-  overflow-y: hidden;
+.header-small-height-no-border {
+  height: 144px;
 }
 
-.header-tall {
-  height: 320px;
-  overflow-y: hidden;
+.header-small-height-with-border {
+  height: 140px;
+}
+
+.header-tall-height-no-border {
+  height: 304px;
+}
+
+.header-tall-height-with-border {
+  height: 300px;
 }

@@ -45,9 +45,14 @@ const HeaderBase = props => {
     }
   });
 
+  /* Determine if a top border has been rendered */
+  let topBorderRendered;
+  (props.topBorder === 'grey' || props.topBorder === 'red' || props.topBorder === 'green')
+    ? topBorderRendered = true
+    : topBorderRendered = false;
+
   /* Set the styling for the header element */
-  let headerCss = 'header screen-width-root background-white';
-  size === 'tall' ? headerCss += ' header-tall' : headerCss += ' header-small';
+  const headerCss = 'header screen-width-root background-white';
   
   /* Set the styling for the outer content element */
   let outerContentCss = 'header-content-outer screen-width-content-outer';
@@ -56,12 +61,21 @@ const HeaderBase = props => {
     props.backgroundColour === 'grey' ? outerContentCss += ' background-grey' : outerContentCss += ' background-white';
   }
   /* Set the top border for the outer content element if required */
-  (props.topBorder === 'grey' || props.topBorder === 'red' || props.topBorder === 'green')
+  topBorderRendered === true
     ? outerContentCss += ` header-border-top-${props.topBorder}`
     : outerContentCss += ''.trim();
 
   /* Set the styling for the inner content element */
-  const innerContentCss = 'header-content-inner screen-width-content-inner';
+  let innerContentCss = 'header-content-inner screen-width-content-inner';
+  if (topBorderRendered === true) {
+    size === 'tall'
+      ? innerContentCss += ' header-tall-height-with-border'
+      : innerContentCss += ' header-small-height-with-border';
+  } else {
+    size === 'tall'
+      ? innerContentCss += ' header-tall-height-no-border'
+      : innerContentCss += ' header-small-height-no-border';
+  }
   return (
     <header role="banner" id={id} className={headerCss}>
       <div className={outerContentCss} ref={outerContentRef} data-bgimage="false">
