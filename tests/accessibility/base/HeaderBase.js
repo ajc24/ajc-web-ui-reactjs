@@ -179,4 +179,35 @@ describe('Header Base', () => {
       expect(results).toBeTruthy();
     });
   });
+
+  describe('Component with default id, tall size, no background image, default background, green top border', () => {
+    let results;
+
+    beforeAll(async () => {
+      const { unmount } = render(
+        <div>
+          <HeaderBase size="tall" topBorder="green">
+            Header base text content.
+          </HeaderBase>
+          <div role="navigation">
+            Menu bar component
+          </div>
+          <main id="main-content" aria-label="Accessibility test">
+            <h1>Header Base Accessibility Test</h1>
+          </main>
+          <footer role="contentinfo" id="footer">
+            Footer component
+          </footer>
+        </div>
+      );
+      const html = TestDev.getComponentInHTMLTemplate('Header Base: Test 6');
+      unmount();
+      /* Perform the accessibility checks on this component */
+      results = await TestDev.runAxeCore(html);
+    }, testTimeout);
+
+    it('verifies the accessibility standards for the component', () => {
+      expect(results).toBeTruthy();
+    });
+  });
 });
