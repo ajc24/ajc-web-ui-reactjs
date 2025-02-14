@@ -1,5 +1,5 @@
 /**
- * Developed by Anthony Cox in 2024
+ * Developed by Anthony Cox in 2025
  */
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
@@ -12,7 +12,7 @@ const defaultComponentId = 'default-id--main-base';
 /**
  * Baseline component setting the template for all Main components to be developed from.
  * This baseline auto-handles screen widths from the most commonly used mobile screen sizes (360x800) to the most commonly used desktop sizes (1920x1080).
- * The height of the component is 768px.
+ * The minimum height of the component is 652px, expanding to larger sizes when required.
  */
 const MainBase = props => {
   const [id, setId] = useState(defaultComponentId);
