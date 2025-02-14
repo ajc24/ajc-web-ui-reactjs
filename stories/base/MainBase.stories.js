@@ -5,7 +5,7 @@ import React from 'react';
 import { MainBase } from '../../src';
 
 export default {
-  title: 'Base Components/Main Base',
+  title: 'Page Template/Main Base',
   component: MainBase,
   tags: ['autodocs'],
 };

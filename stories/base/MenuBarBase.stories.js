@@ -5,7 +5,7 @@ import React from 'react';
 import { MenuBarBase } from '../../src';
 
 export default {
-  title: 'Base Components/Menu Bar Base',
+  title: 'Page Template/Menu Bar Base',
   component: MenuBarBase,
   tags: ['autodocs'],
 };
