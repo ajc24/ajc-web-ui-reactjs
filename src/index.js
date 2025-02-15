@@ -12,21 +12,21 @@ import MenuBarBase from './components/base/MenuBarBase';
 // import SmallHeader from './components/header/SmallHeader';
 // import TallHeader from './components/header/TallHeader';
 
-// /* Import the image components */
-// import DecorativeImage from './components/images/DecorativeImage';
-// import FunctionalImage from './components/images/FunctionalImage';
-// import InformativeImage from './components/images/InformativeImage';
+/* Import the image components */
+import DecorativeImage from './components/images/DecorativeImage';
+import FunctionalImage from './components/images/FunctionalImage';
+import InformativeImage from './components/images/InformativeImage';
 
 /* Export all components */
 export {
+  DecorativeImage,
   FooterBase,
+  FunctionalImage,
   HeaderBase,
   ImageBase,
+  InformativeImage,
   MainBase,
   MenuBarBase,
-  // DecorativeImage,
-  // FunctionalImage,
-  // InformativeImage,
   // SmallHeader,
   // TallHeader,
 };
