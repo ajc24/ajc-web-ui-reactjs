@@ -1,5 +1,5 @@
 /**
- * Developed by Anthony Cox in 2024
+ * Developed by Anthony Cox in 2025
  */
 
 /**
@@ -7,15 +7,20 @@
  */
 const config = {
   stories: [
+    /* Image component stories */
+    "../stories/images/DecorativeImage.stories.js",
+    "../stories/images/FunctionalImage.stories.js",
+    "../stories/images/InformativeImage.stories.js",
+
+    /* Base component stories */
+    "../stories/base/ImageBase.stories.js",
+
     /* Page template stories */
     "../stories/base/FooterBase.stories.js",
     "../stories/base/HeaderBase.stories.js",
     "../stories/base/MainBase.stories.js",
     "../stories/base/MenuBarBase.stories.js",
     "../stories/mock-pages/FullPageTemplate.stories.js",
-
-    /* Base component stories */
-    "../stories/base/ImageBase.stories.js",
     
     // "../stories/base/HeaderSubtitleText.stories.js",
     // "../stories/base/HeaderTitleText.stories.js",
@@ -23,11 +28,6 @@ const config = {
     /* Header component stories */
     // "../stories/header/SmallHeader.stories.js",
     // "../stories/header/TallHeader.stories.js",
-
-    /* Image component stories */
-    // "../stories/images/DecorativeImage.stories.js",
-    // "../stories/images/FunctionalImage.stories.js",
-    // "../stories/images/InformativeImage.stories.js",
 
     /* Mock page component stories */
     // "../stories/mock-pages/TullowhillCavaliersHome.stories.js",
