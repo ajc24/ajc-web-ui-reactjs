@@ -7,6 +7,9 @@
  */
 const config = {
   stories: [
+    /* Header component stories */
+    "../stories/header/HeaderTitleText.stories.js",
+
     /* Image component stories */
     "../stories/images/DecorativeImage.stories.js",
     "../stories/images/FunctionalImage.stories.js",
@@ -23,7 +26,6 @@ const config = {
     "../stories/mock-pages/FullPageTemplate.stories.js",
     
     // "../stories/base/HeaderSubtitleText.stories.js",
-    // "../stories/base/HeaderTitleText.stories.js",
     
     /* Header component stories */
     // "../stories/header/SmallHeader.stories.js",
