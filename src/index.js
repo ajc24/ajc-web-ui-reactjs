@@ -8,7 +8,8 @@ import ImageBase from './components/base/ImageBase';
 import MainBase from './components/base/MainBase';
 import MenuBarBase from './components/base/MenuBarBase';
 
-// /* Import the header components */
+/* Import the header components */
+import HeaderTitleText from './components/header/HeaderTitleText';
 // import SmallHeader from './components/header/SmallHeader';
 // import TallHeader from './components/header/TallHeader';
 
@@ -23,6 +24,7 @@ export {
   FooterBase,
   FunctionalImage,
   HeaderBase,
+  HeaderTitleText,
   ImageBase,
   InformativeImage,
   MainBase,
