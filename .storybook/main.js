@@ -6,10 +6,15 @@
  * @type { import('@storybook/react-webpack5').StorybookConfig }
  */
 const config = {
+  env: (config) => ({
+    ...config,
+    IS_REACT_ACT_ENVIRONMENT: true,
+  }),
   stories: [
     /* Header component stories */
+    "../stories/header/HeaderSubtitleText.stories.js",
     "../stories/header/HeaderTitleText.stories.js",
-
+    
     /* Image component stories */
     "../stories/images/DecorativeImage.stories.js",
     "../stories/images/FunctionalImage.stories.js",
@@ -24,8 +29,6 @@ const config = {
     "../stories/base/MainBase.stories.js",
     "../stories/base/MenuBarBase.stories.js",
     "../stories/mock-pages/FullPageTemplate.stories.js",
-    
-    // "../stories/base/HeaderSubtitleText.stories.js",
     
     /* Header component stories */
     // "../stories/header/SmallHeader.stories.js",
