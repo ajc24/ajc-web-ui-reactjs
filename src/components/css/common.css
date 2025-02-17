@@ -17,6 +17,10 @@
   background-color: #EC0000;
 }
 
+.background-transparent {
+  background-color: transparent;
+}
+
 .background-white {
   background-color: #FFFFFF;
 }
@@ -46,6 +50,13 @@
 /* .hidden {
   display: none;
 }*/
+
+.page-template-container {
+  height: auto;
+  max-width: 1248px;
+  min-width: 312px;
+  width: auto;
+}
 
 .screen-width-content-inner {
   max-width: 1248px;
