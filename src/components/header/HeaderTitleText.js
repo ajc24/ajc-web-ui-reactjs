@@ -235,7 +235,7 @@ class HeaderTitleText extends React.Component {
       ? containerCss += ' title-text-alignment-centre'
       : containerCss += ' title-text-alignment-left';
 
-      /* Set the styling for the title text font */
+    /* Set the styling for the title text font */
     let textOutputCss = 'title-text-default';
     this.props.textColour === 'white'
       ? textOutputCss += ' title-text-font-white'
@@ -258,7 +258,7 @@ HeaderTitleText.propTypes = {
   id: PropTypes.string.isRequired,
   /** The unique identifier of the Header component in which this title text component is rendered. */
   parentHeaderId: PropTypes.string,
-  /** The colour of the text to be displayed, either that of black with a white outline or white with a black outline. By default, black with a while outline is pre-selected */
+  /** The colour of the text to be displayed, either that of black with a white outline or white with a black outline. By default black with a while outline is pre-selected. */
   textColour: PropTypes.oneOf([ 'black', 'default', 'white' ]),
 };
 export default HeaderTitleText;
