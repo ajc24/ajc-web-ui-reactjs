@@ -9,6 +9,7 @@ import MainBase from './components/base/MainBase';
 import MenuBarBase from './components/base/MenuBarBase';
 
 /* Import the header components */
+import HeaderSubtitleText from './components/header/HeaderSubtitleText';
 import HeaderTitleText from './components/header/HeaderTitleText';
 // import SmallHeader from './components/header/SmallHeader';
 // import TallHeader from './components/header/TallHeader';
@@ -24,6 +25,7 @@ export {
   FooterBase,
   FunctionalImage,
   HeaderBase,
+  HeaderSubtitleText,
   HeaderTitleText,
   ImageBase,
   InformativeImage,
