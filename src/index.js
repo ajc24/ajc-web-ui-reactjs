@@ -17,6 +17,7 @@ import HeaderTitleText from './components/header/HeaderTitleText';
 /* Import the image components */
 import DecorativeImage from './components/images/DecorativeImage';
 import FunctionalImage from './components/images/FunctionalImage';
+import HeaderLogo from './components/images/HeaderLogo';
 import InformativeImage from './components/images/InformativeImage';
 
 /* Export all components */
@@ -25,6 +26,7 @@ export {
   FooterBase,
   FunctionalImage,
   HeaderBase,
+  HeaderLogo,
   HeaderSubtitleText,
   HeaderTitleText,
   ImageBase,
