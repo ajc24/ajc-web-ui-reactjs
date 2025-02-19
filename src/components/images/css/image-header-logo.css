@@ -1,0 +1,19 @@
+/**
+ * Developed by Anthony Cox in 2025
+ */
+.image-header-logo-alignment-centre {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.image-header-logo-alignment-left {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.image-header-logo-inside-header {
+  height: auto;
+  width: auto;
+}
