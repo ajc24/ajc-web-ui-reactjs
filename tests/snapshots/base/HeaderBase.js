@@ -7,7 +7,7 @@ import { TestDev } from 'ajc-testing-code';
 import { HeaderBase } from '../../../src';
 import PageTemplateConfig from '../../../src/components/modules/PageTemplateConfig';
 import headerBgImage from '../../../stories/images/files/header-bg-image.png';
-import tallHeaderBgImage from '../../../stories/images/files/tall-header-bg-image.jpg';
+import tallHeaderBgImage from '../../../stories/images/files/tall-header-bg-image.png';
 
 describe('Header Base', () => {
   /* Set the spies for use in the tests */
