@@ -1,8 +1,16 @@
 /**
  * Developed by Anthony Cox in 2025
  */
+.background-gold {
+  background-color: #FFBF00;
+}
+
 .background-green {
-  background-color: #1F862F;
+  background-color: #006622;
+}
+
+.background-green-2 {
+  background-color: #E1EDB3;
 }
 
 .background-grey {
@@ -10,11 +18,15 @@
 }
 
 .background-grey-2 {
-  background-color: #757575;
+  background-color: #4D4D4D;
+}
+
+.background-navy {
+  background-color: #000066;
 }
 
 .background-red {
-  background-color: #EC0000;
+  background-color: #B30000;
 }
 
 .background-transparent {
@@ -41,6 +53,10 @@
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
   word-wrap: break-word;
+}
+
+.font-gold {
+  color: #FFBF00;
 }
 
 .font-white {

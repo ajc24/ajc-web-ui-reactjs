@@ -10,16 +10,28 @@
   overflow-y: hidden;
 }
 
+.header-border-top-gold {
+  border-top: 4px solid #FFBF00;
+}
+
 .header-border-top-green {
-  border-top: 4px solid #1F862F;
+  border-top: 4px solid #006622;
+}
+
+.header-border-top-green-2 {
+  border-top: 4px solid #E1EDB3;
 }
 
 .header-border-top-grey {
-  border-top: 4px solid #757575;
+  border-top: 4px solid #4D4D4D;
+}
+
+.header-border-top-navy {
+  border-top: 4px solid #000066;
 }
 
 .header-border-top-red {
-  border-top: 4px solid #EC0000;
+  border-top: 4px solid #B30000;
 }
 
 .header-content-inner {

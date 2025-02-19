@@ -30,6 +30,7 @@ const Template_FullPageTemplate = args => {
     </FooterBase>
   </React.Fragment>;
 }
+
 export const Example1 = Template_FullPageTemplate.bind({});
 Example1.args = {
   backgroundColour: 'white',
@@ -56,4 +57,20 @@ Example4.args = {
   size: 'tall',
   title: 'Full page template example 4',
   topBorder: 'green',
+}
+
+export const Example5 = Template_FullPageTemplate.bind({});
+Example5.args = {
+  backgroundColour: 'green-2',
+  size: 'tall',
+  title: 'Full page template example 5',
+  topBorder: 'green-2',
+}
+
+export const Example6 = Template_FullPageTemplate.bind({});
+Example6.args = {
+  backgroundColour: 'navy-and-gold',
+  size: 'small',
+  title: 'Full page template example 6',
+  topBorder: 'navy',
 }

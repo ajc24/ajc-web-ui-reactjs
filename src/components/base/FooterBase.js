@@ -28,16 +28,26 @@ const FooterBase = props => {
   });
 
   /* Set the styling for the navigation element */
-  const footerCss = 'footer screen-width-root background-white';
-
+  let footerCss = 'footer screen-width-root background-white';
+  if (props.backgroundColour === 'gold' || props.backgroundColour === 'green-2') {
+    footerCss += ' font-black';
+  } else if (props.backgroundColour === 'navy-and-gold') {
+    footerCss += ' font-gold';
+  } else {
+    footerCss += ' font-white';
+  }
   /* Set the styling for the outer content element */
   let outerContentCss = 'footer-content-outer screen-width-content-outer';
-  if (props.backgroundColour === 'white' || props.backgroundColour === 'red' || props.backgroundColour === 'green') {
-    /* Set the background colour to the specified colour */
-    outerContentCss += ` background-${props.backgroundColour}`;
+  if (props.backgroundColour === 'gold' || props.backgroundColour === 'green' || props.backgroundColour === 'green-2' || props.backgroundColour === 'red'
+    || props.backgroundColour === 'white') {
+      /* Set the background colour to the specified colour */
+      outerContentCss += ` background-${props.backgroundColour}`;
   } else if (props.backgroundColour === 'grey') {
     /* Set the background colour as grey */
     outerContentCss += ` background-${props.backgroundColour}-2`;
+  } else if (props.backgroundColour === 'navy-and-gold' || props.backgroundColour === 'navy-and-white') {
+    /* Set the background colour as navy */
+    outerContentCss += ' background-navy';
   } else {
     /* Default set the background colour as white */
     outerContentCss += ` background-white`;
@@ -56,7 +66,7 @@ const FooterBase = props => {
 }
 FooterBase.propTypes = {
   /** The background colour for the footer. The default colour for the background is white. */
-  backgroundColour: PropTypes.oneOf([ 'green', 'grey', 'red', 'white' ]),
+  backgroundColour: PropTypes.oneOf([ 'green', 'green-2', 'grey', 'navy-and-gold', 'navy-and-white', 'red', 'white' ]),
   /** The content to be displayed within the footer template component. */
   children: PropTypes.any,
   /** The unique identifier for this component. */

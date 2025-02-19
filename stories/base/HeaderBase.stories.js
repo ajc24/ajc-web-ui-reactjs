@@ -4,7 +4,7 @@
 import React from 'react';
 import { HeaderBase } from '../../src';
 import headerBgImage from '../images/files/header-bg-image.png';
-import tallHeaderBgImage from '../images/files/tall-header-bg-image.jpg';
+import tallHeaderBgImage from '../images/files/tall-header-bg-image.png';
 
 export default {
   title: 'Page Template/Header Base',

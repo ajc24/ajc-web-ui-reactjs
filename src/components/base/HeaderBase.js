@@ -47,9 +47,10 @@ const HeaderBase = props => {
 
   /* Determine if a top border has been rendered */
   let topBorderRendered;
-  (props.topBorder === 'grey' || props.topBorder === 'red' || props.topBorder === 'green')
-    ? topBorderRendered = true
-    : topBorderRendered = false;
+  (props.topBorder === 'gold' || props.topBorder === 'green' || props.topBorder === 'green-2' || props.topBorder === 'grey' || props.topBorder === 'navy'
+    || props.topBorder === 'red')
+      ? topBorderRendered = true
+      : topBorderRendered = false;
 
   /* Set the styling for the header element */
   const headerCss = 'header screen-width-root background-white';
@@ -98,6 +99,6 @@ HeaderBase.propTypes = {
   /** The size of the header ranging from default / small (160px) to tall (320px). */
   size: PropTypes.oneOf([ 'default', 'small', 'tall' ]),
   /** Whether to enable the headers upper / top border and the colour at which the border is to be rendered if enabled. The default setting for the border is off. */
-  topBorder: PropTypes.oneOf([ 'off', 'green', 'grey', 'red' ]),
+  topBorder: PropTypes.oneOf([ 'off', 'gold', 'green', 'green-2', 'grey', 'navy', 'red' ]),
 };
 export default HeaderBase;

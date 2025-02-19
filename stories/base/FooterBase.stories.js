@@ -45,3 +45,23 @@ export const DefaultIdGreenBackground = Template_FooterBase.bind({});
 DefaultIdGreenBackground.args = {
   backgroundColour: 'green',
 };
+
+export const DefaultIdGreen2Background = Template_FooterBase.bind({});
+DefaultIdGreen2Background.args = {
+  backgroundColour: 'green-2',
+};
+
+export const DefaultIdGoldBackground = Template_FooterBase.bind({});
+DefaultIdGoldBackground.args = {
+  backgroundColour: 'gold',
+};
+
+export const DefaultIdNavyBackgroundGoldText = Template_FooterBase.bind({});
+DefaultIdNavyBackgroundGoldText.args = {
+  backgroundColour: 'navy-and-gold',
+};
+
+export const DefaultIdNavyBackgroundWhiteText = Template_FooterBase.bind({});
+DefaultIdNavyBackgroundWhiteText.args = {
+  backgroundColour: 'navy-and-white',
+};

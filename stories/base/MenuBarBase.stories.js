@@ -45,3 +45,23 @@ export const DefaultIdGreenBackground = Template_MenuBarBase.bind({});
 DefaultIdGreenBackground.args = {
   backgroundColour: 'green',
 };
+
+export const DefaultIdGreen2Background = Template_MenuBarBase.bind({});
+DefaultIdGreen2Background.args = {
+  backgroundColour: 'green-2',
+};
+
+export const DefaultIdGoldBackground = Template_MenuBarBase.bind({});
+DefaultIdGoldBackground.args = {
+  backgroundColour: 'gold',
+};
+
+export const DefaultIdNavyBackgroundGoldText = Template_MenuBarBase.bind({});
+DefaultIdNavyBackgroundGoldText.args = {
+  backgroundColour: 'navy-and-gold',
+};
+
+export const DefaultIdNavyBackgroundWhiteText = Template_MenuBarBase.bind({});
+DefaultIdNavyBackgroundWhiteText.args = {
+  backgroundColour: 'navy-and-white',
+};
