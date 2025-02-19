@@ -18,7 +18,11 @@ const config = {
     /* Image component stories */
     "../stories/images/DecorativeImage.stories.js",
     "../stories/images/FunctionalImage.stories.js",
+    "../stories/images/HeaderLogo.stories.js",
     "../stories/images/InformativeImage.stories.js",
+
+    /* Mock page component stories */
+    "../stories/mock-pages/TullowhillCavaliers_Home.stories.js",
 
     /* Base component stories */
     "../stories/base/ImageBase.stories.js",
@@ -33,9 +37,6 @@ const config = {
     /* Header component stories */
     // "../stories/header/SmallHeader.stories.js",
     // "../stories/header/TallHeader.stories.js",
-
-    /* Mock page component stories */
-    // "../stories/mock-pages/TullowhillCavaliersHome.stories.js",
   ],
   addons: [
     '@chromatic-com/storybook',
