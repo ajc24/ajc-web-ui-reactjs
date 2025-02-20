@@ -5,7 +5,6 @@ import React from 'react';
 import { cleanup, render } from '@testing-library/react';
 import { TestDev } from 'ajc-testing-code';
 import { HeaderSubtitleText } from '../../../src';
-import PageTemplateConfig from '../../../src/components/modules/PageTemplateConfig';
 
 describe('Header Subtitle Text', () => {
   const testComponentId = 'test-component-id';

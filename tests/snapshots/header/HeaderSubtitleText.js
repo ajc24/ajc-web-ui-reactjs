@@ -5,24 +5,10 @@ import 'jsdom-global/register';
 import React from 'react';
 import { TestDev } from 'ajc-testing-code';
 import { HeaderSubtitleText } from '../../../src';
-import PageTemplateConfig from '../../../src/components/modules/PageTemplateConfig';
 
 describe('Header Subtitle Text', () => {
   /* Set the data for the tests */
   const testComponentId = 'test-component-id';
-
-  /* Set the spies for use in the tests */
-  let setupDocumentBodyCssSpy;
-
-  beforeAll(() => {
-    setupDocumentBodyCssSpy = jest
-      .spyOn(PageTemplateConfig, 'setupDocumentBodyCss')
-      .mockImplementation(() => {});
-  });
-
-  afterAll(() => {
-    setupDocumentBodyCssSpy.mockRestore();
-  });
 
   describe('Default standalone component, left alignment, no title text rendered, black text colour, marked as visible', () => {
     let getBoundingClientRectSpy;
