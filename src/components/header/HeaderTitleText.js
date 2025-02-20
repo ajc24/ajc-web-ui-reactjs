@@ -52,7 +52,7 @@ class HeaderTitleText extends React.Component {
    * @returns {number}
    */
   getContainerElementRightmostPosition() {
-    if (this.titleTextRef.current !== null) {
+    if (document.querySelector('div[id$="--header-title-text"] > h1') !== null) {
       return this.titleTextRef.current.parentNode.getBoundingClientRect().right;
     }
     return 0;
@@ -63,7 +63,7 @@ class HeaderTitleText extends React.Component {
    * @returns {number}
    */
   getHeadingElementHeight() {
-    if (this.titleTextRef.current !== null) {
+    if (document.querySelector('div[id$="--header-title-text"] > h1') !== null) {
       return this.titleTextRef.current.getBoundingClientRect().height;
     }
     return 0;
@@ -74,7 +74,7 @@ class HeaderTitleText extends React.Component {
    * @returns {number}
    */
   getHeadingElementRightmostPosition() {
-    if (this.titleTextRef.current !== null) {
+    if (document.querySelector('div[id$="--header-title-text"] > h1') !== null) {
       return this.titleTextRef.current.getBoundingClientRect().right;
     }
     return 0; 
@@ -85,7 +85,7 @@ class HeaderTitleText extends React.Component {
    * @returns {string}
    */
   getTitleTextContent() {
-    if (this.titleTextRef.current !== null) {
+    if (document.querySelector('div[id$="--header-title-text"] > h1') !== null) {
       return this.titleTextRef.current.textContent;
     }
     return '';
