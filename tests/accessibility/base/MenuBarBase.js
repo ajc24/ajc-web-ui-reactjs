@@ -54,7 +54,7 @@ describe('Menu Bar Base', () => {
     });
   });
 
-  describe('Component with custom id, white background', () => {
+  describe('Component with custom id, gold background', () => {
     let results;
 
     beforeAll(async () => {
@@ -63,7 +63,7 @@ describe('Menu Bar Base', () => {
           <header role="banner">
             Header component
           </header>
-          <MenuBarBase id="custom-id" backgroundColour="white">
+          <MenuBarBase id="custom-id" backgroundColour="gold">
             Menu Bar Base text content.
           </MenuBarBase>
           <main id="main-content" aria-label="Accessibility test">
@@ -116,6 +116,37 @@ describe('Menu Bar Base', () => {
     });
   });
 
+  describe('Component with default id, green-2 background', () => {
+    let results;
+
+    beforeAll(async () => {
+      const { unmount } = render(
+        <div>
+          <header role="banner">
+            Header component
+          </header>
+          <MenuBarBase backgroundColour="green-2">
+            Menu Bar Base text content.
+          </MenuBarBase>
+          <main id="main-content" aria-label="Accessibility test">
+            <h1>Menu Bar Base Accessibility Test</h1>
+          </main>
+          <footer role="contentinfo" id="footer">
+            Footer component
+          </footer>
+        </div>
+      );
+      const html = TestDev.getComponentInHTMLTemplate('Menu Bar Base: Test 4');
+      unmount();
+      /* Perform the accessibility checks on this component */
+      results = await TestDev.runAxeCore(html);
+    }, testTimeout);
+
+    it('verifies the accessibility standards for the component', () => {
+      expect(results).toBeTruthy();
+    });
+  });
+
   describe('Component with default id, grey background', () => {
     let results;
 
@@ -136,7 +167,69 @@ describe('Menu Bar Base', () => {
           </footer>
         </div>
       );
-      const html = TestDev.getComponentInHTMLTemplate('Menu Bar Base: Test 4');
+      const html = TestDev.getComponentInHTMLTemplate('Menu Bar Base: Test 5');
+      unmount();
+      /* Perform the accessibility checks on this component */
+      results = await TestDev.runAxeCore(html);
+    }, testTimeout);
+
+    it('verifies the accessibility standards for the component', () => {
+      expect(results).toBeTruthy();
+    });
+  });
+
+  describe('Component with default id, navy and gold background', () => {
+    let results;
+
+    beforeAll(async () => {
+      const { unmount } = render(
+        <div>
+          <header role="banner">
+            Header component
+          </header>
+          <MenuBarBase backgroundColour="navy-and-gold">
+            Menu Bar Base text content.
+          </MenuBarBase>
+          <main id="main-content" aria-label="Accessibility test">
+            <h1>Menu Bar Base Accessibility Test</h1>
+          </main>
+          <footer role="contentinfo" id="footer">
+            Footer component
+          </footer>
+        </div>
+      );
+      const html = TestDev.getComponentInHTMLTemplate('Menu Bar Base: Test 6');
+      unmount();
+      /* Perform the accessibility checks on this component */
+      results = await TestDev.runAxeCore(html);
+    }, testTimeout);
+
+    it('verifies the accessibility standards for the component', () => {
+      expect(results).toBeTruthy();
+    });
+  });
+
+  describe('Component with default id, navy and white background', () => {
+    let results;
+
+    beforeAll(async () => {
+      const { unmount } = render(
+        <div>
+          <header role="banner">
+            Header component
+          </header>
+          <MenuBarBase backgroundColour="navy-and-white">
+            Menu Bar Base text content.
+          </MenuBarBase>
+          <main id="main-content" aria-label="Accessibility test">
+            <h1>Menu Bar Base Accessibility Test</h1>
+          </main>
+          <footer role="contentinfo" id="footer">
+            Footer component
+          </footer>
+        </div>
+      );
+      const html = TestDev.getComponentInHTMLTemplate('Menu Bar Base: Test 7');
       unmount();
       /* Perform the accessibility checks on this component */
       results = await TestDev.runAxeCore(html);
@@ -167,7 +260,38 @@ describe('Menu Bar Base', () => {
           </footer>
         </div>
       );
-      const html = TestDev.getComponentInHTMLTemplate('Menu Bar Base: Test 5');
+      const html = TestDev.getComponentInHTMLTemplate('Menu Bar Base: Test 8');
+      unmount();
+      /* Perform the accessibility checks on this component */
+      results = await TestDev.runAxeCore(html);
+    }, testTimeout);
+
+    it('verifies the accessibility standards for the component', () => {
+      expect(results).toBeTruthy();
+    });
+  });
+
+  describe('Component with default id, white background', () => {
+    let results;
+
+    beforeAll(async () => {
+      const { unmount } = render(
+        <div>
+          <header role="banner">
+            Header component
+          </header>
+          <MenuBarBase backgroundColour="white">
+            Menu Bar Base text content.
+          </MenuBarBase>
+          <main id="main-content" aria-label="Accessibility test">
+            <h1>Menu Bar Base Accessibility Test</h1>
+          </main>
+          <footer role="contentinfo" id="footer">
+            Footer component
+          </footer>
+        </div>
+      );
+      const html = TestDev.getComponentInHTMLTemplate('Menu Bar Base: Test 9');
       unmount();
       /* Perform the accessibility checks on this component */
       results = await TestDev.runAxeCore(html);

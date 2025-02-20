@@ -54,7 +54,7 @@ describe('Footer Base', () => {
     });
   });
 
-  describe('Component with custom id, white background', () => {
+  describe('Component with custom id, gold background', () => {
     let results;
 
     beforeAll(async () => {
@@ -69,7 +69,7 @@ describe('Footer Base', () => {
           <main id="main-content" aria-label="Accessibility test">
             <h1>Footer Base Accessibility Test</h1>
           </main>
-          <FooterBase id="custom-id" backgroundColour="white">
+          <FooterBase id="custom-id" backgroundColour="gold">
             Footer Base text content.
           </FooterBase>
         </div>
@@ -116,6 +116,37 @@ describe('Footer Base', () => {
     });
   });
 
+  describe('Component with default id, green-2 background', () => {
+    let results;
+
+    beforeAll(async () => {
+      const { unmount } = render(
+        <div>
+          <header role="banner">
+            Header component
+          </header>
+          <div role="navigation">
+            Menu bar component
+          </div>
+          <main id="main-content" aria-label="Accessibility test">
+            <h1>Footer Base Accessibility Test</h1>
+          </main>
+          <FooterBase backgroundColour="green-2">
+            Footer Base text content.
+          </FooterBase>
+        </div>
+      );
+      const html = TestDev.getComponentInHTMLTemplate('Footer Base: Test 4');
+      unmount();
+      /* Perform the accessibility checks on this component */
+      results = await TestDev.runAxeCore(html);
+    }, testTimeout);
+
+    it('verifies the accessibility standards for the component', () => {
+      expect(results).toBeTruthy();
+    });
+  });
+
   describe('Component with default id, grey background', () => {
     let results;
 
@@ -136,7 +167,69 @@ describe('Footer Base', () => {
           </FooterBase>
         </div>
       );
-      const html = TestDev.getComponentInHTMLTemplate('Footer Base: Test 4');
+      const html = TestDev.getComponentInHTMLTemplate('Footer Base: Test 5');
+      unmount();
+      /* Perform the accessibility checks on this component */
+      results = await TestDev.runAxeCore(html);
+    }, testTimeout);
+
+    it('verifies the accessibility standards for the component', () => {
+      expect(results).toBeTruthy();
+    });
+  });
+
+  describe('Component with default id, navy and gold background', () => {
+    let results;
+
+    beforeAll(async () => {
+      const { unmount } = render(
+        <div>
+          <header role="banner">
+            Header component
+          </header>
+          <div role="navigation">
+            Menu bar component
+          </div>
+          <main id="main-content" aria-label="Accessibility test">
+            <h1>Footer Base Accessibility Test</h1>
+          </main>
+          <FooterBase backgroundColour="navy-and-gold">
+            Footer Base text content.
+          </FooterBase>
+        </div>
+      );
+      const html = TestDev.getComponentInHTMLTemplate('Footer Base: Test 6');
+      unmount();
+      /* Perform the accessibility checks on this component */
+      results = await TestDev.runAxeCore(html);
+    }, testTimeout);
+
+    it('verifies the accessibility standards for the component', () => {
+      expect(results).toBeTruthy();
+    });
+  });
+
+  describe('Component with default id, navy and white background', () => {
+    let results;
+
+    beforeAll(async () => {
+      const { unmount } = render(
+        <div>
+          <header role="banner">
+            Header component
+          </header>
+          <div role="navigation">
+            Menu bar component
+          </div>
+          <main id="main-content" aria-label="Accessibility test">
+            <h1>Footer Base Accessibility Test</h1>
+          </main>
+          <FooterBase backgroundColour="navy-and-white">
+            Footer Base text content.
+          </FooterBase>
+        </div>
+      );
+      const html = TestDev.getComponentInHTMLTemplate('Footer Base: Test 7');
       unmount();
       /* Perform the accessibility checks on this component */
       results = await TestDev.runAxeCore(html);
@@ -167,7 +260,38 @@ describe('Footer Base', () => {
           </FooterBase>
         </div>
       );
-      const html = TestDev.getComponentInHTMLTemplate('Footer Base: Test 5');
+      const html = TestDev.getComponentInHTMLTemplate('Footer Base: Test 8');
+      unmount();
+      /* Perform the accessibility checks on this component */
+      results = await TestDev.runAxeCore(html);
+    }, testTimeout);
+
+    it('verifies the accessibility standards for the component', () => {
+      expect(results).toBeTruthy();
+    });
+  });
+
+  describe('Component with default id, white background', () => {
+    let results;
+
+    beforeAll(async () => {
+      const { unmount } = render(
+        <div>
+          <header role="banner">
+            Header component
+          </header>
+          <div role="navigation">
+            Menu bar component
+          </div>
+          <main id="main-content" aria-label="Accessibility test">
+            <h1>Footer Base Accessibility Test</h1>
+          </main>
+          <FooterBase backgroundColour="white">
+            Footer Base text content.
+          </FooterBase>
+        </div>
+      );
+      const html = TestDev.getComponentInHTMLTemplate('Footer Base: Test 9');
       unmount();
       /* Perform the accessibility checks on this component */
       results = await TestDev.runAxeCore(html);

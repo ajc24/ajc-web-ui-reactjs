@@ -39,13 +39,13 @@ describe('Menu Bar Base', () => {
     });
   });
 
-  describe('Component with custom id, white background', () => {
+  describe('Component with custom id, gold background', () => {
     let snapshot;
     
     beforeAll(() => {
       snapshot = TestDev.createSnapshot(
         <React.Fragment>
-          <MenuBarBase id="custom-id" backgroundColour="white">
+          <MenuBarBase id="custom-id" backgroundColour="gold">
             Menu bar base text content.
           </MenuBarBase>
         </React.Fragment>
@@ -75,6 +75,24 @@ describe('Menu Bar Base', () => {
     });
   });
 
+  describe('Component with default id, green-2 background', () => {
+    let snapshot;
+    
+    beforeAll(() => {
+      snapshot = TestDev.createSnapshot(
+        <React.Fragment>
+          <MenuBarBase backgroundColour="green-2">
+            Menu bar base text content.
+          </MenuBarBase>
+        </React.Fragment>
+      );
+    });
+
+    it('verifies the snapshot for the component', () => {
+      expect(snapshot).toMatchSnapshot();
+    });
+  });
+
   describe('Component with default id, grey background', () => {
     let snapshot;
     
@@ -93,6 +111,42 @@ describe('Menu Bar Base', () => {
     });
   });
 
+  describe('Component with default id, navy and gold background', () => {
+    let snapshot;
+    
+    beforeAll(() => {
+      snapshot = TestDev.createSnapshot(
+        <React.Fragment>
+          <MenuBarBase backgroundColour="navy-and-gold">
+            Menu bar base text content.
+          </MenuBarBase>
+        </React.Fragment>
+      );
+    });
+
+    it('verifies the snapshot for the component', () => {
+      expect(snapshot).toMatchSnapshot();
+    });
+  });
+
+  describe('Component with default id, navy and white background', () => {
+    let snapshot;
+    
+    beforeAll(() => {
+      snapshot = TestDev.createSnapshot(
+        <React.Fragment>
+          <MenuBarBase backgroundColour="navy-and-white">
+            Menu bar base text content.
+          </MenuBarBase>
+        </React.Fragment>
+      );
+    });
+
+    it('verifies the snapshot for the component', () => {
+      expect(snapshot).toMatchSnapshot();
+    });
+  });
+
   describe('Component with default id, red background', () => {
     let snapshot;
     
@@ -100,6 +154,24 @@ describe('Menu Bar Base', () => {
       snapshot = TestDev.createSnapshot(
         <React.Fragment>
           <MenuBarBase backgroundColour="red">
+            Menu bar base text content.
+          </MenuBarBase>
+        </React.Fragment>
+      );
+    });
+
+    it('verifies the snapshot for the component', () => {
+      expect(snapshot).toMatchSnapshot();
+    });
+  });
+
+  describe('Component with default id, white background', () => {
+    let snapshot;
+    
+    beforeAll(() => {
+      snapshot = TestDev.createSnapshot(
+        <React.Fragment>
+          <MenuBarBase backgroundColour="white">
             Menu bar base text content.
           </MenuBarBase>
         </React.Fragment>
