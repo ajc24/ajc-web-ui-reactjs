@@ -48,7 +48,11 @@ describe('Header Base', () => {
 
       /* Verifies that the "background-grey" class is not set to the outer content element */
       /* Verifies that the "background-white" class is set to the outer content element */
+      /* Verifies that the "header-border-top-gold" class is not set to the outer content element */
+      /* Verifies that the "header-border-top-green" class is not set to the outer content element */
+      /* Verifies that the "header-border-top-green-2" class is not set to the outer content element */
       /* Verifies that the "header-border-top-grey" class is not set to the outer content element */
+      /* Verifies that the "header-border-top-navy" class is not set to the outer content element */
       /* Verifies that the "header-border-top-red" class is not set to the outer content element */
       testData.push(outerContent.classList);
 
@@ -84,8 +88,24 @@ describe('Header Base', () => {
       expect(testData[1].contains('background-white')).toBeTruthy();
     });
 
+    it('verifies that the "header-border-top-gold" class is not set to the outer content element', () => {
+      expect(testData[1].contains('header-border-top-gold')).toBeFalsy();
+    });
+
+    it('verifies that the "header-border-top-green" class is not set to the outer content element', () => {
+      expect(testData[1].contains('header-border-top-green')).toBeFalsy();
+    });
+
+    it('verifies that the "header-border-top-green-2" class is not set to the outer content element', () => {
+      expect(testData[1].contains('header-border-top-green-2')).toBeFalsy();
+    });
+
     it('verifies that the "header-border-top-grey" class is not set to the outer content element', () => {
       expect(testData[1].contains('header-border-top-grey')).toBeFalsy();
+    });
+
+    it('verifies that the "header-border-top-navy" class is not set to the outer content element', () => {
+      expect(testData[1].contains('header-border-top-navy')).toBeFalsy();
     });
 
     it('verifies that the "header-border-top-red" class is not set to the outer content element', () => {
@@ -143,7 +163,11 @@ describe('Header Base', () => {
 
       /* Verifies that the "background-grey" class is set to the outer content element */
       /* Verifies that the "background-white" class is not set to the outer content element */
+      /* Verifies that the "header-border-top-gold" class is not set to the outer content element */
+      /* Verifies that the "header-border-top-green" class is not set to the outer content element */
+      /* Verifies that the "header-border-top-green-2" class is not set to the outer content element */
       /* Verifies that the "header-border-top-grey" class is not set to the outer content element */
+      /* Verifies that the "header-border-top-navy" class is not set to the outer content element */
       /* Verifies that the "header-border-top-red" class is not set to the outer content element */
       testData.push(outerContent.classList);
 
@@ -173,8 +197,24 @@ describe('Header Base', () => {
       expect(testData[1].contains('background-white')).toBeFalsy();
     });
 
+    it('verifies that the "header-border-top-gold" class is not set to the outer content element', () => {
+      expect(testData[1].contains('header-border-top-gold')).toBeFalsy();
+    });
+
+    it('verifies that the "header-border-top-green" class is not set to the outer content element', () => {
+      expect(testData[1].contains('header-border-top-green')).toBeFalsy();
+    });
+
+    it('verifies that the "header-border-top-green-2" class is not set to the outer content element', () => {
+      expect(testData[1].contains('header-border-top-green-2')).toBeFalsy();
+    });
+
     it('verifies that the "header-border-top-grey" class is not set to the outer content element', () => {
       expect(testData[1].contains('header-border-top-grey')).toBeFalsy();
+    });
+
+    it('verifies that the "header-border-top-navy" class is not set to the outer content element', () => {
+      expect(testData[1].contains('header-border-top-navy')).toBeFalsy();
     });
 
     it('verifies that the "header-border-top-red" class is not set to the outer content element', () => {
@@ -202,14 +242,14 @@ describe('Header Base', () => {
     });
   });
 
-  describe('Component with default id, small size, no background image, white background, grey top border', () => {
+  describe('Component with default id, small size, no background image, white background, gold top border', () => {
     const testData = [];
 
     beforeAll(() => {
       /* Mount the component */
       const { unmount } = render(
         <React.Fragment>
-          <HeaderBase size="small" backgroundImageSrc={undefined} backgroundColour="white" topBorder="grey">
+          <HeaderBase size="small" backgroundImageSrc={undefined} backgroundColour="white" topBorder="gold">
             Header base text content.
           </HeaderBase>
         </React.Fragment>
@@ -220,7 +260,11 @@ describe('Header Base', () => {
 
       /* Verifies that the "background-grey" class is not set to the outer content element */
       /* Verifies that the "background-white" class is set to the outer content element */
-      /* Verifies that the "header-border-top-grey" class is set to the outer content element */
+      /* Verifies that the "header-border-top-gold" class is set to the outer content element */
+      /* Verifies that the "header-border-top-green" class is not set to the outer content element */
+      /* Verifies that the "header-border-top-green-2" class is not set to the outer content element */
+      /* Verifies that the "header-border-top-grey" class is not set to the outer content element */
+      /* Verifies that the "header-border-top-navy" class is not set to the outer content element */
       /* Verifies that the "header-border-top-red" class is not set to the outer content element */
       testData.push(outerContent.classList);
 
@@ -246,8 +290,24 @@ describe('Header Base', () => {
       expect(testData[0].contains('background-white')).toBeTruthy();
     });
 
-    it('verifies that the "header-border-top-grey" class is set to the outer content element', () => {
-      expect(testData[0].contains('header-border-top-grey')).toBeTruthy();
+    it('verifies that the "header-border-top-gold" class is set to the outer content element', () => {
+      expect(testData[0].contains('header-border-top-gold')).toBeTruthy();
+    });
+
+    it('verifies that the "header-border-top-green" class is not set to the outer content element', () => {
+      expect(testData[0].contains('header-border-top-green')).toBeFalsy();
+    });
+
+    it('verifies that the "header-border-top-green-2" class is not set to the outer content element', () => {
+      expect(testData[0].contains('header-border-top-green-2')).toBeFalsy();
+    });
+
+    it('verifies that the "header-border-top-grey" class is not set to the outer content element', () => {
+      expect(testData[0].contains('header-border-top-grey')).toBeFalsy();
+    });
+
+    it('verifies that the "header-border-top-navy" class is not set to the outer content element', () => {
+      expect(testData[0].contains('header-border-top-navy')).toBeFalsy();
     });
 
     it('verifies that the "header-border-top-red" class is not set to the outer content element', () => {
@@ -275,14 +335,14 @@ describe('Header Base', () => {
     });
   });
 
-  describe('Component with default id, tall size, no background image, default background, red top border', () => {
+  describe('Component with default id, tall size, no background image, default background, green top border', () => {
     const testData = [];
 
     beforeAll(() => {
       /* Mount the component */
       const { unmount } = render(
         <React.Fragment>
-          <HeaderBase size="tall" backgroundImageSrc={undefined} topBorder="red">
+          <HeaderBase size="tall" backgroundImageSrc={undefined} topBorder="green">
             Header base text content.
           </HeaderBase>
         </React.Fragment>
@@ -291,8 +351,12 @@ describe('Header Base', () => {
       const outerContent = document.querySelector(`header[id="${defaultHeaderBaseId}"] > div`);
       const innerContent = document.querySelector(`header[id="${defaultHeaderBaseId}"] > div > div`);
 
+      /* Verifies that the "header-border-top-gold" class is not set to the outer content element */
+      /* Verifies that the "header-border-top-green" class is set to the outer content element */
+      /* Verifies that the "header-border-top-green-2" class is not set to the outer content element */
       /* Verifies that the "header-border-top-grey" class is not set to the outer content element */
-      /* Verifies that the "header-border-top-red" class is set to the outer content element */
+      /* Verifies that the "header-border-top-navy" class is not set to the outer content element */
+      /* Verifies that the "header-border-top-red" class is not set to the outer content element */
       testData.push(outerContent.classList);
 
       /* Verifies that no background image is rendered in the outer content element */
@@ -309,12 +373,28 @@ describe('Header Base', () => {
       cleanup();
     });
 
+    it('verifies that the "header-border-top-gold" class is not set to the outer content element', () => {
+      expect(testData[0].contains('header-border-top-gold')).toBeFalsy();
+    });
+
+    it('verifies that the "header-border-top-green" class is set to the outer content element', () => {
+      expect(testData[0].contains('header-border-top-green')).toBeTruthy();
+    });
+
+    it('verifies that the "header-border-top-green-2" class is not set to the outer content element', () => {
+      expect(testData[0].contains('header-border-top-green-2')).toBeFalsy();
+    });
+
     it('verifies that the "header-border-top-grey" class is not set to the outer content element', () => {
       expect(testData[0].contains('header-border-top-grey')).toBeFalsy();
     });
 
-    it('verifies that the "header-border-top-red" class is set to the outer content element', () => {
-      expect(testData[0].contains('header-border-top-red')).toBeTruthy();
+    it('verifies that the "header-border-top-navy" class is not set to the outer content element', () => {
+      expect(testData[0].contains('header-border-top-navy')).toBeFalsy();
+    });
+
+    it('verifies that the "header-border-top-red" class is not set to the outer content element', () => {
+      expect(testData[0].contains('header-border-top-red')).toBeFalsy();
     });
 
     it('verifies that no background image is rendered in the outer content element', () => {
@@ -338,7 +418,7 @@ describe('Header Base', () => {
     });
   });
 
-  describe('Component with default id, tall size, with background image, default background, no top border', () => {
+  describe('Component with default id, tall size, with background image, default background, top border switched off', () => {
     const testData = [];
 
     beforeAll(() => {
@@ -356,7 +436,11 @@ describe('Header Base', () => {
 
       /* Verifies that the "background-grey" class is not set to the outer content element */
       /* Verifies that the "background-white" class is not set to the outer content element */
+      /* Verifies that the "header-border-top-gold" class is not set to the outer content element */
+      /* Verifies that the "header-border-top-green" class is not set to the outer content element */
+      /* Verifies that the "header-border-top-green-2" class is not set to the outer content element */
       /* Verifies that the "header-border-top-grey" class is not set to the outer content element */
+      /* Verifies that the "header-border-top-navy" class is not set to the outer content element */
       /* Verifies that the "header-border-top-red" class is not set to the outer content element */
       testData.push(outerContent.classList);
 
@@ -382,8 +466,24 @@ describe('Header Base', () => {
       expect(testData[0].contains('background-white')).toBeFalsy();
     });
 
+    it('verifies that the "header-border-top-gold" class is not set to the outer content element', () => {
+      expect(testData[0].contains('header-border-top-gold')).toBeFalsy();
+    });
+
+    it('verifies that the "header-border-top-green" class is not set to the outer content element', () => {
+      expect(testData[0].contains('header-border-top-green')).toBeFalsy();
+    });
+
+    it('verifies that the "header-border-top-green-2" class is not set to the outer content element', () => {
+      expect(testData[0].contains('header-border-top-green-2')).toBeFalsy();
+    });
+
     it('verifies that the "header-border-top-grey" class is not set to the outer content element', () => {
       expect(testData[0].contains('header-border-top-grey')).toBeFalsy();
+    });
+
+    it('verifies that the "header-border-top-navy" class is not set to the outer content element', () => {
+      expect(testData[0].contains('header-border-top-navy')).toBeFalsy();
     });
 
     it('verifies that the "header-border-top-red" class is not set to the outer content element', () => {
@@ -408,6 +508,218 @@ describe('Header Base', () => {
 
     it('verifies that the "header-small-height-no-border" class is not set to the inner content element', () => {
       expect(testData[2].contains('header-small-height-no-border')).toBeFalsy();
+    });
+  });
+
+  describe('Component with default id, default size, no background image, default background, green-2 top border', () => {
+    const testData = [];
+
+    beforeAll(() => {
+      /* Mount the component */
+      const { unmount } = render(
+        <React.Fragment>
+          <HeaderBase topBorder="green-2">
+            Header base text content.
+          </HeaderBase>
+        </React.Fragment>
+      );
+      /* Build the DOM elements required for the tests */
+      const outerContent = document.querySelector(`header[id="${defaultHeaderBaseId}"] > div`);
+
+      /* Verifies that the "header-border-top-gold" class is not set to the outer content element */
+      /* Verifies that the "header-border-top-green" class is not set to the outer content element */
+      /* Verifies that the "header-border-top-green-2" class is set to the outer content element */
+      /* Verifies that the "header-border-top-grey" class is not set to the outer content element */
+      /* Verifies that the "header-border-top-navy" class is not set to the outer content element */
+      /* Verifies that the "header-border-top-red" class is not set to the outer content element */
+      testData.push(outerContent.classList);
+
+      /* Unmount the component and clean up the test */
+      unmount();
+      cleanup();
+    });
+
+    it('verifies that the "header-border-top-gold" class is not set to the outer content element', () => {
+      expect(testData[0].contains('header-border-top-gold')).toBeFalsy();
+    });
+
+    it('verifies that the "header-border-top-green" class is not set to the outer content element', () => {
+      expect(testData[0].contains('header-border-top-green')).toBeFalsy();
+    });
+
+    it('verifies that the "header-border-top-green-2" class is set to the outer content element', () => {
+      expect(testData[0].contains('header-border-top-green-2')).toBeTruthy();
+    });
+
+    it('verifies that the "header-border-top-grey" class is not set to the outer content element', () => {
+      expect(testData[0].contains('header-border-top-grey')).toBeFalsy();
+    });
+
+    it('verifies that the "header-border-top-navy" class is not set to the outer content element', () => {
+      expect(testData[0].contains('header-border-top-navy')).toBeFalsy();
+    });
+
+    it('verifies that the "header-border-top-red" class is not set to the outer content element', () => {
+      expect(testData[0].contains('header-border-top-red')).toBeFalsy();
+    });
+  });
+
+  describe('Component with default id, default size, no background image, default background, grey top border', () => {
+    const testData = [];
+
+    beforeAll(() => {
+      /* Mount the component */
+      const { unmount } = render(
+        <React.Fragment>
+          <HeaderBase topBorder="grey">
+            Header base text content.
+          </HeaderBase>
+        </React.Fragment>
+      );
+      /* Build the DOM elements required for the tests */
+      const outerContent = document.querySelector(`header[id="${defaultHeaderBaseId}"] > div`);
+
+      /* Verifies that the "header-border-top-gold" class is not set to the outer content element */
+      /* Verifies that the "header-border-top-green" class is not set to the outer content element */
+      /* Verifies that the "header-border-top-green-2" class is not set to the outer content element */
+      /* Verifies that the "header-border-top-grey" class is set to the outer content element */
+      /* Verifies that the "header-border-top-navy" class is not set to the outer content element */
+      /* Verifies that the "header-border-top-red" class is not set to the outer content element */
+      testData.push(outerContent.classList);
+
+      /* Unmount the component and clean up the test */
+      unmount();
+      cleanup();
+    });
+
+    it('verifies that the "header-border-top-gold" class is not set to the outer content element', () => {
+      expect(testData[0].contains('header-border-top-gold')).toBeFalsy();
+    });
+
+    it('verifies that the "header-border-top-green" class is not set to the outer content element', () => {
+      expect(testData[0].contains('header-border-top-green')).toBeFalsy();
+    });
+
+    it('verifies that the "header-border-top-green-2" class is not set to the outer content element', () => {
+      expect(testData[0].contains('header-border-top-green-2')).toBeFalsy();
+    });
+
+    it('verifies that the "header-border-top-grey" class is set to the outer content element', () => {
+      expect(testData[0].contains('header-border-top-grey')).toBeTruthy();
+    });
+
+    it('verifies that the "header-border-top-navy" class is not set to the outer content element', () => {
+      expect(testData[0].contains('header-border-top-navy')).toBeFalsy();
+    });
+
+    it('verifies that the "header-border-top-red" class is not set to the outer content element', () => {
+      expect(testData[0].contains('header-border-top-red')).toBeFalsy();
+    });
+  });
+
+  describe('Component with default id, default size, no background image, default background, navy top border', () => {
+    const testData = [];
+
+    beforeAll(() => {
+      /* Mount the component */
+      const { unmount } = render(
+        <React.Fragment>
+          <HeaderBase topBorder="navy">
+            Header base text content.
+          </HeaderBase>
+        </React.Fragment>
+      );
+      /* Build the DOM elements required for the tests */
+      const outerContent = document.querySelector(`header[id="${defaultHeaderBaseId}"] > div`);
+
+      /* Verifies that the "header-border-top-gold" class is not set to the outer content element */
+      /* Verifies that the "header-border-top-green" class is not set to the outer content element */
+      /* Verifies that the "header-border-top-green-2" class is not set to the outer content element */
+      /* Verifies that the "header-border-top-grey" class is not set to the outer content element */
+      /* Verifies that the "header-border-top-navy" class is set to the outer content element */
+      /* Verifies that the "header-border-top-red" class is not set to the outer content element */
+      testData.push(outerContent.classList);
+
+      /* Unmount the component and clean up the test */
+      unmount();
+      cleanup();
+    });
+
+    it('verifies that the "header-border-top-gold" class is not set to the outer content element', () => {
+      expect(testData[0].contains('header-border-top-gold')).toBeFalsy();
+    });
+
+    it('verifies that the "header-border-top-green" class is not set to the outer content element', () => {
+      expect(testData[0].contains('header-border-top-green')).toBeFalsy();
+    });
+
+    it('verifies that the "header-border-top-green-2" class is not set to the outer content element', () => {
+      expect(testData[0].contains('header-border-top-green-2')).toBeFalsy();
+    });
+
+    it('verifies that the "header-border-top-grey" class is not set to the outer content element', () => {
+      expect(testData[0].contains('header-border-top-grey')).toBeFalsy();
+    });
+
+    it('verifies that the "header-border-top-navy" class is set to the outer content element', () => {
+      expect(testData[0].contains('header-border-top-navy')).toBeTruthy();
+    });
+
+    it('verifies that the "header-border-top-red" class is not set to the outer content element', () => {
+      expect(testData[0].contains('header-border-top-red')).toBeFalsy();
+    });
+  });
+
+  describe('Component with default id, default size, no background image, default background, red top border', () => {
+    const testData = [];
+
+    beforeAll(() => {
+      /* Mount the component */
+      const { unmount } = render(
+        <React.Fragment>
+          <HeaderBase topBorder="red">
+            Header base text content.
+          </HeaderBase>
+        </React.Fragment>
+      );
+      /* Build the DOM elements required for the tests */
+      const outerContent = document.querySelector(`header[id="${defaultHeaderBaseId}"] > div`);
+
+      /* Verifies that the "header-border-top-gold" class is not set to the outer content element */
+      /* Verifies that the "header-border-top-green" class is not set to the outer content element */
+      /* Verifies that the "header-border-top-green-2" class is not set to the outer content element */
+      /* Verifies that the "header-border-top-grey" class is not set to the outer content element */
+      /* Verifies that the "header-border-top-navy" class is not set to the outer content element */
+      /* Verifies that the "header-border-top-red" class is set to the outer content element */
+      testData.push(outerContent.classList);
+
+      /* Unmount the component and clean up the test */
+      unmount();
+      cleanup();
+    });
+
+    it('verifies that the "header-border-top-gold" class is not set to the outer content element', () => {
+      expect(testData[0].contains('header-border-top-gold')).toBeFalsy();
+    });
+
+    it('verifies that the "header-border-top-green" class is not set to the outer content element', () => {
+      expect(testData[0].contains('header-border-top-green')).toBeFalsy();
+    });
+
+    it('verifies that the "header-border-top-green-2" class is not set to the outer content element', () => {
+      expect(testData[0].contains('header-border-top-green-2')).toBeFalsy();
+    });
+
+    it('verifies that the "header-border-top-grey" class is not set to the outer content element', () => {
+      expect(testData[0].contains('header-border-top-grey')).toBeFalsy();
+    });
+
+    it('verifies that the "header-border-top-navy" class is not set to the outer content element', () => {
+      expect(testData[0].contains('header-border-top-navy')).toBeFalsy();
+    });
+
+    it('verifies that the "header-border-top-red" class is set to the outer content element', () => {
+      expect(testData[0].contains('header-border-top-red')).toBeTruthy();
     });
   });
 });

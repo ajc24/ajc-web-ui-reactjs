@@ -41,13 +41,13 @@ describe('Header Base', () => {
     });
   });
 
-  describe('Component with custom id, small size, no background image, white background, grey top border', () => {
+  describe('Component with custom id, small size, no background image, white background, gold top border', () => {
     let snapshot;
     
     beforeAll(() => {
       snapshot = TestDev.createSnapshot(
         <React.Fragment>
-          <HeaderBase id="custom-id" size="small" backgroundColour="white" topBorder="grey">
+          <HeaderBase id="custom-id" size="small" backgroundColour="white" topBorder="gold">
             Header base text content.
           </HeaderBase>
         </React.Fragment>
@@ -59,13 +59,13 @@ describe('Header Base', () => {
     });
   });
 
-  describe('Component with default id, small size, no background image, grey background, red top border', () => {
+  describe('Component with default id, small size, no background image, grey background, green top border', () => {
     let snapshot;
     
     beforeAll(() => {
       snapshot = TestDev.createSnapshot(
         <React.Fragment>
-          <HeaderBase size="small" backgroundColour="grey" topBorder="red">
+          <HeaderBase size="small" backgroundColour="grey" topBorder="green">
             Header base text content.
           </HeaderBase>
         </React.Fragment>
@@ -77,7 +77,7 @@ describe('Header Base', () => {
     });
   });
 
-  describe('Component with default id, small size, with background image, default background, no top border', () => {
+  describe('Component with default id, small size, with background image, default background, top border switched off', () => {
     let snapshot;
     
     beforeAll(() => {
@@ -95,13 +95,13 @@ describe('Header Base', () => {
     });
   });
 
-  describe('Component with default id, tall size, with background image, default background, no top border', () => {
+  describe('Component with default id, tall size, with background image, default background, green-2 top border', () => {
     let snapshot;
     
     beforeAll(() => {
       snapshot = TestDev.createSnapshot(
         <React.Fragment>
-          <HeaderBase size="tall" backgroundImageSrc={tallHeaderBgImage}>
+          <HeaderBase size="tall" backgroundImageSrc={tallHeaderBgImage} topBorder="green-2">
             Header base text content.
           </HeaderBase>
         </React.Fragment>
@@ -113,13 +113,49 @@ describe('Header Base', () => {
     });
   });
 
-  describe('Component with default id, tall size, no background image, default background, green top border', () => {
+  describe('Component with default id, tall size, no background image, default background, grey top border', () => {
     let snapshot;
     
     beforeAll(() => {
       snapshot = TestDev.createSnapshot(
         <React.Fragment>
-          <HeaderBase size="tall" topBorder="green">
+          <HeaderBase size="tall" topBorder="grey">
+            Header base text content.
+          </HeaderBase>
+        </React.Fragment>
+      );
+    });
+
+    it('verifies the snapshot for the component', () => {
+      expect(snapshot).toMatchSnapshot();
+    });
+  });
+
+  describe('Component with default id, default size, no background image, default background, navy top border', () => {
+    let snapshot;
+    
+    beforeAll(() => {
+      snapshot = TestDev.createSnapshot(
+        <React.Fragment>
+          <HeaderBase topBorder="navy">
+            Header base text content.
+          </HeaderBase>
+        </React.Fragment>
+      );
+    });
+
+    it('verifies the snapshot for the component', () => {
+      expect(snapshot).toMatchSnapshot();
+    });
+  });
+
+  describe('Component with default id, default size, no background image, default background, red top border', () => {
+    let snapshot;
+    
+    beforeAll(() => {
+      snapshot = TestDev.createSnapshot(
+        <React.Fragment>
+          <HeaderBase topBorder="red">
             Header base text content.
           </HeaderBase>
         </React.Fragment>

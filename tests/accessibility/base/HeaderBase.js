@@ -56,13 +56,13 @@ describe('Header Base', () => {
     });
   });
 
-  describe('Component with custom id, small size, no background image, white background, grey top border', () => {
+  describe('Component with custom id, small size, no background image, white background, gold top border', () => {
     let results;
 
     beforeAll(async () => {
       const { unmount } = render(
         <div>
-          <HeaderBase id="custom-id" size="small" backgroundColour="white" topBorder="grey">
+          <HeaderBase id="custom-id" size="small" backgroundColour="white" topBorder="gold">
             Header base text content.
           </HeaderBase>
           <div role="navigation">
@@ -87,13 +87,13 @@ describe('Header Base', () => {
     });
   });
 
-  describe('Component with default id, small size, no background image, grey background, red top border', () => {
+  describe('Component with default id, small size, no background image, grey background, green top border', () => {
     let results;
 
     beforeAll(async () => {
       const { unmount } = render(
         <div>
-          <HeaderBase size="small" backgroundColour="grey" topBorder="red">
+          <HeaderBase size="small" backgroundColour="grey" topBorder="green">
             Header base text content.
           </HeaderBase>
           <div role="navigation">
@@ -118,7 +118,7 @@ describe('Header Base', () => {
     });
   });
 
-  describe('Component with default id, small size, with background image, default background, no top border', () => {
+  describe('Component with default id, small size, with background image, default background, top border switched off', () => {
     let results;
 
     beforeAll(async () => {
@@ -149,13 +149,13 @@ describe('Header Base', () => {
     });
   });
 
-  describe('Component with default id, tall size, with background image, default background, no top border', () => {
+  describe('Component with default id, tall size, with background image, default background, green-2 top border', () => {
     let results;
 
     beforeAll(async () => {
       const { unmount } = render(
         <div>
-          <HeaderBase size="tall" backgroundImageSrc={tallHeaderBgImage}>
+          <HeaderBase size="tall" backgroundImageSrc={tallHeaderBgImage} topBorder="green-2">
             Header base text content.
           </HeaderBase>
           <div role="navigation">
@@ -180,13 +180,13 @@ describe('Header Base', () => {
     });
   });
 
-  describe('Component with default id, tall size, no background image, default background, green top border', () => {
+  describe('Component with default id, tall size, no background image, default background, grey top border', () => {
     let results;
 
     beforeAll(async () => {
       const { unmount } = render(
         <div>
-          <HeaderBase size="tall" topBorder="green">
+          <HeaderBase size="tall" topBorder="grey">
             Header base text content.
           </HeaderBase>
           <div role="navigation">
@@ -201,6 +201,68 @@ describe('Header Base', () => {
         </div>
       );
       const html = TestDev.getComponentInHTMLTemplate('Header Base: Test 6');
+      unmount();
+      /* Perform the accessibility checks on this component */
+      results = await TestDev.runAxeCore(html);
+    }, testTimeout);
+
+    it('verifies the accessibility standards for the component', () => {
+      expect(results).toBeTruthy();
+    });
+  });
+
+  describe('Component with default id, default size, no background image, default background, navy top border', () => {
+    let results;
+
+    beforeAll(async () => {
+      const { unmount } = render(
+        <div>
+          <HeaderBase topBorder="navy">
+            Header base text content.
+          </HeaderBase>
+          <div role="navigation">
+            Menu bar component
+          </div>
+          <main id="main-content" aria-label="Accessibility test">
+            <h1>Header Base Accessibility Test</h1>
+          </main>
+          <footer role="contentinfo" id="footer">
+            Footer component
+          </footer>
+        </div>
+      );
+      const html = TestDev.getComponentInHTMLTemplate('Header Base: Test 7');
+      unmount();
+      /* Perform the accessibility checks on this component */
+      results = await TestDev.runAxeCore(html);
+    }, testTimeout);
+
+    it('verifies the accessibility standards for the component', () => {
+      expect(results).toBeTruthy();
+    });
+  });
+
+  describe('Component with default id, default size, no background image, default background, red top border', () => {
+    let results;
+
+    beforeAll(async () => {
+      const { unmount } = render(
+        <div>
+          <HeaderBase topBorder="red">
+            Header base text content.
+          </HeaderBase>
+          <div role="navigation">
+            Menu bar component
+          </div>
+          <main id="main-content" aria-label="Accessibility test">
+            <h1>Header Base Accessibility Test</h1>
+          </main>
+          <footer role="contentinfo" id="footer">
+            Footer component
+          </footer>
+        </div>
+      );
+      const html = TestDev.getComponentInHTMLTemplate('Header Base: Test 8');
       unmount();
       /* Perform the accessibility checks on this component */
       results = await TestDev.runAxeCore(html);
