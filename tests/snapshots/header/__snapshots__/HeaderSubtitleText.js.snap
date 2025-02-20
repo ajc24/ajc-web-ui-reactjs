@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header Subtitle Text Component rendered inside Header, default alignment, with title text rendered, default text colour, marked as visible verifies the snapshot for the component 1`] = `"<div id="test-component-id--header-subtitle-text" class="background-transparent subtitle-text-size-inside-header subtitle-text-alignment-left subtitle-text-with-header-text"><p class="subtitle-text-default font-black" aria-hidden="false">Header subtitle text component text content.</p></div>"`;
+
+exports[`Header Subtitle Text Default standalone component, centre alignment, no title text rendered, white text colour, marked as hidden verifies the snapshot for the component 1`] = `"<div id="test-component-id--header-subtitle-text" class="background-transparent page-template-container subtitle-text-alignment-centre"><p class="subtitle-text-default font-white hidden" aria-hidden="true">Header subtitle text component text content.</p></div>"`;
+
+exports[`Header Subtitle Text Default standalone component, left alignment, no title text rendered, black text colour, marked as visible verifies the snapshot for the component 1`] = `"<div id="test-component-id--header-subtitle-text" class="background-transparent page-template-container subtitle-text-alignment-left"><p class="subtitle-text-default font-black" aria-hidden="false">Header subtitle text component text content.</p></div>"`;
