@@ -125,12 +125,10 @@ class HeaderSubtitleText extends React.Component {
    * Marks the resizing process as starting.
    */
   setIsResizingStart() {
-    if (this.state.isResizing === false) {
-      /* Only start the resizing process if all previous resizing processes are completed */
-      this.setState({
-        isResizing: true,
-      }, this.handleVisibility);
-    }
+    /* Only start the resizing process if all previous resizing processes are completed */
+    this.setState({
+      isResizing: true,
+    }, this.handleVisibility);
   }
 
   /**
