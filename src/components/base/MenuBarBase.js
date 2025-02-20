@@ -29,13 +29,17 @@ const MenuBarBase = props => {
 
   /* Set the styling for the navigation element */
   let navCss = 'nav screen-width-root background-white';
-  if (props.backgroundColour === 'gold' || props.backgroundColour === 'green-2') {
-    navCss += ' font-black';
-  } else if (props.backgroundColour === 'navy-and-gold') {
+  if (props.backgroundColour === 'navy-and-gold') {
+    /* Set to a gold font for thest background colours */
     navCss += ' font-gold';
-  } else {
+  } else if (props.backgroundColour === 'green' || props.backgroundColour === 'grey' || props.backgroundColour === 'navy-and-white' || props.backgroundColour === 'red' ) {
+    /* Set to a white font for these background colours */
     navCss += ' font-white';
+  } else {
+    /* Default set to black font for all other colours */
+    navCss += ' font-black';
   }
+
   /* Set the styling for the outer content element */
   let outerContentCss = 'menu-bar-content-outer screen-width-content-outer';
   if (props.backgroundColour === 'gold' || props.backgroundColour === 'green' || props.backgroundColour === 'green-2' || props.backgroundColour === 'red'
@@ -66,7 +70,7 @@ const MenuBarBase = props => {
 }
 MenuBarBase.propTypes = {
   /** The background colour for the menu bar. The default colour for the background is white. */
-  backgroundColour: PropTypes.oneOf([ 'green', 'green-2', 'grey', 'navy-and-gold', 'navy-and-white', 'red', 'white' ]),
+  backgroundColour: PropTypes.oneOf([ 'gold', 'green', 'green-2', 'grey', 'navy-and-gold', 'navy-and-white', 'red', 'white' ]),
   /** The content to be displayed within the menu bar template component. */
   children: PropTypes.any,
   /** The unique identifier for this component. */

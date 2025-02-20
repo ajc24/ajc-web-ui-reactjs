@@ -29,13 +29,17 @@ const FooterBase = props => {
 
   /* Set the styling for the navigation element */
   let footerCss = 'footer screen-width-root background-white';
-  if (props.backgroundColour === 'gold' || props.backgroundColour === 'green-2') {
-    footerCss += ' font-black';
-  } else if (props.backgroundColour === 'navy-and-gold') {
+  if (props.backgroundColour === 'navy-and-gold') {
+    /* Set to a gold font for thest background colours */
     footerCss += ' font-gold';
-  } else {
+  } else if (props.backgroundColour === 'green' || props.backgroundColour === 'grey'|| props.backgroundColour === 'navy-and-white' || props.backgroundColour === 'red' ) {
+    /* Set to a white font for these background colours */
     footerCss += ' font-white';
+  } else {
+    /* Default set to black font for all other colours */
+    footerCss += ' font-black';
   }
+
   /* Set the styling for the outer content element */
   let outerContentCss = 'footer-content-outer screen-width-content-outer';
   if (props.backgroundColour === 'gold' || props.backgroundColour === 'green' || props.backgroundColour === 'green-2' || props.backgroundColour === 'red'
@@ -66,7 +70,7 @@ const FooterBase = props => {
 }
 FooterBase.propTypes = {
   /** The background colour for the footer. The default colour for the background is white. */
-  backgroundColour: PropTypes.oneOf([ 'green', 'green-2', 'grey', 'navy-and-gold', 'navy-and-white', 'red', 'white' ]),
+  backgroundColour: PropTypes.oneOf([ 'gold', 'green', 'green-2', 'grey', 'navy-and-gold', 'navy-and-white', 'red', 'white' ]),
   /** The content to be displayed within the footer template component. */
   children: PropTypes.any,
   /** The unique identifier for this component. */
