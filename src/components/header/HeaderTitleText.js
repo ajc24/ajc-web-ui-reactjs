@@ -118,11 +118,11 @@ class HeaderTitleText extends React.Component {
   reduceFontSizeAndWrapTextIfRequired() {
     /* Determine the positions of the text and the current container element width */
     let h1RightPos = this.getHeadingElementRightmostPosition();
-    let containerWidth = this.getContainerElementRightmostPosition();
+    let containerRightPos = this.getContainerElementRightmostPosition();
 
     /* Steadily reduce the font size until the text fits on-screen - do not drop below 2rem font size */
     let rem = maxRem;
-    while (rem >= 2 && containerWidth < h1RightPos) {
+    while (rem >= 2 && containerRightPos < h1RightPos) {
       this.titleTextRef.current.style.fontSize = `${rem}rem`;
       h1RightPos = this.getHeadingElementRightmostPosition();
 
@@ -131,8 +131,8 @@ class HeaderTitleText extends React.Component {
       rem = parseFloat(rem.toFixed(1));
     }
     /* If 2rem font size was not enough for the title text to fit on-screen - wrap the text */
-    containerWidth = this.getContainerElementRightmostPosition();
-    if (containerWidth < h1RightPos) {
+    containerRightPos = this.getContainerElementRightmostPosition();
+    if (containerRightPos < h1RightPos) {
       /* Set the text to wrap and center align */
       this.titleTextRef.current.style.textAlign = 'center';
       this.titleTextRef.current.style.whiteSpace = 'normal';
@@ -148,7 +148,7 @@ class HeaderTitleText extends React.Component {
       /* Restore the full text content to the heading element */
       this.titleTextRef.current.textContent = this.titleTextRef.current.ariaLabel;
 
-      /* Set the text to its maximum potential size and judge the height of the component when there is no text wrap */
+      /* Set the text to its maximum potential size and reset the whiteSpace CSS property so that there is no text wrap */
       this.titleTextRef.current.style.fontSize = `${maxRem}rem`;
       this.titleTextRef.current.style.whiteSpace = 'nowrap';
       this.setIsWrapped(false);
@@ -176,17 +176,17 @@ class HeaderTitleText extends React.Component {
    */
   truncateTextByRemovingCharacters() {
     let h1RightPos = this.getHeadingElementRightmostPosition();
-    let containerWidth = this.getContainerElementRightmostPosition();
+    let containerRightPos = this.getContainerElementRightmostPosition();
 
     let titleTextString = this.getTitleTextContent();
-    while (containerWidth < h1RightPos) {
+    while (containerRightPos < h1RightPos) {
       /* Truncate the text - in this case the word wrap has gone beyond two lines */
       titleTextString = `${titleTextString.substring(0, titleTextString.length - 1).trim()}...`;
       this.setTitleTextContent(titleTextString);
       
       /* Get the new right position of the heading element */
       h1RightPos = this.getHeadingElementRightmostPosition();
-      if (containerWidth < h1RightPos) {
+      if (containerRightPos < h1RightPos) {
         /* Remove the obsolete three dots at the end of the string for the next character truncation */
         titleTextString = titleTextString.substring(0, titleTextString.length - 3).trim();
         this.setTitleTextContent(titleTextString);
