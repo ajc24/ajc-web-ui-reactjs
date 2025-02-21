@@ -326,7 +326,7 @@ describe('Header Title Text', () => {
     });
   });
 
-  describe('Standalone component, centre alignment, white text colour, minimum font size, no truncation', () => {
+  describe('Standalone component, centre alignment, white text colour, minimum font size, no text wrapping, no truncation', () => {
     let getBoundingClientRectSpy;
     const testContainerRightPos = 700;
     const testData = [];
