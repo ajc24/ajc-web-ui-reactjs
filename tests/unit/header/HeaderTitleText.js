@@ -6,7 +6,7 @@ import { act, cleanup, render } from '@testing-library/react';
 import { HeaderTitleText } from '../../../src';
 
 describe('Header Title Text', () => {
-  /* Set the IDs for use in the tests */
+  /* Set the IDs and data for use in the tests */
   const maxFontSize = '3rem';
   const minFontSize = '2rem';
   const testComponentId = 'test-header-title-text-id';
