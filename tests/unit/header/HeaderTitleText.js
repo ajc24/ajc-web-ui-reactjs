@@ -8,8 +8,11 @@ import { HeaderTitleText } from '../../../src';
 describe('Header Title Text', () => {
   /* Set the IDs for use in the tests */
   const maxFontSize = '3rem';
+  const minFontSize = '2rem';
   const testComponentId = 'test-header-title-text-id';
+  const textAlignCentre = 'center';
   const truncateTextHeightCutoff = 95;
+  const whiteSpaceNormal = 'normal';
   const whiteSpaceNoWrap = 'nowrap';
 
   describe('Default standalone component, default alignment, default text colour, maximum font size', () => {
@@ -320,6 +323,150 @@ describe('Header Title Text', () => {
 
     it('verifies that when the heading element is null, an empty string is returned from the getTitleTextContent() functionality', () => {
       expect(testData[11]).toBeTruthy();
+    });
+  });
+
+  describe('Standalone component, centre alignment, white text colour, minimum font size, no truncation', () => {
+    let getBoundingClientRectSpy;
+    const testContainerRightPos = 700;
+    const testData = [];
+    const testH1RightPosSizes = [
+      750, 745, 740, 735, 730, 725, 720, 715, 710, 705, 705, 700
+    ];
+
+    beforeAll(() => {
+      /* Create the spies for this component test */
+      getBoundingClientRectSpy = jest
+        .spyOn(Element.prototype, 'getBoundingClientRect')
+        .mockImplementationOnce(() => {
+          /* reduceFontSizeAndWrapTextIfRequired() - getting h1RightPos (pre-loop) */
+          return { right: 750 }
+        })
+        .mockImplementationOnce(() => {
+          /* reduceFontSizeAndWrapTextIfRequired() - getting containerRightPos (pre-loop) */
+          return { right: testContainerRightPos }
+        })
+        .mockImplementationOnce(() => {
+          /* reduceFontSizeAndWrapTextIfRequired() - getting h1RightPos (pre-loop) */
+          return { right: 750 }
+        })
+        .mockImplementationOnce(() => {
+          /* reduceFontSizeAndWrapTextIfRequired() - at 3rem font size, getting h1RightPos (in-loop - index 0) */
+          return { right: testH1RightPosSizes[0] };
+        })
+        .mockImplementationOnce(() => {
+          /* reduceFontSizeAndWrapTextIfRequired() - at 2.9rem font size, getting h1RightPos (in-loop - index 1) */
+          return { right: testH1RightPosSizes[1] };
+        })
+        .mockImplementationOnce(() => {
+          /* reduceFontSizeAndWrapTextIfRequired() - at 2.8rem font size, getting h1RightPos (in-loop - index 2) */
+          return { right: testH1RightPosSizes[2] };
+        })
+        .mockImplementationOnce(() => {
+          /* reduceFontSizeAndWrapTextIfRequired() - at 2.7rem font size, getting h1RightPos (in-loop - index 3) */
+          return { right: testH1RightPosSizes[3] };
+        })
+        .mockImplementationOnce(() => {
+          /* reduceFontSizeAndWrapTextIfRequired() - at 2.6rem font size, getting h1RightPos (in-loop - index 4) */
+          return { right: testH1RightPosSizes[4] };
+        })
+        .mockImplementationOnce(() => {
+          /* reduceFontSizeAndWrapTextIfRequired() - at 2.5rem font size, getting h1RightPos (in-loop - index 5) */
+          return { right: testH1RightPosSizes[5] };
+        })
+        .mockImplementationOnce(() => {
+          /* reduceFontSizeAndWrapTextIfRequired() - at 2.4rem font size, getting h1RightPos (in-loop - index 6) */
+          return { right: testH1RightPosSizes[6] };
+        })
+        .mockImplementationOnce(() => {
+          /* reduceFontSizeAndWrapTextIfRequired() - at 2.3rem font size, getting h1RightPos (in-loop - index 7) */
+          return { right: testH1RightPosSizes[7] };
+        })
+        .mockImplementationOnce(() => {
+          /* reduceFontSizeAndWrapTextIfRequired() - at 2.2rem font size, getting h1RightPos (in-loop - index 8) */
+          return { right: testH1RightPosSizes[8] };
+        })
+        .mockImplementationOnce(() => {
+          /* reduceFontSizeAndWrapTextIfRequired() - at 2.1rem font size, getting h1RightPos (in-loop - index 9) */
+          return { right: testH1RightPosSizes[9] };
+        })
+        .mockImplementationOnce(() => {
+          /* reduceFontSizeAndWrapTextIfRequired() - at 2.0rem font size, getting h1RightPos (in-loop - index 10) */
+          return { right: testH1RightPosSizes[10] };
+        })
+        .mockImplementationOnce(() => {
+          /* reduceFontSizeAndWrapTextIfRequired() - getting containerRightPos (post-loop) */
+          return { right: testContainerRightPos }
+        })
+        .mockImplementationOnce(() => {
+          /* truncateTextByRemovingSpaces() - getting currentHeadingHeight */
+          return { height: 75 };
+        })
+        .mockImplementationOnce(() => {
+          /* truncateTextByRemovingCharacters() - getting h1RightPos  */
+          return { height: testH1RightPosSizes[10] }
+        })
+        .mockImplementationOnce(() => {
+          /* truncateTextByRemovingCharacters() - getting containerRightPos */
+          return { right: testContainerRightPos }
+        });
+      /* Mount the component */
+      const { unmount } = render(
+        <React.Fragment>
+          <HeaderTitleText id={testComponentId} alignment="centre" textColour="white">
+            Header title text component text content.
+          </HeaderTitleText>
+        </React.Fragment>
+      );
+      /* Build the DOM elements required for the tests */
+      const containerElement = document.querySelector(`div[id="${testComponentId}--header-title-text"]`);
+      const headingElement = document.querySelector(`div[id="${testComponentId}--header-title-text"] > h1`);
+
+      /* Verifies that the "title-text-alignment-centre" class is set to the container element */
+      /* Verifies that the "title-text-alignment-left" class is not set to the container element */
+      testData.push(containerElement.classList);
+
+      /* Verifies that the "title-text-font-black" class is not set to the heading element */
+      /* Verifies that the "title-text-font-white" class is set to the heading element */
+      testData.push(headingElement.classList);
+
+      /* Verifies that the maximum font size is set to the heading element */
+      testData.push(headingElement.style.fontSize);
+
+      /* Verifies that the whiteSpace CSS property is set to not wrap the text content */
+      testData.push(headingElement.style.whiteSpace);
+
+      /* Unmount the component and clean up the test */
+      unmount();
+      cleanup();
+    });
+
+    afterAll(() => {
+      getBoundingClientRectSpy.mockRestore();
+    });
+
+    it('verifies that the "title-text-alignment-centre" class is set to the container element', () => {
+      expect(testData[0].contains('title-text-alignment-centre')).toBeTruthy();
+    });
+
+    it('verifies that the "title-text-alignment-left" class is not set to the container element', () => {
+      expect(testData[0].contains('title-text-alignment-left')).toBeFalsy();
+    });
+
+    it('verifies that the "title-text-font-black" class is not set to the heading element', () => {
+      expect(testData[1].contains('title-text-font-black')).toBeFalsy();
+    });
+
+    it('verifies that the "title-text-font-white" class is set to the heading element', () => {
+      expect(testData[1].contains('title-text-font-white')).toBeTruthy();
+    });
+
+    it('verifies that the maximum font size is set to the heading element', () => {
+      expect(testData[2]).toBe(minFontSize);
+    });
+
+    it('verifies that the whiteSpace CSS property is set to not wrap the text content', () => {
+      expect(testData[3]).toBe(whiteSpaceNoWrap);
     });
   });
 });
