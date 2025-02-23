@@ -11,7 +11,6 @@ describe('Header Title Text', () => {
   const minFontSize = '2rem';
   const textAlignCentre = 'center';
   const testComponentId = 'test-header-title-text-id';
-  const testH1RightPosSizes = [ 750, 745, 740, 735, 730, 725, 720, 715, 710, 705, 700, 695 ];
   const truncateTextHeightCutoff = 95;
   const whiteSpaceNormal = 'normal';
   const whiteSpaceNoWrap = 'nowrap';
@@ -351,47 +350,47 @@ describe('Header Title Text', () => {
           return { right: 500 }
         })
         .mockImplementationOnce(() => {
-          /* reduceFontSizeAndWrapTextIfRequired() - at 3rem font size, getting h1RightPos (in-loop - index 0) */
+          /* reduceFontSizeAndWrapTextIfRequired() - getting h1RightPos (in-loop - index 0, font-size 3rem) */
           return { right: 501 };
         })
         .mockImplementationOnce(() => {
-          /* reduceFontSizeAndWrapTextIfRequired() - at 2.9rem font size, getting h1RightPos (in-loop - index 1) */
+          /* reduceFontSizeAndWrapTextIfRequired() - getting h1RightPos (in-loop - index 1, font-size 2.9rem) */
           return { right: 501 };
         })
         .mockImplementationOnce(() => {
-          /* reduceFontSizeAndWrapTextIfRequired() - at 2.8rem font size, getting h1RightPos (in-loop - index 2) */
+          /* reduceFontSizeAndWrapTextIfRequired() - getting h1RightPos (in-loop - index 2, font-size 2.8rem) */
           return { right: 501 };
         })
         .mockImplementationOnce(() => {
-          /* reduceFontSizeAndWrapTextIfRequired() - at 2.7rem font size, getting h1RightPos (in-loop - index 3) */
+          /* reduceFontSizeAndWrapTextIfRequired() - getting h1RightPos (in-loop - index 3, font-size 2.7rem) */
           return { right: 501 };
         })
         .mockImplementationOnce(() => {
-          /* reduceFontSizeAndWrapTextIfRequired() - at 2.6rem font size, getting h1RightPos (in-loop - index 4) */
+          /* reduceFontSizeAndWrapTextIfRequired() - getting h1RightPos (in-loop - index 4, font-size 2.6rem) */
           return { right: 501 };
         })
         .mockImplementationOnce(() => {
-          /* reduceFontSizeAndWrapTextIfRequired() - at 2.5rem font size, getting h1RightPos (in-loop - index 5) */
+          /* reduceFontSizeAndWrapTextIfRequired() - getting h1RightPos (in-loop - index 5, font-size 2.5rem) */
           return { right: 501 };
         })
         .mockImplementationOnce(() => {
-          /* reduceFontSizeAndWrapTextIfRequired() - at 2.4rem font size, getting h1RightPos (in-loop - index 6) */
+          /* reduceFontSizeAndWrapTextIfRequired() - getting h1RightPos (in-loop - index 6, font-size 2.4rem) */
           return { right: 501 };
         })
         .mockImplementationOnce(() => {
-          /* reduceFontSizeAndWrapTextIfRequired() - at 2.3rem font size, getting h1RightPos (in-loop - index 7) */
+          /* reduceFontSizeAndWrapTextIfRequired() - getting h1RightPos (in-loop - index 7, font-size 2.3rem) */
           return { right: 501 };
         })
         .mockImplementationOnce(() => {
-          /* reduceFontSizeAndWrapTextIfRequired() - at 2.2rem font size, getting h1RightPos (in-loop - index 8) */
+          /* reduceFontSizeAndWrapTextIfRequired() - getting h1RightPos (in-loop - index 8, font-size 2.2rem) */
           return { right: 501 };
         })
         .mockImplementationOnce(() => {
-          /* reduceFontSizeAndWrapTextIfRequired() - at 2.1rem font size, getting h1RightPos (in-loop - index 9) */
+          /* reduceFontSizeAndWrapTextIfRequired() - getting h1RightPos (in-loop - index 9, font-size 2.1rem) */
           return { right: 501 };
         })
         .mockImplementationOnce(() => {
-          /* reduceFontSizeAndWrapTextIfRequired() - at 2.0rem font size, getting h1RightPos (in-loop - index 10) */
+          /* reduceFontSizeAndWrapTextIfRequired() - getting h1RightPos (in-loop - index 10, font-size 2rem) */
           return { right: 501 };
         })
         .mockImplementationOnce(() => {
@@ -494,47 +493,47 @@ describe('Header Title Text', () => {
           return { right: 100 }
         })
         .mockImplementationOnce(() => {
-          /* reduceFontSizeAndWrapTextIfRequired() - at 3rem font size, getting h1RightPos (in-loop - index 0) */
+          /* reduceFontSizeAndWrapTextIfRequired() - getting h1RightPos (in-loop - index 0, font-size 3rem) */
           return { right: 101 };
         })
         .mockImplementationOnce(() => {
-          /* reduceFontSizeAndWrapTextIfRequired() - at 2.9rem font size, getting h1RightPos (in-loop - index 1) */
+          /* reduceFontSizeAndWrapTextIfRequired() - getting h1RightPos (in-loop - index 1, font-size 2.9rem) */
           return { right: 101 };
         })
         .mockImplementationOnce(() => {
-          /* reduceFontSizeAndWrapTextIfRequired() - at 2.8rem font size, getting h1RightPos (in-loop - index 2) */
+          /* reduceFontSizeAndWrapTextIfRequired() - getting h1RightPos (in-loop - index 2, font-size 2.8rem) */
           return { right: 101 };
         })
         .mockImplementationOnce(() => {
-          /* reduceFontSizeAndWrapTextIfRequired() - at 2.7rem font size, getting h1RightPos (in-loop - index 3) */
+          /* reduceFontSizeAndWrapTextIfRequired() - getting h1RightPos (in-loop - index 3, font-size 2.7rem) */
           return { right: 101 };
         })
         .mockImplementationOnce(() => {
-          /* reduceFontSizeAndWrapTextIfRequired() - at 2.6rem font size, getting h1RightPos (in-loop - index 4) */
+          /* reduceFontSizeAndWrapTextIfRequired() - getting h1RightPos (in-loop - index 4, font-size 2.6rem) */
           return { right: 101 };
         })
         .mockImplementationOnce(() => {
-          /* reduceFontSizeAndWrapTextIfRequired() - at 2.5rem font size, getting h1RightPos (in-loop - index 5) */
+          /* reduceFontSizeAndWrapTextIfRequired() - getting h1RightPos (in-loop - index 5, font-size 2.5rem) */
           return { right: 101 };
         })
         .mockImplementationOnce(() => {
-          /* reduceFontSizeAndWrapTextIfRequired() - at 2.4rem font size, getting h1RightPos (in-loop - index 6) */
+          /* reduceFontSizeAndWrapTextIfRequired() - getting h1RightPos (in-loop - index 6, font-size 2.4rem) */
           return { right: 101 };
         })
         .mockImplementationOnce(() => {
-          /* reduceFontSizeAndWrapTextIfRequired() - at 2.3rem font size, getting h1RightPos (in-loop - index 7) */
+          /* reduceFontSizeAndWrapTextIfRequired() - getting h1RightPos (in-loop - index 7, font-size 2.3rem) */
           return { right: 101 };
         })
         .mockImplementationOnce(() => {
-          /* reduceFontSizeAndWrapTextIfRequired() - at 2.2rem font size, getting h1RightPos (in-loop - index 8) */
+          /* reduceFontSizeAndWrapTextIfRequired() - getting h1RightPos (in-loop - index 8, font-size 2.2rem) */
           return { right: 101 };
         })
         .mockImplementationOnce(() => {
-          /* reduceFontSizeAndWrapTextIfRequired() - at 2.1rem font size, getting h1RightPos (in-loop - index 9) */
+          /* reduceFontSizeAndWrapTextIfRequired() - getting h1RightPos (in-loop - index 9, font-size 2.1rem) */
           return { right: 101 };
         })
         .mockImplementationOnce(() => {
-          /* reduceFontSizeAndWrapTextIfRequired() - at 2.0rem font size, getting h1RightPos (in-loop - index 10) */
+          /* reduceFontSizeAndWrapTextIfRequired() - getting h1RightPos (in-loop - index 10, font-size 2rem) */
           return { right: 101 };
         })
         .mockImplementationOnce(() => {
@@ -600,6 +599,269 @@ describe('Header Title Text', () => {
 
     it('verifies that the whiteSpace CSS property is set to wrap the text content', () => {
       expect(testData[3]).toBe(whiteSpaceNormal);
+    });
+  });
+
+  describe('Standalone component, default alignment, default text colour, minimum font size, with text wrapping, with truncation (remove spaces only)', () => {
+    let getBoundingClientRectSpy;
+    let truncateTextByRemovingCharactersSpy;
+    const testData = [];
+
+    beforeAll(() => {
+      /* Create the spies for this component test */
+      getBoundingClientRectSpy = jest
+        .spyOn(Element.prototype, 'getBoundingClientRect')
+        .mockImplementationOnce(() => {
+          /* reduceFontSizeAndWrapTextIfRequired() - getting h1RightPos (pre-loop) */
+          return { right: 101 }
+        })
+        .mockImplementationOnce(() => {
+          /* reduceFontSizeAndWrapTextIfRequired() - getting containerRightPos (pre-loop) */
+          return { right: 100 }
+        })
+        .mockImplementationOnce(() => {
+          /* reduceFontSizeAndWrapTextIfRequired() - getting h1RightPos (in-loop - index 0, font-size 3rem) */
+          return { right: 101 };
+        })
+        .mockImplementationOnce(() => {
+          /* reduceFontSizeAndWrapTextIfRequired() - getting h1RightPos (in-loop - index 1, font-size 2.9rem) */
+          return { right: 101 };
+        })
+        .mockImplementationOnce(() => {
+          /* reduceFontSizeAndWrapTextIfRequired() - getting h1RightPos (in-loop - index 2, font-size 2.8rem) */
+          return { right: 101 };
+        })
+        .mockImplementationOnce(() => {
+          /* reduceFontSizeAndWrapTextIfRequired() - getting h1RightPos (in-loop - index 3, font-size 2.7rem) */
+          return { right: 101 };
+        })
+        .mockImplementationOnce(() => {
+          /* reduceFontSizeAndWrapTextIfRequired() - getting h1RightPos (in-loop - index 4, font-size 2.6rem) */
+          return { right: 101 };
+        })
+        .mockImplementationOnce(() => {
+          /* reduceFontSizeAndWrapTextIfRequired() - getting h1RightPos (in-loop - index 5, font-size 2.5rem) */
+          return { right: 101 };
+        })
+        .mockImplementationOnce(() => {
+          /* reduceFontSizeAndWrapTextIfRequired() - getting h1RightPos (in-loop - index 6, font-size 2.4rem) */
+          return { right: 101 };
+        })
+        .mockImplementationOnce(() => {
+          /* reduceFontSizeAndWrapTextIfRequired() - getting h1RightPos (in-loop - index 7, font-size 2.3rem) */
+          return { right: 101 };
+        })
+        .mockImplementationOnce(() => {
+          /* reduceFontSizeAndWrapTextIfRequired() - getting h1RightPos (in-loop - index 8, font-size 2.2rem) */
+          return { right: 101 };
+        })
+        .mockImplementationOnce(() => {
+          /* reduceFontSizeAndWrapTextIfRequired() - getting h1RightPos (in-loop - index 9, font-size 2.1rem) */
+          return { right: 101 };
+        })
+        .mockImplementationOnce(() => {
+          /* reduceFontSizeAndWrapTextIfRequired() - getting h1RightPos (in-loop - index 10, font-size 2rem) */
+          return { right: 101 };
+        })
+        .mockImplementationOnce(() => {
+          /* reduceFontSizeAndWrapTextIfRequired() - getting containerRightPos (post-loop) */
+          return { right: 100 }
+        })
+        .mockImplementationOnce(() => {
+          /* truncateTextByRemovingSpaces() - getting currentHeadingHeight (pre-loop) */
+          return { height: truncateTextHeightCutoff + 1 };
+        })
+        .mockImplementationOnce(() => {
+          /* truncateTextByRemovingSpaces() - getting currentHeadingHeight (in-loop - index 0, remove space between "text content") */
+          return { height: truncateTextHeightCutoff + 1 };
+        })
+        .mockImplementationOnce(() => {
+          /* truncateTextByRemovingSpaces() - getting currentHeadingHeight (in-loop - index 1, remove space between "component text") */
+          return { height: truncateTextHeightCutoff - 1 };
+        });
+      truncateTextByRemovingCharactersSpy = jest
+        .spyOn(HeaderTitleText.prototype, 'truncateTextByRemovingCharacters');
+
+      /* Mount the component */
+      const { unmount } = render(
+        <React.Fragment>
+          <HeaderTitleText id={testComponentId}>
+            Header title text component text content.
+          </HeaderTitleText>
+        </React.Fragment>
+      );
+      /* Build the DOM elements required for the tests */
+      const headingElement = document.querySelector(`div[id="${testComponentId}--header-title-text"] > h1`);
+
+      /* Verifies that the aria-label attribute set to the heading element includes the full title text content */
+      testData.push(headingElement.getAttribute('aria-label'));
+
+      /* Verifies that the heading element text content has been correctly truncated by removing spaces */
+      testData.push(headingElement.textContent);
+
+      /* Verifies that the truncateTextByRemovingCharacters functionality is not invoked since removing spaces was adequate for truncation */
+      testData.push(truncateTextByRemovingCharactersSpy.mock.calls.length);
+
+      /* Unmount the component and clean up the test */
+      unmount();
+      cleanup();
+    });
+
+    afterAll(() => {
+      getBoundingClientRectSpy.mockRestore();
+      truncateTextByRemovingCharactersSpy.mockRestore();
+    });
+
+    it('verifies that the aria-label attribute set to the heading element includes the full title text content', () => {
+      expect(testData[0]).toBe('Header title text component text content.');
+    });
+
+    it('verifies that the heading element text content has been correctly truncated by removing spaces', () => {
+      expect(testData[1]).toBe('Header title text component...');
+    });
+
+    it('verifies that the truncateTextByRemovingCharacters functionality is not invoked since removing spaces was adequate for truncation', () => {
+      expect(testData[2]).toBe(0);
+    });
+  });
+
+  describe('Standalone component, default alignment, default text colour, minimum font size, with text wrapping, with truncation (remove spaces and characters)', () => {
+    let getBoundingClientRectSpy;
+    const testData = [];
+
+    beforeAll(() => {
+      /* Create the spies for this component test */
+      getBoundingClientRectSpy = jest
+        .spyOn(Element.prototype, 'getBoundingClientRect')
+        .mockImplementationOnce(() => {
+          /* reduceFontSizeAndWrapTextIfRequired() - getting h1RightPos (pre-loop) */
+          return { right: 101 }
+        })
+        .mockImplementationOnce(() => {
+          /* reduceFontSizeAndWrapTextIfRequired() - getting containerRightPos (pre-loop) */
+          return { right: 100 }
+        })
+        .mockImplementationOnce(() => {
+          /* reduceFontSizeAndWrapTextIfRequired() - getting h1RightPos (in-loop - index 0, font-size 3rem) */
+          return { right: 101 };
+        })
+        .mockImplementationOnce(() => {
+          /* reduceFontSizeAndWrapTextIfRequired() - getting h1RightPos (in-loop - index 1, font-size 2.9rem) */
+          return { right: 101 };
+        })
+        .mockImplementationOnce(() => {
+          /* reduceFontSizeAndWrapTextIfRequired() - getting h1RightPos (in-loop - index 2, font-size 2.8rem) */
+          return { right: 101 };
+        })
+        .mockImplementationOnce(() => {
+          /* reduceFontSizeAndWrapTextIfRequired() - getting h1RightPos (in-loop - index 3, font-size 2.7rem) */
+          return { right: 101 };
+        })
+        .mockImplementationOnce(() => {
+          /* reduceFontSizeAndWrapTextIfRequired() - getting h1RightPos (in-loop - index 4, font-size 2.6rem) */
+          return { right: 101 };
+        })
+        .mockImplementationOnce(() => {
+          /* reduceFontSizeAndWrapTextIfRequired() - getting h1RightPos (in-loop - index 5, font-size 2.5rem) */
+          return { right: 101 };
+        })
+        .mockImplementationOnce(() => {
+          /* reduceFontSizeAndWrapTextIfRequired() - getting h1RightPos (in-loop - index 6, font-size 2.4rem) */
+          return { right: 101 };
+        })
+        .mockImplementationOnce(() => {
+          /* reduceFontSizeAndWrapTextIfRequired() - getting h1RightPos (in-loop - index 7, font-size 2.3rem) */
+          return { right: 101 };
+        })
+        .mockImplementationOnce(() => {
+          /* reduceFontSizeAndWrapTextIfRequired() - getting h1RightPos (in-loop - index 8, font-size 2.2rem) */
+          return { right: 101 };
+        })
+        .mockImplementationOnce(() => {
+          /* reduceFontSizeAndWrapTextIfRequired() - getting h1RightPos (in-loop - index 9, font-size 2.1rem) */
+          return { right: 101 };
+        })
+        .mockImplementationOnce(() => {
+          /* reduceFontSizeAndWrapTextIfRequired() - getting h1RightPos (in-loop - index 10, font-size 2rem) */
+          return { right: 101 };
+        })
+        .mockImplementationOnce(() => {
+          /* reduceFontSizeAndWrapTextIfRequired() - getting containerRightPos (post-loop) */
+          return { right: 100 }
+        })
+        .mockImplementationOnce(() => {
+          /* truncateTextByRemovingSpaces() - getting currentHeadingHeight (pre-loop) */
+          return { height: truncateTextHeightCutoff + 1 };
+        })
+        .mockImplementationOnce(() => {
+          /* truncateTextByRemovingSpaces() - getting currentHeadingHeight (in-loop - index 0, remove space between "text content") */
+          return { height: truncateTextHeightCutoff + 1 };
+        })
+        .mockImplementationOnce(() => {
+          /* truncateTextByRemovingSpaces() - getting currentHeadingHeight (in-loop - index 1, remove space between "component text") */
+          return { height: truncateTextHeightCutoff + 1 };
+        })
+        .mockImplementationOnce(() => {
+          /* truncateTextByRemovingSpaces() - getting currentHeadingHeight (in-loop - index 2, remove space between "text component") */
+          return { height: truncateTextHeightCutoff + 1 };
+        })
+        .mockImplementationOnce(() => {
+          /* truncateTextByRemovingSpaces() - getting currentHeadingHeight (in-loop - index 3, remove space between "title text") */
+          return { height: truncateTextHeightCutoff + 1 };
+        })
+        .mockImplementationOnce(() => {
+          /* truncateTextByRemovingSpaces() - getting currentHeadingHeight (in-loop - index 4, remove space between "Header title") */
+          return { height: truncateTextHeightCutoff };
+        })
+        .mockImplementationOnce(() => {
+          /* truncateTextByRemovingCharacters() - getting h1RightPos (pre-loop) */
+          return { right: 101 };
+        })
+        .mockImplementationOnce(() => {
+          /* truncateTextByRemovingCharacters() - getting containerRightPos (pre-loop) */
+          return { right: 100 };
+        })
+        .mockImplementationOnce(() => {
+          /* truncateTextByRemovingCharacters() - getting h1RightPos (in-loop - index 0, remove last character "r" from "Header") */
+          return { right: 101 };
+        })
+        .mockImplementationOnce(() => {
+          /* truncateTextByRemovingCharacters() - getting h1RightPos (in-loop - index 1, remove last character "e" from "Heade") */
+          return { right: 100 };
+        });
+
+      /* Mount the component */
+      const { unmount } = render(
+        <React.Fragment>
+          <HeaderTitleText id={testComponentId}>
+            Header title text component text content.
+          </HeaderTitleText>
+        </React.Fragment>
+      );
+      /* Build the DOM elements required for the tests */
+      const headingElement = document.querySelector(`div[id="${testComponentId}--header-title-text"] > h1`);
+
+      /* Verifies that the aria-label attribute set to the heading element includes the full title text content */
+      testData.push(headingElement.getAttribute('aria-label'));
+
+      /* Verifies that the heading element text content has been correctly truncated by removing spaces and characters */
+      testData.push(headingElement.textContent);
+
+      /* Unmount the component and clean up the test */
+      unmount();
+      cleanup();
+    });
+
+    afterAll(() => {
+      getBoundingClientRectSpy.mockRestore();
+    });
+
+    it('verifies that the aria-label attribute set to the heading element includes the full title text content', () => {
+      expect(testData[0]).toBe('Header title text component text content.');
+    });
+
+    it('verifies that the heading element text content has been correctly truncated by removing spaces and characters', () => {
+      expect(testData[1]).toBe('Head...');
     });
   });
 });
