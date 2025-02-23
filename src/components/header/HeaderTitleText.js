@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import '../css/common.css';
 import './css/text-title.css';
 
+const commonHeadingElementCssPath = 'div[id$="--header-title-text"] > h1';
 const maxRem = 3;
 const truncateTextHeightCutoff = 95;
 
@@ -52,8 +53,9 @@ class HeaderTitleText extends React.Component {
    * @returns {number}
    */
   getContainerElementRightmostPosition() {
-    if (document.querySelector('div[id$="--header-title-text"] > h1') !== null) {
-      return this.titleTextRef.current.parentNode.getBoundingClientRect().right;
+    const headingElement = document.querySelector(commonHeadingElementCssPath);
+    if (headingElement !== null) {
+      return headingElement.parentNode.getBoundingClientRect().right;
     }
     return 0;
   }
@@ -63,8 +65,9 @@ class HeaderTitleText extends React.Component {
    * @returns {number}
    */
   getHeadingElementHeight() {
-    if (document.querySelector('div[id$="--header-title-text"] > h1') !== null) {
-      return this.titleTextRef.current.getBoundingClientRect().height;
+    const headingElement = document.querySelector(commonHeadingElementCssPath);
+    if (headingElement !== null) {
+      return headingElement.getBoundingClientRect().height;
     }
     return 0;
   }
@@ -74,8 +77,9 @@ class HeaderTitleText extends React.Component {
    * @returns {number}
    */
   getHeadingElementRightmostPosition() {
-    if (document.querySelector('div[id$="--header-title-text"] > h1') !== null) {
-      return this.titleTextRef.current.getBoundingClientRect().right;
+    const headingElement = document.querySelector(commonHeadingElementCssPath);
+    if (headingElement !== null) {
+      return headingElement.getBoundingClientRect().right;
     }
     return 0; 
   }
@@ -85,8 +89,9 @@ class HeaderTitleText extends React.Component {
    * @returns {string}
    */
   getTitleTextContent() {
-    if (document.querySelector('div[id$="--header-title-text"] > h1') !== null) {
-      return this.titleTextRef.current.textContent;
+    const headingElement = document.querySelector(commonHeadingElementCssPath);
+    if (headingElement !== null) {
+      return headingElement.textContent;
     }
     return '';
   }
