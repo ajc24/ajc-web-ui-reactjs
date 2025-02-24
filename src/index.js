@@ -9,6 +9,7 @@ import MainBase from './components/base/MainBase';
 import MenuBarBase from './components/base/MenuBarBase';
 
 /* Import the header components */
+import HeaderLogo from './components/header/HeaderLogo';
 import HeaderSubtitleText from './components/header/HeaderSubtitleText';
 import HeaderTitleText from './components/header/HeaderTitleText';
 // import SmallHeader from './components/header/SmallHeader';
@@ -17,7 +18,6 @@ import HeaderTitleText from './components/header/HeaderTitleText';
 /* Import the image components */
 import DecorativeImage from './components/images/DecorativeImage';
 import FunctionalImage from './components/images/FunctionalImage';
-import HeaderLogo from './components/images/HeaderLogo';
 import InformativeImage from './components/images/InformativeImage';
 
 /* Export all components */

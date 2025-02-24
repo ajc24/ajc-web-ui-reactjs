@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { DecorativeImage } from '../../';
+import { DecorativeImage } from '../..';
 import '../css/common.css';
 import './css/image-header-logo.css';
 
