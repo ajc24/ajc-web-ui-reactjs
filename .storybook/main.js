@@ -12,13 +12,14 @@ const config = {
   }),
   stories: [
     /* Header component stories */
+    "../stories/header/HeaderLogo.stories.js",
     "../stories/header/HeaderSubtitleText.stories.js",
     "../stories/header/HeaderTitleText.stories.js",
     
     /* Image component stories */
     "../stories/images/DecorativeImage.stories.js",
     "../stories/images/FunctionalImage.stories.js",
-    "../stories/images/HeaderLogo.stories.js",
+    
     "../stories/images/InformativeImage.stories.js",
 
     /* Mock page component stories */

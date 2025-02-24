@@ -3,11 +3,11 @@
  */
 import React from 'react';
 import { HeaderBase, HeaderLogo } from '../../src';
-import storybookLogo from './files/storybook-logo.svg';
-import storybookLogoLong from './files/storybook-logo-long.svg';
+import storybookLogo from '../images/files/storybook-logo.svg';
+import storybookLogoLong from '../images/files/storybook-logo-long.svg';
 
 export default {
-  title: 'Images/Header Logo',
+  title: 'Header Components/Header Logo',
   component: HeaderLogo,
   tags: ['autodocs'],
 };
