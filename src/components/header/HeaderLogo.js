@@ -59,7 +59,7 @@ class HeaderLogo extends React.Component {
   }
 
   handleImageSize() {
-    /* Determine whether the logo type is to be a square image or rectangular image */
+    /* Determine whether the logo type is to be a square image or rectangular image - defaults to a square image type */
     let logoType;
     this.props.logoType === 'rectangle'
       ? logoType = 'rectangle'
