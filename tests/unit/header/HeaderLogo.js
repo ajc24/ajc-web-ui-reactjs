@@ -18,6 +18,9 @@ describe('Header Logo', () => {
   const squareImageHeightSmallNoBorder = 144;
   const squareImageHeightSmallWithBorder = 140;
   const squareImageWidthSmall = 140;
+  const tallImageHeightNoBorder = 304;
+  const tallImageHeightWithBorder = 300;
+  const tallImageWidth = 312;
 
   describe('Standalone logo image, default alignment, default logo type', () => {
     const testData = [];
@@ -27,22 +30,15 @@ describe('Header Logo', () => {
       jest.useFakeTimers();
 
       /* Mount the component */
-      const { rerender, unmount } = render(
+      const { unmount } = render(
         <React.Fragment>
           <HeaderLogo id={testImageId} src={storybookLogo} />
         </React.Fragment>
       );
       /* Run all timers */
-      //jest.runAllTimers();
       act(() => {
         jest.runAllTimers();
       });
-
-      /* Re-render the component to ensure the setTimeout() functionality has been executed as expected */
-      // rerender(<React.Fragment>
-      //     <HeaderLogo id={testImageId} src={storybookLogo} />
-      //   </React.Fragment>
-      // );
 
       /* Build the DOM elements required for the tests */
       const containerElement = document.querySelector(`img[id="${testImageId}--header-logo--decorative-image"]`).parentNode;
@@ -193,22 +189,15 @@ describe('Header Logo', () => {
           return null;
         });
       /* Mount the component */
-      const { rerender, unmount } = render(
+      const { unmount } = render(
         <React.Fragment>
           <HeaderLogo id={testImageId} src={storybookLogoLong} alignment="centre" logoType="rectangle" parentHeaderId="test-parent-header-id" />
         </React.Fragment>
       );
       /* Run all timers */
-      //jest.runAllTimers();
       act(() => {
         jest.runAllTimers();
       });
-
-      /* Re-render the component to ensure the setTimeout() functionality has been executed as expected */
-      // rerender(<React.Fragment>
-      //     <HeaderLogo id={testImageId} src={storybookLogoLong} alignment="centre" logoType="rectangle" parentHeaderId="test-parent-header-id" />
-      //   </React.Fragment>
-      // );
 
       /* Build the DOM elements required for the tests */
       const containerElement = document.querySelector(`img[id="${testImageId}--header-logo--decorative-image"]`).parentNode;
@@ -260,13 +249,13 @@ describe('Header Logo', () => {
     });
   });
 
-  describe('Logo image in small size Header with border, default alignment, square logo type, no title text, no subtitle text', () => {
+  describe('Logo image in small size Header with border, default alignment, square logo type', () => {
     let querySelectorSpy;
     const testData = [];
 
     beforeAll(() => {
       /* Enable fake timers to allow the setTimeout() functionality to be fired correctly */
-      //jest.useFakeTimers();
+      jest.useFakeTimers();
 
       /* Create the spies for the test */
       querySelectorSpy = jest
@@ -280,24 +269,15 @@ describe('Header Logo', () => {
           return true;
         });
       /* Mount the component */
-      const { rerender, unmount } = render(
+      const { unmount } = render(
         <React.Fragment>
           <HeaderLogo id={testImageId} src={storybookLogo} logoType="square" parentHeaderId="test-parent-header-id" />
         </React.Fragment>
       );
       /* Run all timers */
-      //jest.runAllTimers();
-
       act(() => {
         jest.runAllTimers();
       });
-
-      /* Re-render the component to ensure the setTimeout() functionality has been executed as expected */
-      // rerender(
-      //   <React.Fragment>
-      //     <HeaderLogo id={testImageId} src={storybookLogo} logoType="square" parentHeaderId="test-parent-header-id" />
-      //   </React.Fragment>
-      // );
 
       /* Build the DOM elements required for the tests */
       const logoImageElement = document.querySelector(`img[id="${testImageId}--header-logo--decorative-image"]`);
@@ -323,6 +303,283 @@ describe('Header Logo', () => {
 
     it('verifies that the height attribute is set correctly to the logo image element', () => {
       expect(testData[1]).toBe(`${squareImageHeightSmallWithBorder}`);
+    });
+  });
+
+  describe('Logo image in tall size Header with no border, default alignment, standard logo type, no title text, no subtitle text', () => {
+    let querySelectorSpy;
+    const testData = [];
+
+    beforeAll(() => {
+      /* Enable fake timers to allow the setTimeout() functionality to be fired correctly */
+      jest.useFakeTimers();
+
+      /* Create the spies for the test */
+      querySelectorSpy = jest
+        .spyOn(global.document, 'querySelector')
+        .mockImplementationOnce(() => {
+          /* handleImageSize() functionality - determine if tall header component is rendered */
+          return true;
+        })
+        .mockImplementationOnce(() => {
+          /* handleImageSize() functionality - determine if top border is set to the header */
+          return null;
+        })
+        .mockImplementationOnce(() => {
+          /* handleImageSize() functionality - determine if title text component is rendered */
+          return null;
+        })
+        .mockImplementationOnce(() => {
+          /* handleImageSize() functionality - determine if subtitle text component is rendered */
+          return null;
+        });
+      /* Mount the component */
+      const { unmount } = render(
+        <React.Fragment>
+          <HeaderLogo id={testImageId} src={storybookLogo} logoType="rectangle" parentHeaderId="test-parent-header-id" />
+        </React.Fragment>
+      );
+      /* Run all timers */
+      act(() => {
+        jest.runAllTimers();
+      });
+
+      /* Build the DOM elements required for the tests */
+      const logoImageElement = document.querySelector(`img[id="${testImageId}--header-logo--decorative-image"]`);
+
+      /* Verifies that the width attribute is set correctly to the logo image element */
+      testData.push(logoImageElement.getAttribute('width'));
+
+      /* Verifies that the height attribute is set correctly to the logo image element */
+      testData.push(logoImageElement.getAttribute('height'));
+
+      /* Unmount the component and clean up the test */
+      unmount();
+      cleanup();
+    });
+
+    afterAll(() => {
+      querySelectorSpy.mockRestore();
+    });
+
+    it('verifies that the width attribute is set correctly to the logo image element', () => {
+      expect(testData[0]).toBe(`${tallImageWidth}`);
+    });
+
+    it('verifies that the height attribute is set correctly to the logo image element', () => {
+      expect(testData[1]).toBe(`${tallImageHeightNoBorder}`);
+    });
+  });
+
+  describe('Logo image in tall size Header with border, default alignment, standard logo type, with title text (no text wrapping), with subtitle text (visible)', () => {
+    const heightSubtitleTextElement = 35;
+    const heightTitleTextElement = 75;
+    let querySelectorSpy;
+    const testData = [];
+
+    beforeAll(() => {
+      /* Enable fake timers to allow the setTimeout() functionality to be fired correctly */
+      jest.useFakeTimers();
+
+      /* Create the spies for the test */
+      querySelectorSpy = jest
+        .spyOn(global.document, 'querySelector')
+        .mockImplementationOnce(() => {
+          /* handleImageSize() functionality - determine if tall header component is rendered */
+          return document.createElement('div');
+        })
+        .mockImplementationOnce(() => {
+          /* handleImageSize() functionality - determine if top border is set to the header */
+          return true;
+        })
+        .mockImplementationOnce(() => {
+          /* handleImageSize() functionality - determine if title text component is rendered */
+          return {
+            dataset: {
+              wrap: 'false',
+            },
+            getBoundingClientRect: () => {
+              return {
+                height: heightTitleTextElement,
+              };
+            },
+          };
+        })
+        .mockImplementationOnce(() => {
+          /* handleImageSize() functionality - determine if subtitle text component is rendered */
+          return {
+            getBoundingClientRect: () => {
+              return {
+                height: heightSubtitleTextElement,
+              };
+            },
+          };
+        });
+
+      /* Mount the component */
+      const { unmount } = render(
+        <React.Fragment>
+          <HeaderLogo id={testImageId} src={storybookLogo} logoType="rectangle" parentHeaderId="test-parent-header-id" />
+        </React.Fragment>
+      );
+      /* Run all timers */
+      act(() => {
+        jest.runAllTimers();
+      });
+
+      /* Build the DOM elements required for the tests */
+      const logoImageElement = document.querySelector(`img[id="${testImageId}--header-logo--decorative-image"]`);
+
+      /* Verifies that the width attribute is set correctly to the logo image element */
+      testData.push(logoImageElement.getAttribute('width'));
+
+      /* Verifies that the height attribute is set correctly to the logo image element */
+      testData.push(logoImageElement.getAttribute('height'));
+
+      /* Unmount the component and clean up the test */
+      unmount();
+      cleanup();
+    });
+
+    afterAll(() => {
+      querySelectorSpy.mockRestore();
+    });
+
+    it('verifies that the width attribute is set correctly to the logo image element', () => {
+      expect(testData[0]).toBe(`${tallImageWidth}`);
+    });
+
+    it('verifies that the height attribute is set correctly to the logo image element', () => {
+      expect(testData[1]).toBe(`${tallImageHeightWithBorder - (heightTitleTextElement + heightSubtitleTextElement)}`);
+    });
+  });
+
+  describe('Logo image in tall size Header with no border, default alignment, standard logo type, with title text (with text wrapping), with subtitle text (hidden)', () => {
+    const heightTitleTextElement = 95;
+    let querySelectorSpy;
+    const testData = [];
+
+    beforeAll(() => {
+      /* Enable fake timers to allow the setTimeout() functionality to be fired correctly */
+      jest.useFakeTimers();
+
+      /* Create the spies for the test */
+      querySelectorSpy = jest
+        .spyOn(global.document, 'querySelector')
+        .mockImplementationOnce(() => {
+          /* handleImageSize() functionality - determine if tall header component is rendered */
+          return document.createElement('div');
+        })
+        .mockImplementationOnce(() => {
+          /* handleImageSize() functionality - determine if top border is set to the header */
+          return null;
+        })
+        .mockImplementationOnce(() => {
+          /* handleImageSize() functionality - determine if title text component is rendered */
+          return {
+            dataset: {
+              wrap: 'true',
+            },
+            getBoundingClientRect: () => {
+              return {
+                height: heightTitleTextElement,
+              };
+            },
+          };
+        });
+
+      /* Mount the component */
+      const { unmount } = render(
+        <React.Fragment>
+          <HeaderLogo id={testImageId} src={storybookLogo} logoType="square" parentHeaderId="test-parent-header-id" />
+        </React.Fragment>
+      );
+      /* Run all timers */
+      act(() => {
+        jest.runAllTimers();
+      });
+
+      /* Build the DOM elements required for the tests */
+      const logoImageElement = document.querySelector(`img[id="${testImageId}--header-logo--decorative-image"]`);
+
+      /* Verifies that the width attribute is set correctly to the logo image element */
+      testData.push(logoImageElement.getAttribute('width'));
+
+      /* Verifies that the height attribute is set correctly to the logo image element */
+      testData.push(logoImageElement.getAttribute('height'));
+
+      /* Unmount the component and clean up the test */
+      unmount();
+      cleanup();
+    });
+
+    afterAll(() => {
+      querySelectorSpy.mockRestore();
+    });
+
+    it('verifies that the width attribute is set correctly to the logo image element', () => {
+      expect(testData[0]).toBe(`${tallImageWidth}`);
+    });
+
+    it('verifies that the height attribute is set correctly to the logo image element', () => {
+      expect(testData[1]).toBe(`${tallImageHeightNoBorder - heightTitleTextElement}`);
+    });
+  });
+
+  describe('Logo image in small size Header with border, default alignment, rectangle logo type', () => {
+    let querySelectorSpy;
+    const testData = [];
+
+    beforeAll(() => {
+      /* Enable fake timers to allow the setTimeout() functionality to be fired correctly */
+      jest.useFakeTimers();
+
+      /* Create the spies for the test */
+      querySelectorSpy = jest
+        .spyOn(global.document, 'querySelector')
+        .mockImplementationOnce(() => {
+          /* handleImageSize() functionality - determine if tall header component is rendered */
+          return null;
+        })
+        .mockImplementationOnce(() => {
+          /* handleImageSize() functionality - determine if top border is set to the header */
+          return true;
+        });
+      /* Mount the component */
+      const { unmount } = render(
+        <React.Fragment>
+          <HeaderLogo id={testImageId} src={storybookLogo} logoType="rectangle" parentHeaderId="test-parent-header-id" />
+        </React.Fragment>
+      );
+      /* Run all timers */
+      act(() => {
+        jest.runAllTimers();
+      });
+
+      /* Build the DOM elements required for the tests */
+      const logoImageElement = document.querySelector(`img[id="${testImageId}--header-logo--decorative-image"]`);
+
+      /* Verifies that the width attribute is set correctly to the logo image element */
+      testData.push(logoImageElement.getAttribute('width'));
+
+      /* Verifies that the height attribute is set correctly to the logo image element */
+      testData.push(logoImageElement.getAttribute('height'));
+
+      /* Unmount the component and clean up the test */
+      unmount();
+      cleanup();
+    });
+
+    afterAll(() => {
+      querySelectorSpy.mockRestore();
+    });
+
+    it('verifies that the width attribute is set correctly to the logo image element', () => {
+      expect(testData[0]).toBe(`${rectangleImageWidthSmall}`);
+    });
+
+    it('verifies that the height attribute is set correctly to the logo image element', () => {
+      expect(testData[1]).toBe(`${rectangleImageHeightSmallWithBorder}`);
     });
   });
 });
