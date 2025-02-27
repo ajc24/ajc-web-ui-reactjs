@@ -32,7 +32,109 @@ describe('Header Logo', () => {
       /* Generate the snapshot for the component */
       snapshot = TestDev.createSnapshot_UseFakeTimers(
         <React.Fragment>
-          <HeaderLogo id={testComponentId} src={storybookLogoLong} alignment="left" logoType="square" parentHeaderId="test-parent-header-id" />
+          <HeaderLogo id={testComponentId} src={storybookLogo} alignment="left" logoType="square" parentHeaderId="test-parent-header-id" />
+        </React.Fragment>
+      );
+    });
+
+    afterAll(() => {
+      querySelectorSpy.mockRestore();
+    });
+
+    it('verifies the snapshot for the component', () => {
+      expect(snapshot).toMatchSnapshot();
+    });
+  });
+
+  describe('Logo image in small size Header with border, centre alignment, square logo type', () => {
+    let querySelectorSpy;
+    let snapshot;
+    
+    beforeAll(() => {
+      /* Create the spies for the test */
+      querySelectorSpy = jest
+        .spyOn(global.document, 'querySelector')
+        .mockImplementationOnce(() => {
+          /* handleImageSize() functionality - determine if tall header component is rendered */
+          return null;
+        })
+        .mockImplementationOnce(() => {
+          /* handleImageSize() functionality - determine if top border is set to the header */
+          return true;
+        });
+
+      /* Generate the snapshot for the component */
+      snapshot = TestDev.createSnapshot_UseFakeTimers(
+        <React.Fragment>
+          <HeaderLogo id={testComponentId} src={storybookLogo} alignment="centre" logoType="square" parentHeaderId="test-parent-header-id" />
+        </React.Fragment>
+      );
+    });
+
+    afterAll(() => {
+      querySelectorSpy.mockRestore();
+    });
+
+    it('verifies the snapshot for the component', () => {
+      expect(snapshot).toMatchSnapshot();
+    });
+  });
+
+  describe('Logo image in small size Header with no border, left alignment, rectangle logo type', () => {
+    let querySelectorSpy;
+    let snapshot;
+    
+    beforeAll(() => {
+      /* Create the spies for the test */
+      querySelectorSpy = jest
+        .spyOn(global.document, 'querySelector')
+        .mockImplementationOnce(() => {
+          /* handleImageSize() functionality - determine if tall header component is rendered */
+          return null;
+        })
+        .mockImplementationOnce(() => {
+          /* handleImageSize() functionality - determine if top border is set to the header */
+          return null;
+        });
+
+      /* Generate the snapshot for the component */
+      snapshot = TestDev.createSnapshot_UseFakeTimers(
+        <React.Fragment>
+          <HeaderLogo id={testComponentId} src={storybookLogoLong} alignment="left" logoType="rectangle" parentHeaderId="test-parent-header-id" />
+        </React.Fragment>
+      );
+    });
+
+    afterAll(() => {
+      querySelectorSpy.mockRestore();
+    });
+
+    it('verifies the snapshot for the component', () => {
+      expect(snapshot).toMatchSnapshot();
+    });
+  });
+
+  describe('Logo image in small size Header with border, centre alignment, rectangle logo type', () => {
+    let querySelectorSpy;
+    let snapshot;
+    
+    beforeAll(() => {
+      /* Create the spies for the test */
+      querySelectorSpy = jest
+        .spyOn(global.document, 'querySelector')
+        .mockImplementationOnce(() => {
+          /* handleImageSize() functionality - determine if tall header component is rendered */
+          return null;
+        })
+        .mockImplementationOnce(() => {
+          /* handleImageSize() functionality - determine if top border is set to the header */
+          return true;
+        });
+
+      /* Generate the snapshot for the component */
+      snapshot = TestDev.createSnapshot_UseFakeTimers(
+        <React.Fragment>
+          <HeaderLogo id={testComponentId} src={storybookLogoLong} alignment="centre" logoType="rectangle" parentHeaderId="test-parent-header-id" />
         </React.Fragment>
       );
     });
