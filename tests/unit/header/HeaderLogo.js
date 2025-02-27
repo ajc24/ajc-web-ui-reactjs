@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import { act, cleanup, render } from '@testing-library/react';
+import { TestDev } from 'ajc-testing-code';
 import { HeaderLogo } from '../../../src';
 import storybookLogo from '../../../stories/images/files/storybook-logo.svg';
 import storybookLogoLong from '../../../stories/images/files/storybook-logo-long.svg';
@@ -26,20 +27,12 @@ describe('Header Logo', () => {
     const testData = [];
 
     beforeAll(() => {
-      /* Enable fake timers to allow the setTimeout() functionality to be fired correctly */
-      jest.useFakeTimers();
-
       /* Mount the component */
-      const { unmount } = render(
+      const unmount = TestDev.render_UseFakeTimers(
         <React.Fragment>
           <HeaderLogo id={testImageId} src={storybookLogo} />
         </React.Fragment>
       );
-      /* Run all timers */
-      act(() => {
-        jest.runAllTimers();
-      });
-
       /* Build the DOM elements required for the tests */
       const containerElement = document.querySelector(`img[id="${testImageId}--header-logo--decorative-image"]`).parentNode;
       const logoImageElement = document.querySelector(`img[id="${testImageId}--header-logo--decorative-image"]`);
@@ -174,9 +167,6 @@ describe('Header Logo', () => {
     const testData = [];
 
     beforeAll(() => {
-      /* Enable fake timers to allow the setTimeout() functionality to be fired correctly */
-      jest.useFakeTimers();
-
       /* Create the spies for the test */
       querySelectorSpy = jest
         .spyOn(global.document, 'querySelector')
@@ -189,16 +179,11 @@ describe('Header Logo', () => {
           return null;
         });
       /* Mount the component */
-      const { unmount } = render(
+      const unmount = TestDev.render_UseFakeTimers(
         <React.Fragment>
           <HeaderLogo id={testImageId} src={storybookLogoLong} alignment="centre" logoType="rectangle" parentHeaderId="test-parent-header-id" />
         </React.Fragment>
       );
-      /* Run all timers */
-      act(() => {
-        jest.runAllTimers();
-      });
-
       /* Build the DOM elements required for the tests */
       const containerElement = document.querySelector(`img[id="${testImageId}--header-logo--decorative-image"]`).parentNode;
       const logoImageElement = document.querySelector(`img[id="${testImageId}--header-logo--decorative-image"]`);
@@ -254,9 +239,6 @@ describe('Header Logo', () => {
     const testData = [];
 
     beforeAll(() => {
-      /* Enable fake timers to allow the setTimeout() functionality to be fired correctly */
-      jest.useFakeTimers();
-
       /* Create the spies for the test */
       querySelectorSpy = jest
         .spyOn(global.document, 'querySelector')
@@ -269,16 +251,11 @@ describe('Header Logo', () => {
           return true;
         });
       /* Mount the component */
-      const { unmount } = render(
+      const unmount = TestDev.render_UseFakeTimers(
         <React.Fragment>
           <HeaderLogo id={testImageId} src={storybookLogo} logoType="square" parentHeaderId="test-parent-header-id" />
         </React.Fragment>
       );
-      /* Run all timers */
-      act(() => {
-        jest.runAllTimers();
-      });
-
       /* Build the DOM elements required for the tests */
       const logoImageElement = document.querySelector(`img[id="${testImageId}--header-logo--decorative-image"]`);
 
@@ -311,9 +288,6 @@ describe('Header Logo', () => {
     const testData = [];
 
     beforeAll(() => {
-      /* Enable fake timers to allow the setTimeout() functionality to be fired correctly */
-      jest.useFakeTimers();
-
       /* Create the spies for the test */
       querySelectorSpy = jest
         .spyOn(global.document, 'querySelector')
@@ -334,16 +308,11 @@ describe('Header Logo', () => {
           return null;
         });
       /* Mount the component */
-      const { unmount } = render(
+      const unmount = TestDev.render_UseFakeTimers(
         <React.Fragment>
           <HeaderLogo id={testImageId} src={storybookLogo} logoType="rectangle" parentHeaderId="test-parent-header-id" />
         </React.Fragment>
       );
-      /* Run all timers */
-      act(() => {
-        jest.runAllTimers();
-      });
-
       /* Build the DOM elements required for the tests */
       const logoImageElement = document.querySelector(`img[id="${testImageId}--header-logo--decorative-image"]`);
 
@@ -378,9 +347,6 @@ describe('Header Logo', () => {
     const testData = [];
 
     beforeAll(() => {
-      /* Enable fake timers to allow the setTimeout() functionality to be fired correctly */
-      jest.useFakeTimers();
-
       /* Create the spies for the test */
       querySelectorSpy = jest
         .spyOn(global.document, 'querySelector')
@@ -417,16 +383,11 @@ describe('Header Logo', () => {
         });
 
       /* Mount the component */
-      const { unmount } = render(
+      const unmount = TestDev.render_UseFakeTimers(
         <React.Fragment>
           <HeaderLogo id={testImageId} src={storybookLogo} logoType="rectangle" parentHeaderId="test-parent-header-id" />
         </React.Fragment>
       );
-      /* Run all timers */
-      act(() => {
-        jest.runAllTimers();
-      });
-
       /* Build the DOM elements required for the tests */
       const logoImageElement = document.querySelector(`img[id="${testImageId}--header-logo--decorative-image"]`);
 
@@ -460,9 +421,6 @@ describe('Header Logo', () => {
     const testData = [];
 
     beforeAll(() => {
-      /* Enable fake timers to allow the setTimeout() functionality to be fired correctly */
-      jest.useFakeTimers();
-
       /* Create the spies for the test */
       querySelectorSpy = jest
         .spyOn(global.document, 'querySelector')
@@ -489,16 +447,11 @@ describe('Header Logo', () => {
         });
 
       /* Mount the component */
-      const { unmount } = render(
+      const unmount = TestDev.render_UseFakeTimers(
         <React.Fragment>
           <HeaderLogo id={testImageId} src={storybookLogo} logoType="square" parentHeaderId="test-parent-header-id" />
         </React.Fragment>
       );
-      /* Run all timers */
-      act(() => {
-        jest.runAllTimers();
-      });
-
       /* Build the DOM elements required for the tests */
       const logoImageElement = document.querySelector(`img[id="${testImageId}--header-logo--decorative-image"]`);
 
@@ -531,9 +484,6 @@ describe('Header Logo', () => {
     const testData = [];
 
     beforeAll(() => {
-      /* Enable fake timers to allow the setTimeout() functionality to be fired correctly */
-      jest.useFakeTimers();
-
       /* Create the spies for the test */
       querySelectorSpy = jest
         .spyOn(global.document, 'querySelector')
@@ -546,16 +496,11 @@ describe('Header Logo', () => {
           return true;
         });
       /* Mount the component */
-      const { unmount } = render(
+      const unmount = TestDev.render_UseFakeTimers(
         <React.Fragment>
           <HeaderLogo id={testImageId} src={storybookLogo} logoType="rectangle" parentHeaderId="test-parent-header-id" />
         </React.Fragment>
       );
-      /* Run all timers */
-      act(() => {
-        jest.runAllTimers();
-      });
-
       /* Build the DOM elements required for the tests */
       const logoImageElement = document.querySelector(`img[id="${testImageId}--header-logo--decorative-image"]`);
 
