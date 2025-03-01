@@ -283,7 +283,7 @@ describe('Header Logo', () => {
     });
   });
 
-  describe('Logo image in tall size Header with no border, default alignment, standard logo type, no title text, no subtitle text', () => {
+  describe('Logo image in tall size Header with no border, default alignment, no title text, no subtitle text', () => {
     let querySelectorSpy;
     const testData = [];
 
@@ -340,7 +340,7 @@ describe('Header Logo', () => {
     });
   });
 
-  describe('Logo image in tall size Header with border, default alignment, standard logo type, with title text (no text wrapping), with subtitle text (visible)', () => {
+  describe('Logo image in tall size Header with border, default alignment, with title text (no text wrapping), with subtitle text (visible)', () => {
     const heightSubtitleTextElement = 35;
     const heightTitleTextElement = 75;
     let querySelectorSpy;
@@ -415,7 +415,7 @@ describe('Header Logo', () => {
     });
   });
 
-  describe('Logo image in tall size Header with no border, default alignment, standard logo type, with title text (with text wrapping), with subtitle text (hidden)', () => {
+  describe('Logo image in tall size Header with no border, default alignment, with title text (with text wrapping), with subtitle text (hidden)', () => {
     const heightTitleTextElement = 95;
     let querySelectorSpy;
     const testData = [];
