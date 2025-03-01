@@ -2,7 +2,7 @@
  * Developed by Anthony Cox in 2024
  */
 import React from 'react';
-import { cleanup, render } from '@testing-library/react';
+import { cleanup } from '@testing-library/react';
 import { TestDev } from 'ajc-testing-code';
 import { HeaderLogo } from '../../../src';
 import storybookLogo from '../../../stories/images/files/storybook-logo.svg';
