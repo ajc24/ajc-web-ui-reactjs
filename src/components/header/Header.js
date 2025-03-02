@@ -19,8 +19,14 @@ import './css/header.css';
  */
 const Header = props => {
   /* Set all additional CSS styling for this component */
-  const headerTitleSubtitleTextContainerCss = 'header-title-subtitle-text-container';
-
+  let headerTitleSubtitleTextContainerCss = 'header-title-subtitle-text-container';
+  if (props.size === undefined || props.size === 'default' || props.size === 'small') {
+    props.logoSrc === undefined
+      ? headerTitleSubtitleTextContainerCss += ' header-title-subtitle-text-container-width-no-logo'
+      : headerTitleSubtitleTextContainerCss += ' header-title-subtitle-text-container-width-with-logo';
+  }
+  const smallHeaderAllFeaturesCss = 'header-small-logo-title-subtitle-text-container';
+  
   return (
     <HeaderBase backgroundColour={props.backgroundColour} backgroundImageSrc={props.backgroundImageSrc} id={props.id} size={props.size || 'default'}
       topBorder={props.topBorder || 'off'}>
@@ -40,25 +46,50 @@ const Header = props => {
         }
         {
           /* Render a Header which only contains title text content - no logo image or subtitle text content rendered */
-          props.logoSrc === undefined && props.titleTextContent !== undefined && props.subtitleTextContent === undefined && 
+          props.logoSrc === undefined && props.titleTextContent !== undefined && 
             <div className={headerTitleSubtitleTextContainerCss}>
               <HeaderTitleText alignment="centre" id={props.id} parentHeaderId={`${props.id}--header-base`} textColour={props.titleTextColour || 'default'}>
                 {props.titleTextContent}
               </HeaderTitleText>
+              {
+                props.subtitleTextContent !== undefined &&
+                <React.Fragment>
+                  <HeaderSubtitleText alignment="centre" headerTitleTextId={props.id} id={props.id} parentHeaderId={`${props.id}--header-base`}
+                    textColour={props.subtitleTextColour || 'default'}>
+                      {props.subtitleTextContent}
+                  </HeaderSubtitleText>
+                </React.Fragment>
+              }
             </div>
         }
         {
-          /* Render a Header which only contains title text content and subtitle text content - no logo image rendered */
-          props.logoSrc === undefined && props.titleTextContent !== undefined && props.subtitleTextContent !== undefined &&
-            <div className={headerTitleSubtitleTextContainerCss}>
-              <HeaderTitleText alignment="centre" id={props.id} parentHeaderId={`${props.id}--header-base`} textColour={props.titleTextColour || 'default'}>
-                {props.titleTextContent}
-              </HeaderTitleText>
-              <HeaderSubtitleText alignment="centre" headerTitleTextId={props.id} id={props.id} parentHeaderId={`${props.id}--header-base`}
-                textColour={props.subtitleTextColour || 'default'}>
-                  {props.subtitleTextContent}
-              </HeaderSubtitleText>
+          /* Render a Small Header which contains both a logo image and title text content and optionally subtitle text content */
+          (props.size === undefined || props.size === 'default' || props.size === 'small') && props.logoSrc !== undefined && props.titleTextContent !== undefined &&
+            <div className={smallHeaderAllFeaturesCss}>
+              <HeaderLogo alignment="left" id={props.id} logoType="square" parentHeaderId={`${props.id}--header-base`} src={props.logoSrc} />
+              
+              <div className={headerTitleSubtitleTextContainerCss}>
+                <HeaderTitleText alignment="left" id={props.id} parentHeaderId={`${props.id}--header-base`} textColour={props.titleTextColour || 'default'}>
+                  {props.titleTextContent}
+                </HeaderTitleText>
+                {
+                  props.subtitleTextContent !== undefined &&
+                  <React.Fragment>
+                    <HeaderSubtitleText alignment="left" headerTitleTextId={props.id} id={props.id} parentHeaderId={`${props.id}--header-base`}
+                      textColour={props.subtitleTextColour || 'default'}>
+                        {props.subtitleTextContent}
+                    </HeaderSubtitleText>
+                  </React.Fragment>
+                }
+              </div>
             </div>
+        }
+        {
+          // /* Render a Tall Header which contains both a logo image and title text content and optionally subtitle text content */
+          // props.size === 'tall' && props.logoSrc !== undefined && props.titleTextContent !== undefined &&
+          //   <div className={headerTitleSubtitleTextContainerCss}>
+
+          //   </div>
         }
     </HeaderBase>
   );
