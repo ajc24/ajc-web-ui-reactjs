@@ -90,7 +90,7 @@ const HeaderBase = props => {
 HeaderBase.propTypes = {
   /** The background colour for the header. The default colour for the background is white. */
   backgroundColour: PropTypes.oneOf([ 'white', 'grey' ]),
-  /** The background image data to be displayed. Depending on your choice of header size, your background image should suit the dimensions0 of 1920x160 (small) or 1920x320 (tall). */
+  /** The background image data to be displayed. Depending on your choice of header size, your background image should suit the dimensions of 1920x160 (small) or 1920x320 (tall). */
   backgroundImageSrc: PropTypes.oneOfType([ PropTypes.string, PropTypes.object ]),
   /** The content to be displayed within the header component. */
   children: PropTypes.any,

@@ -142,7 +142,7 @@ class HeaderLogo extends React.Component {
   }
 }
 HeaderLogo.propTypes = {
-  /* The alignment of the logo image. The image by default will be left aligned but can also be centre aligned. */
+  /** The alignment of the logo image. The image by default will be left aligned but can also be centre aligned. */
   alignment: PropTypes.oneOf([ 'centre', 'left' ]),
   /** The unique identifier for this component. */
   id: PropTypes.string.isRequired,
