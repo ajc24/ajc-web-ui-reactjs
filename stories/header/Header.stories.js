@@ -135,3 +135,33 @@ TallHeaderWithTitleTextAndSubtitleText.args = {
   titleTextColour: 'black',
   titleTextContent: 'Tall Header Title Text Content',
 };
+
+export const SmallHeaderWithLogoImageAndTitleText = Template_Header.bind({});
+SmallHeaderWithLogoImageAndTitleText.args = {
+  backgroundColour: 'grey',
+  backgroundImageSrc: undefined,
+  id: 'small-with-logo-image-and-title-text',
+  logoSrc: storybookLogo,
+  logoType: undefined,
+  size: 'small',
+  subtitleTextColour: undefined,
+  subtitleTextContent: undefined,
+  topBorder: 'off',
+  titleTextColour: 'black',
+  titleTextContent: 'Small Header Title Text Content',
+};
+
+export const SmallHeaderWithLogoImageAndTitleTextAndSubtitleText = Template_Header.bind({});
+SmallHeaderWithLogoImageAndTitleTextAndSubtitleText.args = {
+  backgroundColour: 'grey',
+  backgroundImageSrc: undefined,
+  id: 'small-with-logo-image-and-title-text-and-subtitle-text',
+  logoSrc: storybookLogo,
+  logoType: undefined,
+  size: 'small',
+  subtitleTextColour: 'black',
+  subtitleTextContent: 'Subtitle text content',
+  topBorder: 'off',
+  titleTextColour: 'black',
+  titleTextContent: 'Small Header Title Text Content',
+};
