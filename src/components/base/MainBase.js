@@ -31,7 +31,7 @@ const MainBase = props => {
   });
 
   /* Set the styling for the main element */
-  const mainCss = 'main screen-width-root background-white';
+  const mainCss = 'main screen-width-root background-white font-black font-default';
 
   /* Set the styling for the outer content element */
   let outerContentCss = 'main-content-outer screen-width-content-outer';

@@ -28,7 +28,7 @@ const FooterBase = props => {
   });
 
   /* Set the styling for the navigation element */
-  let footerCss = 'footer screen-width-root background-white';
+  let footerCss = 'footer screen-width-root background-white font-default';
   if (props.backgroundColour === 'navy-and-gold') {
     /* Set to a gold font for thest background colours */
     footerCss += ' font-gold';

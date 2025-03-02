@@ -28,7 +28,7 @@ const MenuBarBase = props => {
   });
 
   /* Set the styling for the navigation element */
-  let navCss = 'nav screen-width-root background-white';
+  let navCss = 'nav screen-width-root background-white font-default';
   if (props.backgroundColour === 'navy-and-gold') {
     /* Set to a gold font for thest background colours */
     navCss += ' font-gold';

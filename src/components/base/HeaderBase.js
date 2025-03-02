@@ -53,7 +53,7 @@ const HeaderBase = props => {
       : topBorderRendered = false;
 
   /* Set the styling for the header element */
-  const headerCss = 'header screen-width-root background-white';
+  const headerCss = 'header screen-width-root background-white font-default font-black';
   
   /* Set the styling for the outer content element */
   let outerContentCss = 'header-content-outer screen-width-content-outer';
