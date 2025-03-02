@@ -494,4 +494,88 @@ describe('Header', () => {
       expect(testData[4]).not.toBeNull();
     });
   });
+
+  describe('Tall Header, with logo image, with title text, no subtitle text', () => {
+    const testData = [];
+
+    beforeAll(() => {
+      /* Mount the component */
+      const { unmount } = render(
+        <React.Fragment>
+          <Header id={testComponentId} size="tall" logoSrc={storybookLogo} titleTextContent="Header Title Text Content" />
+        </React.Fragment>
+      );
+      /* Build the DOM elements required for the tests */
+      const headingElement = document.querySelector(`div[id="${testComponentId}--header-title-text"] > h1`);
+      const logoImageElement = document.querySelector(`img[id="${testComponentId}--header-logo--decorative-image"]`);
+      const paragraphElement = document.querySelector(`div[id="${testComponentId}--header-subtitle-text"] > p`);
+
+      /* Verifies that the logo image is rendered */
+      testData.push(logoImageElement);
+
+      /* Verifies that the title text content is rendered */
+      testData.push(headingElement);
+
+      /* Verifies that the subtitle text content is not rendered */
+      testData.push(paragraphElement);
+
+      /* Unmount the component and clean up the test */
+      unmount();
+      cleanup();
+    });
+
+    it('verifies that the logo image is rendered', () => {
+      expect(testData[0]).not.toBeNull();
+    });
+
+    it('verifies that the title text content is rendered', () => {
+      expect(testData[1]).not.toBeNull();
+    });
+
+    it('verifies that the subtitle text content is not rendered', () => {
+      expect(testData[2]).toBeNull();
+    });
+  });
+
+  describe('Tall Header, with logo image, with title text, with subtitle text', () => {
+    const testData = [];
+
+    beforeAll(() => {
+      /* Mount the component */
+      const { unmount } = render(
+        <React.Fragment>
+          <Header id={testComponentId} size="tall" logoSrc={storybookLogo} subtitleTextContent="Subtitle text content" titleTextContent="Header Title Text Content" />
+        </React.Fragment>
+      );
+      /* Build the DOM elements required for the tests */
+      const headingElement = document.querySelector(`div[id="${testComponentId}--header-title-text"] > h1`);
+      const logoImageElement = document.querySelector(`img[id="${testComponentId}--header-logo--decorative-image"]`);
+      const paragraphElement = document.querySelector(`div[id="${testComponentId}--header-subtitle-text"] > p`);
+
+      /* Verifies that the logo image is rendered */
+      testData.push(logoImageElement);
+
+      /* Verifies that the title text content is rendered */
+      testData.push(headingElement);
+
+      /* Verifies that the subtitle text content is rendered */
+      testData.push(paragraphElement);
+
+      /* Unmount the component and clean up the test */
+      unmount();
+      cleanup();
+    });
+
+    it('verifies that the logo image is rendered', () => {
+      expect(testData[0]).not.toBeNull();
+    });
+
+    it('verifies that the title text content is rendered', () => {
+      expect(testData[1]).not.toBeNull();
+    });
+
+    it('verifies that the subtitle text content is rendered', () => {
+      expect(testData[2]).not.toBeNull();
+    });
+  });
 });
