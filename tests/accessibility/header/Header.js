@@ -54,7 +54,7 @@ describe('Header', () => {
 
     beforeAll(async () => {
       /* Mount the component being accessibility tested */
-      const { unmount } = render(
+      const unmount = TestDev.render_UseFakeTimers(
         <div>
           <Header id={testComponentId} logoSrc={storybookLogo} logoType="square" size="small" />
           <div role="navigation">
@@ -84,7 +84,7 @@ describe('Header', () => {
 
     beforeAll(async () => {
       /* Mount the component being accessibility tested */
-      const { unmount } = render(
+      const unmount = TestDev.render_UseFakeTimers(
         <div>
           <Header id={testComponentId} logoSrc={storybookLogoLong} logoType="rectangle" size="small" />
           <div role="navigation">
@@ -114,7 +114,7 @@ describe('Header', () => {
 
     beforeAll(async () => {
       /* Mount the component being accessibility tested */
-      const { unmount } = render(
+      const unmount = TestDev.render_UseFakeTimers(
         <div>
           <Header id={testComponentId} logoSrc={storybookLogoLong} size="tall" />
           <div role="navigation">
@@ -249,6 +249,66 @@ describe('Header', () => {
         </div>
       );
       const html = TestDev.getComponentInHTMLTemplate('Header: Test 8');
+      unmount();
+      /* Perform the accessibility checks on this component */
+      results = await TestDev.runAxeCore(html);
+    }, testTimeout);
+
+    it('verifies the accessibility standards for the component', () => {
+      expect(results).toBeTruthy();
+    });
+  });
+
+  describe('Small Header, with logo image, with title text, no subtitle text', () => {
+    let results;
+
+    beforeAll(async () => {
+      /* Mount the component being accessibility tested */
+      const unmount = TestDev.render_UseFakeTimers(
+        <div>
+          <Header id={testComponentId} size="small" logoSrc={storybookLogo} titleTextContent="Header Title Text Content" />
+          <div role="navigation">
+            Menu bar component
+          </div>
+          <main id="main-content" aria-label="Accessibility test">
+            <h1>Header Accessibility Test</h1>
+          </main>
+          <footer role="contentinfo" id="footer">
+            Footer component
+          </footer>
+        </div>
+      );
+      const html = TestDev.getComponentInHTMLTemplate('Header: Test 9');
+      unmount();
+      /* Perform the accessibility checks on this component */
+      results = await TestDev.runAxeCore(html);
+    }, testTimeout);
+
+    it('verifies the accessibility standards for the component', () => {
+      expect(results).toBeTruthy();
+    });
+  });
+
+  describe('Small Header, with logo image, with title text, with subtitle text', () => {
+    let results;
+
+    beforeAll(async () => {
+      /* Mount the component being accessibility tested */
+      const unmount = TestDev.render_UseFakeTimers(
+        <div>
+          <Header id={testComponentId} size="small" logoSrc={storybookLogo} subtitleTextContent="Subtitle text content" titleTextContent="Header Title Text Content" />
+          <div role="navigation">
+            Menu bar component
+          </div>
+          <main id="main-content" aria-label="Accessibility test">
+            <h1>Header Accessibility Test</h1>
+          </main>
+          <footer role="contentinfo" id="footer">
+            Footer component
+          </footer>
+        </div>
+      );
+      const html = TestDev.getComponentInHTMLTemplate('Header: Test 10');
       unmount();
       /* Perform the accessibility checks on this component */
       results = await TestDev.runAxeCore(html);
