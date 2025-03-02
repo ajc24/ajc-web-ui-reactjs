@@ -12,6 +12,7 @@ const config = {
   }),
   stories: [
     /* Header component stories */
+    "../stories/header/Header.stories.js",
     "../stories/header/HeaderLogo.stories.js",
     "../stories/header/HeaderSubtitleText.stories.js",
     "../stories/header/HeaderTitleText.stories.js",
@@ -19,7 +20,6 @@ const config = {
     /* Image component stories */
     "../stories/images/DecorativeImage.stories.js",
     "../stories/images/FunctionalImage.stories.js",
-    
     "../stories/images/InformativeImage.stories.js",
 
     /* Mock page component stories */
@@ -34,10 +34,6 @@ const config = {
     "../stories/base/MainBase.stories.js",
     "../stories/base/MenuBarBase.stories.js",
     "../stories/mock-pages/FullPageTemplate.stories.js",
-    
-    /* Header component stories */
-    // "../stories/header/SmallHeader.stories.js",
-    // "../stories/header/TallHeader.stories.js",
   ],
   addons: [
     '@chromatic-com/storybook',
