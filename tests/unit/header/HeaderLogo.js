@@ -113,7 +113,9 @@ describe('Header Logo', () => {
       
       /* Fire a resize event on the document window to invoke the functionality being tested */
       act(() => {
+        jest.useFakeTimers();
         window.dispatchEvent(new Event('resize'));
+        jest.runAllTimers();
       });
 
       /* Build the DOM elements required for the tests */
