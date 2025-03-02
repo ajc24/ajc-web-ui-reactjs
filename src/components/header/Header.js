@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { HeaderBase } from '../../';
+import { HeaderBase, HeaderLogo } from '../../';
 
 /**
  * Header component for use in the header section of a web application. This Header auto-handles screen widths
@@ -22,9 +22,16 @@ const Header = props => {
       topBorder={props.topBorder || 'off'}>
         {
           /* Render a Header which allows for custom content to be displayed */
-          props.logoSrc === undefined && props.subtitleTextContent === undefined && props.titleTextContent === undefined &&
+          props.logoSrc === undefined && props.titleTextContent === undefined &&
             <React.Fragment>
               {props.children}
+            </React.Fragment>
+        }
+        {
+          /* Render a Header which only contains a logo image - no title text content or subtitle text content rendered */
+          props.logoSrc !== undefined && props.titleTextContent === undefined &&
+            <React.Fragment>
+              <HeaderLogo alignment="centre" id={props.id} logoType={props.logoType} parentHeaderId={`${props.id}--header-base`} src={props.logoSrc} />
             </React.Fragment>
         }
     </HeaderBase>
@@ -44,6 +51,19 @@ Header.propTypes = {
   id: PropTypes.string,
   /** The image data to be displayed as the header logo. */
   logoSrc: PropTypes.oneOfType([ PropTypes.string, PropTypes.object ]),
+  /**
+   * The type of logo to be displayed in the Header component.
+   * 
+   * If the small Header type is rendered without any title or subtitle text content inside of it, this logo image can be rendered in both square and rectangular forms.
+   * By default, a square logo type is chosen. You can override this setting by choosing the "rectangle" logo type. When a rectangular logo is rendered, the maximum width
+   * it will be rendered at is 312px to suit rendering on smaller screens.
+   * 
+   * If the small Header type is rendered with title and / or subtitle text included, this logo will default to a square image regardless of setting, and will be rendered
+   * to the left of the text components.
+   * 
+   * If the tall Header type is rendered then the logo will appear above any title and / or subtitle text components that are rendered.
+   */
+  logoType: PropTypes.oneOf([ 'rectangle', 'square' ]),
   /** The size of the header ranging from default / small (160px) to tall (320px). */
   size: PropTypes.oneOf([ 'default', 'small', 'tall' ]),
   /** The colour of the subtitle text content, either in a black or white colour. By default the black colour is pre-selected. */
