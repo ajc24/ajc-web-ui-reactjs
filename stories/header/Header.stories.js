@@ -4,6 +4,8 @@
 import React from 'react';
 import { Header } from '../../src';
 // import headerBgImage from '../images/files/header-bg-image.png';
+import storybookLogo from '../images/files/storybook-logo.svg';
+import storybookLogoLong from '../images/files/storybook-logo-long.svg';
 // import tallHeaderBgImage from '../images/files/tall-header-bg-image.png';
 
 export default {
@@ -25,5 +27,52 @@ const Template_Header = args => {
     </Header>
   </React.Fragment>;
 }
-export const Default = Template_Header.bind({});
-Default.args = {};
+export const DefaultWithCustomContent = Template_Header.bind({});
+DefaultWithCustomContent.args = {
+  id: 'default-with-custom-content',
+};
+
+export const SmallHeaderWithSquareLogoImageOnly = Template_Header.bind({});
+SmallHeaderWithSquareLogoImageOnly.args = {
+  backgroundColour: 'grey',
+  backgroundImageSrc: undefined,
+  id: 'small-with-square-logo-image-only',
+  logoSrc: storybookLogo,
+  logoType: 'square',
+  size: 'small',
+  subtitleTextColour: undefined,
+  subtitleTextContent: undefined,
+  topBorder: 'off',
+  titleTextColour: undefined,
+  titleTextContent: undefined,
+};
+
+export const SmallHeaderWithRectangleLogoImageOnly = Template_Header.bind({});
+SmallHeaderWithRectangleLogoImageOnly.args = {
+  backgroundColour: 'grey',
+  backgroundImageSrc: undefined,
+  id: 'small-with-rectangle-logo-image-only',
+  logoSrc: storybookLogoLong,
+  logoType: 'rectangle',
+  size: 'small',
+  subtitleTextColour: undefined,
+  subtitleTextContent: undefined,
+  topBorder: 'off',
+  titleTextColour: undefined,
+  titleTextContent: undefined,
+};
+
+export const TallHeaderWithLogoImageOnly = Template_Header.bind({});
+TallHeaderWithLogoImageOnly.args = {
+  backgroundColour: 'grey',
+  backgroundImageSrc: undefined,
+  id: 'tall-with-logo-image-only',
+  logoSrc: storybookLogoLong,
+  logoType: undefined,
+  size: 'tall',
+  subtitleTextColour: undefined,
+  subtitleTextContent: undefined,
+  topBorder: 'off',
+  titleTextColour: undefined,
+  titleTextContent: undefined,
+};
