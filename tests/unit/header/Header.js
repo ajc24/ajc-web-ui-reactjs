@@ -186,7 +186,7 @@ describe('Header', () => {
         </React.Fragment>
       );
       /* Build the DOM elements required for the tests */
-      const outerContent_topBorder = document.querySelector(`header[id="${testComponentId}--header-base"] > div[class*="header-border-top-green"]`);
+      const outerContent_topBorder = document.querySelector(`header[id="${testComponentId}--header-base"] > div[class*="header-border-top-"]`);
       const innerContent_size = document.querySelector(`header[id="${testComponentId}--header-base"] > div > div[class*="header-tall-height-no-border"]`);
       const logoImage_width = document.querySelector(`img[id="${testComponentId}--header-logo--decorative-image"]`).getAttribute('width');
 
@@ -214,6 +214,159 @@ describe('Header', () => {
 
     it('verifies that the width attribute is set correctly to the logo image element', () => {
       expect(testData[2]).toBe(`${logoImage_width_tallHeader}`);
+    });
+  });
+
+  describe('Small Header, no logo image, with title text, no subtitle text', () => {
+    const testData = [];
+
+    beforeAll(() => {
+      /* Mount the component */
+      const { unmount } = render(
+        <React.Fragment>
+          <Header id={testComponentId} size="small" topBorder="green" titleTextContent="Header Title Text Content" />
+        </React.Fragment>
+      );
+      /* Build the DOM elements required for the tests */
+      const outerContent_topBorder = document.querySelector(`header[id="${testComponentId}--header-base"] > div[class*="header-border-top-green"]`);
+      const headingElement = document.querySelector(`div[id="${testComponentId}--header-title-text"] > h1[class*="title-text-font-black"]`).textContent;
+      
+      /* Verifies that the top border is rendered in the outer content element */
+      testData.push(outerContent_topBorder);
+
+      /* Verifies that the title text content is rendered within the heading element */
+      testData.push(headingElement);
+
+      /* Unmount the component and clean up the test */
+      unmount();
+      cleanup();
+    });
+
+    it('verifies that the top border is rendered in the outer content element', () => {
+      expect(testData[0]).not.toBeNull();
+    });
+
+    it('verifies that the title text content is rendered within the heading element', () => {
+      expect(testData[1]).toBe('Header Title Text Content');
+    });
+  });
+
+  describe('Small Header, no logo image, with title text, with subtitle text', () => {
+    const testData = [];
+
+    beforeAll(() => {
+      /* Mount the component */
+      const { unmount } = render(
+        <React.Fragment>
+          <Header id={testComponentId} size="small" subtitleTextContent="Subtitle text content" topBorder="green-2" titleTextContent="Header Title Text Content" />
+        </React.Fragment>
+      );
+      /* Build the DOM elements required for the tests */
+      const outerContent_topBorder = document.querySelector(`header[id="${testComponentId}--header-base"] > div[class*="header-border-top-green-2"]`);
+      const headingElement = document.querySelector(`div[id="${testComponentId}--header-title-text"] > h1[class*="title-text-font-black"]`);
+      const paragraphElement = document.querySelector(`div[id="${testComponentId}--header-subtitle-text"] > p[class*="font-black"]`).textContent;
+      
+      /* Verifies that the top border is rendered in the outer content element */
+      testData.push(outerContent_topBorder);
+
+      /* Verifies that the title text content is rendered */
+      testData.push(headingElement);
+
+      /* Verifies that the subtitle text content is rendered within the paragraph element */
+      testData.push(paragraphElement);
+
+      /* Unmount the component and clean up the test */
+      unmount();
+      cleanup();
+    });
+
+    it('verifies that the top border is rendered in the outer content element', () => {
+      expect(testData[0]).not.toBeNull();
+    });
+
+    it('verifies that the title text content is rendered', () => {
+      expect(testData[1]).not.toBeNull();
+    });
+
+    it('verifies that the subtitle text content is rendered within the paragraph element', () => {
+      expect(testData[2]).toBe('Subtitle text content');
+    });
+  });
+
+  describe('Tall Header, no logo image, with title text, no subtitle text', () => {
+    const testData = [];
+
+    beforeAll(() => {
+      /* Mount the component */
+      const { unmount } = render(
+        <React.Fragment>
+          <Header id={testComponentId} size="tall" topBorder="grey" titleTextColour="black" titleTextContent="Header Title Text Content" />
+        </React.Fragment>
+      );
+      /* Build the DOM elements required for the tests */
+      const outerContent_topBorder = document.querySelector(`header[id="${testComponentId}--header-base"] > div[class*="header-border-top-grey"]`);
+      const headingElement = document.querySelector(`div[id="${testComponentId}--header-title-text"] > h1[class*="title-text-font-black"]`);
+      
+      /* Verifies that the top border is rendered in the outer content element */
+      testData.push(outerContent_topBorder);
+
+      /* Verifies that the title text content is rendered */
+      testData.push(headingElement);
+
+      /* Unmount the component and clean up the test */
+      unmount();
+      cleanup();
+    });
+
+    it('verifies that the top border is rendered in the outer content element', () => {
+      expect(testData[0]).not.toBeNull();
+    });
+
+    it('verifies that the title text content is rendered', () => {
+      expect(testData[1]).not.toBeNull();
+    });
+  });
+
+  describe('Tall Header, no logo image, with title text, with subtitle text', () => {
+    const testData = [];
+
+    beforeAll(() => {
+      /* Mount the component */
+      const { unmount } = render(
+        <React.Fragment>
+          <Header id={testComponentId} size="tall" subtitleTextColour="black" subtitleTextContent="Subtitle text content" topBorder="navy"
+            titleTextColour="white" titleTextContent="Header Title Text Content" />
+        </React.Fragment>
+      );
+      /* Build the DOM elements required for the tests */
+      const outerContent_topBorder = document.querySelector(`header[id="${testComponentId}--header-base"] > div[class*="header-border-top-navy"]`);
+      const headingElement = document.querySelector(`div[id="${testComponentId}--header-title-text"] > h1[class*="title-text-font-white"]`);
+      const paragraphElement = document.querySelector(`div[id="${testComponentId}--header-subtitle-text"] > p[class*="font-black"]`);
+      
+      /* Verifies that the top border is rendered in the outer content element */
+      testData.push(outerContent_topBorder);
+
+      /* Verifies that the title text content is rendered */
+      testData.push(headingElement);
+
+      /* Verifies that the subtitle text content is rendered */
+      testData.push(paragraphElement);
+
+      /* Unmount the component and clean up the test */
+      unmount();
+      cleanup();
+    });
+
+    it('verifies that the top border is rendered in the outer content element', () => {
+      expect(testData[0]).not.toBeNull();
+    });
+
+    it('verifies that the title text content is rendered', () => {
+      expect(testData[1]).not.toBeNull();
+    });
+
+    it('verifies that the subtitle text content is rendered', () => {
+      expect(testData[2]).not.toBeNull();
     });
   });
 });
