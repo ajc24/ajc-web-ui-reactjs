@@ -55,7 +55,12 @@ class HeaderLogo extends React.Component {
     }, 10);
 
     /* Watch over all future window resize events - we will want to alter the logo image size to suit the new screen size */
-    window.addEventListener('resize', this.handleImageSize);
+    const handleImageSize = () => {
+      setTimeout(() => {
+        this.handleImageSize();
+      }, 10);
+    };
+    window.addEventListener('resize', handleImageSize);
   }
 
   handleImageSize() {
