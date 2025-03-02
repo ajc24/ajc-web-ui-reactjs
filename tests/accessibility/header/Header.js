@@ -318,4 +318,64 @@ describe('Header', () => {
       expect(results).toBeTruthy();
     });
   });
+
+  describe('Tall Header, with logo image, with title text, no subtitle text', () => {
+    let results;
+
+    beforeAll(async () => {
+      /* Mount the component being accessibility tested */
+      const unmount = TestDev.render_UseFakeTimers(
+        <div>
+          <Header id={testComponentId} size="tall" logoSrc={storybookLogo} titleTextContent="Header Title Text Content" />
+          <div role="navigation">
+            Menu bar component
+          </div>
+          <main id="main-content" aria-label="Accessibility test">
+            <h1>Header Accessibility Test</h1>
+          </main>
+          <footer role="contentinfo" id="footer">
+            Footer component
+          </footer>
+        </div>
+      );
+      const html = TestDev.getComponentInHTMLTemplate('Header: Test 11');
+      unmount();
+      /* Perform the accessibility checks on this component */
+      results = await TestDev.runAxeCore(html);
+    }, testTimeout);
+
+    it('verifies the accessibility standards for the component', () => {
+      expect(results).toBeTruthy();
+    });
+  });
+
+  describe('Tall Header, with logo image, with title text, with subtitle text', () => {
+    let results;
+
+    beforeAll(async () => {
+      /* Mount the component being accessibility tested */
+      const unmount = TestDev.render_UseFakeTimers(
+        <div>
+          <Header id={testComponentId} size="tall" logoSrc={storybookLogo} subtitleTextContent="Subtitle text content" titleTextContent="Header Title Text Content" />
+          <div role="navigation">
+            Menu bar component
+          </div>
+          <main id="main-content" aria-label="Accessibility test">
+            <h1>Header Accessibility Test</h1>
+          </main>
+          <footer role="contentinfo" id="footer">
+            Footer component
+          </footer>
+        </div>
+      );
+      const html = TestDev.getComponentInHTMLTemplate('Header: Test 12');
+      unmount();
+      /* Perform the accessibility checks on this component */
+      results = await TestDev.runAxeCore(html);
+    }, testTimeout);
+
+    it('verifies the accessibility standards for the component', () => {
+      expect(results).toBeTruthy();
+    });
+  });
 });
