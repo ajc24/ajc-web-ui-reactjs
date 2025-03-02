@@ -178,7 +178,7 @@ TallHeaderWithLogoImageAndTitleText.args = {
   subtitleTextContent: undefined,
   topBorder: 'off',
   titleTextColour: 'black',
-  titleTextContent: 'Small Header Title Text Content',
+  titleTextContent: 'Tall Header Title Text Content',
 };
 
 export const TallHeaderWithLogoImageAndTitleTextAndSubtitleText = Template_Header.bind({});
@@ -193,5 +193,5 @@ TallHeaderWithLogoImageAndTitleTextAndSubtitleText.args = {
   subtitleTextContent: 'Subtitle text content',
   topBorder: 'off',
   titleTextColour: 'black',
-  titleTextContent: 'Small Header Title Text Content',
+  titleTextContent: 'Tall Header Title Text Content',
 };
