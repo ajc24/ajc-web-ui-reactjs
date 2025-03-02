@@ -149,4 +149,38 @@ describe('Header', () => {
       expect(snapshot).toMatchSnapshot();
     });
   });
+
+  describe('Small Header, with logo image, with title text, no subtitle text', () => {
+    let snapshot;
+    
+    beforeAll(() => {
+      /* Generate the snapshot for the component */
+      snapshot = TestDev.createSnapshot_UseFakeTimers(
+        <React.Fragment>
+          <Header id={testComponentId} size="small" logoSrc={storybookLogo} titleTextContent="Header Title Text Content" />
+        </React.Fragment>
+      );
+    });
+
+    it('verifies the snapshot for the component', () => {
+      expect(snapshot).toMatchSnapshot();
+    });
+  });
+
+  describe('Small Header, with logo image, with title text, with subtitle text', () => {
+    let snapshot;
+    
+    beforeAll(() => {
+      /* Generate the snapshot for the component */
+      snapshot = TestDev.createSnapshot_UseFakeTimers(
+        <React.Fragment>
+          <Header id={testComponentId} size="small" logoSrc={storybookLogo} subtitleTextContent="Subtitle text content" titleTextContent="Header Title Text Content" />
+        </React.Fragment>
+      );
+    });
+
+    it('verifies the snapshot for the component', () => {
+      expect(snapshot).toMatchSnapshot();
+    });
+  });
 });
