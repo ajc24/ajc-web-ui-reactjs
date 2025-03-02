@@ -9,11 +9,10 @@ import MainBase from './components/base/MainBase';
 import MenuBarBase from './components/base/MenuBarBase';
 
 /* Import the header components */
+import Header from './components/header/Header';
 import HeaderLogo from './components/header/HeaderLogo';
 import HeaderSubtitleText from './components/header/HeaderSubtitleText';
 import HeaderTitleText from './components/header/HeaderTitleText';
-// import SmallHeader from './components/header/SmallHeader';
-// import TallHeader from './components/header/TallHeader';
 
 /* Import the image components */
 import DecorativeImage from './components/images/DecorativeImage';
@@ -25,6 +24,7 @@ export {
   DecorativeImage,
   FooterBase,
   FunctionalImage,
+  Header,
   HeaderBase,
   HeaderLogo,
   HeaderSubtitleText,
@@ -33,6 +33,4 @@ export {
   InformativeImage,
   MainBase,
   MenuBarBase,
-  // SmallHeader,
-  // TallHeader,
 };
