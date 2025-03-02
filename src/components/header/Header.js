@@ -6,14 +6,27 @@ import PropTypes from 'prop-types';
 import { HeaderBase } from '../../';
 
 /**
- * Decorative Image component which describes an image which is used solely for decoration in a web application.
- * The height and width of the image are fully customisable. You can not define alt text for this image.
- * On click events are fully disabled.
+ * Header component for use in the header section of a web application. This Header auto-handles screen widths
+ * from the most commonly used mobile screen sizes (360x800) to the most commonly used desktop sizes (1920x1080).
+ * The default and small heights of the component is 160px. The tall height of the component is 320px.
+ * 
+ * The Header can be rendered with custom developer content or can be rendered with any combination of a logo image,
+ * header title text content and / or header subtitle text content.
+ * 
+ * If you choose to render any of the logo image, header title text content or header subtitle text content components
+ * then any custom content you provide for display within the Header will not be rendered.
  */
 const Header = props => {
   return (
     <HeaderBase backgroundColour={props.backgroundColour} backgroundImageSrc={props.backgroundImageSrc} id={props.id} size={props.size || 'default'}
       topBorder={props.topBorder || 'off'}>
+        {
+          /* Render a Header which allows for custom content to be displayed */
+          props.logoSrc === undefined && props.subtitleTextContent === undefined && props.titleTextContent === undefined &&
+            <React.Fragment>
+              {props.children}
+            </React.Fragment>
+        }
     </HeaderBase>
   );
 }
@@ -43,6 +56,5 @@ Header.propTypes = {
   titleTextColour: PropTypes.oneOf([ 'black', 'default', 'white' ]),
   /** The text content to be displayed as the title text. */
   titleTextContent: PropTypes.string, 
-  
 };
 export default Header;
