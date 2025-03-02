@@ -864,4 +864,30 @@ describe('Header Title Text', () => {
       expect(testData[1]).toBe('Head...');
     });
   });
+
+  describe('setTitleTextContent() functionality - Text content is not set when the heading element is null', () => {
+    let getHeadingElementSelectorSpy;
+    const testData = [];
+
+    beforeAll(() => {
+      /* Set up the spies for the test */
+      getHeadingElementSelectorSpy = jest
+        .spyOn(HeaderTitleText.prototype, 'getHeadingElementSelector')
+        .mockImplementationOnce(() => { return null });
+      
+      /* Invoke the functionality being tested */
+      const response = HeaderTitleText.prototype.setTitleTextContent('New title text content');
+
+      /* Verifies that the title text content is not updated to a new value since the heading element */
+      testData.push(response);
+    });
+
+    afterAll(() => {
+      getHeadingElementSelectorSpy.mockRestore();
+    });
+
+    it('verifies that the title text content is not updated to a new value since the heading element', () => {
+      expect(testData[0]).toBeFalsy();
+    });
+  });
 });
