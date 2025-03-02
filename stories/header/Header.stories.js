@@ -6,7 +6,6 @@ import { Header } from '../../src';
 // import headerBgImage from '../images/files/header-bg-image.png';
 import storybookLogo from '../images/files/storybook-logo.svg';
 import storybookLogoLong from '../images/files/storybook-logo-long.svg';
-// import tallHeaderBgImage from '../images/files/tall-header-bg-image.png';
 
 export default {
   title: 'Header Components/Header',
@@ -75,4 +74,64 @@ TallHeaderWithLogoImageOnly.args = {
   topBorder: 'off',
   titleTextColour: undefined,
   titleTextContent: undefined,
+};
+
+export const SmallHeaderWithTitleTextOnly = Template_Header.bind({});
+SmallHeaderWithTitleTextOnly.args = {
+  backgroundColour: 'grey',
+  backgroundImageSrc: undefined,
+  id: 'small-with-title-text-only',
+  logoSrc: undefined,
+  logoType: undefined,
+  size: 'small',
+  subtitleTextColour: undefined,
+  subtitleTextContent: undefined,
+  topBorder: 'off',
+  titleTextColour: 'black',
+  titleTextContent: 'Small Header Title Text Content',
+};
+
+export const SmallHeaderWithTitleTextAndSubtitleText = Template_Header.bind({});
+SmallHeaderWithTitleTextAndSubtitleText.args = {
+  backgroundColour: 'grey',
+  backgroundImageSrc: undefined,
+  id: 'small-with-title-text-and-subtitle-text',
+  logoSrc: undefined,
+  logoType: undefined,
+  size: 'small',
+  subtitleTextColour: 'black',
+  subtitleTextContent: 'Subtitle text content',
+  topBorder: 'off',
+  titleTextColour: 'black',
+  titleTextContent: 'Small Header Title Text Content',
+};
+
+export const TallHeaderWithTitleTextOnly = Template_Header.bind({});
+TallHeaderWithTitleTextOnly.args = {
+  backgroundColour: 'grey',
+  backgroundImageSrc: undefined,
+  id: 'tall-with-title-text-only',
+  logoSrc: undefined,
+  logoType: undefined,
+  size: 'tall',
+  subtitleTextColour: undefined,
+  subtitleTextContent: undefined,
+  topBorder: 'off',
+  titleTextColour: 'black',
+  titleTextContent: 'Tall Header Title Text Content',
+};
+
+export const TallHeaderWithTitleTextAndSubtitleText = Template_Header.bind({});
+TallHeaderWithTitleTextAndSubtitleText.args = {
+  backgroundColour: 'grey',
+  backgroundImageSrc: undefined,
+  id: 'tall-with-title-text-and-subtitle-text',
+  logoSrc: undefined,
+  logoType: undefined,
+  size: 'tall',
+  subtitleTextColour: 'black',
+  subtitleTextContent: 'Subtitle text content',
+  topBorder: 'off',
+  titleTextColour: 'black',
+  titleTextContent: 'Tall Header Title Text Content',
 };
