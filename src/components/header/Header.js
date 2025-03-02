@@ -85,11 +85,23 @@ const Header = props => {
             </div>
         }
         {
-          // /* Render a Tall Header which contains both a logo image and title text content and optionally subtitle text content */
-          // props.size === 'tall' && props.logoSrc !== undefined && props.titleTextContent !== undefined &&
-          //   <div className={headerTitleSubtitleTextContainerCss}>
-
-          //   </div>
+          /* Render a Tall Header which contains both a logo image and title text content and optionally subtitle text content */
+          props.size === 'tall' && props.logoSrc !== undefined && props.titleTextContent !== undefined &&
+            <div className={headerTitleSubtitleTextContainerCss}>
+              <HeaderLogo alignment="centre" id={props.id} logoType={props.logoType} parentHeaderId={`${props.id}--header-base`} src={props.logoSrc} />
+              <HeaderTitleText alignment="centre" id={props.id} parentHeaderId={`${props.id}--header-base`} textColour={props.titleTextColour || 'default'}>
+                {props.titleTextContent}
+              </HeaderTitleText>
+              {
+                props.subtitleTextContent !== undefined &&
+                <React.Fragment>
+                  <HeaderSubtitleText alignment="centre" headerTitleTextId={props.id} id={props.id} parentHeaderId={`${props.id}--header-base`}
+                    textColour={props.subtitleTextColour || 'default'}>
+                      {props.subtitleTextContent}
+                  </HeaderSubtitleText>
+                </React.Fragment>
+              }
+            </div>
         }
     </HeaderBase>
   );
