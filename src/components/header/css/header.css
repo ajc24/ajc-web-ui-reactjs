@@ -1,0 +1,9 @@
+/**
+ * Developed by Anthony Cox in 2025
+ */
+.header-title-subtitle-text-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
