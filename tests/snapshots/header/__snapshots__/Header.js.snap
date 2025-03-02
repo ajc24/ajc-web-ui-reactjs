@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header Default (small) Header, with custom content, no logo image, no title text, no subtitle text verifies the snapshot for the component 1`] = `"<header role="banner" id="test-header-id--header-base" class="header screen-width-root background-white"><div class="header-content-outer screen-width-content-outer background-white" data-bgimage="false"><div class="header-content-inner screen-width-content-inner header-small-height-no-border">Header component text content.</div></div></header>"`;
