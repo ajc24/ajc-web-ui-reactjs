@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 import '../css/common.css';
 import './css/text-title.css';
 
-const commonHeadingElementCssPath = 'div[id$="--header-title-text"] > h1';
 const maxRem = 3;
 const truncateTextHeightCutoff = 95;
 
@@ -23,26 +22,26 @@ class HeaderTitleText extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: undefined,
       isWrapped: false,
     };
     this.getContainerElementRightmostPosition = this.getContainerElementRightmostPosition.bind(this);
     this.getHeadingElementHeight = this.getHeadingElementHeight.bind(this);
     this.getHeadingElementRightmostPosition = this.getHeadingElementRightmostPosition.bind(this);
+    this.getHeadingElementSelector = this.getHeadingElementSelector.bind(this);
     this.getTitleTextContent = this.getTitleTextContent.bind(this);
     this.handleScreenWidth = this.handleScreenWidth.bind(this);
     this.reduceFontSizeAndWrapTextIfRequired = this.reduceFontSizeAndWrapTextIfRequired.bind(this);
     this.resetTitleTextContentToDefault = this.resetTitleTextContentToDefault.bind(this);
+    this.setId = this.setId.bind(this);
     this.setIsWrapped = this.setIsWrapped.bind(this);
     this.setTitleTextContent = this.setTitleTextContent.bind(this);
     this.truncateTextByRemovingSpaces = this.truncateTextByRemovingSpaces.bind(this);
-
-    /* Create the references for this component */
-    this.titleTextRef = React.createRef();
   }
 
   componentDidMount() {
-    /* Handle the size of the component based on the initial screen width */
-    this.handleScreenWidth();
+    /* Set the ID for the component - follow on from this by handling the size of the component based on the initial screen width */
+    this.setId(this.props.id);
 
     /* Watch over all future window resize events - we will want to alter the text to suit the screen size */
     window.addEventListener('resize', this.handleScreenWidth);
@@ -53,7 +52,7 @@ class HeaderTitleText extends React.Component {
    * @returns {number}
    */
   getContainerElementRightmostPosition() {
-    const headingElement = document.querySelector(commonHeadingElementCssPath);
+    const headingElement = this.getHeadingElementSelector();
     if (headingElement !== null) {
       return headingElement.parentNode.getBoundingClientRect().right;
     }
@@ -65,7 +64,7 @@ class HeaderTitleText extends React.Component {
    * @returns {number}
    */
   getHeadingElementHeight() {
-    const headingElement = document.querySelector(commonHeadingElementCssPath);
+    const headingElement = this.getHeadingElementSelector();
     if (headingElement !== null) {
       return headingElement.getBoundingClientRect().height;
     }
@@ -77,7 +76,7 @@ class HeaderTitleText extends React.Component {
    * @returns {number}
    */
   getHeadingElementRightmostPosition() {
-    const headingElement = document.querySelector(commonHeadingElementCssPath);
+    const headingElement = this.getHeadingElementSelector();
     if (headingElement !== null) {
       return headingElement.getBoundingClientRect().right;
     }
@@ -85,15 +84,24 @@ class HeaderTitleText extends React.Component {
   }
 
   /**
+   * Gets the Element instance for the heading element rendered with this component
+   * @returns {Element}
+   */
+  getHeadingElementSelector() {
+    return document.querySelector(`div[id="${this.state.id}"] > h1`);
+  }
+
+  /**
    * Gets the text content currently set to the heading element
    * @returns {string}
    */
   getTitleTextContent() {
-    const headingElement = document.querySelector(commonHeadingElementCssPath);
-    if (headingElement !== null) {
-      return headingElement.textContent;
-    }
-    return '';
+    const headingElement = this.getHeadingElementSelector();
+    let titleTextContent;
+    headingElement !== null
+      ? titleTextContent = headingElement.textContent
+      : titleTextContent = '';
+    return titleTextContent;
   }
 
   /**
@@ -124,11 +132,12 @@ class HeaderTitleText extends React.Component {
     /* Determine the positions of the text and the current container element width */
     let h1RightPos = this.getHeadingElementRightmostPosition();
     let containerRightPos = this.getContainerElementRightmostPosition();
+    const headingElement = this.getHeadingElementSelector();
 
     /* Steadily reduce the font size until the text fits on-screen - do not drop below 2rem font size */
     let rem = maxRem;
-    while (rem >= 2 && containerRightPos < h1RightPos) {
-      this.titleTextRef.current.style.fontSize = `${rem}rem`;
+    while (headingElement !== null && rem >= 2 && containerRightPos < h1RightPos) {
+      headingElement.style.fontSize = `${rem}rem`;
       h1RightPos = this.getHeadingElementRightmostPosition();
 
       /* Reduce the rem value by 0.1 and ensure the value remains at one decimal place at the most after editing (ie. 2.9, 2.8, 2.7 etc.) */
@@ -137,10 +146,10 @@ class HeaderTitleText extends React.Component {
     }
     /* If 2rem font size was not enough for the title text to fit on-screen - wrap the text */
     containerRightPos = this.getContainerElementRightmostPosition();
-    if (containerRightPos < h1RightPos) {
+    if (headingElement !== null && containerRightPos < h1RightPos) {
       /* Set the text to wrap and center align */
-      this.titleTextRef.current.style.textAlign = 'center';
-      this.titleTextRef.current.style.whiteSpace = 'normal';
+      headingElement.style.textAlign = 'center';
+      headingElement.style.whiteSpace = 'normal';
       this.setIsWrapped(true);
     }
   }
@@ -149,15 +158,26 @@ class HeaderTitleText extends React.Component {
    * Resets the title text contents value and font size to their default values
    */
   resetTitleTextContentToDefault() {
-    if (this.titleTextRef.current !== null) {
+    const headingElement = this.getHeadingElementSelector();
+    if (headingElement !== null) {
       /* Restore the full text content to the heading element */
-      this.titleTextRef.current.textContent = this.titleTextRef.current.ariaLabel;
+      headingElement.textContent = headingElement.ariaLabel;
 
       /* Set the text to its maximum potential size and reset the whiteSpace CSS property so that there is no text wrap */
-      this.titleTextRef.current.style.fontSize = `${maxRem}rem`;
-      this.titleTextRef.current.style.whiteSpace = 'nowrap';
+      headingElement.style.fontSize = `${maxRem}rem`;
+      headingElement.style.whiteSpace = 'nowrap';
       this.setIsWrapped(false);
     }
+  }
+
+  /**
+   * Sets the ID for the component
+   * @param {string} newId 
+   */
+  setId(newId) {
+    this.setState({
+      id: `${newId}--header-title-text`,
+    }, this.handleScreenWidth);
   }
 
   /**
@@ -170,10 +190,17 @@ class HeaderTitleText extends React.Component {
 
   /**
    * Sets the heading element title text content to the specified text content
-   * @param {string} newTitleTextContent 
+   * @param {string} newTitleTextContent
+   * @returns {boolean}
    */
   setTitleTextContent(newTitleTextContent) {
-    this.titleTextRef.current.textContent = newTitleTextContent;
+    let setNewTitleTextContent = false;
+    const headingElement = this.getHeadingElementSelector();
+    if (headingElement !== null) {
+      headingElement.textContent = newTitleTextContent;
+      setNewTitleTextContent = true;
+    }
+    return setNewTitleTextContent;
   }
 
   /**
@@ -246,8 +273,8 @@ class HeaderTitleText extends React.Component {
       ? textOutputCss += ' title-text-font-white'
       : textOutputCss += ' title-text-font-black';
     return (
-      <div id={`${this.props.id}--header-title-text`} className={containerCss} data-wrap={`${this.state.isWrapped}`}>
-        <h1 className={textOutputCss} ref={this.titleTextRef} aria-label={`${this.props.children}`}>
+      <div id={`${this.state.id}`} className={containerCss} data-wrap={`${this.state.isWrapped}`}>
+        <h1 className={textOutputCss} aria-label={`${this.props.children}`}>
           {this.props.children}
         </h1>
       </div>
