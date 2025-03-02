@@ -3,7 +3,8 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { HeaderBase, HeaderLogo } from '../../';
+import { HeaderBase, HeaderLogo, HeaderSubtitleText, HeaderTitleText } from '../../';
+import './css/header.css';
 
 /**
  * Header component for use in the header section of a web application. This Header auto-handles screen widths
@@ -17,6 +18,9 @@ import { HeaderBase, HeaderLogo } from '../../';
  * then any custom content you provide for display within the Header will not be rendered.
  */
 const Header = props => {
+  /* Set all additional CSS styling for this component */
+  const headerTitleSubtitleTextContainerCss = 'header-title-subtitle-text-container';
+
   return (
     <HeaderBase backgroundColour={props.backgroundColour} backgroundImageSrc={props.backgroundImageSrc} id={props.id} size={props.size || 'default'}
       topBorder={props.topBorder || 'off'}>
@@ -33,6 +37,28 @@ const Header = props => {
             <React.Fragment>
               <HeaderLogo alignment="centre" id={props.id} logoType={props.logoType} parentHeaderId={`${props.id}--header-base`} src={props.logoSrc} />
             </React.Fragment>
+        }
+        {
+          /* Render a Header which only contains title text content - no logo image or subtitle text content rendered */
+          props.logoSrc === undefined && props.titleTextContent !== undefined && props.subtitleTextContent === undefined && 
+            <div className={headerTitleSubtitleTextContainerCss}>
+              <HeaderTitleText alignment="centre" id={props.id} parentHeaderId={`${props.id}--header-base`} textColour={props.titleTextColour || 'default'}>
+                {props.titleTextContent}
+              </HeaderTitleText>
+            </div>
+        }
+        {
+          /* Render a Header which only contains title text content and subtitle text content - no logo image rendered */
+          props.logoSrc === undefined && props.titleTextContent !== undefined && props.subtitleTextContent !== undefined &&
+            <div className={headerTitleSubtitleTextContainerCss}>
+              <HeaderTitleText alignment="centre" id={props.id} parentHeaderId={`${props.id}--header-base`} textColour={props.titleTextColour || 'default'}>
+                {props.titleTextContent}
+              </HeaderTitleText>
+              <HeaderSubtitleText alignment="centre" headerTitleTextId={props.id} id={props.id} parentHeaderId={`${props.id}--header-base`}
+                textColour={props.subtitleTextColour || 'default'}>
+                  {props.subtitleTextContent}
+              </HeaderSubtitleText>
+            </div>
         }
     </HeaderBase>
   );
