@@ -37,7 +37,7 @@ const ArrowIcon = props => {
   }
 
   /* Set the colour for the arrow icon - by default use black colour */
-  (props.colour !== undefined && (props.colour === 'black' || props.colour === 'gold' || props.colour === 'white'))
+  (props.colour === 'black' || props.colour === 'gold' || props.colour === 'white')
     ? iconCss += ` arrow-icon-border-${props.colour}`
     : iconCss += ' arrow-icon-border-black';
 
