@@ -28,6 +28,8 @@ const dimensions = {
   },
 };
 
+const setTimeoutValue = 100;
+
 /**
  * Header Logo image component which renders an image, developed solely for use inside the Header component
  * in a web application. The heights and widths of the image are automatically adjusted to fit the dimensions
@@ -52,13 +54,13 @@ class HeaderLogo extends React.Component {
     /* Determine the initial height and width of the image - set the smallest timeout in order to register header components successfully */
     setTimeout(() => {
       this.handleImageSize();
-    }, 10);
+    }, setTimeoutValue);
 
     /* Watch over all future window resize events - we will want to alter the logo image size to suit the new screen size */
     const handleImageSize = () => {
       setTimeout(() => {
         this.handleImageSize();
-      }, 10);
+      }, setTimeoutValue);
     };
     window.addEventListener('resize', handleImageSize);
   }
