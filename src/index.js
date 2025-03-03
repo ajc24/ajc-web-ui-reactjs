@@ -14,6 +14,9 @@ import HeaderLogo from './components/header/HeaderLogo';
 import HeaderSubtitleText from './components/header/HeaderSubtitleText';
 import HeaderTitleText from './components/header/HeaderTitleText';
 
+/* Import the icon components */
+import ArrowIcon from './components/icons/ArrowIcon';
+
 /* Import the image components */
 import DecorativeImage from './components/images/DecorativeImage';
 import FunctionalImage from './components/images/FunctionalImage';
@@ -21,6 +24,7 @@ import InformativeImage from './components/images/InformativeImage';
 
 /* Export all components */
 export {
+  ArrowIcon,
   DecorativeImage,
   FooterBase,
   FunctionalImage,
