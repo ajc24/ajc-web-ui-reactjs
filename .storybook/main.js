@@ -23,8 +23,8 @@ const config = {
     "../stories/images/InformativeImage.stories.js",
 
     /* Mock page component stories */
-    "../stories/mock-pages/CKCSClubOfIreland_Home.stories.js",
-    "../stories/mock-pages/TullowhillCavaliers_Home.stories.js",
+    "../stories/mock-pages/CKCSClubOfIreland/HomePage.stories.js",
+    "../stories/mock-pages/TullowhillCavaliers/HomePage.stories.js",
 
     /* Base component stories */
     "../stories/base/ImageBase.stories.js",
