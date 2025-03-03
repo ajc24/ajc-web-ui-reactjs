@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import { FooterBase, Header, MainBase, MenuBarBase } from '../../src';
-import tullowhillCavaliersLogo from '../images/files/tullowhill-cavaliers-logo.png';
+import tullowhillCavaliersLogo from '../images/files/tullowhill-cavaliers-logo-larger.png';
 
 export default {
   title: 'Mock Pages/Tullowhill Cavaliers (Home)',
