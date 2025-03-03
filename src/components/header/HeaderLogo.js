@@ -28,7 +28,9 @@ const dimensions = {
   },
 };
 
-const setTimeoutValue = 100;
+/* Set timeouts for the onload and resize events */
+const setTimeoutOnLoad = 100;
+const setTimeoutOnResize = 10;
 
 /**
  * Header Logo image component which renders an image, developed solely for use inside the Header component
@@ -54,13 +56,13 @@ class HeaderLogo extends React.Component {
     /* Determine the initial height and width of the image - set the smallest timeout in order to register header components successfully */
     setTimeout(() => {
       this.handleImageSize();
-    }, setTimeoutValue);
+    }, setTimeoutOnLoad);
 
     /* Watch over all future window resize events - we will want to alter the logo image size to suit the new screen size */
     const handleImageSize = () => {
       setTimeout(() => {
         this.handleImageSize();
-      }, setTimeoutValue);
+      }, setTimeoutOnResize);
     };
     window.addEventListener('resize', handleImageSize);
   }
