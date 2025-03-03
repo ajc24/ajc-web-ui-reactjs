@@ -36,6 +36,9 @@ describe('Image Base', () => {
 
       /* Verifies that the id attribute is set correctly to the image element */
       testData.push(image);
+
+      /* Verifies that the "image-animations" class is set to the image element */
+      testData.push(image.classList);
       
       /* Verifies that the src attribute is set correctly to the image element */
       testData.push(image.getAttribute('src'));
@@ -62,20 +65,24 @@ describe('Image Base', () => {
       expect(testData[0]).not.toBeNull();
     });
 
+    it('verifies that the "image-animations" class is set to the image element', () => {
+      expect(testData[1].contains('image-animations')).toBeTruthy();
+    });
+
     it('verifies that the src attribute is set correctly to the image element', () => {
-      expect(testData[1]).toBeDefined();
+      expect(testData[2]).toBeDefined();
     });
 
     it('verifies that the width attribute is set correctly to the image element', () => {
-      expect(testData[2]).toBe(`${defaultImageWidth}`);
+      expect(testData[3]).toBe(`${defaultImageWidth}`);
     });
 
     it('verifies that the height attribute is set correctly to the image element', () => {
-      expect(testData[3]).toBe(`${defaultImageHeight}`);
+      expect(testData[4]).toBe(`${defaultImageHeight}`);
     });
 
     it('verifies that the alt attribute is set correctly to that of a decorative image element', () => {
-      expect(testData[4]).toBe(defaultImageAlt);
+      expect(testData[5]).toBe(defaultImageAlt);
     });
   });
 
@@ -446,6 +453,31 @@ describe('Image Base', () => {
 
     it('verifies that the custom functionality is not invoked after clicking on the image', () => {
       expect(customOnClick.mock.calls).toHaveLength(0);
+    });
+  });
+
+  describe('Default image - image load and resizing animations disabled', () => {
+    const testData = [];
+
+    beforeAll(() => {
+      const { unmount } = render(
+        <React.Fragment>
+          <ImageBase id={testImageId} src={storybookLogo} animations={false} />
+        </React.Fragment>
+      );
+      /* Build the DOM elements required for the tests */
+      const image = document.querySelector(`img[id="${testImageId}"]`);
+
+      /* Verifies that the "image-animations" class is not set to the image element */
+      testData.push(image.classList);
+
+      /* Unmount the component and clean up the test */
+      unmount();
+      cleanup();
+    });
+
+    it('verifies that the "image-animations" class is not set to the image element', () => {
+      expect(testData[0].contains('image-animations')).toBeFalsy();
     });
   });
 });
