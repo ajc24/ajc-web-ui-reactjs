@@ -1,5 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Image Base Decorative image with default parameters verifies the snapshot for the component 1`] = `"<img id="decorative-image-1" class="image" width="100" height="100" alt="" src="[object Object]">"`;
+exports[`Image Base Decorative image with default parameters verifies the snapshot for the component 1`] = `"<img id="decorative-image-1" class="image image-animations" width="100" height="100" alt="" src="[object Object]">"`;
 
-exports[`Image Base Informative image with custom parameters verifies the snapshot for the component 1`] = `"<img id="informative-image-1" class="image" width="300" height="500" alt="Informative image alt text" src="[object Object]">"`;
+exports[`Image Base Informative image with custom parameters verifies the snapshot for the component 1`] = `"<img id="informative-image-1" class="image image-animations" width="300" height="500" alt="Informative image alt text" src="[object Object]">"`;
