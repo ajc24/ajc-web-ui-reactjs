@@ -70,7 +70,10 @@ class ImageBase extends React.Component {
 
   render() {
     /* Set the CSS styling for the image */
-    const imageCss = 'image';
+    let imageCss = 'image';
+    this.props.animations === false
+      ? imageCss += ''.trim()
+      : imageCss += ' image-animations';
 
     /* Set the alternative text for the image - assume a decorative image and only change if it is an informative or functional image */
     let altText = '';
@@ -98,6 +101,8 @@ class ImageBase extends React.Component {
 ImageBase.propTypes = {
   /** The alternate text to be attached to the image and read out by screen readers. */
   alt: PropTypes.string,
+  /** Switch to enable or disable animations which play to smoothly load in and / or resize the image. By default smooth animations are enabled. */
+  animations: PropTypes.bool,
   /** The height of the image. */
   height: PropTypes.number,
   /** The unique identifier for this component. */

@@ -3,7 +3,10 @@
  */
 .image {
   opacity: 0;
-  transition-property: opacity;
-  transition-duration: 0.25s;
+}
+
+.image-animations {
+  transition-duration: 0.75s;
+  transition-property: opacity, height, width;
   transition-timing-function: ease-in-out;
 }
