@@ -65,6 +65,7 @@ var dimensions = {
     width: 312
   }
 };
+var setTimeoutValue = 100;
 
 /**
  * Header Logo image component which renders an image, developed solely for use inside the Header component
@@ -96,13 +97,13 @@ var HeaderLogo = /*#__PURE__*/function (_React$Component) {
       /* Determine the initial height and width of the image - set the smallest timeout in order to register header components successfully */
       setTimeout(function () {
         _this2.handleImageSize();
-      }, 10);
+      }, setTimeoutValue);
 
       /* Watch over all future window resize events - we will want to alter the logo image size to suit the new screen size */
       var handleImageSize = function handleImageSize() {
         setTimeout(function () {
           _this2.handleImageSize();
-        }, 10);
+        }, setTimeoutValue);
       };
       window.addEventListener('resize', handleImageSize);
     }

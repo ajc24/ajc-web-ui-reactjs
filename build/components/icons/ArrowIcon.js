@@ -44,7 +44,7 @@ var ArrowIcon = function ArrowIcon(props) {
   }
 
   /* Set the colour for the arrow icon - by default use black colour */
-  props.colour !== undefined && (props.colour === 'black' || props.colour === 'gold' || props.colour === 'white') ? iconCss += " arrow-icon-border-".concat(props.colour) : iconCss += ' arrow-icon-border-black';
+  props.colour === 'black' || props.colour === 'gold' || props.colour === 'white' ? iconCss += " arrow-icon-border-".concat(props.colour) : iconCss += ' arrow-icon-border-black';
 
   /* Set the direction for the arrow icon - by default use a right facing arrow icon */
   iconCss += " arrow-icon-direction-".concat(direction);
