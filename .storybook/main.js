@@ -17,6 +17,9 @@ const config = {
     "../stories/header/HeaderSubtitleText.stories.js",
     "../stories/header/HeaderTitleText.stories.js",
     
+    /* Icon component stories */
+    "../stories/icons/ArrowIcon.stories.js",
+
     /* Image component stories */
     "../stories/images/DecorativeImage.stories.js",
     "../stories/images/FunctionalImage.stories.js",
