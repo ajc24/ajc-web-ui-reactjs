@@ -1,0 +1,12 @@
+/**
+ * Developed by Anthony Cox in 2025
+ */
+.image {
+  opacity: 0;
+}
+
+.image-animations {
+  transition-duration: 1s;
+  transition-property: opacity, height, width;
+  transition-timing-function: ease-in-out;
+}

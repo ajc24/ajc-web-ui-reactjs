@@ -4,11 +4,10 @@ require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.storybookCssClasses = void 0;
+exports.storybookCssClassList = void 0;
 /**
- * Developed by Anthony Cox in 2024
+ * Developed by Anthony Cox in 2025
  */
-var storybookCssClasses = exports.storybookCssClasses = {
-  sbMainPadded: 'sb-main-padded',
-  sbShowMain: 'sb-show-main'
-};
+
+/* List of Storybook-oriented CSS classes */
+var storybookCssClassList = exports.storybookCssClassList = ['sb-main-padded', 'sb-show-main'];

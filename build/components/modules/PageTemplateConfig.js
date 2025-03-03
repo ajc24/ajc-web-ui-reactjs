@@ -11,7 +11,7 @@ require("core-js/modules/web.dom-collections.iterator.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.PageTemplateConfig = void 0;
+exports["default"] = void 0;
 require("core-js/modules/es.symbol.to-primitive.js");
 require("core-js/modules/es.error.cause.js");
 require("core-js/modules/es.error.to-string.js");
@@ -24,15 +24,15 @@ function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = 
 function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); } /**
- * Developed by Anthony Cox in 2024
+ * Developed by Anthony Cox in 2025
  */
 /* Commonly used CSS classes */
-var ajcBodyDefaultCss = 'ajc-body-default';
+var bodyDefaultCss = 'body-default';
 
 /**
  * Functionality designed to work with the page template components (headers, menu bars, body content, footers)
  */
-var PageTemplateConfig = exports.PageTemplateConfig = /*#__PURE__*/function () {
+var PageTemplateConfig = exports["default"] = /*#__PURE__*/function () {
   function PageTemplateConfig() {
     _classCallCheck(this, PageTemplateConfig);
   }
@@ -45,16 +45,14 @@ var PageTemplateConfig = exports.PageTemplateConfig = /*#__PURE__*/function () {
      */
     function setupDocumentBodyCss() {
       /* If we are rendering on Storybook, remove the Storybook classes which will affect the width of the component */
-      if (document.body.classList.contains(_storybook.storybookCssClasses.sbShowMain) === true) {
-        document.body.classList.remove(_storybook.storybookCssClasses.sbShowMain);
+      for (var index = 0; index < _storybook.storybookCssClassList.length; index += 1) {
+        if (document.body.classList.contains(_storybook.storybookCssClassList[index]) === true) {
+          document.body.classList.remove(_storybook.storybookCssClassList[index]);
+        }
       }
-      if (document.body.classList.contains(_storybook.storybookCssClasses.sbMainPadded) === true) {
-        document.body.classList.remove(_storybook.storybookCssClasses.sbMainPadded);
-      }
-
       /* Ensure that the <body> element stretches to 100% of the width of the screen, that the X axis scrollbar is hidden and Y axis scrollbar is always displayed */
-      if (document.body.classList.contains(ajcBodyDefaultCss) === false) {
-        document.body.classList.add(ajcBodyDefaultCss);
+      if (document.body.classList.contains(bodyDefaultCss) === false) {
+        document.body.classList.add(bodyDefaultCss);
         document.activeElement.blur();
       }
     }

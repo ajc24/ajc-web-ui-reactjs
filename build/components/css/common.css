@@ -1,0 +1,93 @@
+/**
+ * Developed by Anthony Cox in 2025
+ */
+.background-gold {
+  background-color: #FFBF00;
+}
+
+.background-green {
+  background-color: #006622;
+}
+
+.background-green-2 {
+  background-color: #E1EDB3;
+}
+
+.background-grey {
+  background-color: #F6F6F6;
+}
+
+.background-grey-2 {
+  background-color: #4D4D4D;
+}
+
+.background-navy {
+  background-color: #000066;
+}
+
+.background-red {
+  background-color: #800000;
+}
+
+.background-transparent {
+  background-color: transparent;
+}
+
+.background-white {
+  background-color: #FFFFFF;
+}
+
+.body-default {
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.font-black {
+  color: #000000;
+}
+
+.font-default {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  word-wrap: break-word;
+}
+
+.font-gold {
+  color: #FFBF00;
+}
+
+.font-white {
+  color: #FFFFFF;
+}
+
+.hidden {
+  display: none;
+}
+
+.page-template-container {
+  height: auto;
+  max-width: 1248px;
+  min-width: 312px;
+  width: auto;
+}
+
+.screen-width-content-inner {
+  max-width: 1248px;
+  min-width: 312px;
+  padding-left: 16px;
+  padding-right: 16px;
+  width: 100%;
+}
+
+.screen-width-content-outer {
+  max-width: 1920px;
+  min-width: 344px;
+  width: inherit;
+}
+
+.screen-width-root {
+  width: 100%;
+}
