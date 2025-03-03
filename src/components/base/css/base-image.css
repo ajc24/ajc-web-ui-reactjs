@@ -6,7 +6,7 @@
 }
 
 .image-animations {
-  transition-duration: 0.75s;
+  transition-duration: 1s;
   transition-property: opacity, height, width;
   transition-timing-function: ease-in-out;
 }
