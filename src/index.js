@@ -23,6 +23,7 @@ import FunctionalImage from './components/images/FunctionalImage';
 import InformativeImage from './components/images/InformativeImage';
 
 /* Import the menu bar components */
+import MenuBar from './components/menu-bar/MenuBar';
 import ScrollMenuItems from './components/menu-bar/ScrollMenuItems';
 
 /* Export all components */
@@ -39,6 +40,7 @@ export {
   ImageBase,
   InformativeImage,
   MainBase,
+  MenuBar,
   MenuBarBase,
   ScrollMenuItems,
 };
