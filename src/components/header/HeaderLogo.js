@@ -143,15 +143,17 @@ class HeaderLogo extends React.Component {
       ? containerCss += ' image-header-logo-alignment-centre'
       : containerCss += ' image-header-logo-alignment-left';
     
+    /* Set the ID to be used by either image type */
+    const imageId = `${this.props.id}--header-logo`;
     return (
       <div className={containerCss}>
         {
           (this.props.imageType === undefined || this.props.imageType === 'decorative') &&
-            <DecorativeImage id={`${this.props.id}--header-logo`} src={this.props.src} height={this.state.height} width={this.state.width} />
+            <DecorativeImage id={imageId} src={this.props.src} height={this.state.height} width={this.state.width} />
         }
         {
           this.props.imageType === 'informative' &&
-            <InformativeImage id={`${this.props.id}--header-logo`} src={this.props.src} height={this.state.height} width={this.state.width}
+            <InformativeImage id={imageId} src={this.props.src} height={this.state.height} width={this.state.width}
               alt={this.props.alt || 'No alternate text has been specified for this informative image.'} />
         }
       </div>
