@@ -41,7 +41,8 @@ const Header = props => {
           /* Render a Header which only contains a logo image - no title text content or subtitle text content rendered */
           props.logoSrc !== undefined && props.titleTextContent === undefined &&
             <React.Fragment>
-              <HeaderLogo alignment="centre" id={props.id} logoType={props.logoType} parentHeaderId={`${props.id}--header-base`} src={props.logoSrc} />
+              <HeaderLogo alignment="centre" alt={props.logoAlt} id={props.id} imageType="informative" logoType={props.logoType} parentHeaderId={`${props.id}--header-base`}
+                src={props.logoSrc} />
             </React.Fragment>
         }
         {
@@ -118,6 +119,8 @@ Header.propTypes = {
   children: PropTypes.any,
   /** The unique identifier for the header. */
   id: PropTypes.string,
+  /** The alternate text to be attached to the logo image and read out by screen readers. This is only applied if you render a logo without any title text. */
+  logoAlt: PropTypes.string,
   /** The image data to be displayed as the header logo. */
   logoSrc: PropTypes.oneOfType([ PropTypes.string, PropTypes.object ]),
   /**
