@@ -529,4 +529,56 @@ describe('Header Logo', () => {
       expect(testData[1]).toBe(`${rectangleImageHeightSmallWithBorder}`);
     });
   });
+
+  describe('Standalone informative logo image, no alt text provided, default alignment, default logo type', () => {
+    const testData = [];
+
+    beforeAll(() => {
+      /* Mount the component */
+      const unmount = TestDev.render_UseFakeTimers(
+        <React.Fragment>
+          <HeaderLogo alt={undefined} id={testImageId} imageType="informative" src={storybookLogo} />
+        </React.Fragment>
+      );
+      /* Build the DOM elements required for the tests */
+      const logoImageElement = document.querySelector(`img[id="${testImageId}--header-logo--informative-image"]`);
+
+      /* Verifies that the alt attribute is set correctly to the logo image element */
+      testData.push(logoImageElement.getAttribute('alt'));
+
+      /* Unmount the component and clean up the test */
+      unmount();
+      cleanup();
+    });
+
+    it('verifies that the alt attribute is set correctly to the logo image element', () => {
+      expect(testData[0]).toBe('No alternate text has been specified for this informative image.');
+    });
+  });
+
+  describe('Standalone informative logo image, with custom alt text, default alignment, default logo type', () => {
+    const testData = [];
+
+    beforeAll(() => {
+      /* Mount the component */
+      const unmount = TestDev.render_UseFakeTimers(
+        <React.Fragment>
+          <HeaderLogo alt="Test alt text." id={testImageId} imageType="informative" src={storybookLogo} />
+        </React.Fragment>
+      );
+      /* Build the DOM elements required for the tests */
+      const logoImageElement = document.querySelector(`img[id="${testImageId}--header-logo--informative-image"]`);
+
+      /* Verifies that the alt attribute is set correctly to the logo image element */
+      testData.push(logoImageElement.getAttribute('alt'));
+
+      /* Unmount the component and clean up the test */
+      unmount();
+      cleanup();
+    });
+
+    it('verifies that the alt attribute is set correctly to the logo image element', () => {
+      expect(testData[0]).toBe('Test alt text.');
+    });
+  });
 });

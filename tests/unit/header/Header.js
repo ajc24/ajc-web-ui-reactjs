@@ -82,14 +82,15 @@ describe('Header', () => {
       /* Mount the component */
       const unmount = TestDev.render_UseFakeTimers(
         <React.Fragment>
-          <Header backgroundColour="grey" id={testComponentId} logoSrc={storybookLogo} logoType="square" size="small" topBorder="off" />
+          <Header backgroundColour="grey" id={testComponentId} logoAlt="Test alt text" logoSrc={storybookLogo} logoType="square" size="small" topBorder="off" />
         </React.Fragment>
       );
       /* Build the DOM elements required for the tests */
       const outerContent_bgColour = document.querySelector(`header[id="${testComponentId}--header-base"] > div[class*="background-grey"]`);
       const outerContent_topBorder = document.querySelector(`header[id="${testComponentId}--header-base"] > div[class*="header-border-top-"]`);
       const innerContent_size = document.querySelector(`header[id="${testComponentId}--header-base"] > div > div[class*="header-small-height-no-border"]`);
-      const logoImage_width = document.querySelector(`img[id="${testComponentId}--header-logo--decorative-image"]`).getAttribute('width');
+      const logoImage_alt = document.querySelector(`img[id="${testComponentId}--header-logo--informative-image"]`).getAttribute('alt');
+      const logoImage_width = document.querySelector(`img[id="${testComponentId}--header-logo--informative-image"]`).getAttribute('width');
 
       /* Verifies that the grey background colour is set to the outer content element */
       testData.push(outerContent_bgColour);
@@ -102,6 +103,9 @@ describe('Header', () => {
 
       /* Verifies that the width attribute is set correctly to the logo image element */
       testData.push(logoImage_width);
+
+      /* Verifies that the alt attribute is set correctly to the logo image element */
+      testData.push(logoImage_alt);
 
       /* Unmount the component and clean up the test */
       unmount();
@@ -123,6 +127,10 @@ describe('Header', () => {
     it('verifies that the width attribute is set correctly to the logo image element', () => {
       expect(testData[3]).toBe(`${logoImage_width_smallHeader_square}`);
     });
+
+    it('verifies that the alt attribute is set correctly to the logo image element', () => {
+      expect(testData[4]).toBe('Test alt text');
+    });
   });
 
   describe('Small Header, with rectangle logo image, no title text, no subtitle text', () => {
@@ -139,7 +147,7 @@ describe('Header', () => {
       const outerContent_bgColour = document.querySelector(`header[id="${testComponentId}--header-base"] > div[class*="background-white"]`);
       const outerContent_topBorder = document.querySelector(`header[id="${testComponentId}--header-base"] > div[class*="header-border-top-gold"]`);
       const innerContent_size = document.querySelector(`header[id="${testComponentId}--header-base"] > div > div[class*="header-small-height-with-border"]`);
-      const logoImage_width = document.querySelector(`img[id="${testComponentId}--header-logo--decorative-image"]`).getAttribute('width');
+      const logoImage_width = document.querySelector(`img[id="${testComponentId}--header-logo--informative-image"]`).getAttribute('width');
 
       /* Verifies that the white background colour is set to the outer content element */
       testData.push(outerContent_bgColour);
@@ -188,7 +196,7 @@ describe('Header', () => {
       /* Build the DOM elements required for the tests */
       const outerContent_topBorder = document.querySelector(`header[id="${testComponentId}--header-base"] > div[class*="header-border-top-"]`);
       const innerContent_size = document.querySelector(`header[id="${testComponentId}--header-base"] > div > div[class*="header-tall-height-no-border"]`);
-      const logoImage_width = document.querySelector(`img[id="${testComponentId}--header-logo--decorative-image"]`).getAttribute('width');
+      const logoImage_width = document.querySelector(`img[id="${testComponentId}--header-logo--informative-image"]`).getAttribute('width');
 
       /* Verifies that no top border is rendered in the outer content element */
       testData.push(outerContent_topBorder);
