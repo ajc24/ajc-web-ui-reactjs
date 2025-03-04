@@ -22,6 +22,9 @@ import DecorativeImage from './components/images/DecorativeImage';
 import FunctionalImage from './components/images/FunctionalImage';
 import InformativeImage from './components/images/InformativeImage';
 
+/* Import the menu bar components */
+import ScrollMenuItems from './components/menu-bar/ScrollMenuItems';
+
 /* Export all components */
 export {
   ArrowIcon,
@@ -37,4 +40,5 @@ export {
   InformativeImage,
   MainBase,
   MenuBarBase,
+  ScrollMenuItems,
 };
