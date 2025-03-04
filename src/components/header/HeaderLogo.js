@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { DecorativeImage } from '../..';
+import { DecorativeImage, InformativeImage } from '../..';
 import '../css/common.css';
 import './css/image-header-logo.css';
 
@@ -145,7 +145,15 @@ class HeaderLogo extends React.Component {
     
     return (
       <div className={containerCss}>
-        <DecorativeImage id={`${this.props.id}--header-logo`} src={this.props.src} height={this.state.height} width={this.state.width} />
+        {
+          (this.props.imageType === undefined || this.props.imageType === 'decorative') &&
+            <DecorativeImage id={`${this.props.id}--header-logo`} src={this.props.src} height={this.state.height} width={this.state.width} />
+        }
+        {
+          this.props.imageType === 'informative' &&
+            <InformativeImage id={`${this.props.id}--header-logo`} src={this.props.src} height={this.state.height} width={this.state.width}
+              alt={this.props.alt || 'No alternate text has been specified for this informative image.'} />
+        }
       </div>
     );
   }
@@ -153,8 +161,16 @@ class HeaderLogo extends React.Component {
 HeaderLogo.propTypes = {
   /** The alignment of the logo image. The image by default will be left aligned but can also be centre aligned. */
   alignment: PropTypes.oneOf([ 'centre', 'left' ]),
+  /** The alternate text to be attached to the image and read out by screen readers. This is only applied when an informative image is rendered. */
+  alt: PropTypes.string,
   /** The unique identifier for this component. */
   id: PropTypes.string.isRequired,
+  /** 
+   * The image type to be rendered. For logos rendered by themselves, you should render an informative image with alternate (alt) text applied.
+   * For logos that are supported by title text content, you should render a decorative image, which require no alternate (alt) text.
+   * By default a decorative image is rendered.
+   */
+  imageType: PropTypes.oneOf([ 'decorative', 'informative' ]),
   /**
    * The type of logo to be displayed in the Header component.
    * 
