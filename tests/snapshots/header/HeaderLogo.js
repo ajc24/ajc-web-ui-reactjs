@@ -389,4 +389,21 @@ describe('Header Logo', () => {
       expect(snapshot).toMatchSnapshot();
     });
   });
+
+  describe('Standalone informative logo image, with custom alt text, default alignment, default logo type', () => {
+    let snapshot;
+    
+    beforeAll(() => {
+      /* Generate the snapshot for the component */
+      snapshot = TestDev.createSnapshot_UseFakeTimers(
+        <React.Fragment>
+          <HeaderLogo alt="Test alt text." id={testComponentId} imageType="informative" src={storybookLogo} />
+        </React.Fragment>
+      );
+    });
+
+    it('verifies the snapshot for the component', () => {
+      expect(snapshot).toMatchSnapshot();
+    });
+  });
 });

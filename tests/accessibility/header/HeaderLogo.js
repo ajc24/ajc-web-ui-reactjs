@@ -530,4 +530,36 @@ describe('Header Logo', () => {
       expect(results).toBeTruthy();
     });
   });
+
+  describe('Standalone informative logo image, with custom alt text, default alignment, default logo type', () => {
+    let results;
+
+    beforeAll(async () => {
+      /* Mount the component being accessibility tested */
+      const unmount = TestDev.render_UseFakeTimers(
+        <div>
+          <header role="banner">
+            <HeaderLogo alt="Test alt text." id={testComponentId} imageType="informative" src={storybookLogo} />
+          </header>
+          <div role="navigation">
+            Menu bar component
+          </div>
+          <main id="main-content" aria-label="Accessibility test">
+            <h1>Header Logo Accessibility Test</h1>
+          </main>
+          <footer role="contentinfo" id="footer">
+            Footer component
+          </footer>
+        </div>
+      );
+      const html = TestDev.getComponentInHTMLTemplate('Header Logo: Test 10');
+      unmount();
+      /* Perform the accessibility checks on this component */
+      results = await TestDev.runAxeCore(html);
+    }, testTimeout);
+
+    it('verifies the accessibility standards for the component', () => {
+      expect(results).toBeTruthy();
+    });
+  });
 });
