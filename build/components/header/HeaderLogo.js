@@ -65,7 +65,10 @@ var dimensions = {
     width: 312
   }
 };
-var setTimeoutValue = 100;
+
+/* Set timeouts for the onload and resize events */
+var setTimeoutOnLoad = 100;
+var setTimeoutOnResize = 10;
 
 /**
  * Header Logo image component which renders an image, developed solely for use inside the Header component
@@ -97,13 +100,13 @@ var HeaderLogo = /*#__PURE__*/function (_React$Component) {
       /* Determine the initial height and width of the image - set the smallest timeout in order to register header components successfully */
       setTimeout(function () {
         _this2.handleImageSize();
-      }, setTimeoutValue);
+      }, setTimeoutOnLoad);
 
       /* Watch over all future window resize events - we will want to alter the logo image size to suit the new screen size */
       var handleImageSize = function handleImageSize() {
         setTimeout(function () {
           _this2.handleImageSize();
-        }, setTimeoutValue);
+        }, setTimeoutOnResize);
       };
       window.addEventListener('resize', handleImageSize);
     }
@@ -173,13 +176,22 @@ var HeaderLogo = /*#__PURE__*/function (_React$Component) {
       var containerCss = 'background-transparent';
       this.props.parentHeaderId === undefined ? containerCss += ' page-template-container' : containerCss += ' image-header-logo-inside-header';
       this.props.alignment === 'centre' ? containerCss += ' image-header-logo-alignment-centre' : containerCss += ' image-header-logo-alignment-left';
+
+      /* Set the ID to be used by either image type */
+      var imageId = "".concat(this.props.id, "--header-logo");
       return /*#__PURE__*/_react["default"].createElement("div", {
         className: containerCss
-      }, /*#__PURE__*/_react["default"].createElement(_.DecorativeImage, {
-        id: "".concat(this.props.id, "--header-logo"),
+      }, (this.props.imageType === undefined || this.props.imageType === 'decorative') && /*#__PURE__*/_react["default"].createElement(_.DecorativeImage, {
+        id: imageId,
         src: this.props.src,
         height: this.state.height,
         width: this.state.width
+      }), this.props.imageType === 'informative' && /*#__PURE__*/_react["default"].createElement(_.InformativeImage, {
+        id: imageId,
+        src: this.props.src,
+        height: this.state.height,
+        width: this.state.width,
+        alt: this.props.alt || 'No alternate text has been specified for this informative image.'
       }));
     }
   }]);
@@ -187,8 +199,16 @@ var HeaderLogo = /*#__PURE__*/function (_React$Component) {
 HeaderLogo.propTypes = {
   /** The alignment of the logo image. The image by default will be left aligned but can also be centre aligned. */
   alignment: _propTypes["default"].oneOf(['centre', 'left']),
+  /** The alternate text to be attached to the image and read out by screen readers. This is only applied when an informative image is rendered. */
+  alt: _propTypes["default"].string,
   /** The unique identifier for this component. */
   id: _propTypes["default"].string.isRequired,
+  /** 
+   * The image type to be rendered. For logos rendered by themselves, you should render an informative image with alternate (alt) text applied.
+   * For logos that are supported by title text content, you should render a decorative image, which require no alternate (alt) text.
+   * By default a decorative image is rendered.
+   */
+  imageType: _propTypes["default"].oneOf(['decorative', 'informative']),
   /**
    * The type of logo to be displayed in the Header component.
    * 

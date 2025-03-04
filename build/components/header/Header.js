@@ -42,7 +42,9 @@ var Header = function Header(props) {
   props.logoSrc === undefined && props.titleTextContent === undefined && /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, props.children), /* Render a Header which only contains a logo image - no title text content or subtitle text content rendered */
   props.logoSrc !== undefined && props.titleTextContent === undefined && /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement(_.HeaderLogo, {
     alignment: "centre",
+    alt: props.logoAlt,
     id: props.id,
+    imageType: "informative",
     logoType: props.logoType,
     parentHeaderId: "".concat(props.id, "--header-base"),
     src: props.logoSrc
@@ -116,6 +118,8 @@ Header.propTypes = {
   children: _propTypes["default"].any,
   /** The unique identifier for the header. */
   id: _propTypes["default"].string,
+  /** The alternate text to be attached to the logo image and read out by screen readers. This is only applied if you render a logo without any title text. */
+  logoAlt: _propTypes["default"].string,
   /** The image data to be displayed as the header logo. */
   logoSrc: _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].object]),
   /**
