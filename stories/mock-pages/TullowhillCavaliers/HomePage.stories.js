@@ -2,7 +2,7 @@
  * Developed by Anthony Cox in 2025
  */
 import React from 'react';
-import { FooterBase, Header, MainBase, MenuBarBase } from '../../../src';
+import { FooterBase, Header, MainBase, MenuBar } from '../../../src';
 import tullowhillCavaliersLogo from '../../images/files/tullowhill-cavaliers-logo-larger.png';
 
 export default {
@@ -21,9 +21,7 @@ const headerLogoAltText = 'Logo image for Tullowhill Cavaliers showing two outli
 const Template_HomePage = args => {
   return <React.Fragment>
     <Header backgroundColour="grey" id="home-page" logoAlt={headerLogoAltText} logoSrc={tullowhillCavaliersLogo} size="tall" topBorder="navy" />
-    <MenuBarBase backgroundColour="navy-and-gold">
-      Menu Bar Content Will Be Rendered Here
-    </MenuBarBase>
+    <MenuBar id="home-page" backgroundColour="navy-and-gold" />
     <MainBase backgroundColour="grey" title="Tullowhill Cavaliers - Home Page">
       The main content for the current page will go here.
     </MainBase>
