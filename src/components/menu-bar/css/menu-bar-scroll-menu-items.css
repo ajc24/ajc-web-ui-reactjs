@@ -67,6 +67,10 @@ button[id*="--scroll-menu-items-"][class*="background-white"][aria-hidden="false
   width: 48px;
 }
 
+.scroll-menu-items-button-border-navy {
+  border-color: #000066;
+}
+
 .scroll-menu-items-button-border-white {
   border-color: #FFFFFF;
 }
