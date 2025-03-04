@@ -10,6 +10,9 @@ export default {
   tags: ['autodocs'],
 };
 
+/* Data for use in the mock page */
+const headerLogoAltText = 'Logo image for The Cavalier King Charles Spaniel Club of Ireland. Shows a blenheim cavalier surrounded by shamrock leaves which show the colours of the Irish flag.';
+
 /**
  * Full page template for the Home page
  * @param {JSON} args 
@@ -17,7 +20,8 @@ export default {
  */
 const Template_HomePage = args => {
   return <React.Fragment>
-    <Header backgroundColour="white" id="home-page" logoSrc={ckcscoiLogo} size="tall"  topBorder="green-2" />
+    <Header backgroundColour="white" id="home-page" logoAlt={headerLogoAltText} logoSrc={ckcscoiLogo}
+      size="tall"  topBorder="green-2" />
     <MenuBarBase backgroundColour="green-2">
       Menu Bar Content Will Be Rendered Here
     </MenuBarBase>

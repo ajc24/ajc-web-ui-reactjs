@@ -10,6 +10,9 @@ export default {
   tags: ['autodocs'],
 };
 
+/* Data for use in the mock page */
+const headerLogoAltText = 'Logo image for Tullowhill Cavaliers showing two outlines of Benji, our ruby Cavalier dog and the Tullowhill Cavaliers title text below him.';
+
 /**
  * Full page template for the Home page
  * @param {JSON} args 
@@ -17,7 +20,7 @@ export default {
  */
 const Template_HomePage = args => {
   return <React.Fragment>
-    <Header backgroundColour="grey" id="home-page" logoSrc={tullowhillCavaliersLogo} size="tall"  topBorder="navy" />
+    <Header backgroundColour="grey" id="home-page" logoAlt={headerLogoAltText} logoSrc={tullowhillCavaliersLogo} size="tall" topBorder="navy" />
     <MenuBarBase backgroundColour="navy-and-gold">
       Menu Bar Content Will Be Rendered Here
     </MenuBarBase>
