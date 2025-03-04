@@ -48,7 +48,7 @@ var ArrowIcon = function ArrowIcon(props) {
 
   /* Set the direction for the arrow icon - by default use a right facing arrow icon */
   iconCss += " arrow-icon-direction-".concat(direction);
-  return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement("div", {
+  return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement("span", {
     id: "".concat(props.id, "--arrow-icon-").concat(direction),
     className: iconCss,
     "aria-hidden": "true"

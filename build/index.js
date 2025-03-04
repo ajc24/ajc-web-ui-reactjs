@@ -76,10 +76,22 @@ Object.defineProperty(exports, "MainBase", {
     return _MainBase["default"];
   }
 });
+Object.defineProperty(exports, "MenuBar", {
+  enumerable: true,
+  get: function get() {
+    return _MenuBar["default"];
+  }
+});
 Object.defineProperty(exports, "MenuBarBase", {
   enumerable: true,
   get: function get() {
     return _MenuBarBase["default"];
+  }
+});
+Object.defineProperty(exports, "ScrollMenuItems", {
+  enumerable: true,
+  get: function get() {
+    return _ScrollMenuItems["default"];
   }
 });
 var _FooterBase = _interopRequireDefault(require("./components/base/FooterBase"));
@@ -95,4 +107,6 @@ var _ArrowIcon = _interopRequireDefault(require("./components/icons/ArrowIcon"))
 var _DecorativeImage = _interopRequireDefault(require("./components/images/DecorativeImage"));
 var _FunctionalImage = _interopRequireDefault(require("./components/images/FunctionalImage"));
 var _InformativeImage = _interopRequireDefault(require("./components/images/InformativeImage"));
+var _MenuBar = _interopRequireDefault(require("./components/menu-bar/MenuBar"));
+var _ScrollMenuItems = _interopRequireDefault(require("./components/menu-bar/ScrollMenuItems"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
