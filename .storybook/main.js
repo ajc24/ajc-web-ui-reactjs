@@ -16,6 +16,9 @@ const config = {
     "../stories/header/HeaderLogo.stories.js",
     "../stories/header/HeaderSubtitleText.stories.js",
     "../stories/header/HeaderTitleText.stories.js",
+
+    /* Menu Bar component stories */
+    "../stories/menu-bar/ScrollMenuItems.stories.js",
     
     /* Icon component stories */
     "../stories/icons/ArrowIcon.stories.js",
