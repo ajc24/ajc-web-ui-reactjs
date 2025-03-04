@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Arrow Icon Arrow icon with default size, with default colour, with up direction verifies the snapshot for the component 1`] = `"<div id="test-component-id--arrow-icon-up" class="arrow-icon arrow-icon-size-one arrow-icon-border-black arrow-icon-direction-up" aria-hidden="true"></div>"`;
+exports[`Arrow Icon Arrow icon with default size, with default colour, with up direction verifies the snapshot for the component 1`] = `"<span id="test-component-id--arrow-icon-up" class="arrow-icon arrow-icon-size-one arrow-icon-border-black arrow-icon-direction-up" aria-hidden="true"></span>"`;
 
-exports[`Arrow Icon Arrow icon with default size, with white colour, with right direction verifies the snapshot for the component 1`] = `"<div id="test-component-id--arrow-icon-right" class="arrow-icon arrow-icon-size-one arrow-icon-border-white arrow-icon-direction-right" aria-hidden="true"></div>"`;
+exports[`Arrow Icon Arrow icon with default size, with white colour, with right direction verifies the snapshot for the component 1`] = `"<span id="test-component-id--arrow-icon-right" class="arrow-icon arrow-icon-size-one arrow-icon-border-white arrow-icon-direction-right" aria-hidden="true"></span>"`;
 
-exports[`Arrow Icon Arrow icon with size 1, with black colour, with down direction verifies the snapshot for the component 1`] = `"<div id="test-component-id--arrow-icon-down" class="arrow-icon arrow-icon-size-one arrow-icon-border-black arrow-icon-direction-down" aria-hidden="true"></div>"`;
+exports[`Arrow Icon Arrow icon with size 1, with black colour, with down direction verifies the snapshot for the component 1`] = `"<span id="test-component-id--arrow-icon-down" class="arrow-icon arrow-icon-size-one arrow-icon-border-black arrow-icon-direction-down" aria-hidden="true"></span>"`;
 
-exports[`Arrow Icon Arrow icon with size 2, with gold colour, with left direction verifies the snapshot for the component 1`] = `"<div id="test-component-id--arrow-icon-left" class="arrow-icon arrow-icon-size-two arrow-icon-border-gold arrow-icon-direction-left" aria-hidden="true"></div>"`;
+exports[`Arrow Icon Arrow icon with size 2, with gold colour, with left direction verifies the snapshot for the component 1`] = `"<span id="test-component-id--arrow-icon-left" class="arrow-icon arrow-icon-size-two arrow-icon-border-gold arrow-icon-direction-left" aria-hidden="true"></span>"`;

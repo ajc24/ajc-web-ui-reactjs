@@ -19,7 +19,7 @@ describe('Arrow Icon', () => {
         </React.Fragment>
       );
       /* Build the DOM elements required for the tests */
-      const arrowIconElement = document.querySelector(`div[id="${testComponentId}--arrow-icon-right"]`);
+      const arrowIconElement = document.querySelector(`span[id="${testComponentId}--arrow-icon-right"]`);
 
       /* Verifies that the id attribute is set correctly to the arrow icon element */
       testData.push(arrowIconElement);
@@ -91,7 +91,7 @@ describe('Arrow Icon', () => {
         </React.Fragment>
       );
       /* Build the DOM elements required for the tests */
-      const arrowIconElement = document.querySelector(`div[id="${testComponentId}--arrow-icon-right"]`);
+      const arrowIconElement = document.querySelector(`span[id="${testComponentId}--arrow-icon-right"]`);
 
       /* Verifies that the "arrow-icon-size-one" class is set to the arrow icon element */
       /* Verifies that the "arrow-icon-size-two" class is not set to the arrow icon element */
@@ -156,7 +156,7 @@ describe('Arrow Icon', () => {
         </React.Fragment>
       );
       /* Build the DOM elements required for the tests */
-      const arrowIconElement = document.querySelector(`div[id="${testComponentId}--arrow-icon-right"]`);
+      const arrowIconElement = document.querySelector(`span[id="${testComponentId}--arrow-icon-right"]`);
 
       /* Verifies that the "arrow-icon-size-one" class is set to the arrow icon element */
       /* Verifies that the "arrow-icon-size-two" class is not set to the arrow icon element */
@@ -221,7 +221,7 @@ describe('Arrow Icon', () => {
         </React.Fragment>
       );
       /* Build the DOM elements required for the tests */
-      const arrowIconElement = document.querySelector(`div[id="${testComponentId}--arrow-icon-right"]`);
+      const arrowIconElement = document.querySelector(`span[id="${testComponentId}--arrow-icon-right"]`);
 
       /* Verifies that the "arrow-icon-size-one" class is not set to the arrow icon element */
       /* Verifies that the "arrow-icon-size-two" class is set to the arrow icon element */
@@ -286,7 +286,7 @@ describe('Arrow Icon', () => {
         </React.Fragment>
       );
       /* Build the DOM elements required for the tests */
-      const arrowIconElement = document.querySelector(`div[id="${testComponentId}--arrow-icon-down"]`);
+      const arrowIconElement = document.querySelector(`span[id="${testComponentId}--arrow-icon-down"]`);
 
       /* Verifies that the "arrow-icon-border-black" class is not set to the arrow icon element */
       /* Verifies that the "arrow-icon-border-gold" class is set to the arrow icon element */
@@ -341,7 +341,7 @@ describe('Arrow Icon', () => {
         </React.Fragment>
       );
       /* Build the DOM elements required for the tests */
-      const arrowIconElement = document.querySelector(`div[id="${testComponentId}--arrow-icon-left"]`);
+      const arrowIconElement = document.querySelector(`span[id="${testComponentId}--arrow-icon-left"]`);
 
       /* Verifies that the "arrow-icon-border-black" class is not set to the arrow icon element */
       /* Verifies that the "arrow-icon-border-gold" class is not set to the arrow icon element */
@@ -396,7 +396,7 @@ describe('Arrow Icon', () => {
         </React.Fragment>
       );
       /* Build the DOM elements required for the tests */
-      const arrowIconElement = document.querySelector(`div[id="${testComponentId}--arrow-icon-up"]`);
+      const arrowIconElement = document.querySelector(`span[id="${testComponentId}--arrow-icon-up"]`);
 
       /* Verifies that the "arrow-icon-direction-down" class is not set to the arrow icon element */
       /* Verifies that the "arrow-icon-direction-left" class is not set to the arrow icon element */
