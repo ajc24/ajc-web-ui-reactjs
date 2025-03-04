@@ -46,7 +46,7 @@ const ArrowIcon = props => {
 
   return (
     <React.Fragment>
-      <div id={`${props.id}--arrow-icon-${direction}`} className={iconCss} aria-hidden="true" />
+      <span id={`${props.id}--arrow-icon-${direction}`} className={iconCss} aria-hidden="true" />
     </React.Fragment>
   );
 }

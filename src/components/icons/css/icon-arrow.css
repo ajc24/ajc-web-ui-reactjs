@@ -2,6 +2,7 @@
  * Developed by Anthony Cox in 2025
  */
 .arrow-icon {
+  display: block;
   border-style: solid;
   border-left: none;
   border-top: none;
