@@ -2,11 +2,13 @@
  * Developed by Anthony Cox in 2025
  */
 .arrow-icon {
-  display: block;
+  display: inline-block;
   border-style: solid;
   border-left: none;
   border-top: none;
   border-width: 2px;
+  outline: none;
+  user-select: none;
 }
 
 .arrow-icon-border-black {
