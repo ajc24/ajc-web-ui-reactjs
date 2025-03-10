@@ -169,7 +169,7 @@ var ScrollMenuItems = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "initialise",
     value: function initialise(initId, initIsHidden, initMenuBarColour, initSide) {
-      var initArrowIconColour = _colourCombinations.colourCombinations["".concat(initMenuBarColour)].fontColour;
+      var initArrowIconColour = (0, _colourCombinations.getColourCombination)(initMenuBarColour).fontColour;
       this.setState({
         arrowIconColour: initArrowIconColour,
         id: initId,
@@ -220,17 +220,18 @@ var ScrollMenuItems = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      /* Determine the background colour and font colour for the component - setting white background colour with black font text colour as the default */
+      var _getColourCombination = (0, _colourCombinations.getColourCombination)(this.state.menuBarColour),
+        backgroundColour = _getColourCombination.backgroundColour,
+        fontColour = _getColourCombination.fontColour;
+
       /* Set the styling for the container element and determine which side has been chosen */
       var containerCss = 'scroll-menu-items-container';
       this.state.side !== undefined ? containerCss += " scroll-menu-items-container-".concat(this.state.side) : containerCss += ' scroll-menu-items-container-right';
 
       /* Set the styling for the button */
-      var buttonCss = 'scroll-menu-items-button font-default';
-      if (this.state.menuBarColour !== undefined) {
-        var backgroundColour = _colourCombinations.colourCombinations["".concat(this.state.menuBarColour)].backgroundColour;
-        var fontColour = _colourCombinations.colourCombinations["".concat(this.state.menuBarColour)].fontColour;
-        buttonCss += " scroll-menu-items-button-border-".concat(backgroundColour, " background-").concat(backgroundColour, " font-").concat(fontColour);
-      }
+      var buttonCss = "scroll-menu-items-button font-default scroll-menu-items-button-border-".concat(backgroundColour, " background-").concat(backgroundColour, " font-").concat(fontColour);
+
       /* Set the styling for the button span container element */
       var buttonSpanCss = 'scroll-menu-items-button-span';
 

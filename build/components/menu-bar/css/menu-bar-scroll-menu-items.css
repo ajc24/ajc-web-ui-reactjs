@@ -94,6 +94,7 @@ button[id*="--scroll-menu-items-"][class*="background-white"][aria-hidden="false
   flex-direction: row;
   height: 50px;
   justify-content: center;
+  min-width: 50px;
   padding-bottom: 2px;
   padding-top: 3px;
   width: 50px;

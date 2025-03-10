@@ -29,6 +29,7 @@ require("core-js/modules/es.array.is-array.js");
 var _react = _interopRequireWildcard(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _PageTemplateConfig = _interopRequireDefault(require("../modules/PageTemplateConfig"));
+var _colourCombinations = require("../data/colour-combinations");
 require("../css/common.css");
 require("./css/base-menu-bar.css");
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
@@ -64,34 +65,17 @@ var MenuBarBase = function MenuBarBase(props) {
     }
   });
 
+  /* Determine the background colour and font colour for the component - setting white background colour with black font text colour as the default */
+  var _getColourCombination = (0, _colourCombinations.getColourCombination)(props.backgroundColour),
+    backgroundColour = _getColourCombination.backgroundColour,
+    fontColour = _getColourCombination.fontColour;
+
   /* Set the styling for the navigation element */
-  var navCss = 'nav screen-width-root background-white font-default';
-  if (props.backgroundColour === 'navy-and-gold') {
-    /* Set to a gold font for thest background colours */
-    navCss += ' font-gold';
-  } else if (props.backgroundColour === 'green' || props.backgroundColour === 'grey' || props.backgroundColour === 'navy-and-white' || props.backgroundColour === 'red') {
-    /* Set to a white font for these background colours */
-    navCss += ' font-white';
-  } else {
-    /* Default set to black font for all other colours */
-    navCss += ' font-black';
-  }
+  var navCss = "nav screen-width-root background-white font-default font-".concat(fontColour);
 
   /* Set the styling for the outer content element */
-  var outerContentCss = 'menu-bar-content-outer screen-width-content-outer';
-  if (props.backgroundColour === 'gold' || props.backgroundColour === 'green' || props.backgroundColour === 'green-2' || props.backgroundColour === 'red' || props.backgroundColour === 'white') {
-    /* Set the background colour to the specified colour */
-    outerContentCss += " background-".concat(props.backgroundColour);
-  } else if (props.backgroundColour === 'grey') {
-    /* Set the background colour as grey */
-    outerContentCss += " background-".concat(props.backgroundColour, "-2");
-  } else if (props.backgroundColour === 'navy-and-gold' || props.backgroundColour === 'navy-and-white') {
-    /* Set the background colour as navy */
-    outerContentCss += ' background-navy';
-  } else {
-    /* Default set the background colour as white */
-    outerContentCss += " background-white";
-  }
+  var outerContentCss = "menu-bar-content-outer screen-width-content-outer background-".concat(backgroundColour);
+
   /* Set the styling for the inner content element */
   var innerContentCss = 'menu-bar-content-inner screen-width-content-inner';
   return /*#__PURE__*/_react["default"].createElement("nav", {
