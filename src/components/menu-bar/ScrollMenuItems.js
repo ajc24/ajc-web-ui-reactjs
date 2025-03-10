@@ -116,7 +116,7 @@ class ScrollMenuItems extends React.Component {
    * @param {string} initSide 
    */
   initialise(initId, initIsHidden, initMenuBarColour, initSide) {
-    const initArrowIconColour = colourCombinations[`${initMenuBarColour}`].fontColour;
+    const initArrowIconColour = getColourCombination(initMenuBarColour).fontColour;
     this.setState({
       arrowIconColour: initArrowIconColour,
       id: initId,
