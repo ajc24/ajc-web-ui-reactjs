@@ -4,7 +4,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ArrowIcon } from '../../';
-import { colourCombinations } from '../data/colour-combinations';
+import { getColourCombination } from '../data/colour-combinations';
 import '../css/common.css';
 import './css/menu-bar-scroll-menu-items.css';
 
@@ -159,20 +159,18 @@ class ScrollMenuItems extends React.Component {
   }
 
   render() {
+    /* Determine the background colour and font colour for the component - setting white background colour with black font text colour as the default */
+    const { backgroundColour, fontColour } = getColourCombination(this.state.menuBarColour);
+
     /* Set the styling for the container element and determine which side has been chosen */
     let containerCss = 'scroll-menu-items-container';
     this.state.side !== undefined
       ? containerCss += ` scroll-menu-items-container-${this.state.side}`
       : containerCss += ' scroll-menu-items-container-right';
-    
-    /* Set the styling for the button */
-    let buttonCss = 'scroll-menu-items-button font-default';
 
-    if (this.state.menuBarColour !== undefined) {
-      const backgroundColour = colourCombinations[`${this.state.menuBarColour}`].backgroundColour;
-      const fontColour = colourCombinations[`${this.state.menuBarColour}`].fontColour;
-      buttonCss += ` scroll-menu-items-button-border-${backgroundColour} background-${backgroundColour} font-${fontColour}`;
-    }
+    /* Set the styling for the button */    
+    const buttonCss = `scroll-menu-items-button font-default scroll-menu-items-button-border-${backgroundColour} background-${backgroundColour} font-${fontColour}`;
+
     /* Set the styling for the button span container element */
     const buttonSpanCss = 'scroll-menu-items-button-span';
 
