@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { MenuBarBase, ScrollMenuItems } from '../../';
+import { MenuBarBase, MenuItemLink, ScrollMenuItems } from '../../';
 // import { colourCombinations } from '../data/colour-combinations';
 // import '../css/common.css';
 // import './css/menu-bar-scroll-menu-items.css';
@@ -71,10 +71,20 @@ class MenuBar extends React.Component {
 
     return (
       <MenuBarBase backgroundColour={this.props.backgroundColour} id={this.props.id}>
-        <div className={menuBarContainerCss} >
+        <div className={menuBarContainerCss}>
           <ScrollMenuItems id={this.props.id} menuBarColour={this.props.backgroundColour} side="left" />
           <div className={menuItemsContainerCss}>
-             Menu Bar Items Will Be Rendered Here
+            <MenuItemLink href="#" id="1-test-item" menuItemColour={this.props.backgroundColour}>Menu Item Link 1</MenuItemLink>
+            <MenuItemLink href="#" id="2-test-item" menuItemColour={this.props.backgroundColour}>Menu Item Link 2</MenuItemLink>
+            <MenuItemLink href="#" id="3-test-item" menuItemColour={this.props.backgroundColour}>Menu Item Link 3</MenuItemLink>
+            <MenuItemLink href="#" id="4-test-item" menuItemColour={this.props.backgroundColour}>Menu Item Link 4</MenuItemLink>
+            <MenuItemLink href="#" id="5-test-item" menuItemColour={this.props.backgroundColour}>Menu Item Link 5</MenuItemLink>
+            <MenuItemLink href="#" id="6-test-item" menuItemColour={this.props.backgroundColour}>Menu Item Link 6</MenuItemLink>
+            <MenuItemLink href="#" id="7-test-item" menuItemColour={this.props.backgroundColour}>Menu Item Link 7</MenuItemLink>
+            <MenuItemLink href="#" id="8-test-item" menuItemColour={this.props.backgroundColour}>Menu Item Link 8</MenuItemLink>
+            <MenuItemLink href="#" id="9-test-item" menuItemColour={this.props.backgroundColour}>Menu Item Link 9</MenuItemLink>
+            <MenuItemLink href="#" id="10-test-item" menuItemColour={this.props.backgroundColour}>Menu Item Link 10</MenuItemLink>
+            <MenuItemLink href="#" id="11-test-item" menuItemColour={this.props.backgroundColour} rightSideSpacing={false}>Menu Item Link 11</MenuItemLink>
           </div>
           <ScrollMenuItems id={this.props.id} menuBarColour={this.props.backgroundColour} side="right" />
         </div>
