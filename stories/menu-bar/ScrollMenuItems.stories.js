@@ -11,7 +11,7 @@ export default {
 };
 
 /**
- * Informative Image component template to be used in all stories
+ * Scroll Menu Items component template to be used in all stories
  * @param {JSON} args 
  * @returns {React.Component}
  */
