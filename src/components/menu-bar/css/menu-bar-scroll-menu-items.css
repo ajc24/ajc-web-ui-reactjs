@@ -1,74 +1,51 @@
 /**
  * Developed by Anthony Cox in 2025
  */
-button[id*="--scroll-menu-items-"][class*="background-gold"][aria-hidden="false"]:focus,
-button[id*="--scroll-menu-items-"][class*="background-gold"][aria-hidden="false"]:hover {
-  background-color: #FFDF80;
-  border-color: #000000;
-}
-
-button[id*="--scroll-menu-items-"][class*="background-green"]:not([class*="background-green-2"])[aria-hidden="false"]:focus,
-button[id*="--scroll-menu-items-"][class*="background-green"]:not([class*="background-green-2"])[aria-hidden="false"]:hover {
-  background-color: #00B33C;
-  border-color: #000000;
-  color: #000000;
-}
-
-button[id*="--scroll-menu-items-"][class*="background-green-2"][aria-hidden="false"]:focus,
-button[id*="--scroll-menu-items-"][class*="background-green-2"][aria-hidden="false"]:hover {
-  background-color: #EFF5D6;
-  border-color: #000000;
-}
-
-button[id*="--scroll-menu-items-"][class*="background-grey-2"][aria-hidden="false"]:focus,
-button[id*="--scroll-menu-items-"][class*="background-grey-2"][aria-hidden="false"]:hover {
-  background-color: #999999;
-  border-color: #000000;
-  color: #000000;
-}
-
-button[id*="--scroll-menu-items-"][class*="background-navy"][class*="font-gold"][aria-hidden="false"]:focus,
-button[id*="--scroll-menu-items-"][class*="background-navy"][class*="font-gold"][aria-hidden="false"]:hover {
-  background-color: #0000B3;
-  border-color: #FFBF00;
-}
-
-button[id*="--scroll-menu-items-"][class*="background-navy"][class*="font-white"][aria-hidden="false"]:focus,
-button[id*="--scroll-menu-items-"][class*="background-navy"][class*="font-white"][aria-hidden="false"]:hover {
-  background-color: #0000B3;
-  border-color: #FFFFFF;
-}
-
-button[id*="--scroll-menu-items-"][class*="background-red"][aria-hidden="false"]:focus,
-button[id*="--scroll-menu-items-"][class*="background-red"][aria-hidden="false"]:hover {
-  background-color: #FF6666;
-  border-color: #000000;
-  color: #000000;
-}
-
-button[id*="--scroll-menu-items-"][class*="background-white"][aria-hidden="false"]:focus,
-button[id*="--scroll-menu-items-"][class*="background-white"][aria-hidden="false"]:hover {
-  background-color: #F6F6F6;
-  border-color: #000000;
-}
-
 .scroll-menu-items-button {
   border-style: solid;
   border-width: 1px;
   cursor: default;
   display: flex;
   flex-direction: column;
-  height: 48px;
+  height: 50px;
   justify-content: center;
   margin: 0px;
+  max-height: 50px;
+  max-width: 50px;
+  min-height: 50px;
+  min-width: 50px;
   outline: none;
   padding: 0px;
   user-select: none;
-  width: 48px;
+  width: 50px;
+}
+
+.scroll-menu-items-button-border-gold {
+  border-color: #FFBF00;
+}
+
+.scroll-menu-items-button-border-green {
+  border-color: #006622;
+}
+
+.scroll-menu-items-button-border-green-2 {
+  border-color: #E1EDB3;
+}
+
+.scroll-menu-items-button-border-grey {
+  border-color: #F6F6F6;
+}
+
+.scroll-menu-items-button-border-grey-2 {
+  border-color: #4D4D4D;
 }
 
 .scroll-menu-items-button-border-navy {
   border-color: #000066;
+}
+
+.scroll-menu-items-button-border-red {
+  border-color: #800000;
 }
 
 .scroll-menu-items-button-border-white {

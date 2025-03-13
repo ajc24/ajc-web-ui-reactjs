@@ -6,12 +6,13 @@ import PropTypes from 'prop-types';
 import { ArrowIcon } from '../../';
 import { getColourCombination } from '../data/colour-combinations';
 import '../css/common.css';
+import './css/menu-bar-common.css';
 import './css/menu-bar-scroll-menu-items.css';
 
 /**
  * Scroll Menu Items button component to be used within the menu bar component. Intended for use with the Menu Bar component, this component allows
  * a user to click to view the previous / next set of menu items in the menu bar when the menu bar items are too many to comfortably fit within
- * the width of the screen.
+ * the width of the screen. Keyboard events are also supported with both the spacebar and enter key interactions acting as click events on the button.
  */
 class ScrollMenuItems extends React.Component {
   /**
@@ -22,7 +23,6 @@ class ScrollMenuItems extends React.Component {
     super(props);
     this.state = {
       arrowIconColour: undefined,
-      buttonCssSelectorPath: undefined,
       id: undefined,
       isHidden: false,
       isSelected: false,
@@ -220,7 +220,10 @@ class ScrollMenuItems extends React.Component {
 ScrollMenuItems.propTypes = {
   /** The unique identifier for this component. */
   id: PropTypes.string.isRequired,
-  /** The switch for whether the button is to be hidden or not. If the button is hidden, no content within the button is displayed and all mouse interactions are disabled. */
+  /**
+   * The switch for whether the button is to be hidden or not.
+   * If the button is hidden, no content within the button is displayed and all mouse and keyboard interactions are disabled.
+   */
   isHidden: PropTypes.bool,
   /** The background colour set to the menu bar in which this component is rendered. The default colour for the background is white. */
   menuBarColour: PropTypes.oneOf([ 'gold', 'green', 'green-2', 'grey', 'navy-and-gold', 'navy-and-white', 'red', 'white' ]),
