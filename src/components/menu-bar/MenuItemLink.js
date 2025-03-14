@@ -27,6 +27,7 @@ class MenuItemLink extends React.Component {
   }
 
   componentDidMount() {
+    /* Auto handle whether all of the text content for the menu item can be rendered within its container */
     this.handleTextContentHeight();
   }
 
