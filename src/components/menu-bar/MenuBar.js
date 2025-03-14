@@ -123,6 +123,12 @@ class MenuBar extends React.Component {
     const menuItemContainerWidth = menuItemContainerElement.getBoundingClientRect().width;
     const newNumberOfItemsToRender = Math.floor(menuItemContainerWidth / menuItemWidth);
 
+    /* Determine whether we need a new render index start position after resize */
+    let newRenderIndexStart = this.state.renderIndexStart;
+    if(newNumberOfItemsToRender === this.state.menuItemsList.length) {
+      newRenderIndexStart = 0;
+    }
+
     /* Determine whether to render the scroll menu items previous button or not */
     let newHideScrollMenuItemsPrev;
     this.state.renderIndexStart === 0
