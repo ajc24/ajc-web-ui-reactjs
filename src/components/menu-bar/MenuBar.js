@@ -12,13 +12,11 @@ const menuItemOpacityTimeout = 250;
 const menuItemWidth = 104;
 
 /**
- * Scroll Menu Items button component to be used within the menu bar component. Intended for use with the Menu Bar component, this component allows
- * a user to click to view the previous / next set of menu items in the menu bar when the menu bar items are too many to comfortably fit within
- * the width of the screen.
+ * Menu Bar component to be used in the web application. This component allows for a number of menu bar item links and
+ * dropdown menu items to be rendered, each offering navigation options for the user to navigate around your application.
+ * If the number of menu items are too many to fit within the confines of the screen width, the user is presented with
+ * buttons with which to scroll through all available menu items available to them.
  */
-
-
-
 class MenuBar extends React.Component {
   /**
    * Initialise the Menu Bar component
@@ -53,10 +51,17 @@ class MenuBar extends React.Component {
     window.addEventListener('resize', this.handleScreenWidth);
   }
 
+  /**
+   * Retrieves the menu items container element from the DOM.
+   * @returns {HTMLElement}
+   */
   getMenuItemsContainerElement() {
     return document.querySelector(`div[class*="${menuItemsContainerClass}"][class*="${menuItemsContainerAnimationsClass}"]`);
   }
 
+  /**
+   * Handles click events on the "Prev" button to scroll left through the list of available menu items.
+   */
   handleClickScrollLeft() {
     if (this.state.isScrollButtonClickDisabled === false) {
       /* Mark the menu items container as hidden to gently hide the current list of items */
@@ -67,11 +72,7 @@ class MenuBar extends React.Component {
         const newHideScrollMenuItemsNext = false;
 
         /* Decrease the render index start position by the number of items to be rendered */
-        let newRenderIndexStart = this.state.renderIndexStart - this.state.numberOfItemsToRender;
-        if (newRenderIndexStart < 0) {
-          /* We cannot render items that are at a lower index value than zero - always ensure that zero is our absolutely lowest value */ 
-          newRenderIndexStart = 0;
-        }
+        const newRenderIndexStart = this.state.renderIndexStart - this.state.numberOfItemsToRender;
 
         /* Determine whether to render the scroll menu items prev button or not */
         const newHideScrollMenuItemsPrev = newRenderIndexStart === 0 ? true : false;
@@ -86,6 +87,9 @@ class MenuBar extends React.Component {
     }
   }
 
+  /**
+   * Handles click events on the "Next" button to scroll right through the list of available menu items.
+   */
   handleClickScrollRight() {
     if (this.state.isScrollButtonClickDisabled === false) {
       /* Mark the menu items container as hidden to gently hide the current list of items */
@@ -115,7 +119,8 @@ class MenuBar extends React.Component {
   }
 
   /**
-   * Handle changes to the screen width
+   * Handle changes to the screen width. Depending on the width of the screen, a subset of
+   * the menu items list may need to be rendered to the user at any given time.
    */
   handleScreenWidth() {
     /* Determine the new number of items to render based on the current screen width */
@@ -123,17 +128,8 @@ class MenuBar extends React.Component {
     const menuItemContainerWidth = menuItemContainerElement.getBoundingClientRect().width;
     const newNumberOfItemsToRender = Math.floor(menuItemContainerWidth / menuItemWidth);
 
-    /* Determine whether we need a new render index start position after resize */
-    let newRenderIndexStart = this.state.renderIndexStart;
-    if(newNumberOfItemsToRender === this.state.menuItemsList.length) {
-      newRenderIndexStart = 0;
-    }
-
-    /* Determine whether to render the scroll menu items previous button or not */
-    let newHideScrollMenuItemsPrev;
-    this.state.renderIndexStart === 0
-      ? newHideScrollMenuItemsPrev = true
-      : newHideScrollMenuItemsPrev = false;
+    /* Since we are resetting the render start index to zero on resizing - there will never be a prev button displayed */
+    const newHideScrollMenuItemsPrev = true;
 
     /* Determine whether to render the scroll menu items next button or not */
     let newHideScrollMenuItemsNext;
@@ -146,11 +142,13 @@ class MenuBar extends React.Component {
       hideScrollMenuItemsNext: newHideScrollMenuItemsNext,
       hideScrollMenuItemsPrev: newHideScrollMenuItemsPrev,
       numberOfItemsToRender: newNumberOfItemsToRender,
+      renderIndexStart: 0,
     });
   }
 
   /**
-   * Set the initial list of menu items and set the initial render start index
+   * Set the initial list of menu items and set the initial render start index.
+   * Follows on from this action by handling the current screen width.
    * @param {Array.<JSON>} initMenuItemsList 
    */
   initialise(initMenuItemsList) {
@@ -160,23 +158,36 @@ class MenuBar extends React.Component {
     }, this.handleScreenWidth);
   }
 
+  /**
+   * Disables the scrolling buttons functionality and follows on from
+   * this action by setting the menu items container element as hidden.
+   */
   setDisableScrollButtonClick() {
     this.setState({
       isScrollButtonClickDisabled: true,
     }, this.setMenuItemsContainerAsHidden);
   }
 
+  /**
+   * Enables the scrolling buttons functionality.
+   */
   setEnableScrollButtonClick() {
     this.setState({
       isScrollButtonClickDisabled: false,
     });
   }
 
+  /**
+   * Sets the opacity of the menu items container element to 0, rendering it hidden to the user.
+   */
   setMenuItemsContainerAsHidden() {
     const menuItemContainerElement = this.getMenuItemsContainerElement();
     menuItemContainerElement.style.opacity = 0;
   }
 
+  /**
+   * Sets the opacity of the menu items container element to 1, rendering it visible to the user.
+   */
   setMenuItemsContainerAsVisible() {
     const menuItemContainerElement = this.getMenuItemsContainerElement();
     menuItemContainerElement.style.opacity = 1;
