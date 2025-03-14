@@ -84,8 +84,8 @@ class MenuItemLink extends React.Component {
 
     return (
       <div className={containerCss} aria-hidden={`${this.props.isHidden || false}`}>
-        <a id={`${this.props.id}--menu-item-link`} key={`${this.props.id}--menu-item-link`} className={linkCss} role="link" aria-label={this.props.children}
-          tabIndex={this.props.isHidden === true ? '-1' : '0'} href={`${this.props.href}`} onKeyDown={this.handleOnKeyDown}>
+        <a id={`${this.props.id}--menu-item-link`} className={linkCss} role="link" aria-label={this.props.children} tabIndex={this.props.isHidden === true ? '-1' : '0'}
+          href={`${this.props.href}`} onKeyDown={this.handleOnKeyDown}>
             <span>{this.props.children}</span>
         </a>
       </div>
