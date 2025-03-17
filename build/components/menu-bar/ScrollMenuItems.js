@@ -30,6 +30,7 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 var _ = require("../../");
 var _colourCombinations = require("../data/colour-combinations");
 require("../css/common.css");
+require("./css/menu-bar-common.css");
 require("./css/menu-bar-scroll-menu-items.css");
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
@@ -49,7 +50,7 @@ function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf 
 /**
  * Scroll Menu Items button component to be used within the menu bar component. Intended for use with the Menu Bar component, this component allows
  * a user to click to view the previous / next set of menu items in the menu bar when the menu bar items are too many to comfortably fit within
- * the width of the screen.
+ * the width of the screen. Keyboard events are also supported with both the spacebar and enter key interactions acting as click events on the button.
  */
 var ScrollMenuItems = /*#__PURE__*/function (_React$Component) {
   /**
@@ -62,7 +63,6 @@ var ScrollMenuItems = /*#__PURE__*/function (_React$Component) {
     _this = _callSuper(this, ScrollMenuItems, [props]);
     _this.state = {
       arrowIconColour: undefined,
-      buttonCssSelectorPath: undefined,
       id: undefined,
       isHidden: false,
       isSelected: false,
@@ -272,7 +272,10 @@ var ScrollMenuItems = /*#__PURE__*/function (_React$Component) {
 ScrollMenuItems.propTypes = {
   /** The unique identifier for this component. */
   id: _propTypes["default"].string.isRequired,
-  /** The switch for whether the button is to be hidden or not. If the button is hidden, no content within the button is displayed and all mouse interactions are disabled. */
+  /**
+   * The switch for whether the button is to be hidden or not.
+   * If the button is hidden, no content within the button is displayed and all mouse and keyboard interactions are disabled.
+   */
   isHidden: _propTypes["default"].bool,
   /** The background colour set to the menu bar in which this component is rendered. The default colour for the background is white. */
   menuBarColour: _propTypes["default"].oneOf(['gold', 'green', 'green-2', 'grey', 'navy-and-gold', 'navy-and-white', 'red', 'white']),
