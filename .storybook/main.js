@@ -18,8 +18,8 @@ const config = {
     "../stories/header/HeaderTitleText.stories.js",
 
     /* Menu Bar component stories */
-    "../stories/menu-bar/MenuItemLink.stories.js",
-    "../stories/menu-bar/ScrollMenuItems.stories.js",
+    // "../stories/menu-bar/MenuItemLink.stories.js",
+    // "../stories/menu-bar/ScrollMenuItems.stories.js",
     
     /* Icon component stories */
     "../stories/icons/ArrowIcon.stories.js",
@@ -30,8 +30,8 @@ const config = {
     "../stories/images/InformativeImage.stories.js",
 
     /* Mock page component stories */
-    "../stories/mock-pages/CKCSClubOfIreland/HomePage.stories.js",
-    "../stories/mock-pages/TullowhillCavaliers/HomePage.stories.js",
+    // "../stories/mock-pages/CKCSClubOfIreland/HomePage.stories.js",
+    // "../stories/mock-pages/TullowhillCavaliers/HomePage.stories.js",
 
     /* Base component stories */
     "../stories/base/ImageBase.stories.js",
