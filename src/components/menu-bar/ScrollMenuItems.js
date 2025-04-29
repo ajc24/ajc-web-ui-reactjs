@@ -150,7 +150,7 @@ class ScrollMenuItems extends React.Component {
   // }
 
   setIsDisabled(newIsDisabled) {
-    const buttonElement = document.querySelector(`button[id="${this.props.id}--scroll-menu-items-${this.state.side}"]`);
+    const buttonElement = this.getButtonDOMElement();
     if (newIsDisabled === true) {
       /* Disable the button */
       buttonElement.style.opacity = 0;
@@ -190,10 +190,7 @@ class ScrollMenuItems extends React.Component {
     const { backgroundColour, fontColour } = getColourCombination(this.state.menuBarColour);
 
     /* Set the styling for the container element and determine which side has been chosen */
-    let containerCss = 'scroll-menu-items-container';
-    this.state.side === 'left'
-      ? containerCss += ` scroll-menu-items-container-left`
-      : containerCss += ' scroll-menu-items-container-right';
+    const containerCss = `scroll-menu-items-container scroll-menu-items-container-${this.state.side}`;
 
     /* Set the styling for the button */    
     const buttonCss = `scroll-menu-items-button menu-bar-common-transitions font-default scroll-menu-items-button-border-${backgroundColour} background-${backgroundColour}`
