@@ -19,7 +19,7 @@ const config = {
 
     /* Menu Bar component stories */
     // "../stories/menu-bar/MenuItemLink.stories.js",
-    // "../stories/menu-bar/ScrollMenuItems.stories.js",
+    "../stories/menu-bar/ScrollMenuItems.stories.js",
     
     /* Icon component stories */
     "../stories/icons/ArrowIcon.stories.js",
