@@ -5,34 +5,47 @@ class Template_ScrollMenuItems extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isDisabled: true,
+      isDisabledLeft: true,
+      isDisabledRight: true,
     };
-    this.handleClick_EnableDisable = this.handleClick_EnableDisable.bind(this);
-    this.handleClick_FocusOnPrev = this.handleClick_FocusOnPrev.bind(this);
+    this.handleClick_Disable_Left = this.handleClick_Disable_Left.bind(this);
+    this.handleClick_Disable_Right = this.handleClick_Disable_Right.bind(this);
+    this.handleClick_Enable = this.handleClick_Enable.bind(this);
   }
 
-  handleClick_EnableDisable(event) {
-    event.preventDefault();
+  handleClick_Disable_Left() {
     this.setState({
-      isDisabled: !this.state.isDisabled,
+      isDisabledLeft: true,
     });
   }
 
-  handleClick_FocusOnPrev(event) {
+  handleClick_Disable_Right() {
+    this.setState({
+      isDisabledRight: true,
+    });
+  }
+
+  handleClick_Enable(event) {
     event.preventDefault();
-    document.querySelector('button[id="prev-button"]').focus();
+    this.setState({
+      isDisabledLeft: false,
+      isDisabledRight: false,
+    });
   }
 
   render() {
     return (
       <React.Fragment>
         <div>
-          <button id="prev-button">Previous Button</button>
-          <ScrollMenuItems id="test-id" isDisabled={this.state.isDisabled} menuBarColour="navy-and-gold" />
+          <ScrollMenuItems id="left-scroll-menu-items" isDisabled={this.state.isDisabledLeft} menuBarColour="navy-and-gold" onClick={this.handleClick_Disable_Left} 
+            side="left" firstRenderedMenuItemId="first-button" />
+          <button id="first-button">First Button</button>
+          <button id="last-button">Last Button</button>
+          <ScrollMenuItems id="right-scroll-menu-items" isDisabled={this.state.isDisabledRight} menuBarColour="navy-and-gold" onClick={this.handleClick_Disable_Right}
+            side="right" lastRenderedMenuItemId="last-button" />
         </div>
         <div>
-          <button id="focus-on-prev" onClick={this.handleClick_FocusOnPrev}>Focus on Previous Button</button>
-          <button id="enable-disable-button" onClick={this.handleClick_EnableDisable}>Enable / Disable Scroll Menu Items Button</button>
+          <button id="enable-button" onClick={this.handleClick_Enable}>Enable Scroll Menu Items Button</button>
         </div>
       </React.Fragment>
     );
