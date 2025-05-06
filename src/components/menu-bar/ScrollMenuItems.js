@@ -54,8 +54,8 @@ class ScrollMenuItems extends React.Component {
     this.initialise(initId, initSide, initMenuBarColour, initFirstRenderedMenuItemId, initLastRenderedMenuItemId);
   }
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.isDisabled !== this.props.isDisabled && this.props.isDisabled !== this.state.isDisabled) {
+  componentDidUpdate() {
+    if (this.props.isDisabled !== this.state.isDisabled) {
       this.setIsDisabled(this.props.isDisabled);
     }
   }
@@ -65,7 +65,7 @@ class ScrollMenuItems extends React.Component {
    * @returns {HTMLElement}
    */
   getButtonDOMElement() {
-    return document.querySelector(`button[id="${this.props.id}--scroll-menu-items-${this.state.side}"]`);
+    return document.querySelector(`button[id="${this.state.id}"]`);
   }
 
   /**
@@ -127,17 +127,16 @@ class ScrollMenuItems extends React.Component {
    * @param {string} initFirstRenderedMenuItemId
    * @param {string} initLastRenderedMenuItemId
    */
-  initialise(initId = 'default-scroll-menu-items', initSide = 'right', initMenuBarColour = 'white', initFirstRenderedMenuItemId = undefined,
-    initLastRenderedMenuItemId = undefined) {
-      const initArrowIconColour = getColourCombination(initMenuBarColour).fontColour;
-      this.setState({
-        arrowIconColour: initArrowIconColour,
-        firstRenderedMenuItemId: initFirstRenderedMenuItemId,
-        id: `${initId}-${initSide}`,
-        lastRenderedMenuItemId: initLastRenderedMenuItemId,
-        menuBarColour: initMenuBarColour,
-        side: initSide,
-      });
+  initialise(initId = 'default', initSide = 'right', initMenuBarColour = 'white', initFirstRenderedMenuItemId = undefined, initLastRenderedMenuItemId = undefined) {
+    const initArrowIconColour = getColourCombination(initMenuBarColour).fontColour;
+    this.setState({
+      arrowIconColour: initArrowIconColour,
+      firstRenderedMenuItemId: initFirstRenderedMenuItemId,
+      id: `${initId}--scroll-menu-items-${initSide}`,
+      lastRenderedMenuItemId: initLastRenderedMenuItemId,
+      menuBarColour: initMenuBarColour,
+      side: initSide,
+    });
   }
 
   /**
@@ -234,7 +233,7 @@ class ScrollMenuItems extends React.Component {
       <React.Fragment>
         <div className={containerCss}>
           <button aria-hidden={`${this.state.isDisabled}`} aria-label={`Scroll the list of menu items to the ${this.state.side}.`} className={buttonCss}
-            id={`${this.props.id}--scroll-menu-items-${this.state.side}`} onBlur={this.handleOnBlur} onClick={this.state.isDisabled === false ? this.handleOnClick : undefined}
+            id={`${this.state.id}`} onBlur={this.handleOnBlur} onClick={this.state.isDisabled === false ? this.handleOnClick : undefined}
             onFocus={this.handleOnMouseEnter} onMouseEnter={this.handleOnMouseEnter} onMouseLeave={this.handleOnMouseLeave}
             tabIndex={this.state.isDisabled === true ? '-1' : '0'} type="button">
               <span className={buttonSpanCss}>
@@ -273,7 +272,7 @@ ScrollMenuItems.propTypes = {
   /** The unique identifier for the first menu item rendered in the menu bar. */
   firstRenderedMenuItemId: PropTypes.string,
   /** The unique identifier for this component. */
-  id: PropTypes.string.isRequired,
+  id: PropTypes.string,
   /** Sets whether the button is enabled or disabled. Is set to disabled by default until specified otherwise. */
   isDisabled: PropTypes.bool,
   /** The unique identifier for the last menu item rendered in the menu bar. */
