@@ -1,7 +1,17 @@
+/**
+ * Developed by Anthony Cox in 2025
+ */
 import React from 'react';
 import { ScrollMenuItems } from '../../../src';
 
+/**
+ * Template Scroll Menu Items component which tests the keyboard navigation when clicking to disable the buttons
+ */
 class Template_ScrollMenuItems extends React.Component {
+  /**
+   * Initialise the Template Scroll Menu Items component
+   * @param {any} props 
+   */
   constructor(props) {
     super(props);
     this.state = {
@@ -13,18 +23,28 @@ class Template_ScrollMenuItems extends React.Component {
     this.handleClick_Enable = this.handleClick_Enable.bind(this);
   }
 
+  /**
+   * Handles click events which disable the leftmost Scroll Menu Items button
+   */
   handleClick_Disable_Left() {
     this.setState({
       isDisabledLeft: true,
     });
   }
 
+  /**
+   * Handles click events which disable the rightmost Scroll Menu Items button
+   */
   handleClick_Disable_Right() {
     this.setState({
       isDisabledRight: true,
     });
   }
 
+  /**
+   * Handles click events which enables both Scroll Menu Items buttons
+   * @param {Event} event 
+   */
   handleClick_Enable(event) {
     event.preventDefault();
     this.setState({

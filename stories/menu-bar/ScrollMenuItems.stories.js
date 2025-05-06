@@ -11,99 +11,113 @@ export default {
   tags: ['autodocs'],
 };
 
+/**
+ * Scroll Menu Items component template to be used in all other stories
+ * @param {JSON} args 
+ * @returns {React.Component}
+ */
+const TemplateBasic_ScrollMenuItems = args => {
+  return <React.Fragment>
+    <ScrollMenuItems {...args} />
+  </React.Fragment>;
+}
+
+/**
+ * Scroll Menu Items component template which includes enabled / disabled test
+ * and focus test
+ * @param {JSON} args 
+ * @returns {React.Component}
+ */
 const TemplateFull_ScrollMenuItems = args => {
   return <React.Fragment>
     <Template_ScrollMenuItems {...args} />
   </React.Fragment>;
 }
 
-export const Default = TemplateFull_ScrollMenuItems.bind({});
-Default.args = {};
-// Default.args = {
-//   id: 'default-scroll-menu-items-id',
-// };
+export const Default = TemplateBasic_ScrollMenuItems.bind({});
+Default.args = {
+  id: 'default-scroll-menu-items-id',
+  isDisabled: false,
+};
 
-// /**
-//  * Scroll Menu Items component template to be used in all stories
-//  * @param {JSON} args 
-//  * @returns {React.Component}
-//  */
-// const Template_ScrollMenuItems = args => {
-//   return <React.Fragment>
-//     <ScrollMenuItems {...args} />
-//   </React.Fragment>;
-// }
+export const LeftSide = TemplateBasic_ScrollMenuItems.bind({});
+LeftSide.args = {
+  id: 'left-scroll-menu-items-id',
+  isDisabled: false,
+  side: 'left',
+};
 
-// export const Default = Template_ScrollMenuItems.bind({});
-// Default.args = {
-//   id: 'default-scroll-menu-items-id',
-// };
+export const RightSideInGold = TemplateBasic_ScrollMenuItems.bind({});
+RightSideInGold.args = {
+  id: 'right-scroll-menu-items-in-gold-colour-id',
+  isDisabled: false,
+  menuBarColour: 'gold',
+  side: 'right',
+};
 
-// export const LeftSide = Template_ScrollMenuItems.bind({});
-// LeftSide.args = {
-//   id: 'left-scroll-menu-items-id',
-//   side: 'left',
-// };
+export const LeftSideInGreen = TemplateBasic_ScrollMenuItems.bind({});
+LeftSideInGreen.args = {
+  id: 'left-scroll-menu-items-in-green-colour-id',
+  isDisabled: false,
+  menuBarColour: 'green',
+  side: 'left',
+};
 
-// export const RightSideInGold = Template_ScrollMenuItems.bind({});
-// RightSideInGold.args = {
-//   id: 'right-scroll-menu-items-in-gold-colour-id',
-//   menuBarColour: 'gold',
-//   side: 'right',
-// };
+export const RightSideInGreen2 = TemplateBasic_ScrollMenuItems.bind({});
+RightSideInGreen2.args = {
+  id: 'right-scroll-menu-items-in-green-2-colour-id',
+  isDisabled: false,
+  menuBarColour: 'green-2',
+  side: 'right',
+};
 
-// export const LeftSideInGreen = Template_ScrollMenuItems.bind({});
-// LeftSideInGreen.args = {
-//   id: 'left-scroll-menu-items-in-green-colour-id',
-//   menuBarColour: 'green',
-//   side: 'left',
-// };
+export const LeftSideInGrey = TemplateBasic_ScrollMenuItems.bind({});
+LeftSideInGrey.args = {
+  id: 'left-scroll-menu-items-in-grey-colour-id',
+  isDisabled: false,
+  menuBarColour: 'grey',
+  side: 'left',
+};
 
-// export const RightSideInGreen2 = Template_ScrollMenuItems.bind({});
-// RightSideInGreen2.args = {
-//   id: 'right-scroll-menu-items-in-green-2-colour-id',
-//   menuBarColour: 'green-2',
-//   side: 'right',
-// };
+export const RightSideInNavyAndGold = TemplateBasic_ScrollMenuItems.bind({});
+RightSideInNavyAndGold.args = {
+  id: 'right-scroll-menu-items-in-navy-and-gold-colour-id',
+  isDisabled: false,
+  menuBarColour: 'navy-and-gold',
+  side: 'right',
+};
 
-// export const LeftSideInGrey = Template_ScrollMenuItems.bind({});
-// LeftSideInGrey.args = {
-//   id: 'left-scroll-menu-items-in-grey-colour-id',
-//   menuBarColour: 'grey',
-//   side: 'left',
-// };
+export const LeftSideInNavyAndWhite = TemplateBasic_ScrollMenuItems.bind({});
+LeftSideInNavyAndWhite.args = {
+  id: 'left-scroll-menu-items-in-navy-and-white-colour-id',
+  isDisabled: false,
+  menuBarColour: 'navy-and-white',
+  side: 'left',
+};
 
-// export const RightSideInNavyAndGold = Template_ScrollMenuItems.bind({});
-// RightSideInNavyAndGold.args = {
-//   id: 'right-scroll-menu-items-in-navy-and-gold-colour-id',
-//   menuBarColour: 'navy-and-gold',
-//   side: 'right',
-// };
+export const RightSideInRed = TemplateBasic_ScrollMenuItems.bind({});
+RightSideInRed.args = {
+  id: 'right-scroll-menu-items-in-red-colour-id',
+  isDisabled: false,
+  menuBarColour: 'red',
+  side: 'right',
+};
 
-// export const LeftSideInNavyAndWhite = Template_ScrollMenuItems.bind({});
-// LeftSideInNavyAndWhite.args = {
-//   id: 'left-scroll-menu-items-in-navy-and-white-colour-id',
-//   menuBarColour: 'navy-and-white',
-//   side: 'left',
-// };
+export const LeftSideWithCustomOnClick = TemplateBasic_ScrollMenuItems.bind({});
+LeftSideWithCustomOnClick.args = {
+  id: 'left-scroll-menu-items-with-custom-on-click-id',
+  isDisabled: false,
+  onClick: () => { alert('Clicked the "View previous menu items" button') },
+  side: 'left',
+};
 
-// export const RightSideInRed = Template_ScrollMenuItems.bind({});
-// RightSideInRed.args = {
-//   id: 'right-scroll-menu-items-in-red-colour-id',
-//   menuBarColour: 'red',
-//   side: 'right',
-// };
+export const RightSideWithCustomOnClick = TemplateBasic_ScrollMenuItems.bind({});
+RightSideWithCustomOnClick.args = {
+  id: 'right-scroll-menu-items-with-custom-on-click-id',
+  isDisabled: false,
+  onClick: () => { alert('Clicked the "View next menu items" button') },
+  side: 'right',
+};
 
-// export const LeftSideWithCustomOnClick = Template_ScrollMenuItems.bind({});
-// LeftSideWithCustomOnClick.args = {
-//   id: 'left-scroll-menu-items-with-custom-on-click-id',
-//   onClick: () => { alert('Clicked the "View previous menu items" button') },
-//   side: 'left',
-// };
-
-// export const RightSideWithCustomOnClick = Template_ScrollMenuItems.bind({});
-// RightSideWithCustomOnClick.args = {
-//   id: 'right-scroll-menu-items-with-custom-on-click-id',
-//   onClick: () => { alert('Clicked the "View next menu items" button') },
-//   side: 'right',
-// };
+export const EnabledAndFocusTest = TemplateFull_ScrollMenuItems.bind({});
+EnabledAndFocusTest.args = {};
