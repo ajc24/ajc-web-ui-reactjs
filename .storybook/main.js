@@ -6,11 +6,12 @@
  * @type { import('@storybook/react-webpack5').StorybookConfig }
  */
 const config = {
-  env: (config) => ({
-    ...config,
-    IS_REACT_ACT_ENVIRONMENT: true,
-  }),
   stories: [
+    /* Base component stories */
+    '../stories/base/BaseHeader.stories.js',
+    '../stories/base/BaseHeaderTall.stories.js',
+    '../stories/base/BaseImage.stories.js',
+
     // /* Header component stories */
     // "../stories/header/Header.stories.js",
     // "../stories/header/HeaderLogo.stories.js",
@@ -24,19 +25,14 @@ const config = {
     // /* Icon component stories */
     // "../stories/icons/ArrowIcon.stories.js",
 
-    // /* Image component stories */
-    // "../stories/images/DecorativeImage.stories.js",
-    // "../stories/images/FunctionalImage.stories.js",
-    // "../stories/images/InformativeImage.stories.js",
+    /* Image component stories */
+    '../stories/images/DecorativeImage.stories.js',
+    '../stories/images/FunctionalImage.stories.js',
+    '../stories/images/InformativeImage.stories.js',
 
     // /* Mock page component stories */
     // // "../stories/mock-pages/CKCSClubOfIreland/HomePage.stories.js",
     // // "../stories/mock-pages/TullowhillCavaliers/HomePage.stories.js",
-
-    /* Base component stories */
-    '../stories/base/BaseHeader.stories.js',
-    '../stories/base/BaseHeaderTall.stories.js',
-    '../stories/base/BaseImage.stories.js',
 
     // /* Page template stories */
     // "../stories/base/FooterBase.stories.js",
