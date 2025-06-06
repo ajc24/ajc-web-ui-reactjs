@@ -1,0 +1,46 @@
+/**
+ * Developed by Anthony Cox in 2025
+ */
+.background-grey-body {
+  background-color: #F6F6F6;
+}
+
+.background-white {
+  background-color: #FFFFFF;
+}
+
+.body-default {
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.font-black {
+  color: #000000;
+}
+
+.font-default {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  word-wrap: break-word;
+}
+
+.screen-width-content-inner {
+  max-width: 1248px;
+  min-width: 328px;
+  padding-left: 16px;
+  padding-right: 16px;
+  width: 100%;
+}
+
+.screen-width-content-outer {
+  max-width: 1920px;
+  min-width: 360px;
+  width: inherit;
+}
+
+.screen-width-root {
+  width: 100%;
+}
