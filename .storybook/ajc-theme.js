@@ -1,7 +1,7 @@
 /**
  * Developed by Anthony Cox in 2024
  */
-import { create } from '@storybook/theming/create';
+import { create } from 'storybook/theming/create';
 
 export default create({
   base: 'dark',
