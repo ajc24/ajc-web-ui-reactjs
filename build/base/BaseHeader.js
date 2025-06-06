@@ -28,6 +28,7 @@ var BaseHeader = function BaseHeader(props) {
 
   /* Set the styling for the header element */
   var headerCss = 'header screen-width-root background-white font-default font-black';
+  props.customSizeClass !== undefined ? headerCss += " ".concat(props.customSizeClass) : headerCss += ' header-size-small';
 
   /* Set the styling for the outer content element */
   var outerContentCss = 'header-content-outer screen-width-content-outer';
@@ -51,6 +52,8 @@ BaseHeader.propTypes = {
   backgroundColour: _propTypes["default"].oneOf(['white', 'grey']),
   /** The content to be displayed within the header component. */
   children: _propTypes["default"].any,
+  /** The custom height class to be set to the header component. */
+  customSizeClass: _propTypes["default"].string,
   /** The unique identifier for the header. */
   id: _propTypes["default"].string
 };
