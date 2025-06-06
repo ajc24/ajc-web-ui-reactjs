@@ -34,7 +34,8 @@ const config = {
     // // "../stories/mock-pages/TullowhillCavaliers/HomePage.stories.js",
 
     /* Base component stories */
-    "../stories/base/BaseHeader.stories.js",
+    '../stories/base/BaseHeader.stories.js',
+    '../stories/base/BaseHeaderTall.stories.js',
 
     // /* Page template stories */
     // "../stories/base/FooterBase.stories.js",
