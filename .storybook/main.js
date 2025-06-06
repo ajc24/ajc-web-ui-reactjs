@@ -36,6 +36,7 @@ const config = {
     /* Base component stories */
     '../stories/base/BaseHeader.stories.js',
     '../stories/base/BaseHeaderTall.stories.js',
+    '../stories/base/BaseImage.stories.js',
 
     // /* Page template stories */
     // "../stories/base/FooterBase.stories.js",
