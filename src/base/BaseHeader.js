@@ -19,7 +19,8 @@ const BaseHeader = props => {
   });
 
   /* Set the styling for the header element */
-  const headerCss = 'header screen-width-root background-white font-default font-black';
+  let headerCss = 'header screen-width-root background-white font-default font-black';
+  props.customSizeClass !== undefined ? headerCss += ` ${props.customSizeClass}` : headerCss += ' header-size-small';
 
   /* Set the styling for the outer content element */
   let outerContentCss = 'header-content-outer screen-width-content-outer';
@@ -43,6 +44,8 @@ BaseHeader.propTypes = {
   backgroundColour: PropTypes.oneOf([ 'white', 'grey' ]),
   /** The content to be displayed within the header component. */
   children: PropTypes.any,
+  /** The custom height class to be set to the header component. */
+  customSizeClass: PropTypes.string,
   /** The unique identifier for the header. */
   id: PropTypes.string,
 };
