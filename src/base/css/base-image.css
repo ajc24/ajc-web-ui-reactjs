@@ -3,9 +3,6 @@
  */
 .image {
   opacity: 0;
-}
-
-.image-animations {
   transition-duration: 1s;
   transition-property: opacity;
   transition-timing-function: ease-in-out;

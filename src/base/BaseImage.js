@@ -72,7 +72,7 @@ class BaseImage extends React.Component {
 
   render() {
     /* Set the CSS styling for the image */
-    const imageCss = 'image image-animations';
+    const imageCss = 'image';
 
     /* Set the alternative text for the image - assume a decorative image and only change if it is an informative or functional image */
     let altText = '';
@@ -91,10 +91,8 @@ class BaseImage extends React.Component {
       imageWidth = this.props.width;
     }
     return (
-      <React.Fragment>
-        <img id={this.props.id !== undefined ? this.props.id : 'default--base-image'} className={imageCss} src={this.props.src} width={imageWidth} height={imageHeight}
-          alt={altText} ref={this.imageRef} />
-      </React.Fragment>
+      <img id={this.props.id !== undefined ? this.props.id : 'default--base-image'} className={imageCss} src={this.props.src} width={imageWidth} height={imageHeight}
+        alt={altText} ref={this.imageRef} />
     );
   }
 }
