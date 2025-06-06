@@ -10,7 +10,7 @@ import './css/base-header.css';
 /**
  * Baseline component setting the template for all Header components to be developed from.
  * This baseline auto-handles screen widths from the most commonly used mobile screen sizes (360x800) to the most commonly used desktop sizes (1920x1080).
- * The default and small heights of the component is 160px. The tall height of the component is 320px.
+ * The default height of the component is 165px.
  */
 const BaseHeader = props => {
   useEffect(() => {
