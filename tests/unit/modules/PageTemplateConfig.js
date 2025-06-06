@@ -1,8 +1,8 @@
 /**
- * Developed by Anthony Cox in 2024
+ * Developed by Anthony Cox in 2025
  */
-import PageTemplateConfig from '../../../src/components/modules/PageTemplateConfig';
-import { storybookCssClassList } from '../../../src/components/data/storybook';
+import PageTemplateConfig from '../../../src/modules/PageTemplateConfig';
+import { storybookCssClassList } from '../../../src/data/storybook';
 
 describe('Page Template Configuration module', () => {
   /* CSS classes used for test verifications */
