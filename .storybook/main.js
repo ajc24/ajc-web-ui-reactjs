@@ -33,8 +33,8 @@ const config = {
     // // "../stories/mock-pages/CKCSClubOfIreland/HomePage.stories.js",
     // // "../stories/mock-pages/TullowhillCavaliers/HomePage.stories.js",
 
-    // /* Base component stories */
-    // "../stories/base/ImageBase.stories.js",
+    /* Base component stories */
+    "../stories/base/BaseHeader.stories.js",
 
     // /* Page template stories */
     // "../stories/base/FooterBase.stories.js",
