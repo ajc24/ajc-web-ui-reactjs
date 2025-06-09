@@ -18,12 +18,12 @@ InformativeImage.propTypes = {
   /** The alternate text to be attached to the image and read out by screen readers. */
   alt: PropTypes.string.isRequired,
   /** The height of the image. */
-  height: PropTypes.number.isRequired,
+  height: PropTypes.number,
   /** The unique identifier for this component. */
   id: PropTypes.string.isRequired,
   /** The image data to be displayed. */
   src: PropTypes.oneOfType([ PropTypes.string, PropTypes.object ]).isRequired,
   /** The width of the image. */
-  width: PropTypes.number.isRequired,
+  width: PropTypes.number,
 };
 export default InformativeImage;

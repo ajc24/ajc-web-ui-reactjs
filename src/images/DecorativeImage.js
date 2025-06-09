@@ -16,12 +16,12 @@ const DecorativeImage = props => {
 }
 DecorativeImage.propTypes = {
   /** The height of the image. */
-  height: PropTypes.number.isRequired,
+  height: PropTypes.number,
   /** The unique identifier for this component. */
   id: PropTypes.string.isRequired,
   /** The image data to be displayed. */
   src: PropTypes.oneOfType([ PropTypes.string, PropTypes.object ]).isRequired,
   /** The width of the image. */
-  width: PropTypes.number.isRequired,
+  width: PropTypes.number,
 };
 export default DecorativeImage;

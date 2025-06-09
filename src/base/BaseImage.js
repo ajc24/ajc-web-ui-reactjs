@@ -100,9 +100,9 @@ BaseImage.propTypes = {
   /** The alternate text to be attached to the image and read out by screen readers. */
   alt: PropTypes.string,
   /** The height of the image. */
-  height: PropTypes.number,
+  height: PropTypes.oneOfType([ 'auto', PropTypes.number ]),
   /** The unique identifier for this component. */
-  id: PropTypes.string.isRequired,
+  id: PropTypes.string,
   /** The custom functionality to be executed when the mouse down on image event is fired. */
   onClick: PropTypes.func,
   /** The image data to be displayed. */
