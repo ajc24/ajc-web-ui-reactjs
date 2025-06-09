@@ -23,8 +23,14 @@ const Template_DecorativeImage = args => {
 }
 export const Default = Template_DecorativeImage.bind({});
 Default.args = {
-  height: 200,
   id: 'default',
   src: storybookLogoSquare,
-  width: 200,
+};
+
+export const AtCustomSize = Template_DecorativeImage.bind({});
+AtCustomSize.args = {
+  height: 250,
+  id: 'custom-size',
+  src: storybookLogoSquare,
+  width: 250,
 };

@@ -24,8 +24,15 @@ const Template_InformativeImage = args => {
 export const Default = Template_InformativeImage.bind({});
 Default.args = {
   alt: 'A picture of the Storybook logo',
-  height: 150,
   id: 'default',
   src: storybookLogoSquare,
-  width: 150,
+};
+
+export const AtCustomSize = Template_InformativeImage.bind({});
+AtCustomSize.args = {
+  alt: 'A custom size picture of the Storybook logo.',
+  height: 250,
+  id: 'custom-size',
+  src: storybookLogoSquare,
+  width: 250,
 };

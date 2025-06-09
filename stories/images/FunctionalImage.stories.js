@@ -24,9 +24,17 @@ const Template_FunctionalImage = args => {
 export const Default = Template_FunctionalImage.bind({});
 Default.args = {
   alt: 'A picture of the Storybook logo.',
-  height: 300,
   id: 'default',
-  onClick: () => { alert('You have successfully clicked the image.')},
+  onClick: () => { alert('You have successfully clicked the default image.')},
   src: storybookLogoSquare,
-  width: 300,
+};
+
+export const AtCustomSize = Template_FunctionalImage.bind({});
+AtCustomSize.args = {
+  alt: 'A custom size picture of the Storybook logo.',
+  height: 250,
+  id: 'custom-size',
+  onClick: () => { alert('You have successfully clicked the custom size image.')},
+  src: storybookLogoSquare,
+  width: 250,
 };

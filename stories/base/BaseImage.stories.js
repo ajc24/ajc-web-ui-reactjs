@@ -43,3 +43,12 @@ WithCustomOnClick.args = {
   src: storybookLogoSquare,
   width: 250,
 };
+
+export const WithAutoHeight = Template_BaseImage.bind({});
+WithAutoHeight.args = {
+  alt: 'A picture of the Storybook logo.',
+  height: 'auto',
+  id: 'custom-image-2',
+  src: storybookLogoSquare,
+  width: 200,
+};
