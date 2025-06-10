@@ -12,11 +12,8 @@ const config = {
     '../stories/base/BaseHeaderTall.stories.js',
     '../stories/base/BaseImage.stories.js',
 
-    // /* Header component stories */
-    // "../stories/header/Header.stories.js",
-    // "../stories/header/HeaderLogo.stories.js",
-    // "../stories/header/HeaderSubtitleText.stories.js",
-    // "../stories/header/HeaderTitleText.stories.js",
+    /* Header component stories */
+    '../stories/header/HeaderTallLogo.stories.js',
 
     // /* Menu Bar component stories */
     // // "../stories/menu-bar/MenuItemLink.stories.js",
@@ -44,6 +41,7 @@ const config = {
   addons: [
     '@chromatic-com/storybook',
     '@storybook/addon-a11y',
+    '@storybook/addon-docs',
     '@storybook/addon-links',
     '@storybook/addon-onboarding',
     "@storybook/addon-webpack5-compiler-swc",
