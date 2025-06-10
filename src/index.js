@@ -7,6 +7,9 @@ import BaseHeader from './base/BaseHeader';
 import BaseHeaderTall from './base/BaseHeaderTall';
 import BaseImage from './base/BaseImage';
 
+/* Header components */
+import HeaderTallLogo from './header/HeaderTallLogo';
+
 /* Image components */
 import DecorativeImage from './images/DecorativeImage';
 import FunctionalImage from './images/FunctionalImage';
@@ -17,6 +20,9 @@ export {
   BaseHeader,
   BaseHeaderTall,
   BaseImage,
+
+  /* Header components */
+  HeaderTallLogo,
 
   /* Image components */
   DecorativeImage,
