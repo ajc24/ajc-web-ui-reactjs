@@ -7,7 +7,6 @@ import { BaseHeader } from '../../src';
 export default {
   title: 'Base Components/Base Header',
   component: BaseHeader,
-  tags: ['autodocs'],
 };
 
 /**

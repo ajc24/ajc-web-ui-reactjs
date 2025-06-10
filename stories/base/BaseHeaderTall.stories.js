@@ -7,7 +7,6 @@ import { BaseHeaderTall } from '../../src';
 export default {
   title: 'Base Components/Base Header Tall',
   component: BaseHeaderTall,
-  tags: ['autodocs'],
 };
 
 /**

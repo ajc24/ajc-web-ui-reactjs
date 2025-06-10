@@ -8,7 +8,6 @@ import storybookLogoSquare from './files/storybook-logo-square.svg';
 export default {
   title: 'Images/Functional Image',
   component: FunctionalImage,
-  tags: ['autodocs'],
 };
 
 /**
