@@ -27,9 +27,7 @@ const config = {
     '../stories/images/FunctionalImage.stories.js',
     '../stories/images/InformativeImage.stories.js',
 
-    // /* Mock page component stories */
-    // // "../stories/mock-pages/CKCSClubOfIreland/HomePage.stories.js",
-    // // "../stories/mock-pages/TullowhillCavaliers/HomePage.stories.js",
+    
 
     // /* Page template stories */
     // "../stories/base/FooterBase.stories.js",
@@ -37,6 +35,10 @@ const config = {
     // "../stories/base/MainBase.stories.js",
     // "../stories/base/MenuBarBase.stories.js",
     // "../stories/mock-pages/FullPageTemplate.stories.js",
+
+    /* Web development mock page stories */
+    '../stories/web-development/ckcs-club-of-ireland/HomePage.stories.js',
+    '../stories/web-development/tullowhill-cavaliers/HomePage.stories.js',
   ],
   addons: [
     '@chromatic-com/storybook',
