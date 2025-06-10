@@ -31,7 +31,7 @@ FunctionalImage.propTypes = {
   /** The alternate text to be attached to the image and read out by screen readers. */
   alt: _propTypes["default"].string.isRequired,
   /** The height of the image. */
-  height: _propTypes["default"].number.isRequired,
+  height: _propTypes["default"].number,
   /** The unique identifier for this component. */
   id: _propTypes["default"].string.isRequired,
   /** The custom functionality to be executed when the mouse down on image event is fired. */
@@ -39,6 +39,6 @@ FunctionalImage.propTypes = {
   /** The image data to be displayed. */
   src: _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].object]).isRequired,
   /** The width of the image. */
-  width: _propTypes["default"].number.isRequired
+  width: _propTypes["default"].number
 };
 var _default = exports["default"] = FunctionalImage;

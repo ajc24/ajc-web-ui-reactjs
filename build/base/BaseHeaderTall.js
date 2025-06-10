@@ -20,7 +20,7 @@ function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default":
 var BaseHeaderTall = function BaseHeaderTall(props) {
   return /*#__PURE__*/React.createElement(_BaseHeader["default"], {
     backgroundColour: props.backgroundColour,
-    id: props.id !== undefined ? props.id : 'default--base-header-tall',
+    id: props.id !== undefined ? "".concat(props.id, "--base-header-tall") : 'default--base-header-tall',
     customSizeClass: "header-size-tall"
   }, props.children);
 };

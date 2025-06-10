@@ -155,9 +155,9 @@ BaseImage.propTypes = {
   /** The alternate text to be attached to the image and read out by screen readers. */
   alt: _propTypes["default"].string,
   /** The height of the image. */
-  height: _propTypes["default"].number,
+  height: _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].number]),
   /** The unique identifier for this component. */
-  id: _propTypes["default"].string.isRequired,
+  id: _propTypes["default"].string,
   /** The custom functionality to be executed when the mouse down on image event is fired. */
   onClick: _propTypes["default"].func,
   /** The image data to be displayed. */
