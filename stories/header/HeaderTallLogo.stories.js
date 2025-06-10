@@ -22,11 +22,13 @@ const Template_HeaderTallLogo = args => {
 }
 export const Default = Template_HeaderTallLogo.bind({});
 Default.args = {
+  alt: 'Storybook logo rendered in a default tall header.',
   src: storybookLogoRectangle,
 };
 
 export const WithGreyBackground = Template_HeaderTallLogo.bind({});
 WithGreyBackground.args = {
+  alt: 'Storybook logo rendered in a tall header with a grey background.',
   backgroundColour: 'grey',
   id: 'with-grey-background',
   src: storybookLogoRectangle,
