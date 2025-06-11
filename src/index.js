@@ -4,6 +4,7 @@
 
 /* Base components */
 import BaseHeader from './base/BaseHeader';
+import BaseHeaderBgImage from './base/BaseHeaderBgImage';
 import BaseHeaderTall from './base/BaseHeaderTall';
 import BaseImage from './base/BaseImage';
 
@@ -18,6 +19,7 @@ import InformativeImage from './images/InformativeImage';
 export {
   /* Base components */
   BaseHeader,
+  BaseHeaderBgImage,
   BaseHeaderTall,
   BaseImage,
 
