@@ -36,3 +36,19 @@ export const WithGreyBackground = {
   },
   render: Template_HeaderTallLogo,
 };
+
+export const MobilePhoneTest = {
+  args: {
+    alt: 'Storybook logo rendered in a tall header with a grey background and at a mobile screen size.',
+    backgroundColour: 'grey',
+    id: 'mobile-phone-test',
+    src: storybookLogoRectangle,  
+  },
+  globals: {
+    viewport: {
+      isRotated: false,
+      value: 'galaxys9',
+    },
+  },
+  render: Template_HeaderTallLogo,
+};

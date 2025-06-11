@@ -33,3 +33,17 @@ export const WithGreyBackground = {
   },
   render: Template_BaseHeaderTall,
 };
+
+export const MobilePhoneTest = {
+  args: {
+    backgroundColour: 'grey',
+    id: 'mobile-phone-test',
+  },
+  globals: {
+    viewport: {
+      isRotated: false,
+      value: 'galaxys9',
+    },
+  },
+  render: Template_BaseHeaderTall,
+};

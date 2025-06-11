@@ -28,3 +28,17 @@ export const Default = {
   },
   render: Template_BaseHeaderBgImage,
 }
+
+export const MobilePhoneTest = {
+  args: {
+    backgroundImageSrc: smallHeaderBgImage,
+    id: 'mobile-phone-test',
+  },
+  globals: {
+    viewport: {
+      isRotated: false,
+      value: 'galaxys9',
+    },
+  },
+  render: Template_BaseHeaderBgImage,
+}

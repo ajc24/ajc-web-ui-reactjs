@@ -27,3 +27,13 @@ const Template_HomePage = () => {
 export const HomePage = {
   render: Template_HomePage,
 };
+
+export const MobilePhoneTest = {
+  globals: {
+    viewport: {
+      isRotated: false,
+      value: 'galaxys9',
+    },
+  },
+  render: Template_HomePage,
+};
