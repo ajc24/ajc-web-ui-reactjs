@@ -16,38 +16,45 @@ export default {
  * @returns {React.Component}
  */
 const Template_BaseImage = args => {
-	return <React.Fragment>
-		<BaseImage {...args} />
-	</React.Fragment>;
-}
-export const Default = Template_BaseImage.bind({});
-Default.args = {
-  src: storybookLogoSquare,
+	return <BaseImage {...args} />;
 };
 
-export const AtACustomSize = Template_BaseImage.bind({});
-AtACustomSize.args = {
-  alt: 'A picture of the Storybook logo.',
-  height: 350,
-  id: 'custom-image-1',
-  src: storybookLogoSquare,
-  width: 350,
+export const Default = {
+  args: {
+    src: storybookLogoSquare,
+  },
+  render: Template_BaseImage,
 };
 
-export const WithCustomOnClick = Template_BaseImage.bind({});
-WithCustomOnClick.args = {
-  height: 250,
-  id: 'image-with-custom-click-event',
-  onClick: () => { alert('Clicked on the image.') },
-  src: storybookLogoSquare,
-  width: 250,
+export const AtACustomSize = {
+  args: {
+    alt: 'A picture of the Storybook logo.',
+    height: 350,
+    id: 'custom-image-1',
+    src: storybookLogoSquare,
+    width: 350,
+  },
+  render: Template_BaseImage,
 };
 
-export const WithAutoHeight = Template_BaseImage.bind({});
-WithAutoHeight.args = {
-  alt: 'A picture of the Storybook logo.',
-  height: 'auto',
-  id: 'custom-image-2',
-  src: storybookLogoSquare,
-  width: 200,
+export const WithCustomOnClick = {
+  args: {
+    height: 250,
+    id: 'image-with-custom-click-event',
+    onClick: () => { alert('Clicked on the image.') },
+    src: storybookLogoSquare,
+    width: 250,
+  },
+  render: Template_BaseImage,
+};
+
+export const WithAutoHeight = {
+  args: {
+    alt: 'A picture of the Storybook logo.',
+    height: 'auto',
+    id: 'custom-image-2',
+    src: storybookLogoSquare,
+    width: 200,
+  },
+  render: Template_BaseImage,
 };

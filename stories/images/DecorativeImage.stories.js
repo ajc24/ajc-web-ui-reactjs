@@ -16,20 +16,23 @@ export default {
  * @returns {React.Component}
  */
 const Template_DecorativeImage = args => {
-	return <React.Fragment>
-		<DecorativeImage {...args} />
-	</React.Fragment>;
-}
-export const Default = Template_DecorativeImage.bind({});
-Default.args = {
-  id: 'default',
-  src: storybookLogoSquare,
+	return <DecorativeImage {...args} />;
 };
 
-export const AtCustomSize = Template_DecorativeImage.bind({});
-AtCustomSize.args = {
-  height: 250,
-  id: 'custom-size',
-  src: storybookLogoSquare,
-  width: 250,
+export const Default = {
+  args: {
+    id: 'default',
+    src: storybookLogoSquare,
+  },
+  render: Template_DecorativeImage,
+};
+
+export const AtCustomSize = {
+  args: {
+    height: 250,
+    id: 'custom-size',
+    src: storybookLogoSquare,
+    width: 250,
+  },
+  render: Template_DecorativeImage,
 };

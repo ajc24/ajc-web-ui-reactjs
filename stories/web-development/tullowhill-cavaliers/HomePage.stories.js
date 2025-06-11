@@ -22,5 +22,8 @@ const Template_HomePage = () => {
       backgroundColour="grey" id="tullowhill-cavaliers-logo" src={tullowhillCavaliersLogo}
     />
   </React.Fragment>;
-}
-export const HomePage = Template_HomePage.bind({});
+};
+
+export const HomePage = {
+  render: Template_HomePage,
+};

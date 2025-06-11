@@ -16,20 +16,23 @@ export default {
  * @returns {React.Component}
  */
 const Template_HeaderTallLogo = args => {
-  return <React.Fragment>
-    <HeaderTallLogo {...args} />
-  </React.Fragment>;
-}
-export const Default = Template_HeaderTallLogo.bind({});
-Default.args = {
-  alt: 'Storybook logo rendered in a default tall header.',
-  src: storybookLogoRectangle,
+  return <HeaderTallLogo {...args} />;
 };
 
-export const WithGreyBackground = Template_HeaderTallLogo.bind({});
-WithGreyBackground.args = {
-  alt: 'Storybook logo rendered in a tall header with a grey background.',
-  backgroundColour: 'grey',
-  id: 'with-grey-background',
-  src: storybookLogoRectangle,
+export const Default = {
+  args: {
+    alt: 'Storybook logo rendered in a default tall header.',
+    src: storybookLogoRectangle,
+  },
+  render: Template_HeaderTallLogo,
+};
+
+export const WithGreyBackground = {
+  args: {
+    alt: 'Storybook logo rendered in a tall header with a grey background.',
+    backgroundColour: 'grey',
+    id: 'with-grey-background',
+    src: storybookLogoRectangle,  
+  },
+  render: Template_HeaderTallLogo,
 };

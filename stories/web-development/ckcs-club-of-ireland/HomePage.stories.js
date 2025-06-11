@@ -22,5 +22,8 @@ const Template_HomePage = () => {
       backgroundColour="white" id="ckcscoi-logo" src={ckcscoiLogo}
     />
   </React.Fragment>;
-}
-export const HomePage = Template_HomePage.bind({});
+};
+
+export const HomePage = {
+  render: Template_HomePage,
+};

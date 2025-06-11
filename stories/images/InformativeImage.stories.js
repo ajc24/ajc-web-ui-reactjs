@@ -16,22 +16,25 @@ export default {
  * @returns {React.Component}
  */
 const Template_InformativeImage = args => {
-	return <React.Fragment>
-		<InformativeImage {...args} />
-	</React.Fragment>;
-}
-export const Default = Template_InformativeImage.bind({});
-Default.args = {
-  alt: 'A picture of the Storybook logo',
-  id: 'default',
-  src: storybookLogoSquare,
+	return <InformativeImage {...args} />;
 };
 
-export const AtCustomSize = Template_InformativeImage.bind({});
-AtCustomSize.args = {
-  alt: 'A custom size picture of the Storybook logo.',
-  height: 250,
-  id: 'custom-size',
-  src: storybookLogoSquare,
-  width: 250,
+export const Default = {
+  args: {
+    alt: 'A picture of the Storybook logo',
+    id: 'default',
+    src: storybookLogoSquare,
+  },
+  render: Template_InformativeImage,
+};
+
+export const AtCustomSize = {
+  args: {
+    alt: 'A custom size picture of the Storybook logo.',
+    height: 250,
+    id: 'custom-size',
+    src: storybookLogoSquare,
+    width: 250,
+  },
+  render: Template_InformativeImage,
 };

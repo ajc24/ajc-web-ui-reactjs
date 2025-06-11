@@ -16,24 +16,27 @@ export default {
  * @returns {React.Component}
  */
 const Template_FunctionalImage = args => {
-	return <React.Fragment>
-		<FunctionalImage {...args} />
-	</React.Fragment>;
-}
-export const Default = Template_FunctionalImage.bind({});
-Default.args = {
-  alt: 'A picture of the Storybook logo.',
-  id: 'default',
-  onClick: () => { alert('You have successfully clicked the default image.')},
-  src: storybookLogoSquare,
+	return <FunctionalImage {...args} />;
 };
 
-export const AtCustomSize = Template_FunctionalImage.bind({});
-AtCustomSize.args = {
-  alt: 'A custom size picture of the Storybook logo.',
-  height: 250,
-  id: 'custom-size',
-  onClick: () => { alert('You have successfully clicked the custom size image.')},
-  src: storybookLogoSquare,
-  width: 250,
+export const Default = {
+  args: {
+    alt: 'A picture of the Storybook logo.',
+    id: 'default',
+    onClick: () => { alert('You have successfully clicked the default image.')},
+    src: storybookLogoSquare,
+  },
+  render: Template_FunctionalImage,
+};
+
+export const AtCustomSize = {
+  args: {
+    alt: 'A custom size picture of the Storybook logo.',
+    height: 250,
+    id: 'custom-size',
+    onClick: () => { alert('You have successfully clicked the custom size image.')},
+    src: storybookLogoSquare,
+    width: 250,
+  },
+  render: Template_FunctionalImage,
 };
