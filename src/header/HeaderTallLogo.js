@@ -17,7 +17,7 @@ const HeaderTallLogo = props => {
   const containerCss = 'tall-header-logo-container';
 
   return (
-    <BaseHeaderTall backgroundColour={props.backgroundColour} id={props.id}>
+    <BaseHeaderTall backgroundColour={props.backgroundColour} id={`${props.id}--header-tall-logo`}>
       <div className={containerCss}>
         <InformativeImage alt={props.alt} height="304" id={props.id} src={props.src} width="328" />
       </div>

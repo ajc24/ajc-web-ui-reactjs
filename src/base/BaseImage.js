@@ -91,8 +91,8 @@ class BaseImage extends React.Component {
       imageWidth = this.props.width;
     }
     return (
-      <img id={this.props.id !== undefined ? this.props.id : 'default--base-image'} className={imageCss} src={this.props.src} width={imageWidth} height={imageHeight}
-        alt={altText} ref={this.imageRef} />
+      <img id={this.props.id !== undefined ? this.props.id : 'default--base-image'} className={imageCss} src={this.props.src} width={imageWidth}
+        height={imageHeight} alt={altText} ref={this.imageRef} />
     );
   }
 }

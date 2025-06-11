@@ -11,7 +11,7 @@ import BaseHeader from './BaseHeader';
  */
 const BaseHeaderTall = props => {
   return (
-    <BaseHeader backgroundColour={props.backgroundColour} id={props.id !== undefined ? `${props.id}--base-header-tall` : 'default--base-header-tall'}
+    <BaseHeader backgroundColour={props.backgroundColour} id={props.id !== undefined ? props.id : 'default--base-header-tall'}
       customSizeClass="header-size-tall">
         {props.children}
     </BaseHeader>
