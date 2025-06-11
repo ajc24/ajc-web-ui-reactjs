@@ -47,10 +47,10 @@ const config = {
     '@storybook/addon-docs',
     '@storybook/addon-links',
     '@storybook/addon-onboarding',
-    "@storybook/addon-webpack5-compiler-swc",
+    '@storybook/addon-webpack5-compiler-swc',
   ],
   framework: {
-    name: "@storybook/react-webpack5",
+    name: '@storybook/react-webpack5',
     options: {},
   },
 };
