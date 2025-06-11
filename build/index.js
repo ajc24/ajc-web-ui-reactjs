@@ -10,6 +10,12 @@ Object.defineProperty(exports, "BaseHeader", {
     return _BaseHeader["default"];
   }
 });
+Object.defineProperty(exports, "BaseHeaderBgImage", {
+  enumerable: true,
+  get: function get() {
+    return _BaseHeaderBgImage["default"];
+  }
+});
 Object.defineProperty(exports, "BaseHeaderTall", {
   enumerable: true,
   get: function get() {
@@ -47,6 +53,7 @@ Object.defineProperty(exports, "InformativeImage", {
   }
 });
 var _BaseHeader = _interopRequireDefault(require("./base/BaseHeader"));
+var _BaseHeaderBgImage = _interopRequireDefault(require("./base/BaseHeaderBgImage"));
 var _BaseHeaderTall = _interopRequireDefault(require("./base/BaseHeaderTall"));
 var _BaseImage = _interopRequireDefault(require("./base/BaseImage"));
 var _HeaderTallLogo = _interopRequireDefault(require("./header/HeaderTallLogo"));

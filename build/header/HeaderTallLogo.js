@@ -7,21 +7,29 @@ Object.defineProperty(exports, "__esModule", {
 exports["default"] = void 0;
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _BaseHeaderTall = _interopRequireDefault(require("../base/BaseHeaderTall"));
-var _DecorativeImage = _interopRequireDefault(require("../images/DecorativeImage"));
+var _InformativeImage = _interopRequireDefault(require("../images/InformativeImage"));
 require("./css/header.css");
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 /**
  * Developed by Anthony Cox in 2025
  */
 
+/**
+ * Tall Header component with logo image. This header component auto-handles screen widths from the most commonly used mobile screen sizes (360x800)
+ * to the most commonly used desktop sizes (1920x1080). The height of the header component is 320px.
+ * 
+ * The logo image is a centrally aligned informative image rendered within the tall header and is set to a maximum of 328px in width and 304px in
+ * height to cater for the smallest supported screen size.
+ */
 var HeaderTallLogo = function HeaderTallLogo(props) {
   var containerCss = 'tall-header-logo-container';
   return /*#__PURE__*/React.createElement(_BaseHeaderTall["default"], {
     backgroundColour: props.backgroundColour,
-    id: props.id
+    id: "".concat(props.id, "--header-tall-logo")
   }, /*#__PURE__*/React.createElement("div", {
     className: containerCss
-  }, /*#__PURE__*/React.createElement(_DecorativeImage["default"], {
+  }, /*#__PURE__*/React.createElement(_InformativeImage["default"], {
+    alt: props.alt,
     height: "304",
     id: props.id,
     src: props.src,
@@ -29,6 +37,8 @@ var HeaderTallLogo = function HeaderTallLogo(props) {
   })));
 };
 HeaderTallLogo.propTypes = {
+  /** The alternate text to be attached to the image and read out by screen readers. */
+  alt: _propTypes["default"].string.isRequired,
   /** The background colour for the tall header. The default colour for the background is white. */
   backgroundColour: _propTypes["default"].oneOf(['white', 'grey']),
   /** The unique identifier for the tall header. */
