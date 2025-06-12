@@ -37,6 +37,9 @@ const config = {
     // "../stories/base/MenuBarBase.stories.js",
     // "../stories/mock-pages/FullPageTemplate.stories.js",
 
+    /* Text component stories */
+    '../stories/text/ApplicationTitleText.stories.js',
+
     /* Web development mock page stories */
     '../stories/web-development/ckcs-club-of-ireland/HomePage.stories.js',
     '../stories/web-development/tullowhill-cavaliers/HomePage.stories.js',
