@@ -5,6 +5,10 @@
   background-color: #F6F6F6;
 }
 
+.background-transparent {
+  background-color: transparent;
+}
+
 .background-white {
   background-color: #FFFFFF;
 }
@@ -15,6 +19,11 @@
   width: 100%;
   overflow-x: hidden;
   overflow-y: scroll;
+}
+
+.common-component-width {
+  max-width: 1248px;
+  min-width: 328px;
 }
 
 .font-black {
