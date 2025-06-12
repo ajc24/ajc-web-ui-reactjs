@@ -38,6 +38,7 @@ const config = {
     // "../stories/mock-pages/FullPageTemplate.stories.js",
 
     /* Text component stories */
+    '../stories/text/ApplicationSubtitleText.stories.js',
     '../stories/text/ApplicationTitleText.stories.js',
 
     /* Web development mock page stories */
