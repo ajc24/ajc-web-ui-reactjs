@@ -4,7 +4,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import '../css/common.css';
-import './css/text-title.css';
+import './css/text-application-title.css';
 
 const maxRem = 3;
 const truncateTextHeightCutoff = 95;
@@ -264,7 +264,7 @@ class ApplicationTitleText extends React.Component {
 
   render() {
     /* Set the styling for the container element */
-    let containerCss = 'background-transparent title-text-dimensions';
+    let containerCss = 'background-transparent title-text-container';
     if (this.props.parentHeaderId === undefined) {
       containerCss += ' common-component-width';
     }
