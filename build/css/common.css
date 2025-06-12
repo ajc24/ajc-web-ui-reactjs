@@ -5,6 +5,10 @@
   background-color: #F6F6F6;
 }
 
+.background-transparent {
+  background-color: transparent;
+}
+
 .background-white {
   background-color: #FFFFFF;
 }
@@ -17,6 +21,11 @@
   overflow-y: scroll;
 }
 
+.common-component-width {
+  max-width: 1248px;
+  min-width: 328px;
+}
+
 .font-black {
   color: #000000;
 }
@@ -25,6 +34,14 @@
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
   word-wrap: break-word;
+}
+
+.font-white {
+  color: #FFFFFF;
+}
+
+.hidden {
+  display: none;
 }
 
 .screen-width-content-inner {

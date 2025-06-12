@@ -4,6 +4,18 @@ require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+Object.defineProperty(exports, "ApplicationSubtitleText", {
+  enumerable: true,
+  get: function get() {
+    return _ApplicationSubtitleText["default"];
+  }
+});
+Object.defineProperty(exports, "ApplicationTitleText", {
+  enumerable: true,
+  get: function get() {
+    return _ApplicationTitleText["default"];
+  }
+});
 Object.defineProperty(exports, "BaseHeader", {
   enumerable: true,
   get: function get() {
@@ -60,4 +72,6 @@ var _HeaderTallLogo = _interopRequireDefault(require("./header/HeaderTallLogo"))
 var _DecorativeImage = _interopRequireDefault(require("./images/DecorativeImage"));
 var _FunctionalImage = _interopRequireDefault(require("./images/FunctionalImage"));
 var _InformativeImage = _interopRequireDefault(require("./images/InformativeImage"));
+var _ApplicationSubtitleText = _interopRequireDefault(require("./text/ApplicationSubtitleText"));
+var _ApplicationTitleText = _interopRequireDefault(require("./text/ApplicationTitleText"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
