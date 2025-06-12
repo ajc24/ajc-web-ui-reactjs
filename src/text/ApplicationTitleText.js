@@ -279,7 +279,7 @@ class ApplicationTitleText extends React.Component {
       : textOutputCss += ' title-text-font-black';
     return (
       <div id={`${this.state.id}`} className={containerCss} data-wrap={`${this.state.isWrapped}`}>
-        <h1 className={textOutputCss} aria-label={`${this.props.children}`}>
+        <h1 className={textOutputCss} aria-label={`${this.props.children}`} title={`${this.props.children}`}>
           {this.props.children}
         </h1>
       </div>
