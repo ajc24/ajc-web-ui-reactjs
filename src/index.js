@@ -16,6 +16,9 @@ import DecorativeImage from './images/DecorativeImage';
 import FunctionalImage from './images/FunctionalImage';
 import InformativeImage from './images/InformativeImage';
 
+/* Text components */
+import ApplicationTitleText from './text/ApplicationTitleText';
+
 export {
   /* Base components */
   BaseHeader,
@@ -30,4 +33,7 @@ export {
   DecorativeImage,
   FunctionalImage,
   InformativeImage,
+
+  /* Text components */
+  ApplicationTitleText,
 };
