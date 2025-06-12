@@ -36,6 +36,14 @@
   word-wrap: break-word;
 }
 
+.font-white {
+  color: #FFFFFF;
+}
+
+.hidden {
+  display: none;
+}
+
 .screen-width-content-inner {
   max-width: 1248px;
   min-width: 328px;
