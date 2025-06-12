@@ -7,21 +7,15 @@ import '../css/common.css';
 import './css/text-application-subtitle.css';
 
 /**
- * Header subtitle text component which renders the main application subtitle text to the user. This component is designed to work alongside the Header Title Text
- * component, rendering beneath and supporting the title text content in the header of the application. The subtitle text will be automatically hidden from view
- * in the event that the title text component has been wrapped and / or truncated to fit on smaller screens (ie. mobile phone screen sizes). This text can be rendered
- * in black or white colour, each with a white outline or black outline respectively.
- */
-
-/**
- * Application title text component which renders the name / title of the web application to the user. This component is intended for use in both
- * the default and tall Header components but can also be rendered standalone. The title text content can be left aligned or centre aligned.
+ * Application subtitle text component which renders the supporting text for the title text of the web application to the user. This component is
+ * intended for use underneath the Application Title Text component, rendered inside both the default and tall Header components but can also be rendered
+ * standalone. The subtitle text content can be left aligned or centre aligned.
  * 
- * The application title text content is initially rendered at 3rem in size and will be automatically reduced in size down to a minimum size of 2rem,
- * to fit on smaller screens (ie. mobile phone screen sizes). If the title text still does not fit on-screen after the font size reduction has taken
- * place, it will then be truncated.
+ * The subtitle text content will be automatically hidden from view in the event that the title text component has been wrapped and / or truncated to fit on
+ * smaller screens (ie. mobile phone screen sizes). It is also hidden from view in the event that the container for the subtitle text content exceeds the
+ * width of the screen.
  * 
- * The title text can be rendered in black or white colour, each with a white outline or black outline respectively.
+ * The text content itself can be rendered in black or white colour, with black font colour being the default.
  */
 class ApplicationSubtitleText extends React.Component {
   /**
