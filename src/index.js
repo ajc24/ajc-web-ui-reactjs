@@ -17,6 +17,7 @@ import FunctionalImage from './images/FunctionalImage';
 import InformativeImage from './images/InformativeImage';
 
 /* Text components */
+import ApplicationSubtitleText from './text/ApplicationSubtitleText';
 import ApplicationTitleText from './text/ApplicationTitleText';
 
 export {
@@ -35,5 +36,6 @@ export {
   InformativeImage,
 
   /* Text components */
+  ApplicationSubtitleText,
   ApplicationTitleText,
 };
