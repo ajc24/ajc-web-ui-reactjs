@@ -45,20 +45,15 @@ function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf 
  * Developed by Anthony Cox in 2025
  */
 /**
- * Header subtitle text component which renders the main application subtitle text to the user. This component is designed to work alongside the Header Title Text
- * component, rendering beneath and supporting the title text content in the header of the application. The subtitle text will be automatically hidden from view
- * in the event that the title text component has been wrapped and / or truncated to fit on smaller screens (ie. mobile phone screen sizes). This text can be rendered
- * in black or white colour, each with a white outline or black outline respectively.
- */
-/**
- * Application title text component which renders the name / title of the web application to the user. This component is intended for use in both
- * the default and tall Header components but can also be rendered standalone. The title text content can be left aligned or centre aligned.
+ * Application subtitle text component which renders the supporting text for the title text of the web application to the user. This component is
+ * intended for use underneath the Application Title Text component, rendered inside both the default and tall Header components but can also be rendered
+ * standalone. The subtitle text content can be left aligned or centre aligned.
  * 
- * The application title text content is initially rendered at 3rem in size and will be automatically reduced in size down to a minimum size of 2rem,
- * to fit on smaller screens (ie. mobile phone screen sizes). If the title text still does not fit on-screen after the font size reduction has taken
- * place, it will then be truncated.
+ * The subtitle text content will be automatically hidden from view in the event that the title text component has been wrapped and / or truncated to fit on
+ * smaller screens (ie. mobile phone screen sizes). It is also hidden from view in the event that the container for the subtitle text content exceeds the
+ * width of the screen.
  * 
- * The title text can be rendered in black or white colour, each with a white outline or black outline respectively.
+ * The text content itself can be rendered in black or white colour, with black font colour being the default.
  */
 var ApplicationSubtitleText = /*#__PURE__*/function (_React$Component) {
   /**
@@ -70,13 +65,13 @@ var ApplicationSubtitleText = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, ApplicationSubtitleText);
     _this = _callSuper(this, ApplicationSubtitleText, [props]);
     _this.state = {
-      headerTitleTextId: undefined,
+      applicationTitleTextId: undefined,
       isHidden: false,
       isResizing: false,
       paragraphRightPos: 0
     };
     _this.handleVisibility = _this.handleVisibility.bind(_this);
-    _this.setHeaderTitleTextId = _this.setHeaderTitleTextId.bind(_this);
+    _this.setApplicationTitleTextId = _this.setApplicationTitleTextId.bind(_this);
     _this.setIsHidden = _this.setIsHidden.bind(_this);
     _this.setIsResizingEnd = _this.setIsResizingEnd.bind(_this);
     _this.setIsResizingStart = _this.setIsResizingStart.bind(_this);
@@ -91,7 +86,7 @@ var ApplicationSubtitleText = /*#__PURE__*/function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       /* Sets the header title text id which is displayed alongside the subtitle text - following that handle the current visibility state of this component */
-      this.setHeaderTitleTextId(this.props.headerTitleTextId);
+      this.setApplicationTitleTextId(this.props.applicationTitleTextId);
 
       /* Watch over all future window resize events - we will want to alter the visibility of the text to suit whether the title text is wrapped or not */
       window.addEventListener('resize', this.setRightmostSubtitleTextPosition);
@@ -107,7 +102,7 @@ var ApplicationSubtitleText = /*#__PURE__*/function (_React$Component) {
     key: "handleVisibility",
     value: function handleVisibility() {
       var isHidden = false;
-      var subtitleContainerElement = document.querySelector("[id=\"".concat(this.props.id, "--header-subtitle-text\"]"));
+      var subtitleContainerElement = document.querySelector("[id=\"".concat(this.props.id, "--application-subtitle-text\"]"));
       if (subtitleContainerElement !== null) {
         /* Check 1: Does the paragraph element exceed the width of the container */
         var paragraphRightPos = this.state.paragraphRightPos;
@@ -121,7 +116,7 @@ var ApplicationSubtitleText = /*#__PURE__*/function (_React$Component) {
         /* Check 2: Does the title text element have text that has wrapped */
         if (isHidden === false) {
           /* Determine whether text wrapping has occurred in the title text element */
-          var headerTitleTextElement = document.querySelector("[id=\"".concat(this.state.headerTitleTextId, "--header-title-text\"]"));
+          var headerTitleTextElement = document.querySelector("[id=\"".concat(this.state.applicationTitleTextId, "--application-title-text\"]"));
           var dataWrap = 'false';
           if (headerTitleTextElement !== null) {
             dataWrap = headerTitleTextElement.dataset.wrap;
@@ -137,15 +132,15 @@ var ApplicationSubtitleText = /*#__PURE__*/function (_React$Component) {
     }
 
     /**
-     * Sets the id for the header title text component linked to this subtitle text.
+     * Sets the id for the application title text component linked to this subtitle text.
      * Follows this action by setting the rightmost position of the subtitle text element.
-     * @param {string} newHeaderTitleTextId
+     * @param {string} newApplicationTitleTextId
      */
   }, {
-    key: "setHeaderTitleTextId",
-    value: function setHeaderTitleTextId(newHeaderTitleTextId) {
+    key: "setApplicationTitleTextId",
+    value: function setApplicationTitleTextId(newApplicationTitleTextId) {
       this.setState({
-        headerTitleTextId: newHeaderTitleTextId
+        applicationTitleTextId: newApplicationTitleTextId
       }, this.setRightmostSubtitleTextPosition);
     }
 
@@ -216,7 +211,17 @@ var ApplicationSubtitleText = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       /* Set the styling for the container element */
       var containerCss = 'background-transparent subtitle-text-container';
-      if (this.props.parentHeaderId === undefined) {
+      if (this.props.applicationTitleTextId !== undefined && this.state.isHidden === false) {
+        /**
+         * In the case where application title text is rendered above the subtitle text content and the subtitle
+         * text content is marked as visible, ensure there is appropriate spacing applied between both elements.
+         * 
+         * Do not apply this spacing if the subtitle text content is hidden since this will incorrectly add padding
+         * to the bottom of the application title text, despite there not being any subtitle text content underneath.
+         */
+        containerCss += ' subtitle-text-container-upper-spacing';
+      }
+      if (this.props.headerId === undefined) {
         containerCss += ' common-component-width';
       }
       this.props.alignment === 'centre' ? containerCss += ' subtitle-text-alignment-centre' : containerCss += ' subtitle-text-alignment-left';
@@ -226,7 +231,7 @@ var ApplicationSubtitleText = /*#__PURE__*/function (_React$Component) {
       this.props.textColour === 'white' ? textOutputCss += ' font-white' : textOutputCss += ' font-black';
       this.state.isHidden === true ? textOutputCss += ' hidden' : textOutputCss += ''.trim();
       return /*#__PURE__*/_react["default"].createElement("div", {
-        id: "".concat(this.props.id, "--header-subtitle-text"),
+        id: "".concat(this.props.id, "--application-subtitle-text"),
         className: containerCss
       }, /*#__PURE__*/_react["default"].createElement("p", {
         className: textOutputCss,
@@ -239,14 +244,14 @@ var ApplicationSubtitleText = /*#__PURE__*/function (_React$Component) {
 ApplicationSubtitleText.propTypes = {
   /* The alignment of the subtitle text content. The text by default will be left aligned but can be centre aligned at all times. */
   alignment: _propTypes["default"].oneOf(['centre', 'left']),
+  /** The unique identifier of the ApplicationTitleText component alongside which this subtitle text component is rendered. */
+  applicationTitleTextId: _propTypes["default"].string,
   /** The content to be displayed as the subtitle text. */
   children: _propTypes["default"].string,
-  /** The unique identifier of the HeaderTitleText component alongside which this subtitle text component is rendered. */
-  headerTitleTextId: _propTypes["default"].string,
+  /** The unique identifier of the Header component in which this subtitle text component is rendered. */
+  headerId: _propTypes["default"].string,
   /** The unique identifier for this component. */
   id: _propTypes["default"].string.isRequired,
-  /** The unique identifier of the Header component in which this subtitle text component is rendered. */
-  parentHeaderId: _propTypes["default"].string,
   /** The colour of the text to be displayed, either in a black or white colour. By default the black colour is pre-selected. */
   textColour: _propTypes["default"].oneOf(['black', 'white'])
 };

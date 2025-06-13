@@ -18,6 +18,10 @@
   width: auto;
 }
 
+.subtitle-text-container-upper-spacing {
+  padding-top: 8px;
+}
+
 .subtitle-text-font-default {
   cursor: default;
   font-family: Arial, Helvetica, sans-serif;

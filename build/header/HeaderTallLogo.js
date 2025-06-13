@@ -42,7 +42,7 @@ HeaderTallLogo.propTypes = {
   /** The background colour for the tall header. The default colour for the background is white. */
   backgroundColour: _propTypes["default"].oneOf(['white', 'grey']),
   /** The unique identifier for the tall header. */
-  id: _propTypes["default"].string,
+  id: _propTypes["default"].string.isRequired,
   /** The image data to be displayed as the tall header logo. */
   src: _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].object]).isRequired
 };

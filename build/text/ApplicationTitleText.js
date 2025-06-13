@@ -244,7 +244,7 @@ var ApplicationTitleText = /*#__PURE__*/function (_React$Component) {
     key: "setId",
     value: function setId(newId) {
       this.setState({
-        id: "".concat(newId, "--header-title-text")
+        id: "".concat(newId, "--application-title-text")
       }, this.handleScreenWidth);
     }
 
@@ -338,7 +338,7 @@ var ApplicationTitleText = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       /* Set the styling for the container element */
       var containerCss = 'background-transparent title-text-container';
-      if (this.props.parentHeaderId === undefined) {
+      if (this.props.headerId === undefined) {
         containerCss += ' common-component-width';
       }
       this.props.alignment === 'centre' ? containerCss += ' title-text-alignment-centre' : containerCss += ' title-text-alignment-left';
@@ -363,10 +363,10 @@ ApplicationTitleText.propTypes = {
   alignment: _propTypes["default"].oneOf(['centre', 'left']),
   /** The content to be displayed as the title text. */
   children: _propTypes["default"].string,
+  /** The unique identifier of the Header component in which this title text component is rendered. */
+  headerId: _propTypes["default"].string,
   /** The unique identifier for this component. */
   id: _propTypes["default"].string.isRequired,
-  /** The unique identifier of the Header component in which this title text component is rendered. */
-  parentHeaderId: _propTypes["default"].string,
   /** The colour of the text to be displayed, either that of black with a white outline or white with a black outline. By default black with a while outline is pre-selected. */
   textColour: _propTypes["default"].oneOf(['black', 'white'])
 };
