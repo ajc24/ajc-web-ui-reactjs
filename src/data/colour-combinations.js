@@ -12,12 +12,8 @@ const colourCombinations = {
     backgroundColour: 'green',
     fontColour: 'white',
   },
-  'green-2': {
-    backgroundColour: 'green-2',
-    fontColour: 'black',
-  },
   grey: {
-    backgroundColour: 'grey-2',
+    backgroundColour: 'grey',
     fontColour: 'white',
   },
   'navy-and-gold': {
