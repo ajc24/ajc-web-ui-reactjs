@@ -14,6 +14,7 @@ const config = {
     '../stories/base/BaseImage.stories.js',
 
     /* Header component stories */
+    '../stories/header/HeaderAll.stories.js',
     '../stories/header/HeaderTallLogo.stories.js',
 
     // /* Menu Bar component stories */
@@ -27,15 +28,6 @@ const config = {
     '../stories/images/DecorativeImage.stories.js',
     '../stories/images/FunctionalImage.stories.js',
     '../stories/images/InformativeImage.stories.js',
-
-    
-
-    // /* Page template stories */
-    // "../stories/base/FooterBase.stories.js",
-    // "../stories/base/HeaderBase.stories.js",
-    // "../stories/base/MainBase.stories.js",
-    // "../stories/base/MenuBarBase.stories.js",
-    // "../stories/mock-pages/FullPageTemplate.stories.js",
 
     /* Text component stories */
     '../stories/text/ApplicationSubtitleText.stories.js',
