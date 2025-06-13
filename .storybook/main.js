@@ -12,12 +12,13 @@ const config = {
     '../stories/base/BaseHeaderBgImage.stories.js',
     '../stories/base/BaseHeaderTall.stories.js',
     '../stories/base/BaseImage.stories.js',
+    '../stories/base/BaseMenuBar.stories.js',
 
     /* Header component stories */
     '../stories/header/HeaderAll.stories.js',
     '../stories/header/HeaderTallLogo.stories.js',
 
-    // /* Menu Bar component stories */
+    /* Menu Bar component stories */
     // // "../stories/menu-bar/MenuItemLink.stories.js",
     // "../stories/menu-bar/ScrollMenuItems.stories.js",
     
@@ -34,6 +35,7 @@ const config = {
     '../stories/text/ApplicationTitleText.stories.js',
 
     /* Web development mock page stories */
+    '../stories/web-development/ajc-gaming/HomePage.stories.js',
     '../stories/web-development/ckcs-club-of-ireland/HomePage.stories.js',
     '../stories/web-development/tullowhill-cavaliers/HomePage.stories.js',
   ],
