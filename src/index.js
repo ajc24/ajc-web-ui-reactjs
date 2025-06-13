@@ -7,6 +7,7 @@ import BaseHeader from './base/BaseHeader';
 import BaseHeaderBgImage from './base/BaseHeaderBgImage';
 import BaseHeaderTall from './base/BaseHeaderTall';
 import BaseImage from './base/BaseImage';
+import BaseMenuBar from './base/BaseMenuBar';
 
 /* Header components */
 import HeaderAll from './header/HeaderAll';
@@ -16,6 +17,8 @@ import HeaderTallLogo from './header/HeaderTallLogo';
 import DecorativeImage from './images/DecorativeImage';
 import FunctionalImage from './images/FunctionalImage';
 import InformativeImage from './images/InformativeImage';
+
+/* Menu Bar components */
 
 /* Text components */
 import ApplicationSubtitleText from './text/ApplicationSubtitleText';
@@ -27,6 +30,7 @@ export {
   BaseHeaderBgImage,
   BaseHeaderTall,
   BaseImage,
+  BaseMenuBar,
 
   /* Header components */
   HeaderAll,
