@@ -25,13 +25,13 @@ class ApplicationSubtitleText extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      headerTitleTextId: undefined,
+      applicationTitleTextId: undefined,
       isHidden: false,
       isResizing: false,
       paragraphRightPos: 0,
     };
     this.handleVisibility = this.handleVisibility.bind(this);
-    this.setHeaderTitleTextId = this.setHeaderTitleTextId.bind(this);
+    this.setApplicationTitleTextId = this.setApplicationTitleTextId.bind(this);
     this.setIsHidden = this.setIsHidden.bind(this);
     this.setIsResizingEnd = this.setIsResizingEnd.bind(this);
     this.setIsResizingStart = this.setIsResizingStart.bind(this);
@@ -43,7 +43,7 @@ class ApplicationSubtitleText extends React.Component {
 
   componentDidMount() {
     /* Sets the header title text id which is displayed alongside the subtitle text - following that handle the current visibility state of this component */
-    this.setHeaderTitleTextId(this.props.headerTitleTextId);
+    this.setApplicationTitleTextId(this.props.applicationTitleTextId);
 
     /* Watch over all future window resize events - we will want to alter the visibility of the text to suit whether the title text is wrapped or not */
     window.addEventListener('resize', this.setRightmostSubtitleTextPosition);
@@ -57,7 +57,7 @@ class ApplicationSubtitleText extends React.Component {
    */
   handleVisibility() {
     let isHidden = false;
-    const subtitleContainerElement = document.querySelector(`[id="${this.props.id}--header-subtitle-text"]`);
+    const subtitleContainerElement = document.querySelector(`[id="${this.props.id}--application-subtitle-text"]`);
     
     if (subtitleContainerElement !== null) {
       /* Check 1: Does the paragraph element exceed the width of the container */
@@ -73,7 +73,7 @@ class ApplicationSubtitleText extends React.Component {
       /* Check 2: Does the title text element have text that has wrapped */
       if (isHidden === false) {
         /* Determine whether text wrapping has occurred in the title text element */
-        const headerTitleTextElement = document.querySelector(`[id="${this.state.headerTitleTextId}--header-title-text"]`);
+        const headerTitleTextElement = document.querySelector(`[id="${this.state.applicationTitleTextId}--application-title-text"]`);
         let dataWrap = 'false';
         if (headerTitleTextElement !== null) {
           dataWrap = headerTitleTextElement.dataset.wrap;
@@ -89,13 +89,13 @@ class ApplicationSubtitleText extends React.Component {
   }
 
   /**
-   * Sets the id for the header title text component linked to this subtitle text.
+   * Sets the id for the application title text component linked to this subtitle text.
    * Follows this action by setting the rightmost position of the subtitle text element.
-   * @param {string} newHeaderTitleTextId
+   * @param {string} newApplicationTitleTextId
    */
-  setHeaderTitleTextId(newHeaderTitleTextId) {
+  setApplicationTitleTextId(newApplicationTitleTextId) {
     this.setState({
-      headerTitleTextId: newHeaderTitleTextId,
+      applicationTitleTextId: newApplicationTitleTextId,
     }, this.setRightmostSubtitleTextPosition);
   }
 
@@ -157,7 +157,17 @@ class ApplicationSubtitleText extends React.Component {
   render() {
     /* Set the styling for the container element */
     let containerCss = 'background-transparent subtitle-text-container';
-    if (this.props.parentHeaderId === undefined) {
+    if (this.props.applicationTitleTextId !== undefined && this.state.isHidden === false) {
+      /**
+       * In the case where application title text is rendered above the subtitle text content and the subtitle
+       * text content is marked as visible, ensure there is appropriate spacing applied between both elements.
+       * 
+       * Do not apply this spacing if the subtitle text content is hidden since this will incorrectly add padding
+       * to the bottom of the application title text, despite there not being any subtitle text content underneath.
+       */
+      containerCss += ' subtitle-text-container-upper-spacing';
+    }
+    if (this.props.headerId === undefined) {
       containerCss += ' common-component-width';
     }
     this.props.alignment === 'centre'
@@ -174,7 +184,7 @@ class ApplicationSubtitleText extends React.Component {
       : textOutputCss += ''.trim();
 
     return (
-      <div id={`${this.props.id}--header-subtitle-text`} className={containerCss}>
+      <div id={`${this.props.id}--application-subtitle-text`} className={containerCss}>
         <p className={textOutputCss} ref={this.subtitleTextRef} aria-hidden={this.state.isHidden}>
           {this.props.children}
         </p>
@@ -185,14 +195,14 @@ class ApplicationSubtitleText extends React.Component {
 ApplicationSubtitleText.propTypes = {
   /* The alignment of the subtitle text content. The text by default will be left aligned but can be centre aligned at all times. */
   alignment: PropTypes.oneOf([ 'centre', 'left' ]),
+  /** The unique identifier of the ApplicationTitleText component alongside which this subtitle text component is rendered. */
+  applicationTitleTextId: PropTypes.string,
   /** The content to be displayed as the subtitle text. */
   children: PropTypes.string,
-  /** The unique identifier of the HeaderTitleText component alongside which this subtitle text component is rendered. */
-  headerTitleTextId: PropTypes.string,
+  /** The unique identifier of the Header component in which this subtitle text component is rendered. */
+  headerId: PropTypes.string,
   /** The unique identifier for this component. */
   id: PropTypes.string.isRequired,
-  /** The unique identifier of the Header component in which this subtitle text component is rendered. */
-  parentHeaderId: PropTypes.string,
   /** The colour of the text to be displayed, either in a black or white colour. By default the black colour is pre-selected. */
   textColour: PropTypes.oneOf([ 'black', 'white' ]),
 };

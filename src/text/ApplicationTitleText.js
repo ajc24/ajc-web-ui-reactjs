@@ -181,7 +181,7 @@ class ApplicationTitleText extends React.Component {
    */
   setId(newId) {
     this.setState({
-      id: `${newId}--header-title-text`,
+      id: `${newId}--application-title-text`,
     }, this.handleScreenWidth);
   }
 
@@ -265,7 +265,7 @@ class ApplicationTitleText extends React.Component {
   render() {
     /* Set the styling for the container element */
     let containerCss = 'background-transparent title-text-container';
-    if (this.props.parentHeaderId === undefined) {
+    if (this.props.headerId === undefined) {
       containerCss += ' common-component-width';
     }
     this.props.alignment === 'centre'
@@ -291,10 +291,10 @@ ApplicationTitleText.propTypes = {
   alignment: PropTypes.oneOf([ 'centre', 'left' ]),
   /** The content to be displayed as the title text. */
   children: PropTypes.string,
+  /** The unique identifier of the Header component in which this title text component is rendered. */
+  headerId: PropTypes.string,
   /** The unique identifier for this component. */
   id: PropTypes.string.isRequired,
-  /** The unique identifier of the Header component in which this title text component is rendered. */
-  parentHeaderId: PropTypes.string,
   /** The colour of the text to be displayed, either that of black with a white outline or white with a black outline. By default black with a while outline is pre-selected. */
   textColour: PropTypes.oneOf([ 'black', 'white' ]),
 };
