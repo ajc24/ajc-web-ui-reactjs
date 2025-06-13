@@ -1,8 +1,28 @@
 /**
  * Developed by Anthony Cox in 2025
  */
+.background-gold {
+  background-color: #FFBF00;
+}
+
+.background-green {
+  background-color: #006622;
+}
+
+.background-grey {
+  background-color: #4D4D4D;
+}
+
 .background-grey-body {
   background-color: #F6F6F6;
+}
+
+.background-navy {
+  background-color: #000066;
+}
+
+.background-red {
+  background-color: #800000;
 }
 
 .background-transparent {
@@ -34,6 +54,10 @@
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
   word-wrap: break-word;
+}
+
+.font-gold {
+  color: #FFBF00;
 }
 
 .font-white {
