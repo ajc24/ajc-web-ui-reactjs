@@ -1,0 +1,12 @@
+/**
+ * Developed by Anthony Cox in 2025
+ */
+a[id$="--menu-bar-item-hyperlink"][class*="background-gold"]:hover {
+  background-color: #FFDF80;
+}
+
+.menu-bar-common-transitions {
+  transition-duration: 0.25s;
+  transition-property: opacity;
+  transition-timing-function: ease-in-out;
+}

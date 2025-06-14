@@ -19,6 +19,7 @@ import FunctionalImage from './images/FunctionalImage';
 import InformativeImage from './images/InformativeImage';
 
 /* Menu Bar components */
+import MenuBarItem from './menu-bar/MenuBarItem';
 
 /* Text components */
 import ApplicationSubtitleText from './text/ApplicationSubtitleText';
@@ -40,6 +41,9 @@ export {
   DecorativeImage,
   FunctionalImage,
   InformativeImage,
+
+  /* Menu Bar components */
+  MenuBarItem,
 
   /* Text components */
   ApplicationSubtitleText,
