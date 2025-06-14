@@ -19,7 +19,7 @@ const config = {
     '../stories/header/HeaderTallLogo.stories.js',
 
     /* Menu Bar component stories */
-    // // "../stories/menu-bar/MenuItemLink.stories.js",
+    '../stories/menu-bar/MenuBarItem.stories.js',
     // "../stories/menu-bar/ScrollMenuItems.stories.js",
     
     // /* Icon component stories */
