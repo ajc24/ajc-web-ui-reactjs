@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import { getColourCombination } from '../data/colour-combinations';
 import '../css/common.css';
 import './css/menu-bar-common.css';
+import './css/menu-bar-dropdown-container.css';
 
 /**
  * 328px
@@ -31,15 +32,40 @@ class DropdownMenuBarContainer extends React.Component {
       top: 0,
     };
     this.getContainerDOMElement = this.getContainerDOMElement.bind(this);
+    this.handleOnClickClose = this.handleOnClickClose.bind(this);
+    this.setIsHidden = this.setIsHidden.bind(this);
+    this.setIsVisible = this.setIsVisible.bind(this);
     this.setPosition = this.setPosition.bind(this);
   }
 
   componentDidMount() {
     this.setPosition(this.props.top || 0, this.props.left || 0);
+  
+    /* Initialise all of the key parameters for this component */
+    if (this.props.isHidden !== undefined && this.props.isHidden !== this.state.isHidden) {
+      if (this.props.isHidden === false) {
+        /* Mark the component as visible */
+        this.setIsVisible();
+      } else if (this.props.isHidden === true) {
+        /* Mark the component as hidden */
+        this.setIsHidden();
+      }
+    } else {
+      /* By default - ensure the container is set to hidden */
+      this.setIsHidden();
+    }
   }
 
-  componentDidUpdate() {
-
+  componentDidUpdate(prevProps) {
+    if (prevProps.isHidden && prevProps.isHidden !== this.props.isHidden && this.props.isHidden !== this.state.isHidden) {
+      if (this.props.isHidden === false) {
+        /* Mark the component as visible */
+        this.setIsVisible();
+      } else if (this.props.isHidden === true) {
+        /* Mark the component as hidden */
+        this.setIsHidden();
+      }
+    }
   }
 
   /**
@@ -47,7 +73,44 @@ class DropdownMenuBarContainer extends React.Component {
    * @returns {HTMLElement}
    */
   getContainerDOMElement() {
-    return document.querySelector(`div[id="${this.props.id}--${this.props.backgroundColour}--dropdown-menu-bar-container"]`);
+    return document.querySelector(`div[id="${this.props.id}--${this.props.backgroundColour || 'white'}--dropdown-menu-bar-container"]`);
+  }
+
+  /**
+   * Handles click events on the dropdown menu bar containers close button
+   * @param {Event} event 
+   */
+  handleOnClickClose(event) {
+    event.preventDefault();
+    this.setIsHidden();
+  }
+
+  /**
+   * Sets the dropdown menu bar container as hidden in the UI 
+   */
+  setIsHidden() {
+    /* Ensure state is updated to reflect that the dropdown menu bar container is now hidden */
+    this.setState({ isHidden: true });
+
+    /* Get the container element from the DOM */
+    const containerElement = this.getContainerDOMElement();
+
+    /* Set the container elements opacity so that it is now hidden */
+    containerElement.style.visibility = 'hidden';
+  }
+
+  /**
+   * Sets the dropdown menu bar container as visible in the UI
+   */
+  setIsVisible() {
+    /* Ensure state is updated to reflect that the dropdown menu bar container is now visible */
+    this.setState({ isHidden: false });
+
+    /* Get the container element from the DOM */
+    const containerElement = this.getContainerDOMElement();
+
+    /* Set the container elements opacity so that it is now visible */
+    containerElement.style.visibility = 'visible';
   }
 
   /**
@@ -79,11 +142,23 @@ class DropdownMenuBarContainer extends React.Component {
     const { backgroundColour, fontColour } = getColourCombination(this.props.backgroundColour);
 
     /* Set the styling for the container element */
-    const containerCss = 'dropdown-menu-bar-container';
+    const containerCss = `dropdown-menu-bar-container`;
+
+    /* Set the styling for the top and bottom rows of the container */
+    const topRowCss = `dropdown-menu-bar-container-row-top background-${backgroundColour}`;
+    const topRowCloseButtonCss = `dropdown-menu-bar-container-row-top-close background-${backgroundColour} font-default font-${fontColour}`;
+    const bottomRowCss = `dropdown-menu-bar-container-row-bottom background-${backgroundColour}`;
 
     return (
-      <div aria-hidden={this.state.isHidden} className={containerCss} id={`${this.props.id}--${this.props.backgroundColour}--dropdown-menu-bar-container`}>
-        Text Content
+      <div aria-hidden={this.state.isHidden} className={containerCss} id={`${this.props.id}--${this.props.backgroundColour || 'white'}--dropdown-menu-bar-container`}>
+        <div className={topRowCss}>
+          <button aria-label="Close this dropdown menu." className={topRowCloseButtonCss}
+            id={`${this.props.id}--${this.props.backgroundColour || 'white'}--close--dropdown-menu-bar-container`} onClick={this.handleOnClickClose}
+            tabIndex={this.state.isHidden === true ? '-1' : '0'} title="Close this dropdown menu.">
+              &nbsp;&nbsp;&nbsp;&Chi;&nbsp;&nbsp;&nbsp;
+          </button>
+        </div>
+        <div className={bottomRowCss} />
       </div>
     );
   }
