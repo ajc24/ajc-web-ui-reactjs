@@ -21,6 +21,8 @@ import InformativeImage from './images/InformativeImage';
 /* Menu Bar components */
 import MenuBar from './menu-bar/MenuBar';
 import MenuBarItem from './menu-bar/MenuBarItem';
+import ScrollMenuBarItemsLeft from './menu-bar/ScrollMenuBarItemsLeft';
+import ScrollMenuBarItemsRight from './menu-bar/ScrollMenuBarItemsRight';
 
 /* Text components */
 import ApplicationSubtitleText from './text/ApplicationSubtitleText';
@@ -46,6 +48,8 @@ export {
   /* Menu Bar components */
   MenuBar,
   MenuBarItem,
+  ScrollMenuBarItemsLeft,
+  ScrollMenuBarItemsRight,
 
   /* Text components */
   ApplicationSubtitleText,
