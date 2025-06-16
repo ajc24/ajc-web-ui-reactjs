@@ -25,13 +25,12 @@ require("core-js/modules/es.array.concat.js");
 require("core-js/modules/es.function.bind.js");
 require("core-js/modules/es.object.proto.js");
 require("core-js/modules/es.object.set-prototype-of.js");
-require("core-js/modules/es.string.trim.js");
 var _react = _interopRequireDefault(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _colourCombinations = require("../data/colour-combinations");
 require("../css/common.css");
 require("./css/menu-bar-common.css");
-require("./css/menu-bar-item.css");
+require("./css/menu-bar-scroll-items.css");
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
 function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
@@ -47,42 +46,37 @@ function _inherits(t, e) { if ("function" != typeof e && null !== e) throw new T
 function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function (t, e) { return t.__proto__ = e, t; }, _setPrototypeOf(t, e); } /**
  * Developed by Anthony Cox in 2025
  */
-var maximumMenuItemLinkHeight = 45;
-
 /**
- * Menu Bar Item hyperlink component intended for use with the Menu Bar component. This component allows a user to click the menu item or
- * interact with the item via the keyboard (spacebar and enter key presses supported) and from there, will be redirected to another page
- * in the web application.
+ * Scroll Menu Bar Items Right button component intended for use with the Menu Bar component. This component allows a user to click to view the next set
+ * of menu bar items in the menu bar. This button is necessary in circumstances where there are too many menu bar items to comfortably fit within the width
+ * of the screen. Keyboard events are also supported with both the spacebar and enter key interactions acting as click events on the button.
  */
-var MenuBarItem = /*#__PURE__*/function (_React$Component) {
+var ScrollMenuBarItemsRight = /*#__PURE__*/function (_React$Component) {
   /**
-   * Initialise the Menu Bar Item component
+   * Initialise the Scroll Menu Bar Items Right component
    * @param {any} props 
    */
-  function MenuBarItem(props) {
+  function ScrollMenuBarItemsRight(props) {
     var _this;
-    _classCallCheck(this, MenuBarItem);
-    _this = _callSuper(this, MenuBarItem, [props]);
+    _classCallCheck(this, ScrollMenuBarItemsRight);
+    _this = _callSuper(this, ScrollMenuBarItemsRight, [props]);
     _this.state = {
       isHidden: true
     };
     _this.getContainerDOMElement = _this.getContainerDOMElement.bind(_this);
-    _this.getSpanDOMElement = _this.getSpanDOMElement.bind(_this);
     _this.handleOnClick = _this.handleOnClick.bind(_this);
     _this.handleOnKeyDown = _this.handleOnKeyDown.bind(_this);
-    _this.handleTextContentHeight = _this.handleTextContentHeight.bind(_this);
     _this.setIsHidden = _this.setIsHidden.bind(_this);
     _this.setIsVisible = _this.setIsVisible.bind(_this);
     return _this;
   }
-  _inherits(MenuBarItem, _React$Component);
-  return _createClass(MenuBarItem, [{
+  _inherits(ScrollMenuBarItemsRight, _React$Component);
+  return _createClass(ScrollMenuBarItemsRight, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       /* Initialise all of the key parameters for this component */
       if (this.state.isHidden === false) {
         this.setIsVisible();
-        this.handleTextContentHeight();
       } else if (this.state.isHidden === true) {
         this.setIsHidden();
       }
@@ -94,7 +88,6 @@ var MenuBarItem = /*#__PURE__*/function (_React$Component) {
         if (this.props.isHidden === false) {
           /* Mark the component as visible */
           this.setIsVisible();
-          this.handleTextContentHeight();
         } else if (this.props.isHidden === true) {
           /* Mark the component as hidden */
           this.setIsHidden();
@@ -103,27 +96,18 @@ var MenuBarItem = /*#__PURE__*/function (_React$Component) {
     }
 
     /**
-     * Retrieves the menu bar items container element from the DOM
+     * Retrieves the scroll menu bar items right container element from the DOM
      * @returns {HTMLElement}
      */
   }, {
     key: "getContainerDOMElement",
     value: function getContainerDOMElement() {
-      return document.querySelector("div[id=\"".concat(this.props.id, "--menu-bar-item\"]"));
+      return document.querySelector("div[id=\"".concat(this.props.id, "--container--scroll-menu-bar-items-right\"]"));
     }
 
     /**
-     * Retrieves the links span element from the DOM
-     * @returns {HTMLElement}
-     */
-  }, {
-    key: "getSpanDOMElement",
-    value: function getSpanDOMElement() {
-      return document.querySelector("div[id=\"".concat(this.props.id, "--menu-bar-item\"] > a > span"));
-    }
-
-    /**
-     * Ensures onclick events are disabled when the element is marked as hidden
+     * Ensures onclick events are disabled when the element is marked as hidden, otherwise
+     * the provided onClick function property is executed
      * @param {event} event
      */
   }, {
@@ -131,54 +115,32 @@ var MenuBarItem = /*#__PURE__*/function (_React$Component) {
     value: function handleOnClick(event) {
       if (this.state.isHidden === true) {
         event.preventDefault();
+      } else {
+        /* Execute the provided onClick functionality */
+        this.props.onClick();
       }
     }
 
     /**
-     * Handle key down events on the hyperlink
+     * Handle key down events on the button
      * @param {Event} event 
      */
   }, {
     key: "handleOnKeyDown",
     value: function handleOnKeyDown(event) {
       if (event.key === ' ') {
-        /* Ensure that a spacebar key press also correctly redirects the user to the specified URL */
+        /* Ensure that a spacebar key press also correctly fires a click event on the button */
         event.target.click();
       }
     }
 
     /**
-     * Handles the height of the menu item link text content. The height of the text content
-     * should not exceed the height of the item container itself.
-     */
-  }, {
-    key: "handleTextContentHeight",
-    value: function handleTextContentHeight() {
-      /* Retrieve the span element from the DOM and determine its height and text content */
-      var spanElement = this.getSpanDOMElement();
-      var spanHeight = spanElement.getBoundingClientRect().height;
-      var spanTextContent = spanElement.textContent;
-      while (spanTextContent.length > 0 && spanHeight > maximumMenuItemLinkHeight) {
-        /* Remove the last character in the string and add three dots to the string end to suggest truncation has occurred */
-        spanTextContent = "".concat(spanTextContent.substring(0, spanTextContent.length - 1).trim(), "...");
-
-        /* Set the new text content string and determine the new height of the element */
-        spanElement.textContent = spanTextContent;
-        spanHeight = spanElement.getBoundingClientRect().height;
-        if (spanHeight > maximumMenuItemLinkHeight) {
-          /* Remove the obsolete three dots at the end of the string for the next iteration of the loop */
-          spanTextContent = spanTextContent.substring(0, spanTextContent.length - 3).trim();
-        }
-      }
-    }
-
-    /**
-     * Sets the menu bar item as hidden in the UI 
+     * Sets the scroll menu bar items right button as hidden in the UI 
      */
   }, {
     key: "setIsHidden",
     value: function setIsHidden() {
-      /* Ensure state is updated to reflect that the menu bar item is now hidden */
+      /* Ensure state is updated to reflect that the button is now hidden */
       this.setState({
         isHidden: true
       });
@@ -191,12 +153,12 @@ var MenuBarItem = /*#__PURE__*/function (_React$Component) {
     }
 
     /**
-     * Sets the menu bar item as visible in the UI
+     * Sets the scroll menu bar items right button as visible in the UI
      */
   }, {
     key: "setIsVisible",
     value: function setIsVisible() {
-      /* Ensure state is updated to reflect that the menu bar item is now visible */
+      /* Ensure state is updated to reflect that the button is now visible */
       this.setState({
         isHidden: false
       });
@@ -215,48 +177,35 @@ var MenuBarItem = /*#__PURE__*/function (_React$Component) {
         backgroundColour = _getColourCombination.backgroundColour,
         fontColour = _getColourCombination.fontColour;
 
-      /* Set the styling for the menu bar item container element */
-      var containerCss = 'menu-bar-item-container background-transparent menu-bar-common-transitions';
-      if (this.props.addRightSideSpacing === true) {
-        containerCss += ' menu-bar-item-container-right-side-spacing';
-      }
-      /* Set the styling for the internal hyperlink element */
-      var hyperlinkCss = "menu-bar-item-hyperlink background-".concat(backgroundColour, " font-default font-").concat(fontColour);
+      /* Set the styling for the scroll menu bar items right container element */
+      var containerCss = 'scroll-menu-bar-items-container background-transparent menu-bar-common-transitions scroll-menu-bar-items-container-left-side-spacing';
 
-      /* Set the styling for the hyperlinks internal text content */
-      var hyperlinkInnerContentCss = 'menu-bar-item-inner-content';
+      /* Set the styling for the button element */
+      var buttonCss = "scroll-menu-items-button background-".concat(backgroundColour, " font-default font-").concat(fontColour);
       return /*#__PURE__*/_react["default"].createElement("div", {
         className: containerCss,
-        id: "".concat(this.props.id, "--menu-bar-item")
-      }, /*#__PURE__*/_react["default"].createElement("a", {
+        id: "".concat(this.props.id, "--container--scroll-menu-bar-items-right")
+      }, /*#__PURE__*/_react["default"].createElement("button", {
         "aria-hidden": "".concat(this.state.isHidden),
-        "aria-label": this.props.children,
-        className: hyperlinkCss,
-        href: "".concat(this.props.href),
-        id: "".concat(this.props.id, "--menu-bar-item-hyperlink"),
+        "aria-label": "Scroll the list of menu bar items to the right.",
+        className: buttonCss,
+        id: "".concat(this.props.id, "--scroll-menu-bar-items-right"),
         onClick: this.handleOnClick,
         onKeyDown: this.handleOnKeyDown,
-        role: "link",
         tabIndex: this.state.isHidden === true ? '-1' : '0',
-        title: this.props.children
-      }, /*#__PURE__*/_react["default"].createElement("span", {
-        className: hyperlinkInnerContentCss
-      }, this.props.children)));
+        type: "button"
+      }, "Next", /*#__PURE__*/_react["default"].createElement("br", null), "\u2192"));
     }
   }]);
 }(_react["default"].Component);
-MenuBarItem.propTypes = {
-  /** Optional right side spacing (margin) of 8px to be used when separating multiple menu bar item components. By default this spacing is disabled. */
-  addRightSideSpacing: _propTypes["default"].bool,
-  /** The background colour for the menu bar item. The default colour for the background is white. */
+ScrollMenuBarItemsRight.propTypes = {
+  /** The background colour for the scroll menu bar items right button. The default colour for the background is white. */
   backgroundColour: _propTypes["default"].oneOf(['gold', 'green', 'grey', 'navy-and-gold', 'navy-and-white', 'red', 'white']),
-  /** The menu bar items text content. */
-  children: _propTypes["default"].string,
-  /** The URL to which the user will be redirected to after clicking on the menu bar item. */
-  href: _propTypes["default"].string.isRequired,
   /** The unique identifier for this component. */
   id: _propTypes["default"].string.isRequired,
-  /** Sets whether the menu bar item is visible or hidden. Is set to hidden by default until specified otherwise. */
-  isHidden: _propTypes["default"].bool
+  /** Sets whether the scroll menu bar items right button is visible or hidden. Is set to hidden by default until specified otherwise. */
+  isHidden: _propTypes["default"].bool,
+  /** The custom functionality to be executed on clicking the button. */
+  onClick: _propTypes["default"].func.isRequired
 };
-var _default = exports["default"] = MenuBarItem;
+var _default = exports["default"] = ScrollMenuBarItemsRight;
