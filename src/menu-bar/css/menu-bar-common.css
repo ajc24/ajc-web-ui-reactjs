@@ -5,6 +5,29 @@ a[id$="--menu-bar-item-hyperlink"][class*="background-gold"]:hover {
   background-color: #FFDF80;
 }
 
+a[id$="--menu-bar-item-hyperlink"][class*="background-green"]:hover {
+  background-color: #00B33C;
+  color: #000000;
+}
+
+a[id$="--menu-bar-item-hyperlink"][class*="background-grey"]:hover {
+  background-color: #999999;
+  color: #000000;
+}
+
+a[id$="--menu-bar-item-hyperlink"][class*="background-navy"]:hover {
+  background-color: #0000B3;
+}
+
+a[id$="--menu-bar-item-hyperlink"][class*="background-red"]:hover {
+  background-color: #FF6666;
+  color: #000000;
+}
+
+a[id$="--menu-bar-item-hyperlink"][class*="background-white"]:hover {
+  background-color: #E6E6E6;
+}
+
 .menu-bar-common-transitions {
   transition-duration: 0.25s;
   transition-property: opacity;

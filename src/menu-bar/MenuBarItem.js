@@ -8,7 +8,21 @@ import '../css/common.css';
 import './css/menu-bar-common.css';
 import './css/menu-bar-item.css';
 
-// const maximumMenuItemLinkHeight = 50;
+const maximumMenuItemLinkHeight = 45;
+
+// On a mobile phone screen -> 328px to play with
+// Menu items are 100px wide x 2 of them -> 128px remains
+// Scroll buttons are 55px wide x 2 of them -> 10px remains
+
+// Padding between menu bar items x 1 -> 10px remains (8px spacing between menu bar items)
+
+// Padding remaining for scroll buttons -> 5px each side
+
+// x + 8 + 100 + 8 + 100 + 8 + x
+// 2x + 224 = 328
+// 2x = 328 - 224
+// 2x = 104
+// x = 52 (Scroll Menu Bars)
 
 /**
  * Menu Bar Item hyperlink component intended for use with the Menu Bar component. This component allows a user to click the menu item or
@@ -24,17 +38,11 @@ class MenuBarItem extends React.Component {
     super(props);
     this.state = {
       isHidden: true,
-//       containerId: undefined,
-//       href: undefined,
-//       id: undefined,
-//       isDisabled: true,
     };
     this.getContainerDOMElement = this.getContainerDOMElement.bind(this);
-    // this.getHyperlinkDOMElement = this.getHyperlinkDOMElement.bind(this);
-//     this.getSpanDOMElement = this.getSpanDOMElement.bind(this);
-//     this.handleOnKeyDown = this.handleOnKeyDown.bind(this);
-//     this.handleTextContentHeight = this.handleTextContentHeight.bind(this);
-//     this.initialise = this.initialise.bind(this);
+    this.getSpanDOMElement = this.getSpanDOMElement.bind(this);
+    this.handleOnKeyDown = this.handleOnKeyDown.bind(this);
+    this.handleTextContentHeight = this.handleTextContentHeight.bind(this);
     this.onClick = this.onClick.bind(this);
     this.setIsHidden = this.setIsHidden.bind(this);
     this.setIsVisible = this.setIsVisible.bind(this);
@@ -44,16 +52,10 @@ class MenuBarItem extends React.Component {
     /* Initialise all of the key parameters for this component */
     if (this.state.isHidden === false) {
       this.setIsVisible();
+      this.handleTextContentHeight();
     } else if (this.state.isHidden === true) {
       this.setIsHidden();
     }
-    
-//     const initId = this.props.id;
-//     const initHref = this.props.href;
-//     this.initialise(initId, initHref);
-
-//     /* Auto handle whether all of the text content for the menu item can be rendered within its container */
-//     this.handleTextContentHeight();
   }
 
   componentDidUpdate() {
@@ -61,6 +63,7 @@ class MenuBarItem extends React.Component {
       if (this.props.isHidden === false) {
         /* Mark the component as visible */
         this.setIsVisible();
+        this.handleTextContentHeight();
       } else if (this.props.isHidden === true) {
         /* Mark the component as hidden */
         this.setIsHidden();
@@ -77,71 +80,51 @@ class MenuBarItem extends React.Component {
   }
 
   /**
-   * Retrieves the link element from the DOM
+   * Retrieves the links span element from the DOM
    * @returns {HTMLElement}
    */
-  // getHyperlinkDOMElement() {
-  //   return document.querySelector(`a[id="${this.props.id}--menu-bar-item-hyperlink"]`);
-  // }
+  getSpanDOMElement() {
+    return document.querySelector(`div[id="${this.props.id}--menu-bar-item"] > a > span`);
+  }
 
-//   /**
-//    * Retrieves the links span element from the DOM
-//    * @returns {HTMLElement}
-//    */
-//   getSpanDOMElement() {
-//     return document.querySelector(`a[id="${this.state.id}"] > span`);
-//   }
+  /**
+   * Handle key down events on the hyperlink
+   * @param {Event} event 
+   */
+  handleOnKeyDown(event) {
+    if (event.key === ' ') {
+      /* Ensure that a spacebar key press also correctly redirects the user to the specified URL */
+      event.target.click();
+    }
+  }
 
-//   /**
-//    * Handle key down events on the hyperlink
-//    * @param {Event} event 
-//    */
-//   handleOnKeyDown(event) {
-//     if (event.key === ' ') {
-//       /* Ensure that a spacebar key press also correctly redirects the user to the specified URL */
-//       event.target.click();
-//     }
-//   }
+  /**
+   * Handles the height of the menu item link text content. The height of the text content
+   * should not exceed the height of the item container itself.
+   */
+  handleTextContentHeight() {
+    /* Retrieve the span element from the DOM and determine its height and text content */
+    const spanElement = this.getSpanDOMElement();
+    let spanHeight = spanElement.getBoundingClientRect().height;
+    let spanTextContent = spanElement.textContent;
+    while (spanTextContent.length > 0 && spanHeight > maximumMenuItemLinkHeight) {
+      /* Remove the last character in the string and add three dots to the string end to suggest truncation has occurred */
+      spanTextContent = `${spanTextContent.substring(0, spanTextContent.length - 1).trim()}...`;
 
-//   /**
-//    * Handles the height of the menu item link text content. The height of the text content
-//    * should not exceed the height of the item container itself.
-//    */
-//   handleTextContentHeight() {
-//     if (this.state.isDisabled === false) {
-//       /* Retrieve the span element from the DOM and determine its height and text content */
-//       const spanElement = this.getSpanDOMElement();
-//       let spanHeight = spanElement.getBoundingClientRect().height;
-//       let spanTextContent = spanElement.textContent;
-//       while (spanTextContent.length > 0 && spanHeight > maximumMenuItemLinkHeight) {
-//         /* Remove the last character in the string and add three dots to the string end to suggest truncation has occurred */
-//         spanTextContent = `${spanTextContent.substring(0, spanTextContent.length - 1).trim()}...`;
+      /* Set the new text content string and determine the new height of the element */
+      spanElement.textContent = spanTextContent;
+      spanHeight = spanElement.getBoundingClientRect().height;
+      if (spanHeight > maximumMenuItemLinkHeight) {
+        /* Remove the obsolete three dots at the end of the string for the next iteration of the loop */
+        spanTextContent = spanTextContent.substring(0, spanTextContent.length - 3).trim();
+      }
+    }
+  }
 
-//         /* Set the new text content string and determine the new height of the element */
-//         spanElement.textContent = spanTextContent;
-//         spanHeight = spanElement.getBoundingClientRect().height;
-//         if (spanHeight > maximumMenuItemLinkHeight) {
-//           /* Remove the obsolete three dots at the end of the string for the next iteration of the loop */
-//           spanTextContent = spanTextContent.substring(0, spanTextContent.length - 3).trim();
-//         }
-//       }
-//     }
-//   }
-
-//   /**
-//    * Initialises this component with all relevant state values
-//    * @param {string} initId
-//    * @param {string} initHref
-//    */
-//   initialise(initId = 'default', initHref = '#') {
-//     const initContainerId = `${initId}--menu-item-link-container`;
-//     this.setState({
-//       containerId: initContainerId,
-//       id: `${initId}--menu-item-link`,
-//       href: initHref,
-//     });
-//   }
-
+  /**
+   * Ensures onclick events are disabled when the element is marked as hidden
+   * @param {event} event
+   */
   onClick(event) {
     if (this.state.isHidden === true) {
       event.preventDefault();
@@ -201,16 +184,11 @@ class MenuBarItem extends React.Component {
 
     return (
       <div aria-hidden={`${this.state.isHidden}`} className={containerCss} id={`${this.props.id}--menu-bar-item`}>
-        <a className={hyperlinkCss} href={`${this.props.href}`} id={`${this.props.id}--menu-bar-item-hyperlink`} onClick={this.onClick} role="link">
-          <span className={hyperlinkInnerContentCss}>Test Text</span>
+        <a aria-label={this.props.children} className={hyperlinkCss} href={`${this.props.href}`} id={`${this.props.id}--menu-bar-item-hyperlink`} onClick={this.onClick}
+          onKeyDown={this.handleOnKeyDown} role="link" tabIndex={this.state.isHidden === true ? '-1' : '0'} title={this.props.children}>
+            <span className={hyperlinkInnerContentCss}>{this.props.children}</span>
         </a>
       </div>
-//       <div aria-hidden={`${this.state.isDisabled}`} className={containerCss} id={`${this.state.containerId}`}>
-//         <a aria-label={this.props.children} className={linkCss} href={`${this.state.href}`} id={`${this.state.id}`} onKeyDown={this.handleOnKeyDown} role="link"
-//           tabIndex={this.state.isDisabled === true ? '-1' : '0'}>
-//             <span>{this.props.children}</span>
-//         </a>
-//       </div>
     );
   }
 }
@@ -229,17 +207,3 @@ MenuBarItem.propTypes = {
   isHidden: PropTypes.bool,
 };
 export default MenuBarItem;
-
-// On a mobile phone screen -> 328px to play with
-// Menu items are 100px wide x 2 of them -> 128px remains
-// Scroll buttons are 55px wide x 2 of them -> 10px remains
-
-// Padding between menu bar items x 1 -> 10px remains (8px spacing between menu bar items)
-
-// Padding remaining for scroll buttons -> 5px each side
-
-// x + 8 + 100 + 8 + 100 + 8 + x
-// 2x + 224 = 328
-// 2x = 328 - 224
-// 2x = 104
-// x = 52 (Scroll Menu Bars)
