@@ -1,10 +1,6 @@
 /**
  * Developed by Anthony Cox in 2025
  */
-
-/**
- * @type { import('@storybook/react-webpack5').StorybookConfig }
- */
 const config = {
   stories: [
     /* Base component stories */
@@ -20,11 +16,9 @@ const config = {
 
     /* Menu Bar component stories */
     '../stories/menu-bar/MenuBarItem.stories.js',
-    // "../stories/menu-bar/ScrollMenuItems.stories.js",
+    '../stories/menu-bar/ScrollMenuBarItemsLeft.stories.js',
+    '../stories/menu-bar/ScrollMenuBarItemsRight.stories.js',
     
-    // /* Icon component stories */
-    // "../stories/icons/ArrowIcon.stories.js",
-
     /* Image component stories */
     '../stories/images/DecorativeImage.stories.js',
     '../stories/images/FunctionalImage.stories.js',
