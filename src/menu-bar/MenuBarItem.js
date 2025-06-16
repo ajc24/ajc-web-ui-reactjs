@@ -27,9 +27,9 @@ class MenuBarItem extends React.Component {
     };
     this.getContainerDOMElement = this.getContainerDOMElement.bind(this);
     this.getSpanDOMElement = this.getSpanDOMElement.bind(this);
+    this.handleOnClick = this.handleOnClick.bind(this);
     this.handleOnKeyDown = this.handleOnKeyDown.bind(this);
     this.handleTextContentHeight = this.handleTextContentHeight.bind(this);
-    this.onClick = this.onClick.bind(this);
     this.setIsHidden = this.setIsHidden.bind(this);
     this.setIsVisible = this.setIsVisible.bind(this);
   }
@@ -74,6 +74,16 @@ class MenuBarItem extends React.Component {
   }
 
   /**
+   * Ensures onclick events are disabled when the element is marked as hidden
+   * @param {event} event
+   */
+  handleOnClick(event) {
+    if (this.state.isHidden === true) {
+      event.preventDefault();
+    }
+  }
+
+  /**
    * Handle key down events on the hyperlink
    * @param {Event} event 
    */
@@ -108,16 +118,6 @@ class MenuBarItem extends React.Component {
   }
 
   /**
-   * Ensures onclick events are disabled when the element is marked as hidden
-   * @param {event} event
-   */
-  onClick(event) {
-    if (this.state.isHidden === true) {
-      event.preventDefault();
-    }
-  }
-
-  /**
    * Sets the menu bar item as hidden in the UI 
    */
   setIsHidden() {
@@ -127,7 +127,7 @@ class MenuBarItem extends React.Component {
     /* Get the container element from the DOM */
     const containerElement = this.getContainerDOMElement();
 
-    /* Add the hidden class from the container element and then set its opacity so that it is now hidden */
+    /* Set the container elements opacity so that it is now hidden */
     containerElement.style.opacity = 0;
   }
 
@@ -141,7 +141,7 @@ class MenuBarItem extends React.Component {
     /* Get the container element from the DOM */
     const containerElement = this.getContainerDOMElement();
 
-    /* Remove the hidden class from the container element and then set its opacity so that it is now visible */
+    /* Set the container elements opacity so that it is now visible */
     containerElement.style.opacity = 1;
   }
 
@@ -149,7 +149,7 @@ class MenuBarItem extends React.Component {
     /* Determine the background colour and font colour for the component - setting white background colour with black font text colour as the default */
     const { backgroundColour, fontColour } = getColourCombination(this.props.backgroundColour);
 
-    /* Set the styling for the menu item link container element */
+    /* Set the styling for the menu bar item container element */
     let containerCss = 'menu-bar-item-container background-transparent menu-bar-common-transitions';
     if (this.props.addRightSideSpacing === true) {
       containerCss += ' menu-bar-item-container-right-side-spacing';
@@ -161,9 +161,10 @@ class MenuBarItem extends React.Component {
     const hyperlinkInnerContentCss = 'menu-bar-item-inner-content';
 
     return (
-      <div aria-hidden={`${this.state.isHidden}`} className={containerCss} id={`${this.props.id}--menu-bar-item`}>
-        <a aria-label={this.props.children} className={hyperlinkCss} href={`${this.props.href}`} id={`${this.props.id}--menu-bar-item-hyperlink`} onClick={this.onClick}
-          onKeyDown={this.handleOnKeyDown} role="link" tabIndex={this.state.isHidden === true ? '-1' : '0'} title={this.props.children}>
+      <div className={containerCss} id={`${this.props.id}--menu-bar-item`}>
+        <a aria-hidden={`${this.state.isHidden}`} aria-label={this.props.children} className={hyperlinkCss} href={`${this.props.href}`} 
+          id={`${this.props.id}--menu-bar-item-hyperlink`} onClick={this.handleOnClick} onKeyDown={this.handleOnKeyDown} role="link"
+          tabIndex={this.state.isHidden === true ? '-1' : '0'} title={this.props.children}>
             <span className={hyperlinkInnerContentCss}>{this.props.children}</span>
         </a>
       </div>
