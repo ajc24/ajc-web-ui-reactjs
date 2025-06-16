@@ -25,6 +25,41 @@ const menuBarItemsList = [
     href: '#',
     id: 'menu-bar-item-3',
     title: 'Item 3',
+  },
+  {
+    href: '#',
+    id: 'menu-bar-item-4',
+    title: 'Item 4',
+  },
+  {
+    href: '#',
+    id: 'menu-bar-item-5',
+    title: 'Item 5',
+  },
+  {
+    href: '#',
+    id: 'menu-bar-item-6',
+    title: 'Item 6',
+  },
+  {
+    href: '#',
+    id: 'menu-bar-item-7',
+    title: 'Item 7',
+  },
+  {
+    href: '#',
+    id: 'menu-bar-item-8',
+    title: 'Item 8',
+  },
+  {
+    href: '#',
+    id: 'menu-bar-item-9',
+    title: 'Item 9',
+  },
+  {
+    href: '#',
+    id: 'menu-bar-item-10',
+    title: 'Item 10',
   }
 ];
 
