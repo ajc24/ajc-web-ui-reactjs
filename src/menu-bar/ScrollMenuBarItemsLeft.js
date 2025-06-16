@@ -127,7 +127,7 @@ class ScrollMenuBarItemsLeft extends React.Component {
         <button aria-hidden={`${this.state.isHidden}`} aria-label="Scroll the list of menu bar items to the left." className={buttonCss}
           id={`${this.props.id}--scroll-menu-bar-items-left`} onClick={this.handleOnClick} onKeyDown={this.handleOnKeyDown}
           tabIndex={this.state.isHidden === true ? '-1' : '0'} type="button">
-            Prev&nbsp;&larr;
+            Prev<br />&larr;
         </button>
       </div>
     );

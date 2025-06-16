@@ -127,7 +127,7 @@ class ScrollMenuBarItemsRight extends React.Component {
         <button aria-hidden={`${this.state.isHidden}`} aria-label="Scroll the list of menu bar items to the right." className={buttonCss}
           id={`${this.props.id}--scroll-menu-bar-items-right`} onClick={this.handleOnClick} onKeyDown={this.handleOnKeyDown}
           tabIndex={this.state.isHidden === true ? '-1' : '0'} type="button">
-            Next&nbsp;&rarr;
+            Next<br />&rarr;
         </button>
       </div>
     );
