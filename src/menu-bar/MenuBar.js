@@ -60,7 +60,7 @@ class MenuBar extends React.Component {
    * @returns {HTMLElement}
    */
   getCentralContentElement() {
-    return document.querySelector(`div[id="${this.props.id}--central-content--menu-bar"]`);
+    return document.querySelector(`div[id="${this.props.id}--central-content--${this.props.backgroundColour}--menu-bar"]`);
   }
 
   /**
@@ -147,8 +147,7 @@ class MenuBar extends React.Component {
     const centralContentElement = this.getCentralContentElement();
     if (centralContentElement !== null) {
       let centralContentWidth = centralContentElement.getBoundingClientRect().width;
-      console.log(centralContentWidth);
-    
+
       /* Reset the current index and determine how many elements will fit within the width of the element */
       const newIndex = 0;
       let newMaxIndex = 0;
@@ -157,10 +156,8 @@ class MenuBar extends React.Component {
         newMaxIndex += 1;
         centralContentWidth -= menuBarItemWidth;
       }
-      console.log(newMaxIndex);
       /* Now account for all of the other menu bar item widths which will include margins */
       const remainder = parseInt(centralContentWidth / menuBarItemWidthWithMargin, 10);
-      console.log(remainder);
       newMaxIndex += remainder;
 
       /* Set these indexes in state */
@@ -213,10 +210,10 @@ class MenuBar extends React.Component {
     const centralContentCss = 'menu-bar-central-content';
 
     return (
-      <BaseMenuBar backgroundColour={this.props.backgroundColour} id={`${this.props.id}--menu-bar`}>
+      <BaseMenuBar backgroundColour={this.props.backgroundColour} id={`${this.props.id}--${this.props.backgroundColour}--menu-bar`}>
         <ScrollMenuBarItemsLeft backgroundColour={this.props.backgroundColour} id={this.props.id} isHidden={this.state.scrollMenuBarItemsLeftHidden}
           onClick={this.handleOnClickScrollMenuBarItemsLeft}/>
-        <div id={`${this.props.id}--central-content--menu-bar`} className={centralContentCss}>
+        <div id={`${this.props.id}--central-content--${this.props.backgroundColour}--menu-bar`} className={centralContentCss}>
           {
             this.props.menuBarItemsList.map((menuBarItemData, index) => {
               if (index >= this.state.index && index < (this.state.index + this.state.maxIndex)) {
