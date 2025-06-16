@@ -10,20 +10,6 @@ import './css/menu-bar-item.css';
 
 const maximumMenuItemLinkHeight = 45;
 
-// On a mobile phone screen -> 328px to play with
-// Menu items are 100px wide x 2 of them -> 128px remains
-// Scroll buttons are 55px wide x 2 of them -> 10px remains
-
-// Padding between menu bar items x 1 -> 10px remains (8px spacing between menu bar items)
-
-// Padding remaining for scroll buttons -> 5px each side
-
-// x + 8 + 100 + 8 + 100 + 8 + x
-// 2x + 224 = 328
-// 2x = 328 - 224
-// 2x = 104
-// x = 52 (Scroll Menu Bars)
-
 /**
  * Menu Bar Item hyperlink component intended for use with the Menu Bar component. This component allows a user to click the menu item or
  * interact with the item via the keyboard (spacebar and enter key presses supported) and from there, will be redirected to another page
@@ -143,10 +129,6 @@ class MenuBarItem extends React.Component {
 
     /* Add the hidden class from the container element and then set its opacity so that it is now hidden */
     containerElement.style.opacity = 0;
-    setTimeout(() => {
-      /* Execute this after 250ms to give the opacity transition animation time to complete */
-      containerElement.classList.add('hidden');
-    }, 250);
   }
 
   /**
@@ -161,10 +143,6 @@ class MenuBarItem extends React.Component {
 
     /* Remove the hidden class from the container element and then set its opacity so that it is now visible */
     containerElement.style.opacity = 1;
-    setTimeout(() => {
-      /* Execute this after 250ms to give the opacity transition animation time to complete */
-      containerElement.classList.add('hidden');
-    }, 250);
   }
 
   render() {
