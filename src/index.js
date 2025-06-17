@@ -19,6 +19,7 @@ import FunctionalImage from './images/FunctionalImage';
 import InformativeImage from './images/InformativeImage';
 
 /* Menu Bar components */
+import DropdownMenuBarButton from './menu-bar/DropdownMenuBarButton';
 import DropdownMenuBarContainer from './menu-bar/DropdownMenuBarContainer';
 import MenuBar from './menu-bar/MenuBar';
 import MenuBarItem from './menu-bar/MenuBarItem';
@@ -47,6 +48,7 @@ export {
   InformativeImage,
 
   /* Menu Bar components */
+  DropdownMenuBarButton,
   DropdownMenuBarContainer,
   MenuBar,
   MenuBarItem,
