@@ -33,7 +33,7 @@ const dropdownMenuBarItemsList = [
   {
     href: '#',
     id: 'menu-bar-item-5',
-    title: 'Open Item 5',
+    title: 'Item 5 With Truncated Text Content Since It Is Really Long',
   }
 ];
 
@@ -46,7 +46,7 @@ const Template_DropdownMenuBarContainer = args => {
   return <DropdownMenuBarContainer {...args} />;
 }
 
-export const Default = {
+export const DefaultWhite = {
   args: {
     dropdownMenuBarItemsList: dropdownMenuBarItemsList,
     id: 'default',
@@ -125,6 +125,37 @@ export const WithRedBackground = {
     isHidden: false,
     left: 10,
     top: 10,
+  },
+  render: Template_DropdownMenuBarContainer,
+};
+
+export const withAutoFocus = {
+  args: {
+    backgroundColour: 'navy-and-gold',
+    dropdownMenuBarItemsList: dropdownMenuBarItemsList,
+    enableAutoFocus: true,
+    id: 'with-autofocus-enabled',
+    isHidden: false,
+    left: 10,
+    top: 10,
+  },
+  render: Template_DropdownMenuBarContainer,
+};
+
+export const MobilePhoneTest = {
+  args: {
+    backgroundColour: 'green',
+    dropdownMenuBarItemsList: dropdownMenuBarItemsList,
+    id: 'mobile-phone-test',
+    isHidden: false,
+    left: 16,
+    top: 10,
+  },
+  globals: {
+    viewport: {
+      isRotated: false,
+      value: 'galaxys9',
+    },
   },
   render: Template_DropdownMenuBarContainer,
 };
