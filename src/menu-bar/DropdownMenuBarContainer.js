@@ -31,6 +31,7 @@ class DropdownMenuBarContainer extends React.Component {
       left: 0,
       top: 0,
     };
+    this.getCloseButtonDOMElement = this.getCloseButtonDOMElement.bind(this);
     this.getContainerDOMElement = this.getContainerDOMElement.bind(this);
     this.handleOnClickClose = this.handleOnClickClose.bind(this);
     this.setIsHidden = this.setIsHidden.bind(this);
@@ -66,6 +67,14 @@ class DropdownMenuBarContainer extends React.Component {
         this.setIsHidden();
       }
     }
+  }
+
+  /**
+   * Retrieves the close button for the dropdown menu bar container element from the DOM
+   * @returns {HTMLElement}
+   */
+  getCloseButtonDOMElement() {
+    return document.querySelector(`button[id="${this.props.id}--${this.props.backgroundColour || 'white'}--close--dropdown-menu-bar-container"]`);
   }
 
   /**
@@ -111,6 +120,10 @@ class DropdownMenuBarContainer extends React.Component {
 
     /* Set the container elements opacity so that it is now visible */
     containerElement.style.visibility = 'visible';
+
+    /* Auto focus on the close button of the container element */
+    // const closeButtonElement = this.getCloseButtonDOMElement();
+    // closeButtonElement.focus();
   }
 
   /**
@@ -142,12 +155,16 @@ class DropdownMenuBarContainer extends React.Component {
     const { backgroundColour, fontColour } = getColourCombination(this.props.backgroundColour);
 
     /* Set the styling for the container element */
-    const containerCss = `dropdown-menu-bar-container`;
+    const containerCss = `dropdown-menu-bar-container background-${backgroundColour}`;
 
     /* Set the styling for the top and bottom rows of the container */
     const topRowCss = `dropdown-menu-bar-container-row-top background-${backgroundColour}`;
     const topRowCloseButtonCss = `dropdown-menu-bar-container-row-top-close background-${backgroundColour} font-default font-${fontColour}`;
     const bottomRowCss = `dropdown-menu-bar-container-row-bottom background-${backgroundColour}`;
+
+    /* Set the styling for the rows of hyperlinks to be rendered in the container */
+    const hyperlinkContainerCss = 'dropdown-menu-bar-container-row-hyperlink-container';
+    const hyperlinkCss = `dropdown-menu-bar-container-row-hyperlink background-${backgroundColour} font-default font-${fontColour}`;
 
     return (
       <div aria-hidden={this.state.isHidden} className={containerCss} id={`${this.props.id}--${this.props.backgroundColour || 'white'}--dropdown-menu-bar-container`}>
@@ -158,6 +175,17 @@ class DropdownMenuBarContainer extends React.Component {
               &nbsp;&nbsp;&nbsp;&Chi;&nbsp;&nbsp;&nbsp;
           </button>
         </div>
+        <div className={hyperlinkContainerCss}>
+          {
+            this.props.dropdownMenuBarItemsList.map((dropdownMenuBarItemData, index) => {
+              return <a aria-label={`${dropdownMenuBarItemData.title}`} className={hyperlinkCss} href={dropdownMenuBarItemData.href}
+                id={`${index}--${dropdownMenuBarItemData.id}--dropdown-menu-bar-container-item`} key={`${index}--${dropdownMenuBarItemData.id}--dropdown-menu-bar-container-item`}
+                tabIndex={this.state.isHidden === true ? '-1' : '0'} title={`${dropdownMenuBarItemData.title}`}>
+                  {dropdownMenuBarItemData.title}&nbsp;&nbsp;&rarr;
+              </a>
+            })
+          }
+        </div>
         <div className={bottomRowCss} />
       </div>
     );
@@ -166,6 +194,14 @@ class DropdownMenuBarContainer extends React.Component {
 DropdownMenuBarContainer.propTypes = {
   /** The background colour for the dropdown menu bar container. The default colour for the background is white. */
   backgroundColour: PropTypes.oneOf([ 'gold', 'green', 'grey', 'navy-and-gold', 'navy-and-white', 'red', 'white' ]),
+  /** The list of dropdown menu bar items to be rendered in the container component. */
+  dropdownMenuBarItemsList: PropTypes.arrayOf(
+    PropTypes.shape({
+      href: PropTypes.string,
+      id: PropTypes.string,
+      title: PropTypes.string,
+    })
+  ).isRequired,
   /** The unique identifier for this component. */
   id: PropTypes.string.isRequired,
   /** Sets whether the dropdown menu bar container is visible or hidden. Is set to hidden by default until specified otherwise. */
