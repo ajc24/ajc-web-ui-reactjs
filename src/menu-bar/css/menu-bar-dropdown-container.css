@@ -31,6 +31,16 @@
 .dropdown-menu-bar-container-row-hyperlink-container {
   display: flex;
   flex-direction: column;
+  width: 326px;
+}
+
+.dropdown-menu-bar-container-row-hyperlink-title {
+  display: flex;
+  flex-direction: row;
+}
+
+.dropdown-menu-bar-container-row-hyperlink-title-arrow {
+  margin-top: -2px;
 }
 
 .dropdown-menu-bar-container-row-top {

@@ -8,17 +8,25 @@ import '../css/common.css';
 import './css/menu-bar-common.css';
 import './css/menu-bar-dropdown-container.css';
 
-/**
- * 328px
- * 
- * 300px + 28px square icons
- * each line = 30px height -> 29px + 1px border top
- */
-
 const containerMaximumWidth = 328;
+const dropdownHyperlinkContainerCss = 'dropdown-menu-bar-container-row-hyperlink-container';
+const hyperlinkArrowSpanWidth = 25;
+const maximumHyperlinkTitleWidth = 310;
 const rightmostScreenPadding = 16;
 
-
+/**
+ * Dropdown Menu Bar Container component which is used to render the hyperlinks associated with a dropdown menu item.
+ * This component is intended for use with the Menu Bar component. It has been designed to fit within the boundaries
+ * of the most commonly used mobile screen sizes (360x800).
+ * 
+ * In the case that a hyperlinks text content exceeds the width of the container, the text content will be truncated
+ * by one character at a time until the text content successfully fits.
+ * 
+ * By enabling auto-focus this component is also fully supported by keyboard controls without the user having to first
+ * press the Tab key to apply focus. Once the container gains focus, it cannot lose focus again until the user closes
+ * the container using the close icon or clicks to select a hyperlink. Hyperlinks can also be selected using the
+ * enter key and / or space key.
+ */
 class DropdownMenuBarContainer extends React.Component {
   /**
    * Constructor for the Dropdown Menu Bar Container component
@@ -33,16 +41,25 @@ class DropdownMenuBarContainer extends React.Component {
     };
     this.getCloseButtonDOMElement = this.getCloseButtonDOMElement.bind(this);
     this.getContainerDOMElement = this.getContainerDOMElement.bind(this);
+    this.getFirstHyperlinkDOMElement = this.getFirstHyperlinkDOMElement.bind(this);
+    this.getIdCloseButtonDOMElement = this.getIdCloseButtonDOMElement.bind(this);
+    this.getIdContainerDOMElement = this.getIdContainerDOMElement.bind(this);
+    this.getLastHyperlinkDOMElement = this.getLastHyperlinkDOMElement.bind(this);
+    this.handleHyperlinkTitleWidths = this.handleHyperlinkTitleWidths.bind(this);
     this.handleOnClickClose = this.handleOnClickClose.bind(this);
+    this.handleOnClickHyperlink = this.handleOnClickHyperlink.bind(this);
+    this.handleOnKeyDownCloseButton = this.handleOnKeyDownCloseButton.bind(this);
+    this.handleOnKeyDownHyperlink = this.handleOnKeyDownHyperlink.bind(this);
     this.setIsHidden = this.setIsHidden.bind(this);
     this.setIsVisible = this.setIsVisible.bind(this);
     this.setPosition = this.setPosition.bind(this);
   }
 
   componentDidMount() {
+    /* Set the initial position of the container and ensure all hyperlink title text content fits within the container width */
     this.setPosition(this.props.top || 0, this.props.left || 0);
+    this.handleHyperlinkTitleWidths();
   
-    /* Initialise all of the key parameters for this component */
     if (this.props.isHidden !== undefined && this.props.isHidden !== this.state.isHidden) {
       if (this.props.isHidden === false) {
         /* Mark the component as visible */
@@ -74,7 +91,7 @@ class DropdownMenuBarContainer extends React.Component {
    * @returns {HTMLElement}
    */
   getCloseButtonDOMElement() {
-    return document.querySelector(`button[id="${this.props.id}--${this.props.backgroundColour || 'white'}--close--dropdown-menu-bar-container"]`);
+    return document.querySelector(`button[id="${this.getIdCloseButtonDOMElement()}"]`);
   }
 
   /**
@@ -82,7 +99,74 @@ class DropdownMenuBarContainer extends React.Component {
    * @returns {HTMLElement}
    */
   getContainerDOMElement() {
-    return document.querySelector(`div[id="${this.props.id}--${this.props.backgroundColour || 'white'}--dropdown-menu-bar-container"]`);
+    return document.querySelector(`div[id="${this.getIdContainerDOMElement()}"]`);
+  }
+
+  /**
+   * Retrieves the first available hyperlink element from the DOM
+   * @returns {HTMLElement}
+   */
+  getFirstHyperlinkDOMElement() {
+    return document.querySelectorAll(`div[id="${this.getIdContainerDOMElement()}"] > div[class="${dropdownHyperlinkContainerCss}"] > a`)[0];
+  }
+
+  /**
+   * Retrieves the ID for the close button DOM element
+   * @returns {string}
+   */
+  getIdCloseButtonDOMElement() {
+    return `${this.props.id}--${this.props.backgroundColour || 'white'}--close--dropdown-menu-bar-container`;
+  }
+
+  /**
+   * Retrieves the ID for the container DOM element
+   * @returns {string}
+   */
+  getIdContainerDOMElement() {
+    return `${this.props.id}--${this.props.backgroundColour || 'white'}--dropdown-menu-bar-container`;
+  }
+
+  /**
+   * Retrieves the ID of the last available hyperlink in the container
+   * @returns {string}
+   */
+  getIdLastHyperlinkDOMElement() {
+    const lastHyperlinkElement = this.getLastHyperlinkDOMElement();
+    return lastHyperlinkElement.getAttribute('id');
+  }
+
+  /**
+   * Retrieves the last available hyperlink element from the DOM
+   * @returns {HTMLElement}
+   */
+  getLastHyperlinkDOMElement() {
+    const allHyperlinkElements = document.querySelectorAll(`div[id="${this.getIdContainerDOMElement()}"] > div[class="${dropdownHyperlinkContainerCss}"] > a`);
+    return allHyperlinkElements[allHyperlinkElements.length - 1];
+  }
+
+  /**
+   * Truncates hyperlink title text if required so that it fits within the width of the container
+   */
+  handleHyperlinkTitleWidths() {
+    const allHyperlinkTitleElements = document.querySelectorAll('span[id$="--title--dropdown-menu-bar-container-item"] > span:nth-child(1)');
+    for (let index = 0; index < allHyperlinkTitleElements.length; index += 1) {
+      /* Determine the initial width of the text content + the arrow icon */
+      const hyperlinkTitleElement = allHyperlinkTitleElements[index];
+      let hyperlinkTitleWidth = hyperlinkTitleElement.getBoundingClientRect().width;
+      while ((hyperlinkTitleWidth + hyperlinkArrowSpanWidth) > maximumHyperlinkTitleWidth) {
+        /* Reduce the hyperlink title text content character by character until it fits perfectly within the width of the container */
+        let currentTitle = hyperlinkTitleElement.textContent;
+        currentTitle = currentTitle.replace('...', '').trim();
+        currentTitle = currentTitle.substring(0, currentTitle.length - 1).trim();
+        currentTitle = `${currentTitle}...`;
+        
+        /* Set the new text content now that we have reduced the content by one character */
+        hyperlinkTitleElement.textContent = currentTitle;
+
+        /* Determine the new width of the text content now that we have truncated the text */
+        hyperlinkTitleWidth = hyperlinkTitleElement.getBoundingClientRect().width;
+      }
+    }
   }
 
   /**
@@ -92,6 +176,52 @@ class DropdownMenuBarContainer extends React.Component {
   handleOnClickClose(event) {
     event.preventDefault();
     this.setIsHidden();
+  }
+
+  /**
+   * Ensures that the container is hidden if the user selects one of the hyperlinks
+   */
+  handleOnClickHyperlink() {
+    this.setIsHidden();
+  }
+
+  /**
+   * Handle key down events on the close button
+   * @param {Event} event 
+   */
+  handleOnKeyDownCloseButton(event) {
+    if (event.shiftKey === true && event.key === 'Tab') {
+      /* If shift + tab have been pressed on the close button element, cycle focus back to the last hyperlink element */
+      if (event.target.id === this.getIdCloseButtonDOMElement()) {
+        event.preventDefault();
+        const lastHyperlinkElement = this.getLastHyperlinkDOMElement();
+        lastHyperlinkElement.focus();
+      }
+    } else if (event.key === 'Escape') {
+      /* Hide the container element if the escape key is pressed */
+      this.setIsHidden();
+    }
+  }
+
+  /**
+   * Handle key down events on the hyperlink
+   * @param {Event} event 
+   */
+  handleOnKeyDownHyperlink(event) {
+    if (event.key === ' ') {
+      /* Ensure that a spacebar key press also correctly redirects the user to the specified URL */
+      event.target.click();
+    } else if (event.shiftKey === false && event.key === 'Tab') {
+      /* If the tab key has been pressed on the last hyperlink element, cycle focus back to the close button element */
+      if (event.target.id === this.getIdLastHyperlinkDOMElement()) {
+        event.preventDefault();
+        const closeButtonElement = this.getCloseButtonDOMElement();
+        closeButtonElement.focus();
+      }
+    } else if (event.key === 'Escape') {
+      /* Hide the container element if the escape key is pressed */
+      this.setIsHidden();
+    }
   }
 
   /**
@@ -105,7 +235,9 @@ class DropdownMenuBarContainer extends React.Component {
     const containerElement = this.getContainerDOMElement();
 
     /* Set the container elements opacity so that it is now hidden */
-    containerElement.style.visibility = 'hidden';
+    if (containerElement !== null) {
+      containerElement.style.visibility = 'hidden';
+    }
   }
 
   /**
@@ -119,11 +251,14 @@ class DropdownMenuBarContainer extends React.Component {
     const containerElement = this.getContainerDOMElement();
 
     /* Set the container elements opacity so that it is now visible */
-    containerElement.style.visibility = 'visible';
+    if (containerElement !== null) {
+      containerElement.style.visibility = 'visible';
+    }
 
-    /* Auto focus on the close button of the container element */
-    // const closeButtonElement = this.getCloseButtonDOMElement();
-    // closeButtonElement.focus();
+    /* Auto focus on the first available hyperlink in the container element if required */
+    if (this.props.enableAutoFocus === true) {
+      this.getFirstHyperlinkDOMElement().focus();
+    }
   }
 
   /**
@@ -163,25 +298,28 @@ class DropdownMenuBarContainer extends React.Component {
     const bottomRowCss = `dropdown-menu-bar-container-row-bottom background-${backgroundColour}`;
 
     /* Set the styling for the rows of hyperlinks to be rendered in the container */
-    const hyperlinkContainerCss = 'dropdown-menu-bar-container-row-hyperlink-container';
     const hyperlinkCss = `dropdown-menu-bar-container-row-hyperlink background-${backgroundColour} font-default font-${fontColour}`;
+    const hyperlinkTitleCss = 'dropdown-menu-bar-container-row-hyperlink-title';
+    const hyperlinkTitleArrowCss = 'dropdown-menu-bar-container-row-hyperlink-title-arrow';
 
     return (
       <div aria-hidden={this.state.isHidden} className={containerCss} id={`${this.props.id}--${this.props.backgroundColour || 'white'}--dropdown-menu-bar-container`}>
         <div className={topRowCss}>
-          <button aria-label="Close this dropdown menu." className={topRowCloseButtonCss}
-            id={`${this.props.id}--${this.props.backgroundColour || 'white'}--close--dropdown-menu-bar-container`} onClick={this.handleOnClickClose}
-            tabIndex={this.state.isHidden === true ? '-1' : '0'} title="Close this dropdown menu.">
+          <button aria-label="Close this dropdown menu." className={topRowCloseButtonCss} id={`${this.getIdCloseButtonDOMElement()}`} onClick={this.handleOnClickClose}
+            onKeyDown={this.handleOnKeyDownCloseButton} tabIndex={this.state.isHidden === true ? '-1' : '0'} title="Close this dropdown menu.">
               &nbsp;&nbsp;&nbsp;&Chi;&nbsp;&nbsp;&nbsp;
           </button>
         </div>
-        <div className={hyperlinkContainerCss}>
+        <div className={dropdownHyperlinkContainerCss}>
           {
             this.props.dropdownMenuBarItemsList.map((dropdownMenuBarItemData, index) => {
               return <a aria-label={`${dropdownMenuBarItemData.title}`} className={hyperlinkCss} href={dropdownMenuBarItemData.href}
                 id={`${index}--${dropdownMenuBarItemData.id}--dropdown-menu-bar-container-item`} key={`${index}--${dropdownMenuBarItemData.id}--dropdown-menu-bar-container-item`}
-                tabIndex={this.state.isHidden === true ? '-1' : '0'} title={`${dropdownMenuBarItemData.title}`}>
-                  {dropdownMenuBarItemData.title}&nbsp;&nbsp;&rarr;
+                onClick={this.handleOnClickHyperlink} onKeyDown={this.handleOnKeyDownHyperlink} tabIndex={this.state.isHidden === true ? '-1' : '0'} title={`${dropdownMenuBarItemData.title}`}>
+                  <span id={`${index}--${dropdownMenuBarItemData.id}--title--dropdown-menu-bar-container-item`} className={hyperlinkTitleCss}>
+                    <span>{dropdownMenuBarItemData.title}</span>
+                    <span className={hyperlinkTitleArrowCss}>&nbsp;&nbsp;&rarr;</span>
+                  </span>
               </a>
             })
           }
@@ -202,6 +340,8 @@ DropdownMenuBarContainer.propTypes = {
       title: PropTypes.string,
     })
   ).isRequired,
+  /** Automatically enables focus on the first hyperlink in the container. Suitable for use when the container is accessed via the keyboard. */
+  enableAutoFocus: PropTypes.bool,
   /** The unique identifier for this component. */
   id: PropTypes.string.isRequired,
   /** Sets whether the dropdown menu bar container is visible or hidden. Is set to hidden by default until specified otherwise. */
