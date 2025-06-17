@@ -39,10 +39,6 @@
   flex-direction: row;
 }
 
-.dropdown-menu-bar-container-row-hyperlink-title-arrow {
-  margin-top: -2px;
-}
-
 .dropdown-menu-bar-container-row-top {
   border-radius: 0px 20px 0px 0px;
   display: flex;

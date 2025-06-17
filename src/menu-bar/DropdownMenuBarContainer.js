@@ -10,8 +10,7 @@ import './css/menu-bar-dropdown-container.css';
 
 const containerMaximumWidth = 328;
 const dropdownHyperlinkContainerCss = 'dropdown-menu-bar-container-row-hyperlink-container';
-const hyperlinkArrowSpanWidth = 25;
-const maximumHyperlinkTitleWidth = 310;
+const maximumHyperlinkTitleHeight = 18;
 const rightmostScreenPadding = 16;
 
 /**
@@ -39,6 +38,7 @@ class DropdownMenuBarContainer extends React.Component {
       left: 0,
       top: 0,
     };
+    this.getAllHyperlinkDOMElements = this.getAllHyperlinkDOMElements.bind(this);
     this.getCloseButtonDOMElement = this.getCloseButtonDOMElement.bind(this);
     this.getContainerDOMElement = this.getContainerDOMElement.bind(this);
     this.getFirstHyperlinkDOMElement = this.getFirstHyperlinkDOMElement.bind(this);
@@ -87,6 +87,14 @@ class DropdownMenuBarContainer extends React.Component {
   }
 
   /**
+   * Retrieves all of the hyperlink elements from the DOM
+   * @returns {Array.<HTMLElement>}
+   */
+  getAllHyperlinkDOMElements() {
+    return document.querySelectorAll(`div[id="${this.getIdContainerDOMElement()}"] > div[class="${dropdownHyperlinkContainerCss}"] > a`);
+  }
+
+  /**
    * Retrieves the close button for the dropdown menu bar container element from the DOM
    * @returns {HTMLElement}
    */
@@ -107,7 +115,8 @@ class DropdownMenuBarContainer extends React.Component {
    * @returns {HTMLElement}
    */
   getFirstHyperlinkDOMElement() {
-    return document.querySelectorAll(`div[id="${this.getIdContainerDOMElement()}"] > div[class="${dropdownHyperlinkContainerCss}"] > a`)[0];
+    const allHyperlinkElements = this.getAllHyperlinkDOMElements();
+    return allHyperlinkElements[0];
   }
 
   /**
@@ -140,21 +149,22 @@ class DropdownMenuBarContainer extends React.Component {
    * @returns {HTMLElement}
    */
   getLastHyperlinkDOMElement() {
-    const allHyperlinkElements = document.querySelectorAll(`div[id="${this.getIdContainerDOMElement()}"] > div[class="${dropdownHyperlinkContainerCss}"] > a`);
+    const allHyperlinkElements = this.getAllHyperlinkDOMElements();
     return allHyperlinkElements[allHyperlinkElements.length - 1];
   }
 
   /**
-   * Truncates hyperlink title text if required so that it fits within the width of the container
+   * Truncates hyperlink title text if required so that it fits within the allocated container size
    */
   handleHyperlinkTitleWidths() {
-    const allHyperlinkTitleElements = document.querySelectorAll('span[id$="--title--dropdown-menu-bar-container-item"] > span:nth-child(1)');
+    const allHyperlinkTitleElements = document.querySelectorAll('span[id$="--title--dropdown-menu-bar-container-item"]');
     for (let index = 0; index < allHyperlinkTitleElements.length; index += 1) {
-      /* Determine the initial width of the text content + the arrow icon */
+      /* Determine the initial height of the text content + the arrow icon */
       const hyperlinkTitleElement = allHyperlinkTitleElements[index];
-      let hyperlinkTitleWidth = hyperlinkTitleElement.getBoundingClientRect().width;
-      while ((hyperlinkTitleWidth + hyperlinkArrowSpanWidth) > maximumHyperlinkTitleWidth) {
-        /* Reduce the hyperlink title text content character by character until it fits perfectly within the width of the container */
+      let hyperlinkTitleHeight = hyperlinkTitleElement.getBoundingClientRect().height;
+
+       while (hyperlinkTitleHeight > maximumHyperlinkTitleHeight) {
+        /* Reduce the hyperlink title text content character by character until it fits perfectly within the allocated size of the container */
         let currentTitle = hyperlinkTitleElement.textContent;
         currentTitle = currentTitle.replace('...', '').trim();
         currentTitle = currentTitle.substring(0, currentTitle.length - 1).trim();
@@ -163,8 +173,8 @@ class DropdownMenuBarContainer extends React.Component {
         /* Set the new text content now that we have reduced the content by one character */
         hyperlinkTitleElement.textContent = currentTitle;
 
-        /* Determine the new width of the text content now that we have truncated the text */
-        hyperlinkTitleWidth = hyperlinkTitleElement.getBoundingClientRect().width;
+        /* Determine the new height of the text content now that we have truncated the text */
+        hyperlinkTitleHeight = hyperlinkTitleElement.getBoundingClientRect().height;
       }
     }
   }
@@ -300,7 +310,6 @@ class DropdownMenuBarContainer extends React.Component {
     /* Set the styling for the rows of hyperlinks to be rendered in the container */
     const hyperlinkCss = `dropdown-menu-bar-container-row-hyperlink background-${backgroundColour} font-default font-${fontColour}`;
     const hyperlinkTitleCss = 'dropdown-menu-bar-container-row-hyperlink-title';
-    const hyperlinkTitleArrowCss = 'dropdown-menu-bar-container-row-hyperlink-title-arrow';
 
     return (
       <div aria-hidden={this.state.isHidden} className={containerCss} id={`${this.props.id}--${this.props.backgroundColour || 'white'}--dropdown-menu-bar-container`}>
@@ -317,8 +326,7 @@ class DropdownMenuBarContainer extends React.Component {
                 id={`${index}--${dropdownMenuBarItemData.id}--dropdown-menu-bar-container-item`} key={`${index}--${dropdownMenuBarItemData.id}--dropdown-menu-bar-container-item`}
                 onClick={this.handleOnClickHyperlink} onKeyDown={this.handleOnKeyDownHyperlink} tabIndex={this.state.isHidden === true ? '-1' : '0'} title={`${dropdownMenuBarItemData.title}`}>
                   <span id={`${index}--${dropdownMenuBarItemData.id}--title--dropdown-menu-bar-container-item`} className={hyperlinkTitleCss}>
-                    <span>{dropdownMenuBarItemData.title}</span>
-                    <span className={hyperlinkTitleArrowCss}>&nbsp;&nbsp;&rarr;</span>
+                    {dropdownMenuBarItemData.title}
                   </span>
               </a>
             })
