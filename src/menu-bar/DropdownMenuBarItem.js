@@ -3,14 +3,15 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
+import DropdownMenuBarContainer from './DropdownMenuBarContainer';
 import { getColourCombination } from '../data/colour-combinations';
 import '../css/common.css';
 import './css/menu-bar-common.css';
-import './css/menu-bar-dropdown-button.css';
+import './css/menu-bar-dropdown-item.css';
 import './css/menu-bar-item.css';
 
 
-class DropdownMenuBarButton extends React.Component {
+class DropdownMenuBarItem extends React.Component {
   /**
    * Initialise the Menu Bar Item component
    * @param {any} props 
@@ -19,13 +20,16 @@ class DropdownMenuBarButton extends React.Component {
     super(props);
     this.state = {
       isHidden: true,
+      isSelected: false,
     };
     this.getButtonDOMElement = this.getButtonDOMElement.bind(this);
     // this.getSpanDOMElement = this.getSpanDOMElement.bind(this);
-    // this.handleOnClick = this.handleOnClick.bind(this);
+    this.getIdButtonDOMElement = this.getIdButtonDOMElement.bind(this);
+    this.handleOnClickDropdownMenuBarItem = this.handleOnClickDropdownMenuBarItem.bind(this);
     // this.handleOnKeyDown = this.handleOnKeyDown.bind(this);
     // this.handleTextContentHeight = this.handleTextContentHeight.bind(this);
     this.setIsHidden = this.setIsHidden.bind(this);
+    // this.setIsSelected = this.setIsSelected(this);
     this.setIsVisible = this.setIsVisible.bind(this);
   }
 
@@ -53,11 +57,19 @@ class DropdownMenuBarButton extends React.Component {
   }
 
   /**
-   * Retrieves the dropdown menu bar button element from the DOM
+   * Retrieves the dropdown menu bar items button element from the DOM
    * @returns {HTMLElement}
    */
   getButtonDOMElement() {
-    return document.querySelector(`button[id="${this.props.id}--dropdown-menu-bar-button"]`);
+    return document.querySelector(`button[id="${this.getIdButtonDOMElement()}"]`);
+  }
+
+  /**
+   * Retrieves the ID for the dropdown menu bar items button DOM element
+   * @returns {string}
+   */
+  getIdButtonDOMElement() {
+    return `${this.props.dropdownMenuBarItemData.id}--${this.props.backgroundColour || 'white'}--button--dropdown-menu-bar-item`;
   }
 
   /**
@@ -69,14 +81,25 @@ class DropdownMenuBarButton extends React.Component {
   // }
 
   /**
-   * Ensures onclick events are disabled when the element is marked as hidden
+   * When the element is visible click events will mark the dropdown menu bar container element
+   * as visible / hidden depending on the components selection status.
    * @param {event} event
    */
-  // handleOnClick(event) {
-  //   if (this.state.isHidden === true) {
-  //     event.preventDefault();
-  //   }
-  // }
+  handleOnClickDropdownMenuBarItem(event) {
+    event.preventDefault();
+    if (this.state.isHidden === false) {
+      if (this.state.isSelected === false) {
+        const buttonElement = this.getButtonDOMElement();
+        const buttonElementDimensions = buttonElement.getBoundingClientRect();
+        const top = buttonElementDimensions.top;
+        const left = buttonElementDimensions.left;
+
+      }
+      // this.setState({
+      //   isSelected: true,
+      // });
+    }
+  }
 
   /**
    * Handle key down events on the hyperlink
@@ -113,11 +136,14 @@ class DropdownMenuBarButton extends React.Component {
   // }
 
   /**
-   * Sets the dropdown menu bar button as hidden in the UI 
+   * Sets the dropdown menu bar items button as hidden in the UI 
    */
   setIsHidden() {
-    /* Ensure state is updated to reflect that the dropdown menu bar button is now hidden */
-    this.setState({ isHidden: true });
+    /* Ensure state is updated to reflect that the dropdown menu bar items button is now hidden */
+    this.setState({
+      isHidden: true,
+      isSelected: false,
+    });
 
     /* Get the button element from the DOM */
     const buttonElement = this.getButtonDOMElement();
@@ -127,10 +153,10 @@ class DropdownMenuBarButton extends React.Component {
   }
 
   /**
-   * Sets thedropdown menu bar button as visible in the UI
+   * Sets the dropdown menu bar items button as visible in the UI
    */
   setIsVisible() {
-    /* Ensure state is updated to reflect that the dropdown menu bar button is now visible */
+    /* Ensure state is updated to reflect that the dropdown menu bar items button is now visible */
     this.setState({ isHidden: false });
 
     /* Get the button element from the DOM */
@@ -144,11 +170,14 @@ class DropdownMenuBarButton extends React.Component {
     /* Determine the background colour and font colour for the component - setting white background colour with black font text colour as the default */
     const { backgroundColour, fontColour } = getColourCombination(this.props.backgroundColour);
 
-    /* Set the styling for the menu bar item container element */
-    let containerCss = `dropdown-menu-bar-button menu-bar-common-transitions background-${backgroundColour} font-default font-${fontColour}`;
+    /* Set the styling for the dropdown menu bar items button element */
+    let buttonCss = `dropdown-menu-bar-button menu-bar-common-transitions background-${backgroundColour} font-default font-${fontColour}`;
     if (this.props.addRightSideSpacing === true) {
-      containerCss += ' menu-bar-item-container-right-side-spacing';
+      buttonCss += ' menu-bar-item-container-right-side-spacing';
     }
+    const buttonTitleCss = 'dropdown-menu-bar-button-title';
+    const buttonArrowCss = 'dropdown-menu-bar-button-arrow';
+
     // /* Set the styling for the internal hyperlink element */
     // const hyperlinkCss = `menu-bar-item-hyperlink background-${backgroundColour} font-default font-${fontColour}`;
 
@@ -156,10 +185,16 @@ class DropdownMenuBarButton extends React.Component {
     // const hyperlinkInnerContentCss = 'menu-bar-item-inner-content';
 
     return (
-      <button className={containerCss} id={`${this.props.id}--dropdown-menu-bar-button`}>
-        Test
-      </button>
-
+      <React.Fragment>
+        <button className={buttonCss} id={this.getIdButtonDOMElement()}>
+          <span id={`${this.props.dropdownMenuBarItemData.id}--${this.props.backgroundColour || 'white'}--title--dropdown-menu-bar-item`} className={buttonTitleCss}>
+            {this.props.dropdownMenuBarItemData.title}
+          </span>
+          <span className={buttonArrowCss}>
+            &darr;
+          </span>
+        </button>
+      </React.Fragment>
 
       // <div className={containerCss} id={`${this.props.id}--menu-bar-item`}>
       //   <a aria-hidden={`${this.state.isHidden}`} aria-label={this.props.children} className={hyperlinkCss} href={`${this.props.href}`} 
@@ -171,18 +206,25 @@ class DropdownMenuBarButton extends React.Component {
     );
   }
 }
-DropdownMenuBarButton.propTypes = {
-  /** Optional right side spacing (margin) of 8px to be used when separating multiple dropdown menu bar button components. By default this spacing is disabled. */
+DropdownMenuBarItem.propTypes = {
+  /** Optional right side spacing (margin) of 8px to be used when separating multiple dropdown menu bar item components. By default this spacing is disabled. */
   addRightSideSpacing: PropTypes.bool,
-  /** The background colour for the dropdown menu bar button. The default colour for the background is white. */
+  /** The background colour for the dropdown menu bar item. The default colour for the background is white. */
   backgroundColour: PropTypes.oneOf([ 'gold', 'green', 'grey', 'navy-and-gold', 'navy-and-white', 'red', 'white' ]),
-  // /** The menu bar items text content. */
-  // children: PropTypes.string,
-  // /** The URL to which the user will be redirected to after clicking on the menu bar item. */
-  // href: PropTypes.string.isRequired,
-  /** The unique identifier for this component. */
-  id: PropTypes.string.isRequired,
-  /** Sets whether the dropdown menu bar button is visible or hidden. Is set to hidden by default until specified otherwise. */
+  /** The dropdown menu bar items text content. */
+  children: PropTypes.string,
+  dropdownMenuBarItemData: PropTypes.shape({
+    dropdownMenuBarItemsList: PropTypes.arrayOf(
+      PropTypes.shape({
+        href: PropTypes.string,
+        id: PropTypes.string,
+        title: PropTypes.string,
+      })
+    ),
+    id: PropTypes.string,
+    title: PropTypes.string,
+  }).isRequired,
+  /** Sets whether the dropdown menu bar item is visible or hidden. Is set to hidden by default until specified otherwise. */
   isHidden: PropTypes.bool,
 };
-export default DropdownMenuBarButton;
+export default DropdownMenuBarItem;
