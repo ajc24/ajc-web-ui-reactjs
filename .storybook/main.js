@@ -15,8 +15,8 @@ const config = {
     '../stories/header/HeaderTallLogo.stories.js',
 
     /* Menu Bar component stories */
-    '../stories/menu-bar/DropdownMenuBarButton.stories.js',
     '../stories/menu-bar/DropdownMenuBarContainer.stories.js',
+    '../stories/menu-bar/DropdownMenuBarItem.stories.js',
     '../stories/menu-bar/MenuBar.stories.js',
     '../stories/menu-bar/MenuBarItem.stories.js',
     '../stories/menu-bar/ScrollMenuBarItemsLeft.stories.js',
@@ -41,7 +41,6 @@ const config = {
     '@storybook/addon-a11y',
     '@storybook/addon-docs',
     '@storybook/addon-links',
-    '@storybook/addon-onboarding',
     '@storybook/addon-webpack5-compiler-swc',
   ],
   framework: {
