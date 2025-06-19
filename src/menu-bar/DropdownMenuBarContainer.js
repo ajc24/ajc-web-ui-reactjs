@@ -314,10 +314,9 @@ class DropdownMenuBarContainer extends React.Component {
     return (
       <div aria-hidden={this.state.isHidden} className={containerCss} id={`${this.props.id}--${this.props.backgroundColour || 'white'}--dropdown-menu-bar-container`}>
         <div className={topRowCss}>
-          <button aria-label="Close this dropdown menu." className={topRowCloseButtonCss} id={`${this.getIdCloseButtonDOMElement()}`} onClick={this.handleOnClickClose}
-            onKeyDown={this.handleOnKeyDownCloseButton} tabIndex={this.state.isHidden === true ? '-1' : '0'} title="Close this dropdown menu.">
-              &nbsp;&nbsp;&nbsp;&Chi;&nbsp;&nbsp;&nbsp;
-          </button>
+          <button aria-label="Close this dropdown menu." className={topRowCloseButtonCss} dangerouslySetInnerHTML={{ __html: '&nbsp;&nbsp;&nbsp;&Chi;&nbsp;&nbsp;&nbsp;' }}
+            id={`${this.getIdCloseButtonDOMElement()}`} onClick={this.handleOnClickClose} onKeyDown={this.handleOnKeyDownCloseButton}
+            tabIndex={this.state.isHidden === true ? '-1' : '0'} title="Close this dropdown menu."/>
         </div>
         <div className={dropdownHyperlinkContainerCss}>
           {
