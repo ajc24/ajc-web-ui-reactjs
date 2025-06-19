@@ -38,6 +38,7 @@
     "@storybook/addon-a11y": "^9.0.12",
     "@storybook/addon-docs": "^9.0.12",
     "@storybook/addon-links": "^9.0.12",
+    "@storybook/addon-onboarding": "^9.0.12",
     "@storybook/addon-webpack5-compiler-swc": "^3.0.0",
     "@storybook/react": "^9.0.12",
     "@storybook/react-webpack5": "^9.0.12",
