@@ -57,7 +57,7 @@ class DropdownMenuBarContainer extends React.Component {
 
   componentDidMount() {
     /* Set the initial position of the container and ensure all hyperlink title text content fits within the container width */
-    this.setPosition(this.props.top || 0, this.props.left || 0);
+    this.setPosition(this.props.top, this.props.left);
     this.handleHyperlinkTitleWidths();
   
     if (this.props.isHidden !== undefined && this.props.isHidden !== this.state.isHidden) {
@@ -276,7 +276,7 @@ class DropdownMenuBarContainer extends React.Component {
    * @param {string} newTop 
    * @param {string} newLeft 
    */
-  setPosition(newTop, newLeft) {
+  setPosition(newTop = 0, newLeft = 0) {
     const rightmostScreenPos = window.innerWidth;
     const rightmostContainerPos = newLeft + containerMaximumWidth + rightmostScreenPadding;
     
