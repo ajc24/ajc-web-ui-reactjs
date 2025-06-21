@@ -31,19 +31,32 @@
 .dropdown-menu-bar-button-arrow {
   display: flex;
   flex-direction: column;
-  height: inherit;
+  height: 55px;
   justify-content: center;
   margin-top: -1px;
-  min-width: 10px;
-  padding-left: 5px;
-  width: 10px;
+  max-width: 10px;
+  min-height: 55px;
+  min-width: 5px;
+  transition-duration: 0.25s;
+  transition-property: width;
+  transition-timing-function: ease-in-out;
+  width: 5px;
 }
 
 .dropdown-menu-bar-button-title {
   display: flex;
   flex-direction: column;
-  height: inherit;
+  height: max-content;
   justify-content: center;
-  min-width: 75px;
-  width: 75px;
+  max-width: 95px;
+  min-height: 55px;
+  min-width: 90px;
+  padding-bottom: 0px;
+  padding-left: 5px;
+  padding-right: 0px;
+  padding-top: 0px;
+  transition-duration: 0.25s;
+  transition-property: padding-left;
+  transition-timing-function: ease-in-out;
+  width: 90px;
 }
