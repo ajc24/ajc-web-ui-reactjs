@@ -19,6 +19,17 @@ const menuBarItemHyperlinkId = '--menu-bar-item-hyperlink';
 /* CSS styling parameters */
 const maximumMenuBarItemButtonHeight = 55;
 
+/**
+ * Dropdown Menu Bar Item component which is intended for use with the Menu Bar component. This component will render
+ * a clickable menu bar item to the user. Clicking this item will open a dropdown menu container element which contains
+ * all of the hyperlinks associated with the dropdown menu bar item. Everything has been designed to fit within the
+ * boundaries of the most commonly used mobile screen sizes (360x800) to the most commonly used desktop sizes (1920x1080).
+ * 
+ * By design only a single dropdown menu bar item can be selected at any one time, also only one dropdown menu bar container
+ * element can be rendered at any one time.
+ * 
+ * All dropdown menu bar items and dropdown menu bar container hyperlinks are fully interactive via both mouse and keyboard.
+ */
 class DropdownMenuBarItem extends React.Component {
   /**
    * Initialise the Menu Bar Item component
