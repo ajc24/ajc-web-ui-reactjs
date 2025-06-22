@@ -4,6 +4,7 @@
 const config = {
   stories: [
     /* Base component stories */
+    '../stories/base/BaseFooter.stories.js',
     '../stories/base/BaseHeader.stories.js',
     '../stories/base/BaseHeaderBgImage.stories.js',
     '../stories/base/BaseHeaderTall.stories.js',
