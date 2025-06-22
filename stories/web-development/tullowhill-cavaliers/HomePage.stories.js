@@ -4,6 +4,7 @@
 import React from 'react';
 import {
   HeaderTallLogo,
+  Main,
   MenuBar,
 } from '../../../src';
 import tullowhillCavaliersLogo from './images/tullowhill-cavaliers-logo.png';
@@ -26,6 +27,9 @@ const Template_HomePage = () => {
       backgroundColour="grey" id="tullowhill-cavaliers-logo" src={tullowhillCavaliersLogo}
     />
     <MenuBar backgroundColour="navy-and-gold" id="tullowhill-cavaliers-navigation" menuBarItemsList={getMenuBarData()} />
+    <Main id="tullowhill-cavaliers-home-page" title="Home Page - Tullowhill Cavaliers">
+      Main content will go here when available.
+    </Main>
   </React.Fragment>;
 };
 
