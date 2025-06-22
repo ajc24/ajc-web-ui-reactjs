@@ -3,6 +3,7 @@
  */
 
 /* Base components */
+import BaseFooter from './base/BaseFooter';
 import BaseHeader from './base/BaseHeader';
 import BaseHeaderBgImage from './base/BaseHeaderBgImage';
 import BaseHeaderTall from './base/BaseHeaderTall';
@@ -35,6 +36,7 @@ import ApplicationTitleText from './text/ApplicationTitleText';
 
 export {
   /* Base components */
+  BaseFooter,
   BaseHeader,
   BaseHeaderBgImage,
   BaseHeaderTall,
