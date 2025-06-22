@@ -106,7 +106,7 @@ var DropdownMenuBarContainer = /*#__PURE__*/function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       /* Set the initial position of the container and ensure all hyperlink title text content fits within the container width */
-      this.setPosition(this.props.top || 0, this.props.left || 0);
+      this.setPosition(this.props.top, this.props.left);
       this.handleHyperlinkTitleWidths();
       if (this.props.isHidden !== undefined && this.props.isHidden !== this.state.isHidden) {
         if (this.props.isHidden === false) {
@@ -124,7 +124,7 @@ var DropdownMenuBarContainer = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
-      if (prevProps.isHidden && prevProps.isHidden !== this.props.isHidden && this.props.isHidden !== this.state.isHidden) {
+      if (prevProps.isHidden !== this.props.isHidden && this.props.isHidden !== this.state.isHidden) {
         if (this.props.isHidden === false) {
           /* Mark the component as visible */
           this.setIsVisible();
@@ -132,6 +132,18 @@ var DropdownMenuBarContainer = /*#__PURE__*/function (_React$Component) {
           /* Mark the component as hidden */
           this.setIsHidden();
         }
+      }
+      if (prevProps.top !== this.props.top && prevProps.left === this.props.left) {
+        /* Only alter the top position */
+        this.setPosition(this.props.top, this.state.left);
+      }
+      if (prevProps.top === this.props.top && prevProps.left !== this.props.left) {
+        /* Only alter the left position */
+        this.setPosition(this.state.top, this.props.left);
+      }
+      if (prevProps.top !== this.props.top && prevProps.left !== this.props.left) {
+        /* Alter both the top and left positions */
+        this.setPosition(this.props.top, this.props.left);
       }
     }
 
@@ -314,18 +326,19 @@ var DropdownMenuBarContainer = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "setIsHidden",
     value: function setIsHidden() {
+      var _this2 = this;
       /* Ensure state is updated to reflect that the dropdown menu bar container is now hidden */
       this.setState({
         isHidden: true
+      }, function () {
+        /* Get the container element from the DOM */
+        var containerElement = _this2.getContainerDOMElement();
+
+        /* Set the container elements opacity so that it is now hidden */
+        if (containerElement !== null) {
+          containerElement.style.visibility = 'hidden';
+        }
       });
-
-      /* Get the container element from the DOM */
-      var containerElement = this.getContainerDOMElement();
-
-      /* Set the container elements opacity so that it is now hidden */
-      if (containerElement !== null) {
-        containerElement.style.visibility = 'hidden';
-      }
     }
 
     /**
@@ -334,23 +347,24 @@ var DropdownMenuBarContainer = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "setIsVisible",
     value: function setIsVisible() {
+      var _this3 = this;
       /* Ensure state is updated to reflect that the dropdown menu bar container is now visible */
       this.setState({
         isHidden: false
+      }, function () {
+        /* Get the container element from the DOM */
+        var containerElement = _this3.getContainerDOMElement();
+
+        /* Set the container elements opacity so that it is now visible */
+        if (containerElement !== null) {
+          containerElement.style.visibility = 'visible';
+        }
+
+        /* Auto focus on the first available hyperlink in the container element if required */
+        if (_this3.props.enableAutoFocus === true) {
+          _this3.getFirstHyperlinkDOMElement().focus();
+        }
       });
-
-      /* Get the container element from the DOM */
-      var containerElement = this.getContainerDOMElement();
-
-      /* Set the container elements opacity so that it is now visible */
-      if (containerElement !== null) {
-        containerElement.style.visibility = 'visible';
-      }
-
-      /* Auto focus on the first available hyperlink in the container element if required */
-      if (this.props.enableAutoFocus === true) {
-        this.getFirstHyperlinkDOMElement().focus();
-      }
     }
 
     /**
@@ -360,8 +374,10 @@ var DropdownMenuBarContainer = /*#__PURE__*/function (_React$Component) {
      */
   }, {
     key: "setPosition",
-    value: function setPosition(newTop, newLeft) {
-      var _this2 = this;
+    value: function setPosition() {
+      var _this4 = this;
+      var newTop = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+      var newLeft = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
       var rightmostScreenPos = window.innerWidth;
       var rightmostContainerPos = newLeft + containerMaximumWidth + rightmostScreenPadding;
       var finalLeft = newLeft;
@@ -373,15 +389,15 @@ var DropdownMenuBarContainer = /*#__PURE__*/function (_React$Component) {
         left: finalLeft,
         top: newTop
       }, function () {
-        var containerElement = _this2.getContainerDOMElement();
-        containerElement.style.top = "".concat(_this2.state.top, "px");
-        containerElement.style.left = "".concat(_this2.state.left, "px");
+        var containerElement = _this4.getContainerDOMElement();
+        containerElement.style.top = "".concat(_this4.state.top, "px");
+        containerElement.style.left = "".concat(_this4.state.left, "px");
       });
     }
   }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
+      var _this5 = this;
       /* Determine the background colour and font colour for the component - setting white background colour with black font text colour as the default */
       var _getColourCombination = (0, _colourCombinations.getColourCombination)(this.props.backgroundColour),
         backgroundColour = _getColourCombination.backgroundColour,
@@ -407,12 +423,15 @@ var DropdownMenuBarContainer = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/_react["default"].createElement("button", {
         "aria-label": "Close this dropdown menu.",
         className: topRowCloseButtonCss,
+        dangerouslySetInnerHTML: {
+          __html: '&nbsp;&nbsp;&nbsp;&Chi;&nbsp;&nbsp;&nbsp;'
+        },
         id: "".concat(this.getIdCloseButtonDOMElement()),
         onClick: this.handleOnClickClose,
         onKeyDown: this.handleOnKeyDownCloseButton,
         tabIndex: this.state.isHidden === true ? '-1' : '0',
         title: "Close this dropdown menu."
-      }, "\xA0\xA0\xA0\u03A7\xA0\xA0\xA0")), /*#__PURE__*/_react["default"].createElement("div", {
+      })), /*#__PURE__*/_react["default"].createElement("div", {
         className: dropdownHyperlinkContainerCss
       }, this.props.dropdownMenuBarItemsList.map(function (dropdownMenuBarItemData, index) {
         return /*#__PURE__*/_react["default"].createElement("a", {
@@ -421,9 +440,9 @@ var DropdownMenuBarContainer = /*#__PURE__*/function (_React$Component) {
           href: dropdownMenuBarItemData.href,
           id: "".concat(index, "--").concat(dropdownMenuBarItemData.id, "--dropdown-menu-bar-container-item"),
           key: "".concat(index, "--").concat(dropdownMenuBarItemData.id, "--dropdown-menu-bar-container-item"),
-          onClick: _this3.handleOnClickHyperlink,
-          onKeyDown: _this3.handleOnKeyDownHyperlink,
-          tabIndex: _this3.state.isHidden === true ? '-1' : '0',
+          onClick: _this5.handleOnClickHyperlink,
+          onKeyDown: _this5.handleOnKeyDownHyperlink,
+          tabIndex: _this5.state.isHidden === true ? '-1' : '0',
           title: "".concat(dropdownMenuBarItemData.title)
         }, /*#__PURE__*/_react["default"].createElement("span", {
           id: "".concat(index, "--").concat(dropdownMenuBarItemData.id, "--title--dropdown-menu-bar-container-item"),

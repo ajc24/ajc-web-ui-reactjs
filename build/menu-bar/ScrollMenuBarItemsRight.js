@@ -193,8 +193,11 @@ var ScrollMenuBarItemsRight = /*#__PURE__*/function (_React$Component) {
         onClick: this.handleOnClick,
         onKeyDown: this.handleOnKeyDown,
         tabIndex: this.state.isHidden === true ? '-1' : '0',
-        type: "button"
-      }, "Next", /*#__PURE__*/_react["default"].createElement("br", null), "\u2192"));
+        type: "button",
+        dangerouslySetInnerHTML: {
+          __html: 'Next<br />&rarr;'
+        }
+      }));
     }
   }]);
 }(_react["default"].Component);

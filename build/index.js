@@ -58,6 +58,12 @@ Object.defineProperty(exports, "DropdownMenuBarContainer", {
     return _DropdownMenuBarContainer["default"];
   }
 });
+Object.defineProperty(exports, "DropdownMenuBarItem", {
+  enumerable: true,
+  get: function get() {
+    return _DropdownMenuBarItem["default"];
+  }
+});
 Object.defineProperty(exports, "FunctionalImage", {
   enumerable: true,
   get: function get() {
@@ -117,6 +123,7 @@ var _DecorativeImage = _interopRequireDefault(require("./images/DecorativeImage"
 var _FunctionalImage = _interopRequireDefault(require("./images/FunctionalImage"));
 var _InformativeImage = _interopRequireDefault(require("./images/InformativeImage"));
 var _DropdownMenuBarContainer = _interopRequireDefault(require("./menu-bar/DropdownMenuBarContainer"));
+var _DropdownMenuBarItem = _interopRequireDefault(require("./menu-bar/DropdownMenuBarItem"));
 var _MenuBar = _interopRequireDefault(require("./menu-bar/MenuBar"));
 var _MenuBarItem = _interopRequireDefault(require("./menu-bar/MenuBarItem"));
 var _ScrollMenuBarItemsLeft = _interopRequireDefault(require("./menu-bar/ScrollMenuBarItemsLeft"));

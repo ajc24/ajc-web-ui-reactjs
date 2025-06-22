@@ -34,6 +34,7 @@ var _react = _interopRequireDefault(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _BaseMenuBar = _interopRequireDefault(require("../base/BaseMenuBar"));
 var _MenuBarItem = _interopRequireDefault(require("./MenuBarItem"));
+var _DropdownMenuBarItem = _interopRequireDefault(require("./DropdownMenuBarItem"));
 var _ScrollMenuBarItemsLeft = _interopRequireDefault(require("./ScrollMenuBarItemsLeft"));
 var _ScrollMenuBarItemsRight = _interopRequireDefault(require("./ScrollMenuBarItemsRight"));
 require("./css/menu-bar.css");
@@ -293,14 +294,26 @@ var MenuBar = /*#__PURE__*/function (_React$Component) {
             /* Do not add right side spacing for the last rendered item in the current output and / or the last rendered item in the list */
             addRightSideSpacing = false;
           }
-          return /*#__PURE__*/_react["default"].createElement(_MenuBarItem["default"], {
-            addRightSideSpacing: addRightSideSpacing,
-            backgroundColour: _this5.props.backgroundColour,
-            href: menuBarItemData.href,
-            id: menuBarItemData.id,
-            isHidden: _this5.state.menuBarItemsHidden,
-            key: menuBarItemData.id
-          }, menuBarItemData.title);
+          if (menuBarItemData.dropdownMenuBarItemsList === undefined) {
+            return /*#__PURE__*/_react["default"].createElement(_MenuBarItem["default"], {
+              addRightSideSpacing: addRightSideSpacing,
+              backgroundColour: _this5.props.backgroundColour,
+              href: menuBarItemData.href,
+              id: menuBarItemData.id,
+              isHidden: _this5.state.menuBarItemsHidden,
+              key: menuBarItemData.id
+            }, menuBarItemData.title);
+          }
+          if (menuBarItemData.dropdownMenuBarItemsList !== undefined) {
+            return /*#__PURE__*/_react["default"].createElement(_DropdownMenuBarItem["default"], {
+              addRightSideSpacing: addRightSideSpacing,
+              backgroundColour: _this5.props.backgroundColour,
+              dropdownMenuBarItemData: menuBarItemData,
+              id: menuBarItemData.id,
+              isHidden: _this5.state.menuBarItemsHidden,
+              key: menuBarItemData.id
+            });
+          }
         }
         return null;
       })), /*#__PURE__*/_react["default"].createElement(_ScrollMenuBarItemsRight["default"], {
