@@ -10,7 +10,8 @@ import './css/main.css';
 /**
  * Main component in which all of the main web application page content can be rendered.
  * This component auto-handles screen widths from the most commonly used mobile screen sizes (360x800) to the most commonly used desktop sizes (1920x1080).
- * The minimum height of the component is 600px which suits rendering on mobile devices. This minimum height will expand to fit larger sizes and render
+ * 
+ * The minimum height of the component is 370px which suits rendering on mobile devices. This minimum height will expand to fit larger sizes and render
  * more content as and when required.
  */
 const Main = props => {
