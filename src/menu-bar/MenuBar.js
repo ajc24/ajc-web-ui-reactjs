@@ -5,6 +5,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BaseMenuBar from '../base/BaseMenuBar';
 import MenuBarItem from './MenuBarItem';
+import DropdownMenuBarItem from './DropdownMenuBarItem';
 import ScrollMenuBarItemsLeft from './ScrollMenuBarItemsLeft';
 import ScrollMenuBarItemsRight from './ScrollMenuBarItemsRight';
 import './css/menu-bar.css';
@@ -222,10 +223,16 @@ class MenuBar extends React.Component {
                   /* Do not add right side spacing for the last rendered item in the current output and / or the last rendered item in the list */
                   addRightSideSpacing = false;
                 }
-                return <MenuBarItem addRightSideSpacing={addRightSideSpacing} backgroundColour={this.props.backgroundColour} href={menuBarItemData.href} id={menuBarItemData.id}
-                  isHidden={this.state.menuBarItemsHidden} key={menuBarItemData.id}>
-                    {menuBarItemData.title}
-                </MenuBarItem>;
+                if (menuBarItemData.dropdownMenuBarItemsList === undefined) {
+                  return <MenuBarItem addRightSideSpacing={addRightSideSpacing} backgroundColour={this.props.backgroundColour} href={menuBarItemData.href} id={menuBarItemData.id}
+                    isHidden={this.state.menuBarItemsHidden} key={menuBarItemData.id}>
+                      {menuBarItemData.title}
+                  </MenuBarItem>;
+                }
+                if (menuBarItemData.dropdownMenuBarItemsList !== undefined) {
+                  return <DropdownMenuBarItem addRightSideSpacing={addRightSideSpacing} backgroundColour={this.props.backgroundColour}
+                    dropdownMenuBarItemData={menuBarItemData} id={menuBarItemData.id} isHidden={this.state.menuBarItemsHidden} key={menuBarItemData.id} />
+                }
               }
               return null;
             })
