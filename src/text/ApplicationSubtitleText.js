@@ -46,7 +46,7 @@ class ApplicationSubtitleText extends React.Component {
     this.setApplicationTitleTextId(this.props.applicationTitleTextId);
 
     /* Watch over all future window resize events - we will want to alter the visibility of the text to suit whether the title text is wrapped or not */
-    document.body.addEventListener('resize', this.setRightmostSubtitleTextPosition);
+    window.addEventListener('resize', this.setRightmostSubtitleTextPosition);
   }
 
   /**

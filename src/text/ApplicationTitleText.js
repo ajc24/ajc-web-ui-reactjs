@@ -49,7 +49,7 @@ class ApplicationTitleText extends React.Component {
     this.setId(this.props.id);
 
     /* Watch over all future window resize events - we will want to alter the text to suit the screen size */
-    document.body.addEventListener('resize', this.handleScreenWidth);
+    window.addEventListener('resize', this.handleScreenWidth);
   }
 
   /**
@@ -59,7 +59,7 @@ class ApplicationTitleText extends React.Component {
   getContainerElementRightmostPosition() {
     const headingElement = this.getHeadingElementSelector();
     if (headingElement !== null) {
-      return parseInt(headingElement.parentNode.getBoundingClientRect().right, 10);
+      return headingElement.parentNode.getBoundingClientRect().right;
     }
     return 0;
   }
@@ -71,7 +71,7 @@ class ApplicationTitleText extends React.Component {
   getHeadingElementHeight() {
     const headingElement = this.getHeadingElementSelector();
     if (headingElement !== null) {
-      return parseInt(headingElement.getBoundingClientRect().height, 10);
+      return headingElement.getBoundingClientRect().height;
     }
     return 0;
   }
@@ -83,7 +83,7 @@ class ApplicationTitleText extends React.Component {
   getHeadingElementRightmostPosition() {
     const headingElement = this.getHeadingElementSelector();
     if (headingElement !== null) {
-      return parseInt(headingElement.getBoundingClientRect().right, 10);
+      return headingElement.getBoundingClientRect().right;
     }
     return 0; 
   }
