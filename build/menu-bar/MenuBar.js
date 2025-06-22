@@ -101,7 +101,7 @@ var MenuBar = /*#__PURE__*/function (_React$Component) {
       this.handleScreenWidth();
 
       /* Watch over all future window resize events - we will want to alter the number of rendered menu bar items to suit the screen size */
-      document.body.addEventListener('resize', this.handleScreenWidth);
+      window.addEventListener('resize', this.handleScreenWidth);
     }
 
     /**
@@ -204,7 +204,7 @@ var MenuBar = /*#__PURE__*/function (_React$Component) {
       /* Determine the current width of the central content element */
       var centralContentElement = this.getCentralContentElement();
       if (centralContentElement !== null) {
-        var centralContentWidth = centralContentElement.getBoundingClientRect().width;
+        var centralContentWidth = parseInt(centralContentElement.getBoundingClientRect().width, 10);
 
         /* Reset the current index and determine how many elements will fit within the width of the element */
         var newIndex = 0;

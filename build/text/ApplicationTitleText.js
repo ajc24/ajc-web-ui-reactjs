@@ -96,7 +96,7 @@ var ApplicationTitleText = /*#__PURE__*/function (_React$Component) {
       this.setId(this.props.id);
 
       /* Watch over all future window resize events - we will want to alter the text to suit the screen size */
-      document.body.addEventListener('resize', this.handleScreenWidth);
+      window.addEventListener('resize', this.handleScreenWidth);
     }
 
     /**

@@ -24,6 +24,7 @@ exports["default"] = void 0;
 require("core-js/modules/es.function.bind.js");
 require("core-js/modules/es.object.proto.js");
 require("core-js/modules/es.object.set-prototype-of.js");
+require("core-js/modules/es.parse-int.js");
 require("core-js/modules/es.string.trim.js");
 var _react = _interopRequireDefault(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
@@ -89,7 +90,7 @@ var ApplicationSubtitleText = /*#__PURE__*/function (_React$Component) {
       this.setApplicationTitleTextId(this.props.applicationTitleTextId);
 
       /* Watch over all future window resize events - we will want to alter the visibility of the text to suit whether the title text is wrapped or not */
-      document.body.addEventListener('resize', this.setRightmostSubtitleTextPosition);
+      window.addEventListener('resize', this.setRightmostSubtitleTextPosition);
     }
 
     /**
@@ -106,7 +107,7 @@ var ApplicationSubtitleText = /*#__PURE__*/function (_React$Component) {
       if (subtitleContainerElement !== null) {
         /* Check 1: Does the paragraph element exceed the width of the container */
         var paragraphRightPos = this.state.paragraphRightPos;
-        var containerRightPos = subtitleContainerElement.getBoundingClientRect().right;
+        var containerRightPos = parseInt(subtitleContainerElement.getBoundingClientRect().right, 10);
         if (paragraphRightPos > 0 && containerRightPos > 0) {
           if (paragraphRightPos > containerRightPos) {
             /* The subtitle will exceed the screen limits - hide the subtitle component */
@@ -198,7 +199,7 @@ var ApplicationSubtitleText = /*#__PURE__*/function (_React$Component) {
         if (this.state.isHidden === false) {
           /* The subtitle text element is visible - set the rightmost position of the element and then start resizing process */
           this.setState({
-            paragraphRightPos: this.subtitleTextRef.current.getBoundingClientRect().right
+            paragraphRightPos: parseInt(this.subtitleTextRef.current.getBoundingClientRect().right, 10)
           }, this.setIsResizingStart);
         } else {
           /* The subtitle text is hidden so we can not set a new rightmost position - go straight to the resizing process */
