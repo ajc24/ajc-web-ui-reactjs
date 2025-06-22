@@ -84,7 +84,16 @@ class DropdownMenuBarContainer extends React.Component {
         this.setIsHidden();
       }
     }
+    if (prevProps.top !== this.props.top && prevProps.left === this.props.left) {
+      /* Only alter the top position */
+      this.setPosition(this.props.top, this.state.left);
+    }
+    if (prevProps.top === this.props.top && prevProps.left !== this.props.left) {
+      /* Only alter the left position */
+      this.setPosition(this.state.top, this.props.left);
+    }
     if (prevProps.top !== this.props.top && prevProps.left !== this.props.left) {
+      /* Alter both the top and left positions */
       this.setPosition(this.props.top, this.props.left);
     }
   }
