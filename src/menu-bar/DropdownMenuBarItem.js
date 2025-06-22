@@ -16,14 +16,6 @@ const containerHyperlinkId = '--dropdown-menu-bar-container-item';
 const dropdownMenuBarItemButtonId = '--button--dropdown-menu-bar-item';
 const menuBarItemHyperlinkId = '--menu-bar-item-hyperlink';
 
-/* Set a list of all external IDs */
-const allExternalElementIds = [
-  dropdownMenuBarItemButtonId,
-  containerCloseButtonId,
-  containerHyperlinkId,
-  menuBarItemHyperlinkId,
-];
-
 /* CSS styling parameters */
 const maximumMenuBarItemButtonHeight = 55;
 
@@ -45,6 +37,7 @@ class DropdownMenuBarItem extends React.Component {
     this.getButtonDOMElement = this.getButtonDOMElement.bind(this);
     this.getTitleDOMElement = this.getTitleDOMElement.bind(this);
     this.getIdButtonDOMElement = this.getIdButtonDOMElement.bind(this);
+    this.handleOnClickButtonSpan = this.handleOnClickButtonSpan.bind(this);
     this.handleOnClickDropdownMenuBarItem = this.handleOnClickDropdownMenuBarItem.bind(this);
     this.handleOnClickExternalElements = this.handleOnClickExternalElements.bind(this);
     this.handleOnKeyDownButton = this.handleOnKeyDownButton.bind(this);
@@ -116,6 +109,18 @@ class DropdownMenuBarItem extends React.Component {
   }
 
   /**
+   * Since the span elements for the dropdown menu bar items button sit on top of the button, click events are
+   * sometimes registered on the span elements and not the button, which can cause problems with the external elements
+   * click handlers. Therefore explicitly redirect span element clicks to be button element clicks instead.
+   * @param {Event} event 
+   */
+  handleOnClickButtonSpan(event) {
+    event.preventDefault();
+    const buttonElement = this.getButtonDOMElement();
+    buttonElement.click();
+  }
+
+  /**
    * When the element is visible click events will mark the dropdown menu bar container element
    * as visible / hidden depending on the components selection status.
    * @param {event} event
@@ -136,8 +141,8 @@ class DropdownMenuBarItem extends React.Component {
          * of the dropdown menu bar container component. Add an extra pixel to the bottom position to ensure that
          * there is a nice decorative space between the menu bar item and the menu bar container
          */
-        const bottom = buttonElementDimensions.bottom + 1;
-        const left = buttonElementDimensions.left;
+        const bottom = parseInt(buttonElementDimensions.bottom, 10) + 1;
+        const left = parseInt(buttonElementDimensions.left, 10);
         this.setState({
           enableAutoFocus: newEnableAutoFocus,
           isSelected: true,
@@ -154,17 +159,24 @@ class DropdownMenuBarItem extends React.Component {
    * @param {Event} event 
    */
   handleOnClickExternalElements(event) {
-    const targetElementId = event.target.id;
-    if (this.state.isSelected === true && targetElementId.length > 0) {
-      let index = 0;
-      let foundExternalElementId = false;
-      while (index < allExternalElementIds.length && foundExternalElementId === false) {
-        const currentExternalElementId = allExternalElementIds[index];
-        if (targetElementId.includes(currentExternalElementId) === true) {
-          foundExternalElementId = true;
-          this.setIsDeselected();
-        }
-        index += 1;
+    const targetElementId = `${event.target.id}`;
+    if (this.state.isSelected === true) {
+      let isSelected = true;
+      if (targetElementId.includes(dropdownMenuBarItemButtonId) === true && targetElementId !== this.getIdButtonDOMElement()) {
+        isSelected = false;
+        this.setIsDeselected();
+      }
+      if (isSelected === true && targetElementId.includes(containerCloseButtonId) === true) {
+        isSelected = false;
+        this.setIsDeselected();
+      }
+      if (isSelected === true && targetElementId.includes(containerHyperlinkId) === true) {
+        isSelected = false;
+        this.setIsDeselected();
+      }
+      if (isSelected === true && targetElementId.includes(menuBarItemHyperlinkId) === true) {
+        isSelected = false;
+        this.setIsDeselected();
       }
     }
   }
@@ -175,9 +187,10 @@ class DropdownMenuBarItem extends React.Component {
    * @param {Event} event 
    */
   handleOnKeyDownButton(event) {
+    const enableAutoFocus = true;
     if (event.key === 'Enter' || event.key === ' ') {
       /* If the enter key or the space key have been pressed, ensure a click event occurs with auto focus enabled */
-      this.handleOnClickDropdownMenuBarItem(event, true);
+      this.handleOnClickDropdownMenuBarItem(event, enableAutoFocus);
       this.handleOnMouseLeave();
     }
   }
@@ -202,6 +215,10 @@ class DropdownMenuBarItem extends React.Component {
         (event.key === 'Escape') ||
         ((event.key === 'Enter' || event.key === ' ') && event.target.id.length > 0 && event.target.id.includes(containerCloseButtonId))
       ) {
+        if (event.key === 'Enter') {
+          /* Ensure the default behaviour for an Enter key press is disabled - otherwise the container may not be closed properly */
+          event.preventDefault();
+        }
         this.setIsDeselected(deselectedFromKeyboardEvent);
       }
     }
@@ -238,7 +255,7 @@ class DropdownMenuBarItem extends React.Component {
     /* Increase the width of the arrow element and render the arrow icon */
     arrowElement.style.minWidth = '10px';
     arrowElement.style.width = '10px';
-    arrowElement.innerHTML = '&darr;';
+    arrowElement.innerHTML = '&or;<br />&or;';
   }
 
   /**
@@ -274,6 +291,10 @@ class DropdownMenuBarItem extends React.Component {
       enableAutoFocus: false,
       isSelected: false,
     }, () => {
+      /**
+       * If a keyboard event was used to deselect the menu item (which in turn hides the container element) then make sure
+       * that focus is clearly returned to the dropdown menu item button again.
+       */
       if (deselectedFromKeyboardEvent === true) {
         const buttonElement = this.getButtonDOMElement();
         buttonElement.focus();
@@ -289,13 +310,13 @@ class DropdownMenuBarItem extends React.Component {
     this.setState({
       isHidden: true,
       isSelected: false,
+    }, () => {
+      /* Get the button element from the DOM */
+      const buttonElement = this.getButtonDOMElement();
+
+      /* Set the button elements opacity so that it is now hidden */
+      buttonElement.style.opacity = 0;
     });
-
-    /* Get the button element from the DOM */
-    const buttonElement = this.getButtonDOMElement();
-
-    /* Set the button elements opacity so that it is now hidden */
-    buttonElement.style.opacity = 0;
   }
 
   /**
@@ -303,13 +324,15 @@ class DropdownMenuBarItem extends React.Component {
    */
   setIsVisible() {
     /* Ensure state is updated to reflect that the dropdown menu bar items button is now visible */
-    this.setState({ isHidden: false });
+    this.setState({
+      isHidden: false
+    }, () => {
+      /* Get the button element from the DOM */
+      const buttonElement = this.getButtonDOMElement();
 
-    /* Get the button element from the DOM */
-    const buttonElement = this.getButtonDOMElement();
-
-    /* Set the button elements opacity so that it is now visible */
-    buttonElement.style.opacity = 1;
+      /* Set the button elements opacity so that it is now visible */
+      buttonElement.style.opacity = 1;
+    });
   }
 
   render() {
@@ -327,13 +350,14 @@ class DropdownMenuBarItem extends React.Component {
 
     return (
       <React.Fragment>
-        <button className={buttonCss} data-isselected={`${this.state.isSelected}`} id={this.getIdButtonDOMElement()} onBlur={this.handleOnMouseLeave}
-          onClick={this.handleOnClickDropdownMenuBarItem} onFocus={this.handleOnMouseOver} onKeyDown={this.handleOnKeyDownButton} onMouseLeave={this.handleOnMouseLeave}
-          onMouseOver={this.handleOnMouseOver} tabIndex={this.state.isHidden === true ? '-1' : '0'}>
-            <span className={buttonTitleCss}>
+        <button aria-label={`${this.props.dropdownMenuBarItemData.title} dropdown menu item.`} className={buttonCss}
+          data-isselected={`${this.state.isSelected}`} id={this.getIdButtonDOMElement()} onBlur={this.handleOnMouseLeave} onClick={this.handleOnClickDropdownMenuBarItem}
+          onFocus={this.handleOnMouseOver} onKeyDown={this.handleOnKeyDownButton} onMouseLeave={this.handleOnMouseLeave} onMouseOver={this.handleOnMouseOver}
+          tabIndex={this.state.isHidden === true ? '-1' : '0'} title={`${this.props.dropdownMenuBarItemData.title}`}>
+            <span onClick={this.handleOnClickButtonSpan} className={buttonTitleCss}>
               {this.props.dropdownMenuBarItemData.title}
             </span>
-            <span className={buttonArrowCss} />
+            <span onClick={this.handleOnClickButtonSpan} className={buttonArrowCss} />
         </button>
         <DropdownMenuBarContainer backgroundColour={this.props.backgroundColour} dropdownMenuBarItemsList={this.props.dropdownMenuBarItemData.dropdownMenuBarItemsList}
           enableAutoFocus={this.state.enableAutoFocus} id={this.props.id} isHidden={!this.state.isSelected} left={this.state.left} top={this.state.top} />
@@ -346,8 +370,6 @@ DropdownMenuBarItem.propTypes = {
   addRightSideSpacing: PropTypes.bool,
   /** The background colour for the dropdown menu bar item. The default colour for the background is white. */
   backgroundColour: PropTypes.oneOf([ 'gold', 'green', 'grey', 'navy-and-gold', 'navy-and-white', 'red', 'white' ]),
-  /** The dropdown menu bar items text content. */
-  children: PropTypes.string,
   /** The dropdown menu bar item data used to render the menu bar item and the links in the dropdown menu bar container element. */
   dropdownMenuBarItemData: PropTypes.shape({
     dropdownMenuBarItemsList: PropTypes.arrayOf(
@@ -360,6 +382,8 @@ DropdownMenuBarItem.propTypes = {
     id: PropTypes.string,
     title: PropTypes.string,
   }).isRequired,
+  /** The unique identifier for this component. */
+  id: PropTypes.string.isRequired,
   /** Sets whether the dropdown menu bar item is visible or hidden. Is set to hidden by default until specified otherwise. */
   isHidden: PropTypes.bool,
 };
