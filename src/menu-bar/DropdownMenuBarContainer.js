@@ -173,7 +173,7 @@ class DropdownMenuBarContainer extends React.Component {
     for (let index = 0; index < allHyperlinkTitleElements.length; index += 1) {
       /* Determine the initial height of the text content + the arrow icon */
       const hyperlinkTitleElement = allHyperlinkTitleElements[index];
-      let hyperlinkTitleHeight = hyperlinkTitleElement.getBoundingClientRect().height;
+      let hyperlinkTitleHeight = parseInt(hyperlinkTitleElement.getBoundingClientRect().height, 10);
 
        while (hyperlinkTitleHeight > maximumHyperlinkTitleHeight) {
         /* Reduce the hyperlink title text content character by character until it fits perfectly within the allocated size of the container */
@@ -186,7 +186,7 @@ class DropdownMenuBarContainer extends React.Component {
         hyperlinkTitleElement.textContent = currentTitle;
 
         /* Determine the new height of the text content now that we have truncated the text */
-        hyperlinkTitleHeight = hyperlinkTitleElement.getBoundingClientRect().height;
+        hyperlinkTitleHeight = parseInt(hyperlinkTitleElement.getBoundingClientRect().height, 10);
       }
     }
   }
