@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import {
+  Footer,
   HeaderTallLogo,
   Main,
   MenuBar,
@@ -30,6 +31,9 @@ const Template_HomePage = () => {
     <Main id="tullowhill-cavaliers-home-page" title="Home Page - Tullowhill Cavaliers">
       Main content will go here when available.
     </Main>
+    <Footer backgroundColour="navy-and-gold" id="tullowhill-cavaliers-footer" isBoldFont={false}>
+      Website Designed and Developed in 2025 by Anthony Cox and Susan Mitchell
+    </Footer>
   </React.Fragment>;
 };
 
