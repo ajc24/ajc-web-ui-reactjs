@@ -75,7 +75,7 @@ class DropdownMenuBarContainer extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.isHidden && prevProps.isHidden !== this.props.isHidden && this.props.isHidden !== this.state.isHidden) {
+    if (prevProps.isHidden !== this.props.isHidden && this.props.isHidden !== this.state.isHidden) {
       if (this.props.isHidden === false) {
         /* Mark the component as visible */
         this.setIsVisible();
@@ -83,6 +83,9 @@ class DropdownMenuBarContainer extends React.Component {
         /* Mark the component as hidden */
         this.setIsHidden();
       }
+    }
+    if (prevProps.top !== this.props.top && prevProps.left !== this.props.left) {
+      this.setPosition(this.props.top, this.props.left);
     }
   }
 
@@ -239,15 +242,17 @@ class DropdownMenuBarContainer extends React.Component {
    */
   setIsHidden() {
     /* Ensure state is updated to reflect that the dropdown menu bar container is now hidden */
-    this.setState({ isHidden: true });
+    this.setState({ 
+      isHidden: true 
+    }, () => {
+      /* Get the container element from the DOM */
+      const containerElement = this.getContainerDOMElement();
 
-    /* Get the container element from the DOM */
-    const containerElement = this.getContainerDOMElement();
-
-    /* Set the container elements opacity so that it is now hidden */
-    if (containerElement !== null) {
-      containerElement.style.visibility = 'hidden';
-    }
+      /* Set the container elements opacity so that it is now hidden */
+      if (containerElement !== null) {
+        containerElement.style.visibility = 'hidden';
+      }
+    });
   }
 
   /**
@@ -255,20 +260,22 @@ class DropdownMenuBarContainer extends React.Component {
    */
   setIsVisible() {
     /* Ensure state is updated to reflect that the dropdown menu bar container is now visible */
-    this.setState({ isHidden: false });
+    this.setState({
+      isHidden: false
+    }, () => {
+      /* Get the container element from the DOM */
+      const containerElement = this.getContainerDOMElement();
 
-    /* Get the container element from the DOM */
-    const containerElement = this.getContainerDOMElement();
+      /* Set the container elements opacity so that it is now visible */
+      if (containerElement !== null) {
+        containerElement.style.visibility = 'visible';
+      }
 
-    /* Set the container elements opacity so that it is now visible */
-    if (containerElement !== null) {
-      containerElement.style.visibility = 'visible';
-    }
-
-    /* Auto focus on the first available hyperlink in the container element if required */
-    if (this.props.enableAutoFocus === true) {
-      this.getFirstHyperlinkDOMElement().focus();
-    }
+      /* Auto focus on the first available hyperlink in the container element if required */
+      if (this.props.enableAutoFocus === true) {
+        this.getFirstHyperlinkDOMElement().focus();
+      }
+    });
   }
 
   /**
