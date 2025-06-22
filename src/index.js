@@ -18,6 +18,9 @@ import DecorativeImage from './images/DecorativeImage';
 import FunctionalImage from './images/FunctionalImage';
 import InformativeImage from './images/InformativeImage';
 
+/* Main components */
+import Main from './main/Main';
+
 /* Menu Bar components */
 import DropdownMenuBarContainer from './menu-bar/DropdownMenuBarContainer';
 import DropdownMenuBarItem from './menu-bar/DropdownMenuBarItem';
@@ -46,6 +49,9 @@ export {
   DecorativeImage,
   FunctionalImage,
   InformativeImage,
+
+  /* Main components */
+  Main,
 
   /* Menu Bar components */
   DropdownMenuBarContainer,
