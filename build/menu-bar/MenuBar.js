@@ -101,7 +101,7 @@ var MenuBar = /*#__PURE__*/function (_React$Component) {
       this.handleScreenWidth();
 
       /* Watch over all future window resize events - we will want to alter the number of rendered menu bar items to suit the screen size */
-      window.addEventListener('resize', this.handleScreenWidth);
+      document.body.addEventListener('resize', this.handleScreenWidth);
     }
 
     /**
