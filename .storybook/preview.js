@@ -8,9 +8,9 @@ import { INITIAL_VIEWPORTS } from 'storybook/viewport';
  */
 const preview = {
   parameters: {
-    docs: {
-      source: { type: 'code' }
-    },
+    // docs: {
+    //   source: { type: 'code' }
+    // },
     viewport: {
       options: INITIAL_VIEWPORTS,
     },
