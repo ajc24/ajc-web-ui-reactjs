@@ -21,6 +21,9 @@ const config = {
     '../stories/menu-bar/MenuBarItem.stories.js',
     '../stories/menu-bar/ScrollMenuBarItemsLeft.stories.js',
     '../stories/menu-bar/ScrollMenuBarItemsRight.stories.js',
+
+    /* Main component stories */
+    '../stories/main/Main.stories.js',
     
     /* Image component stories */
     '../stories/images/DecorativeImage.stories.js',
