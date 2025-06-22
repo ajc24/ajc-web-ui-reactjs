@@ -26,8 +26,11 @@ class MenuBarItem extends React.Component {
       isHidden: true,
     };
     this.getContainerDOMElement = this.getContainerDOMElement.bind(this);
+    this.getHyperlinkDOMElement = this.getHyperlinkDOMElement.bind(this);
+    this.getIdHyperlinkDOMElement = this.getIdHyperlinkDOMElement.bind(this);
     this.getSpanDOMElement = this.getSpanDOMElement.bind(this);
     this.handleOnClick = this.handleOnClick.bind(this);
+    this.handleOnClickSpan = this.handleOnClickSpan.bind(this);
     this.handleOnKeyDown = this.handleOnKeyDown.bind(this);
     this.handleTextContentHeight = this.handleTextContentHeight.bind(this);
     this.setIsHidden = this.setIsHidden.bind(this);
@@ -66,6 +69,22 @@ class MenuBarItem extends React.Component {
   }
 
   /**
+   * Retrieves the menu bar items hyperlink element from the DOM
+   * @returns {HTMLElement}
+   */
+  getHyperlinkDOMElement() {
+    return document.querySelector(`a[id="${this.getIdHyperlinkDOMElement()}"]`);
+  }
+
+  /**
+   * Retrieves the ID linked to the menu bar items hyperlink element
+   * @returns {string}
+   */
+  getIdHyperlinkDOMElement() {
+    return `${this.props.id}--menu-bar-item-hyperlink`;
+  }
+
+  /**
    * Retrieves the links span element from the DOM
    * @returns {HTMLElement}
    */
@@ -81,6 +100,16 @@ class MenuBarItem extends React.Component {
     if (this.state.isHidden === true) {
       event.preventDefault();
     }
+  }
+
+  /**
+   * Handles click events on the hyperlinks span element
+   * @param {Event} event 
+   */
+  handleOnClickSpan(event) {
+    event.preventDefault();
+    const hyperlinkElement = this.getHyperlinkDOMElement();
+    hyperlinkElement.click();
   }
 
   /**
@@ -163,9 +192,9 @@ class MenuBarItem extends React.Component {
     return (
       <div className={containerCss} id={`${this.props.id}--menu-bar-item`}>
         <a aria-hidden={`${this.state.isHidden}`} aria-label={this.props.children} className={hyperlinkCss} href={`${this.props.href}`} 
-          id={`${this.props.id}--menu-bar-item-hyperlink`} onClick={this.handleOnClick} onKeyDown={this.handleOnKeyDown} role="link"
+          id={`${this.getIdHyperlinkDOMElement()}`} onClick={this.handleOnClick} onKeyDown={this.handleOnKeyDown} role="link"
           tabIndex={this.state.isHidden === true ? '-1' : '0'} title={this.props.children}>
-            <span className={hyperlinkInnerContentCss}>{this.props.children}</span>
+            <span className={hyperlinkInnerContentCss} onClick={this.handleOnClickSpan}>{this.props.children}</span>
         </a>
       </div>
     );
