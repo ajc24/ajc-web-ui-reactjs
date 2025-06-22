@@ -25,6 +25,9 @@ const config = {
 
     /* Main component stories */
     '../stories/main/Main.stories.js',
+
+    /* Footer component stories */
+    '../stories/footer/Footer.stories.js',
     
     /* Image component stories */
     '../stories/images/DecorativeImage.stories.js',
