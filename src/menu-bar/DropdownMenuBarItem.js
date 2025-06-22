@@ -70,8 +70,8 @@ class DropdownMenuBarItem extends React.Component {
       this.setIsHidden();
     }
     /* Watch for click events which can de-select the dropdown menu bar item and hide the container element */
-    window.addEventListener('click', this.handleOnClickExternalElements);
-    window.addEventListener('keydown', this.handleOnKeyDownExternalElements);
+    document.body.addEventListener('click', this.handleOnClickExternalElements);
+    document.body.addEventListener('keydown', this.handleOnKeyDownExternalElements);
   }
 
   componentDidUpdate() {
