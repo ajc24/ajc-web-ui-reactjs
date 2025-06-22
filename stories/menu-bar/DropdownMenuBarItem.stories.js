@@ -2,7 +2,7 @@
  * Developed by Anthony Cox in 2025
  */
 import React from 'react';
-import { DropdownMenuBarItem } from '../../src';
+import { DropdownMenuBarItem, MenuBar } from '../../src';
 
 export default {
   title: 'Menu Bar/Dropdown Menu Bar Item',
@@ -45,18 +45,105 @@ const dropdownMenuBarItemData_TruncatedText = {
   dropdownMenuBarItemsList: [
     {
       href: '#',
-      id: 'dropdown-menu-bar-item-1',
+      id: 'dropdown-menu-bar-item-truncated-text-1',
       title: 'Dropdown Menu Bar Item 1',
     },
     {
       href: '#',
-      id: 'dropdown-menu-bar-item-2',
+      id: 'dropdown-menu-bar-item-truncated-text-2',
       title: 'Dropdown Menu Bar Item 2',
     },
   ],
-  id: 'menu-bar-item',
+  id: 'menu-bar-item-truncated-text',
   title: 'With Truncated Text Content',
 };
+
+const dropdownMenuBarItemData_MobilePhoneTest = [
+  {
+    dropdownMenuBarItemsList: [
+      {
+        href: '#',
+        id: 'mobile-phone-test--dropdown-hyperlink-1-1',
+        title: 'Dropdown Hyperlink 1.1',
+      },
+      {
+        href: '#',
+        id: 'mobile-phone-test--dropdown-hyperlink-1-2',
+        title: 'Dropdown Hyperlink 1.2',
+      },
+      {
+        href: '#',
+        id: 'mobile-phone-test--dropdown-hyperlink-1-3',
+        title: 'Dropdown Hyperlink 1.3',
+      },
+    ],
+    id: 'mobile-phone-test-dropdown-1',
+    title: 'Dropdown Item 1',
+  },
+  {
+    dropdownMenuBarItemsList: [
+      {
+        href: '#',
+        id: 'mobile-phone-test--dropdown-hyperlink-2-1',
+        title: 'Dropdown Hyperlink 2.1',
+      },
+      {
+        href: '#',
+        id: 'mobile-phone-test--dropdown-hyperlink-2-2',
+        title: 'Dropdown Hyperlink 2.2',
+      },
+    ],
+    id: 'mobile-phone-test-dropdown-2',
+    title: 'Dropdown Item 2',
+  },
+  {
+    dropdownMenuBarItemsList: [
+      {
+        href: '#',
+        id: 'mobile-phone-test--dropdown-hyperlink-3-1',
+        title: 'Dropdown Hyperlink 3.1',
+      },
+      {
+        href: '#',
+        id: 'mobile-phone-test--dropdown-hyperlink-3-2',
+        title: 'Dropdown Hyperlink 3.2',
+      },
+      {
+        href: '#',
+        id: 'mobile-phone-test--dropdown-hyperlink-3-3',
+        title: 'Dropdown Hyperlink 3.3',
+      },
+    ],
+    id: 'mobile-phone-test-dropdown-3',
+    title: 'Dropdown Item 3',
+  },
+  {
+    href: '#',
+    id: 'mobile-phone-test--menu-bar-item-1',
+    title: 'Menu Item 1',
+  },
+  {
+    href: '#',
+    id: 'mobile-phone-test--menu-bar-item-2',
+    title: 'Menu Item 2',
+  },
+  {
+    dropdownMenuBarItemsList: [
+      {
+        href: '#',
+        id: 'mobile-phone-test--dropdown-hyperlink-4-1',
+        title: 'Dropdown Hyperlink 4.1',
+      },
+      {
+        href: '#',
+        id: 'mobile-phone-test--dropdown-hyperlink-4-2',
+        title: 'Dropdown Hyperlink 4.2',
+      },
+    ],
+    id: 'mobile-phone-test-dropdown-4',
+    title: 'Dropdown Item 4',
+  },
+];
 
 /**
  * Dropdown Menu Bar Item component template, rendered outside all / any menu bar components
@@ -200,3 +287,19 @@ export const VisibilityToggleTest = {
   args: {},
   render: Template_DropdownMenuBarItem_VisibilityToggle_Story,
 };
+
+export const MenuBarTest = {
+  args: {},
+  render: () => { return <MenuBar backgroundColour="red" id="menu-bar-test" menuBarItemsList={[ dropdownMenuBarItemData, dropdownMenuBarItemData_TruncatedText ]} /> }
+}
+
+export const MobilePhoneTest = {
+  args: {},
+  globals: {
+    viewport: {
+      isRotated: false,
+      value: 'galaxys9',
+    },
+  },
+  render: () => { return <MenuBar backgroundColour="red" id="mobile-phone-test" menuBarItemsList={dropdownMenuBarItemData_MobilePhoneTest} /> }
+}
