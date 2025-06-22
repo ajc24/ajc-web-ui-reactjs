@@ -10,6 +10,9 @@ import BaseHeaderTall from './base/BaseHeaderTall';
 import BaseImage from './base/BaseImage';
 import BaseMenuBar from './base/BaseMenuBar';
 
+/* Footer components */
+import Footer from './footer/Footer';
+
 /* Header components */
 import HeaderAll from './header/HeaderAll';
 import HeaderTallLogo from './header/HeaderTallLogo';
@@ -42,6 +45,9 @@ export {
   BaseHeaderTall,
   BaseImage,
   BaseMenuBar,
+
+  /* Footer components */
+  Footer,
 
   /* Header components */
   HeaderAll,
