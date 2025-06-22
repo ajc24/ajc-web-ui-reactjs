@@ -59,7 +59,7 @@ class ApplicationTitleText extends React.Component {
   getContainerElementRightmostPosition() {
     const headingElement = this.getHeadingElementSelector();
     if (headingElement !== null) {
-      return headingElement.parentNode.getBoundingClientRect().right;
+      return parseInt(headingElement.parentNode.getBoundingClientRect().right, 10);
     }
     return 0;
   }
@@ -71,7 +71,7 @@ class ApplicationTitleText extends React.Component {
   getHeadingElementHeight() {
     const headingElement = this.getHeadingElementSelector();
     if (headingElement !== null) {
-      return headingElement.getBoundingClientRect().height;
+      return parseInt(headingElement.getBoundingClientRect().height, 10);
     }
     return 0;
   }
@@ -83,7 +83,7 @@ class ApplicationTitleText extends React.Component {
   getHeadingElementRightmostPosition() {
     const headingElement = this.getHeadingElementSelector();
     if (headingElement !== null) {
-      return headingElement.getBoundingClientRect().right;
+      return parseInt(headingElement.getBoundingClientRect().right, 10);
     }
     return 0; 
   }

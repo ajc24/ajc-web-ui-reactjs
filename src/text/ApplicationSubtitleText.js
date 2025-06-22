@@ -62,7 +62,7 @@ class ApplicationSubtitleText extends React.Component {
     if (subtitleContainerElement !== null) {
       /* Check 1: Does the paragraph element exceed the width of the container */
       const paragraphRightPos = this.state.paragraphRightPos;
-      const containerRightPos = subtitleContainerElement.getBoundingClientRect().right;
+      const containerRightPos = parseInt(subtitleContainerElement.getBoundingClientRect().right, 10);
 
       if (paragraphRightPos > 0 && containerRightPos > 0) {
         if (paragraphRightPos > containerRightPos) {
@@ -145,7 +145,7 @@ class ApplicationSubtitleText extends React.Component {
       if (this.state.isHidden === false) {
         /* The subtitle text element is visible - set the rightmost position of the element and then start resizing process */
         this.setState({
-          paragraphRightPos: this.subtitleTextRef.current.getBoundingClientRect().right,
+          paragraphRightPos: parseInt(this.subtitleTextRef.current.getBoundingClientRect().right, 10),
         }, this.setIsResizingStart);
       } else {
         /* The subtitle text is hidden so we can not set a new rightmost position - go straight to the resizing process */

@@ -147,7 +147,7 @@ class MenuBar extends React.Component {
     /* Determine the current width of the central content element */
     const centralContentElement = this.getCentralContentElement();
     if (centralContentElement !== null) {
-      let centralContentWidth = centralContentElement.getBoundingClientRect().width;
+      let centralContentWidth = parseInt(centralContentElement.getBoundingClientRect().width, 10);
 
       /* Reset the current index and determine how many elements will fit within the width of the element */
       const newIndex = 0;

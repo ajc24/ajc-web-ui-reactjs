@@ -276,7 +276,7 @@ class DropdownMenuBarItem extends React.Component {
   handleTextContentHeight() {
     /* Retrieve the title text span element from the DOM and determine its height and text content */
     const spanElement = this.getTitleDOMElement();
-    let spanHeight = spanElement.getBoundingClientRect().height;
+    let spanHeight = parseInt(spanElement.getBoundingClientRect().height, 10);
     let spanTextContent = spanElement.textContent;
     while (spanTextContent.length > 0 && spanHeight > maximumMenuBarItemButtonHeight) {
       /* Remove the last character in the string and add three dots to the string end to suggest truncation has occurred */
@@ -284,7 +284,7 @@ class DropdownMenuBarItem extends React.Component {
 
       /* Set the new text content string and determine the new height of the element */
       spanElement.textContent = spanTextContent;
-      spanHeight = spanElement.getBoundingClientRect().height;
+      spanHeight = parseInt(spanElement.getBoundingClientRect().height, 10);
       if (spanHeight > maximumMenuBarItemButtonHeight) {
         /* Remove the obsolete three dots at the end of the string for the next iteration of the loop */
         spanTextContent = spanTextContent.substring(0, spanTextContent.length - 3).trim();
