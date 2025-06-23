@@ -21,6 +21,7 @@ import HeaderTallLogo from './header/HeaderTallLogo';
 import DecorativeImage from './images/DecorativeImage';
 import FunctionalImage from './images/FunctionalImage';
 import InformativeImage from './images/InformativeImage';
+import ThreePhotoCollage from './images/ThreePhotoCollage';
 
 /* Main components */
 import Main from './main/Main';
@@ -57,6 +58,7 @@ export {
   DecorativeImage,
   FunctionalImage,
   InformativeImage,
+  ThreePhotoCollage,
 
   /* Main components */
   Main,

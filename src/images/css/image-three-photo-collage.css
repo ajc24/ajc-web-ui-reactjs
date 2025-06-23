@@ -1,0 +1,37 @@
+/**
+ * Developed by Anthony Cox in 2025
+ */
+.three-photo-collage-image-container {
+  height: auto;
+  max-width: 620px;
+  min-width: 160px;
+  width: 100%;
+}
+
+.three-photo-collage-image-container-spacing {
+  margin-right: 8px;
+}
+
+.three-photo-collage-lower-image-container,
+.three-photo-collage-upper-images-container {
+  display: flex;
+  flex-direction: row;
+  height: auto;
+  justify-content: center;
+  margin-bottom: 8px;
+  width: 100%;
+}
+
+.three-photo-collage-lower-image-container-spacing {
+  margin-top: -5px;
+}
+
+.three-photo-collage-root {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  justify-content: flex-start;
+  max-width: 1248px;
+  min-width: 328px;
+  width: 100%;
+}
