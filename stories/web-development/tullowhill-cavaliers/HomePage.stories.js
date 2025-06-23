@@ -31,8 +31,8 @@ const Template_HomePage = () => {
     <Main id="tullowhill-cavaliers-home-page" title="Home Page - Tullowhill Cavaliers">
       Main content will go here when available.
     </Main>
-    <Footer backgroundColour="navy-and-gold" id="tullowhill-cavaliers-footer" isBoldFont={false}>
-      Website Designed and Developed in 2025 by Anthony Cox and Susan Mitchell
+    <Footer backgroundColour="navy-and-gold" id="tullowhill-cavaliers-footer" isBoldFont={true}>
+      Website Designed and Developed by Anthony Cox and Susan Mitchell in 2025
     </Footer>
   </React.Fragment>;
 };

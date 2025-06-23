@@ -2,7 +2,12 @@
  * Developed by Anthony Cox in 2025
  */
 import React from 'react';
-import { HeaderAll } from '../../../src';
+import {
+  Footer,
+  HeaderAll,
+  Main,
+  MenuBar,
+} from '../../../src';
 import smallHeaderBgImage from './images/small-header-bg-image.png';
 import storybookLogoSquare from './images/storybook-logo-square.svg';
 
@@ -20,11 +25,18 @@ const Template_HomePage = () => {
   return <React.Fragment>
     <HeaderAll
       backgroundImageSrc={smallHeaderBgImage}
-      id="ajc-gaming"
+      id="ajc-gaming-header"
       logoImageSrc={storybookLogoSquare}
       subtitleTextContent="Fully independent gaming articles"
       titleTextContent="AJC Gaming"
     />
+    <MenuBar backgroundColour="red" id="ajc-gaming-navigation" menuBarItemsList={[]} />
+    <Main id="ajc-gaming-home-page" title="Home Page - AJC Gaming">
+      Main content will go here when available.
+    </Main>
+    <Footer backgroundColour="red" id="ajc-gaming-footer" isBoldFont={true}>
+      Website Designed and Developed by Anthony Cox in 2025
+    </Footer>
   </React.Fragment>;
 };
 
