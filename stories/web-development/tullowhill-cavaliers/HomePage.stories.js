@@ -7,13 +7,30 @@ import {
   HeaderTallLogo,
   Main,
   MenuBar,
+  ThreePhotoCollage,
 } from '../../../src';
+import benjiAndFreddiePhoto from './images/benji-and-freddie.jpg';
+import benjiPhoto from './images/benji.jpg';
+import freddiePhoto from './images/freddie.jpg';
 import tullowhillCavaliersLogo from './images/tullowhill-cavaliers-logo.png';
 import { getMenuBarData } from './data';
 
 export default {
   tags: ['!autodocs'],
   title: 'Web Development/Tullowhill Cavaliers/Home Page',
+};
+
+const imageLowerData = {
+  alt: 'A photo of Benji and Freddie playing together in the garden.',
+  src: benjiAndFreddiePhoto,
+};
+const imageUpperLeftData = {
+  alt: 'A picture of Benji, standing tall and proud in the garden.',
+  src: benjiPhoto,
+};
+const imageUpperRightData = {
+  alt: 'A picture of Freddie eagerly awaiting his turn to enter the ring at Crufts 2025.',
+  src: freddiePhoto,
 };
 
 /**
@@ -29,7 +46,7 @@ const Template_HomePage = () => {
     />
     <MenuBar backgroundColour="navy-and-gold" id="tullowhill-cavaliers-navigation" menuBarItemsList={getMenuBarData()} />
     <Main id="tullowhill-cavaliers-home-page" title="Home Page - Tullowhill Cavaliers">
-      Main content will go here when available.
+      <ThreePhotoCollage id="tullowhill-cavaliers-dogs" imageLowerData={imageLowerData} imageUpperLeftData={imageUpperLeftData} imageUpperRightData={imageUpperRightData} />
     </Main>
     <Footer backgroundColour="navy-and-gold" id="tullowhill-cavaliers-footer" isBoldFont={true}>
       Website Designed and Developed by Anthony Cox and Susan Mitchell in 2025
