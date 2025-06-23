@@ -16,6 +16,12 @@ Object.defineProperty(exports, "ApplicationTitleText", {
     return _ApplicationTitleText["default"];
   }
 });
+Object.defineProperty(exports, "BaseFooter", {
+  enumerable: true,
+  get: function get() {
+    return _BaseFooter["default"];
+  }
+});
 Object.defineProperty(exports, "BaseHeader", {
   enumerable: true,
   get: function get() {
@@ -64,6 +70,12 @@ Object.defineProperty(exports, "DropdownMenuBarItem", {
     return _DropdownMenuBarItem["default"];
   }
 });
+Object.defineProperty(exports, "Footer", {
+  enumerable: true,
+  get: function get() {
+    return _Footer["default"];
+  }
+});
 Object.defineProperty(exports, "FunctionalImage", {
   enumerable: true,
   get: function get() {
@@ -86,6 +98,12 @@ Object.defineProperty(exports, "InformativeImage", {
   enumerable: true,
   get: function get() {
     return _InformativeImage["default"];
+  }
+});
+Object.defineProperty(exports, "Main", {
+  enumerable: true,
+  get: function get() {
+    return _Main["default"];
   }
 });
 Object.defineProperty(exports, "MenuBar", {
@@ -112,16 +130,26 @@ Object.defineProperty(exports, "ScrollMenuBarItemsRight", {
     return _ScrollMenuBarItemsRight["default"];
   }
 });
+Object.defineProperty(exports, "ThreePhotoCollage", {
+  enumerable: true,
+  get: function get() {
+    return _ThreePhotoCollage["default"];
+  }
+});
+var _BaseFooter = _interopRequireDefault(require("./base/BaseFooter"));
 var _BaseHeader = _interopRequireDefault(require("./base/BaseHeader"));
 var _BaseHeaderBgImage = _interopRequireDefault(require("./base/BaseHeaderBgImage"));
 var _BaseHeaderTall = _interopRequireDefault(require("./base/BaseHeaderTall"));
 var _BaseImage = _interopRequireDefault(require("./base/BaseImage"));
 var _BaseMenuBar = _interopRequireDefault(require("./base/BaseMenuBar"));
+var _Footer = _interopRequireDefault(require("./footer/Footer"));
 var _HeaderAll = _interopRequireDefault(require("./header/HeaderAll"));
 var _HeaderTallLogo = _interopRequireDefault(require("./header/HeaderTallLogo"));
 var _DecorativeImage = _interopRequireDefault(require("./images/DecorativeImage"));
 var _FunctionalImage = _interopRequireDefault(require("./images/FunctionalImage"));
 var _InformativeImage = _interopRequireDefault(require("./images/InformativeImage"));
+var _ThreePhotoCollage = _interopRequireDefault(require("./images/ThreePhotoCollage"));
+var _Main = _interopRequireDefault(require("./main/Main"));
 var _DropdownMenuBarContainer = _interopRequireDefault(require("./menu-bar/DropdownMenuBarContainer"));
 var _DropdownMenuBarItem = _interopRequireDefault(require("./menu-bar/DropdownMenuBarItem"));
 var _MenuBar = _interopRequireDefault(require("./menu-bar/MenuBar"));

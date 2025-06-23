@@ -213,7 +213,7 @@ var DropdownMenuBarItem = /*#__PURE__*/function (_React$Component) {
            * of the dropdown menu bar container component. Add an extra pixel to the bottom position to ensure that
            * there is a nice decorative space between the menu bar item and the menu bar container
            */
-          var bottom = parseInt(buttonElementDimensions.bottom, 10) + 1;
+          var bottom = parseInt(buttonElementDimensions.bottom + window.pageYOffset, 10) + 1;
           var left = parseInt(buttonElementDimensions.left, 10);
           this.setState({
             enableAutoFocus: newEnableAutoFocus,

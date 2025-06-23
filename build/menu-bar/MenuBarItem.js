@@ -68,8 +68,11 @@ var MenuBarItem = /*#__PURE__*/function (_React$Component) {
       isHidden: true
     };
     _this.getContainerDOMElement = _this.getContainerDOMElement.bind(_this);
+    _this.getHyperlinkDOMElement = _this.getHyperlinkDOMElement.bind(_this);
+    _this.getIdHyperlinkDOMElement = _this.getIdHyperlinkDOMElement.bind(_this);
     _this.getSpanDOMElement = _this.getSpanDOMElement.bind(_this);
     _this.handleOnClick = _this.handleOnClick.bind(_this);
+    _this.handleOnClickSpan = _this.handleOnClickSpan.bind(_this);
     _this.handleOnKeyDown = _this.handleOnKeyDown.bind(_this);
     _this.handleTextContentHeight = _this.handleTextContentHeight.bind(_this);
     _this.setIsHidden = _this.setIsHidden.bind(_this);
@@ -114,6 +117,26 @@ var MenuBarItem = /*#__PURE__*/function (_React$Component) {
     }
 
     /**
+     * Retrieves the menu bar items hyperlink element from the DOM
+     * @returns {HTMLElement}
+     */
+  }, {
+    key: "getHyperlinkDOMElement",
+    value: function getHyperlinkDOMElement() {
+      return document.querySelector("a[id=\"".concat(this.getIdHyperlinkDOMElement(), "\"]"));
+    }
+
+    /**
+     * Retrieves the ID linked to the menu bar items hyperlink element
+     * @returns {string}
+     */
+  }, {
+    key: "getIdHyperlinkDOMElement",
+    value: function getIdHyperlinkDOMElement() {
+      return "".concat(this.props.id, "--menu-bar-item-hyperlink");
+    }
+
+    /**
      * Retrieves the links span element from the DOM
      * @returns {HTMLElement}
      */
@@ -133,6 +156,18 @@ var MenuBarItem = /*#__PURE__*/function (_React$Component) {
       if (this.state.isHidden === true) {
         event.preventDefault();
       }
+    }
+
+    /**
+     * Handles click events on the hyperlinks span element
+     * @param {Event} event 
+     */
+  }, {
+    key: "handleOnClickSpan",
+    value: function handleOnClickSpan(event) {
+      event.preventDefault();
+      var hyperlinkElement = this.getHyperlinkDOMElement();
+      hyperlinkElement.click();
     }
 
     /**
@@ -234,14 +269,15 @@ var MenuBarItem = /*#__PURE__*/function (_React$Component) {
         "aria-label": this.props.children,
         className: hyperlinkCss,
         href: "".concat(this.props.href),
-        id: "".concat(this.props.id, "--menu-bar-item-hyperlink"),
+        id: "".concat(this.getIdHyperlinkDOMElement()),
         onClick: this.handleOnClick,
         onKeyDown: this.handleOnKeyDown,
         role: "link",
         tabIndex: this.state.isHidden === true ? '-1' : '0',
         title: this.props.children
       }, /*#__PURE__*/_react["default"].createElement("span", {
-        className: hyperlinkInnerContentCss
+        className: hyperlinkInnerContentCss,
+        onClick: this.handleOnClickSpan
       }, this.props.children)));
     }
   }]);
