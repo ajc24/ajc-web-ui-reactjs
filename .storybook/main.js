@@ -33,6 +33,7 @@ const config = {
     '../stories/images/DecorativeImage.stories.js',
     '../stories/images/FunctionalImage.stories.js',
     '../stories/images/InformativeImage.stories.js',
+    '../stories/images/ThreePhotoCollage.stories.js',
 
     /* Text component stories */
     '../stories/text/ApplicationSubtitleText.stories.js',
