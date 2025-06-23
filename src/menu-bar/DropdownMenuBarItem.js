@@ -266,7 +266,7 @@ class DropdownMenuBarItem extends React.Component {
     /* Increase the width of the arrow element and render the arrow icon */
     arrowElement.style.minWidth = '10px';
     arrowElement.style.width = '10px';
-    arrowElement.innerHTML = '&or;<br />&or;';
+    arrowElement.innerHTML = '&nbsp;<br />&darr;';
   }
 
   /**
