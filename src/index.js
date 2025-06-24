@@ -37,6 +37,7 @@ import ScrollMenuBarItemsRight from './menu-bar/ScrollMenuBarItemsRight';
 /* Text components */
 import ApplicationSubtitleText from './text/ApplicationSubtitleText';
 import ApplicationTitleText from './text/ApplicationTitleText';
+import PageTitleText from './text/PageTitleText';
 
 export {
   /* Base components */
@@ -74,4 +75,5 @@ export {
   /* Text components */
   ApplicationSubtitleText,
   ApplicationTitleText,
+  PageTitleText,
 };
