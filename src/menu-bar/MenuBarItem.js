@@ -4,6 +4,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { getColourCombination } from '../data/colour-combinations';
+import { getBoundingClientRect } from '../data/dom-measurements';
 import '../css/common.css';
 import './css/menu-bar-common.css';
 import './css/menu-bar-item.css';
@@ -130,18 +131,22 @@ class MenuBarItem extends React.Component {
   handleTextContentHeight() {
     /* Retrieve the span element from the DOM and determine its height and text content */
     const spanElement = this.getSpanDOMElement();
-    let spanHeight = parseInt(spanElement.getBoundingClientRect().height, 10);
-    let spanTextContent = spanElement.textContent;
-    while (spanTextContent.length > 0 && spanHeight > maximumMenuItemLinkHeight) {
-      /* Remove the last character in the string and add three dots to the string end to suggest truncation has occurred */
-      spanTextContent = `${spanTextContent.substring(0, spanTextContent.length - 1).trim()}...`;
+    if (spanElement !== null) {
+      let spanDimensions = getBoundingClientRect(spanElement);
+      let spanHeight = spanDimensions.height;
+      let spanTextContent = spanElement.textContent;
+      while (spanTextContent.length > 0 && spanHeight > maximumMenuItemLinkHeight) {
+        /* Remove the last character in the string and add three dots to the string end to suggest truncation has occurred */
+        spanTextContent = `${spanTextContent.substring(0, spanTextContent.length - 1).trim()}...`;
 
-      /* Set the new text content string and determine the new height of the element */
-      spanElement.textContent = spanTextContent;
-      spanHeight = parseInt(spanElement.getBoundingClientRect().height, 10);
-      if (spanHeight > maximumMenuItemLinkHeight) {
-        /* Remove the obsolete three dots at the end of the string for the next iteration of the loop */
-        spanTextContent = spanTextContent.substring(0, spanTextContent.length - 3).trim();
+        /* Set the new text content string and determine the new height of the element */
+        spanElement.textContent = spanTextContent;
+        spanDimensions = getBoundingClientRect(spanElement);
+        spanHeight = spanDimensions.height;
+        if (spanHeight > maximumMenuItemLinkHeight) {
+          /* Remove the obsolete three dots at the end of the string for the next iteration of the loop */
+          spanTextContent = spanTextContent.substring(0, spanTextContent.length - 3).trim();
+        }
       }
     }
   }

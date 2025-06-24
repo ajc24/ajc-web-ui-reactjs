@@ -8,6 +8,10 @@ import MenuBarItem from './MenuBarItem';
 import DropdownMenuBarItem from './DropdownMenuBarItem';
 import ScrollMenuBarItemsLeft from './ScrollMenuBarItemsLeft';
 import ScrollMenuBarItemsRight from './ScrollMenuBarItemsRight';
+import {
+  divide_Integer,
+  getBoundingClientRect,
+} from '../data/dom-measurements';
 import './css/menu-bar.css';
 
 const menuBarItemAnimationTime = 250;
@@ -147,7 +151,8 @@ class MenuBar extends React.Component {
     /* Determine the current width of the central content element */
     const centralContentElement = this.getCentralContentElement();
     if (centralContentElement !== null) {
-      let centralContentWidth = parseInt(centralContentElement.getBoundingClientRect().width, 10);
+      const centralContentDimensions = getBoundingClientRect(centralContentElement);
+      let centralContentWidth = centralContentDimensions.width;
 
       /* Reset the current index and determine how many elements will fit within the width of the element */
       const newIndex = 0;
@@ -158,7 +163,7 @@ class MenuBar extends React.Component {
         centralContentWidth -= menuBarItemWidth;
       }
       /* Now account for all of the other menu bar item widths which will include margins */
-      const remainder = parseInt(centralContentWidth / menuBarItemWidthWithMargin, 10);
+      const remainder = divide_Integer(centralContentWidth, menuBarItemWidthWithMargin);
       newMaxIndex += remainder;
 
       /* Set these indexes in state */

@@ -4,6 +4,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { getColourCombination } from '../data/colour-combinations';
+import { getBoundingClientRect } from '../data/dom-measurements';
 import '../css/common.css';
 import './css/menu-bar-common.css';
 import './css/menu-bar-dropdown-container.css';
@@ -173,7 +174,8 @@ class DropdownMenuBarContainer extends React.Component {
     for (let index = 0; index < allHyperlinkTitleElements.length; index += 1) {
       /* Determine the initial height of the text content + the arrow icon */
       const hyperlinkTitleElement = allHyperlinkTitleElements[index];
-      let hyperlinkTitleHeight = parseInt(hyperlinkTitleElement.getBoundingClientRect().height, 10);
+      let hyperlinkTitleDimensions = getBoundingClientRect(hyperlinkTitleElement);
+      let hyperlinkTitleHeight = hyperlinkTitleDimensions.height;
 
        while (hyperlinkTitleHeight > maximumHyperlinkTitleHeight) {
         /* Reduce the hyperlink title text content character by character until it fits perfectly within the allocated size of the container */
@@ -186,7 +188,8 @@ class DropdownMenuBarContainer extends React.Component {
         hyperlinkTitleElement.textContent = currentTitle;
 
         /* Determine the new height of the text content now that we have truncated the text */
-        hyperlinkTitleHeight = parseInt(hyperlinkTitleElement.getBoundingClientRect().height, 10);
+        hyperlinkTitleDimensions = getBoundingClientRect(hyperlinkTitleElement);
+        hyperlinkTitleHeight = hyperlinkTitleDimensions.height;
       }
     }
   }
