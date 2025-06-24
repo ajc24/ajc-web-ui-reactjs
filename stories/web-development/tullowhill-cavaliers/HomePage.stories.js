@@ -47,7 +47,7 @@ const Template_HomePage = () => {
     />
     <MenuBar backgroundColour="navy-and-gold" id="tullowhill-cavaliers-navigation" menuBarItemsList={getMenuBarData()} />
     <Main backgroundColour="grey" id="tullowhill-cavaliers-home-page" title="Home Page - Tullowhill Cavaliers">
-      <PageTitleText alignment="centre" id="tullowhill-cavaliers-home-page" underline={false}>
+      <PageTitleText alignment="centre" fontStyle="cursive" id="tullowhill-cavaliers-home-page" underline={false}>
         Welcome to Tullowhill Cavaliers
       </PageTitleText>
       <ThreePhotoCollage borderColour="grey" id="tullowhill-cavaliers-dogs" imageLowerData={imageLowerData} imageUpperLeftData={imageUpperLeftData}
