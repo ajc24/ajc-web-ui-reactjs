@@ -4,6 +4,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import InformativeImage from './InformativeImage';
+import {
+  divide_Integer,
+  getBoundingClientRect,
+  multiply_Integer,
+} from '../data/dom-measurements';
 import './css/image-three-photo-collage.css';
 
 const initialMarginTop = 65;
@@ -91,7 +96,7 @@ class ThreePhotoCollage extends React.Component {
    * @returns {HTMLElement}
    */
   getUpperImageRightContainerDOMElement() {
-    return document.querySelector(`div[id="${this.getIdUpperImagesContainerDOMElement()}"] > div[class="three-photo-collage-image-container"]`);
+    return document.querySelector(`div[id="${this.getIdUpperImagesContainerDOMElement()}"] > div[class*="three-photo-collage--upper-image-right"]`);
   }
 
   /**
@@ -101,14 +106,15 @@ class ThreePhotoCollage extends React.Component {
     const rightUpperImageContainerElement = this.getUpperImageRightContainerDOMElement();
     if (rightUpperImageContainerElement !== null) {
       /* Get the full width of the image container */
-      const imageContainerWidth = parseInt(rightUpperImageContainerElement.getBoundingClientRect().width, 10);
+      const imageContainerDimensions = getBoundingClientRect(rightUpperImageContainerElement);
+      const imageContainerWidth = imageContainerDimensions.width;
 
       /* Get the lower image container element */
       const lowerImageContainerElement = this.getLowerImageContainerDOMElement();
 
       /* For every 15 pixels less than the maximum permitted width - reduce the margin top allowance by 1px */
       const imagePixelReduction = maximumImageWidth - imageContainerWidth;
-      const marginTopPixelReduction = parseInt(imagePixelReduction / 15);
+      const marginTopPixelReduction = divide_Integer(imagePixelReduction, 15);
       const marginTop = `-${initialMarginTop - marginTopPixelReduction}px`;
 
       /* Set the new margin top CSS value to the lower image container element */
@@ -116,7 +122,7 @@ class ThreePhotoCollage extends React.Component {
       
       /* Set the height and width of the images based on the current container width */
       this.setState({
-        height: parseInt(imageContainerWidth * 0.75, 10),
+        height: multiply_Integer(imageContainerWidth, 0.75),
         width: imageContainerWidth,
       }, () => {
         /* If this is the first time we have loaded the page - blend in the photos now everything has been loaded and set */
@@ -136,10 +142,10 @@ class ThreePhotoCollage extends React.Component {
     const upperImagesContainerCss = 'three-photo-collage-upper-images-container';
 
     /* Set the styling for the leftmost image container in the upper images container element */
-    const upperImageLeftContainerCss = 'three-photo-collage-image-container three-photo-collage-image-container-spacing';
+    const upperImageLeftContainerCss = 'three-photo-collage--upper-image-left three-photo-collage-image-container three-photo-collage-image-container-spacing';
 
     /* Set the styling for the rightmost image container in the upper images container element */
-    const upperImageRightContainerCss = 'three-photo-collage-image-container';
+    const upperImageRightContainerCss = 'three-photo-collage--upper-image-right three-photo-collage-image-container';
 
     /* Set the styling for the lower image container element */
     const lowerImageContainerCss = 'three-photo-collage-lower-image-container';
