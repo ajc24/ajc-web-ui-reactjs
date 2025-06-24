@@ -118,6 +118,12 @@ Object.defineProperty(exports, "MenuBarItem", {
     return _MenuBarItem["default"];
   }
 });
+Object.defineProperty(exports, "PageTitleText", {
+  enumerable: true,
+  get: function get() {
+    return _PageTitleText["default"];
+  }
+});
 Object.defineProperty(exports, "ScrollMenuBarItemsLeft", {
   enumerable: true,
   get: function get() {
@@ -158,4 +164,5 @@ var _ScrollMenuBarItemsLeft = _interopRequireDefault(require("./menu-bar/ScrollM
 var _ScrollMenuBarItemsRight = _interopRequireDefault(require("./menu-bar/ScrollMenuBarItemsRight"));
 var _ApplicationSubtitleText = _interopRequireDefault(require("./text/ApplicationSubtitleText"));
 var _ApplicationTitleText = _interopRequireDefault(require("./text/ApplicationTitleText"));
+var _PageTitleText = _interopRequireDefault(require("./text/PageTitleText"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
