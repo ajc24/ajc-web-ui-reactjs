@@ -38,6 +38,7 @@ const config = {
     /* Text component stories */
     '../stories/text/ApplicationSubtitleText.stories.js',
     '../stories/text/ApplicationTitleText.stories.js',
+    '../stories/text/PageTitleText.stories.js',
 
     /* Web development mock page stories */
     '../stories/web-development/ajc-gaming/HomePage.stories.js',
