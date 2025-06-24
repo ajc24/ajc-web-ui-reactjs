@@ -19,6 +19,10 @@ const menuBarItemHyperlinkId = '--menu-bar-item-hyperlink';
 /* CSS styling parameters */
 const maximumMenuBarItemButtonHeight = 55;
 
+/* Arrow icon inner HTML settings */
+const downArrowInnerHTML = '&nbsp;<br />&darr;';
+const upArrowInnerHTML = '&nbsp;<br />&uarr;';
+
 /**
  * Dropdown Menu Bar Item component which is intended for use with the Menu Bar component. This component will render
  * a clickable menu bar item to the user. Clicking this item will open a dropdown menu container element which contains
@@ -41,6 +45,7 @@ class DropdownMenuBarItem extends React.Component {
       enableAutoFocus: false,
       isHidden: true,
       isSelected: false,
+      itemArrowInnerHTML: downArrowInnerHTML,
       top: 0,
       left: 0,
     };
@@ -157,6 +162,7 @@ class DropdownMenuBarItem extends React.Component {
         this.setState({
           enableAutoFocus: newEnableAutoFocus,
           isSelected: true,
+          itemArrowInnerHTML: upArrowInnerHTML,
           left: left,
           top: bottom,
         });
@@ -249,7 +255,7 @@ class DropdownMenuBarItem extends React.Component {
     /* Reset the width of the arrow element and remove the arrow icon */
     arrowElement.style.minWidth = '5px';
     arrowElement.style.width = '5px';
-    arrowElement.innerHTML = '';
+    arrowElement.style.visibility = 'hidden';
   }
 
   /**
@@ -266,7 +272,7 @@ class DropdownMenuBarItem extends React.Component {
     /* Increase the width of the arrow element and render the arrow icon */
     arrowElement.style.minWidth = '10px';
     arrowElement.style.width = '10px';
-    arrowElement.innerHTML = '&nbsp;<br />&darr;';
+    arrowElement.style.visibility = 'visible';
   }
 
   /**
@@ -301,6 +307,7 @@ class DropdownMenuBarItem extends React.Component {
     this.setState({
       enableAutoFocus: false,
       isSelected: false,
+      itemArrowInnerHTML: downArrowInnerHTML,
     }, () => {
       /**
        * If a keyboard event was used to deselect the menu item (which in turn hides the container element) then make sure
@@ -368,7 +375,7 @@ class DropdownMenuBarItem extends React.Component {
             <span onClick={this.handleOnClickButtonSpan} className={buttonTitleCss}>
               {this.props.dropdownMenuBarItemData.title}
             </span>
-            <span onClick={this.handleOnClickButtonSpan} className={buttonArrowCss} />
+            <span onClick={this.handleOnClickButtonSpan} className={buttonArrowCss} dangerouslySetInnerHTML={{ __html: `${this.state.itemArrowInnerHTML}` }} />
         </button>
         <DropdownMenuBarContainer backgroundColour={this.props.backgroundColour} dropdownMenuBarItemsList={this.props.dropdownMenuBarItemData.dropdownMenuBarItemsList}
           enableAutoFocus={this.state.enableAutoFocus} id={this.props.id} isHidden={!this.state.isSelected} left={this.state.left} top={this.state.top} />
