@@ -24,13 +24,12 @@ exports["default"] = void 0;
 require("core-js/modules/es.array.index-of.js");
 require("core-js/modules/es.array.last-index-of.js");
 require("core-js/modules/es.function.bind.js");
-require("core-js/modules/es.number.to-fixed.js");
 require("core-js/modules/es.object.proto.js");
 require("core-js/modules/es.object.set-prototype-of.js");
-require("core-js/modules/es.parse-float.js");
 require("core-js/modules/es.string.trim.js");
 var _react = _interopRequireDefault(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
+var _domMeasurements = require("../data/dom-measurements");
 require("../css/common.css");
 require("./css/text-application-title.css");
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
@@ -48,14 +47,14 @@ function _inherits(t, e) { if ("function" != typeof e && null !== e) throw new T
 function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function (t, e) { return t.__proto__ = e, t; }, _setPrototypeOf(t, e); } /**
  * Developed by Anthony Cox in 2025
  */
-var maxRem = 3;
+var maxEm = 3;
 var truncateTextHeightCutoff = 95;
 
 /**
  * Application title text component which renders the name / title of the web application to the user. This component is intended for use in both
  * the default and tall Header components but can also be rendered standalone. The title text content can be left aligned or centre aligned.
  * 
- * The application title text content is initially rendered at 3rem in size and will be automatically reduced in size down to a minimum size of 2rem,
+ * The application title text content is initially rendered at 3em in size and will be automatically reduced in size down to a minimum size of 2em,
  * to fit on smaller screens (ie. mobile phone screen sizes). If the title text still does not fit on-screen after the font size reduction has taken
  * place, it will then be truncated.
  * 
@@ -198,17 +197,17 @@ var ApplicationTitleText = /*#__PURE__*/function (_React$Component) {
       var containerRightPos = this.getContainerElementRightmostPosition();
       var headingElement = this.getHeadingElementSelector();
 
-      /* Steadily reduce the font size until the text fits on-screen - do not drop below 2rem font size */
-      var rem = maxRem;
-      while (headingElement !== null && rem >= 2 && containerRightPos < h1RightPos) {
-        headingElement.style.fontSize = "".concat(rem, "rem");
+      /* Steadily reduce the font size until the text fits on-screen - do not drop below 2em font size */
+      var em = maxEm;
+      while (headingElement !== null && em >= 2 && containerRightPos < h1RightPos) {
+        headingElement.style.fontSize = "".concat(em, "em");
         h1RightPos = this.getHeadingElementRightmostPosition();
 
-        /* Reduce the rem value by 0.1 and ensure the value remains at one decimal place at the most after editing (ie. 2.9, 2.8, 2.7 etc.) */
-        rem -= 0.1;
-        rem = parseFloat(rem.toFixed(1));
+        /* Reduce the em value by 0.1 and ensure the value remains at one decimal place at the most after editing (ie. 2.9, 2.8, 2.7 etc.) */
+        em -= 0.1;
+        em = (0, _domMeasurements.parseFloat_1DecimalPlace)(em);
       }
-      /* If 2rem font size was not enough for the title text to fit on-screen - wrap the text */
+      /* If 2em font size was not enough for the title text to fit on-screen - wrap the text */
       containerRightPos = this.getContainerElementRightmostPosition();
       if (headingElement !== null && containerRightPos < h1RightPos) {
         /* Set the text to wrap and center align */
@@ -230,7 +229,7 @@ var ApplicationTitleText = /*#__PURE__*/function (_React$Component) {
         headingElement.textContent = headingElement.ariaLabel;
 
         /* Set the text to its maximum potential size and reset the whiteSpace CSS property so that there is no text wrap */
-        headingElement.style.fontSize = "".concat(maxRem, "rem");
+        headingElement.style.fontSize = "".concat(maxEm, "em");
         headingElement.style.whiteSpace = 'nowrap';
         this.setIsWrapped(false);
       }

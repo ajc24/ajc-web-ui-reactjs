@@ -4,7 +4,9 @@ require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.multiply_Integer = exports.getWindowPageYOffset_Integer = exports.getBoundingClientRect = exports.divide_Integer = void 0;
+exports.parseInt_Default = exports.parseFloat_1DecimalPlace = exports.multiply_Integer = exports.getWindowPageYOffset_Integer = exports.getBoundingClientRect = exports.divide_Integer = void 0;
+require("core-js/modules/es.number.to-fixed.js");
+require("core-js/modules/es.parse-float.js");
 require("core-js/modules/es.parse-int.js");
 /**
  * Developed by Anthony Cox in 2025
@@ -57,10 +59,19 @@ var multiply_Integer = exports.multiply_Integer = function multiply_Integer(numb
 };
 
 /**
+ * Parses the current floating point number to one decimal place
+ * @param {number} number 
+ * @returns {number}
+ */
+var parseFloat_1DecimalPlace = exports.parseFloat_1DecimalPlace = function parseFloat_1DecimalPlace(number) {
+  return parseFloat(number.toFixed(1));
+};
+
+/**
  * Parses the specified number to an integer using the default / common radix
  * @param {number} number 
  * @returns {number}
  */
-var parseInt_Default = function parseInt_Default(number) {
+var parseInt_Default = exports.parseInt_Default = function parseInt_Default(number) {
   return parseInt(number, 10);
 };
