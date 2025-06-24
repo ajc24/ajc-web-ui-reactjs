@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
+import { parseFloat_1DecimalPlace } from '../data/dom-measurements';
 import '../css/common.css';
 import './css/text-application-title.css';
 
@@ -147,7 +148,7 @@ class ApplicationTitleText extends React.Component {
 
       /* Reduce the em value by 0.1 and ensure the value remains at one decimal place at the most after editing (ie. 2.9, 2.8, 2.7 etc.) */
       em -= 0.1;
-      em = parseFloat(em.toFixed(1));
+      em = parseFloat_1DecimalPlace(em);
     }
     /* If 2em font size was not enough for the title text to fit on-screen - wrap the text */
     containerRightPos = this.getContainerElementRightmostPosition();
