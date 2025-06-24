@@ -6,14 +6,14 @@ import PropTypes from 'prop-types';
 import '../css/common.css';
 import './css/text-application-title.css';
 
-const maxRem = 3;
+const maxEm = 3;
 const truncateTextHeightCutoff = 95;
 
 /**
  * Application title text component which renders the name / title of the web application to the user. This component is intended for use in both
  * the default and tall Header components but can also be rendered standalone. The title text content can be left aligned or centre aligned.
  * 
- * The application title text content is initially rendered at 3rem in size and will be automatically reduced in size down to a minimum size of 2rem,
+ * The application title text content is initially rendered at 3em in size and will be automatically reduced in size down to a minimum size of 2em,
  * to fit on smaller screens (ie. mobile phone screen sizes). If the title text still does not fit on-screen after the font size reduction has taken
  * place, it will then be truncated.
  * 
@@ -139,17 +139,17 @@ class ApplicationTitleText extends React.Component {
     let containerRightPos = this.getContainerElementRightmostPosition();
     const headingElement = this.getHeadingElementSelector();
 
-    /* Steadily reduce the font size until the text fits on-screen - do not drop below 2rem font size */
-    let rem = maxRem;
-    while (headingElement !== null && rem >= 2 && containerRightPos < h1RightPos) {
-      headingElement.style.fontSize = `${rem}rem`;
+    /* Steadily reduce the font size until the text fits on-screen - do not drop below 2em font size */
+    let em = maxEm;
+    while (headingElement !== null && em >= 2 && containerRightPos < h1RightPos) {
+      headingElement.style.fontSize = `${em}em`;
       h1RightPos = this.getHeadingElementRightmostPosition();
 
-      /* Reduce the rem value by 0.1 and ensure the value remains at one decimal place at the most after editing (ie. 2.9, 2.8, 2.7 etc.) */
-      rem -= 0.1;
-      rem = parseFloat(rem.toFixed(1));
+      /* Reduce the em value by 0.1 and ensure the value remains at one decimal place at the most after editing (ie. 2.9, 2.8, 2.7 etc.) */
+      em -= 0.1;
+      em = parseFloat(em.toFixed(1));
     }
-    /* If 2rem font size was not enough for the title text to fit on-screen - wrap the text */
+    /* If 2em font size was not enough for the title text to fit on-screen - wrap the text */
     containerRightPos = this.getContainerElementRightmostPosition();
     if (headingElement !== null && containerRightPos < h1RightPos) {
       /* Set the text to wrap and center align */
@@ -169,7 +169,7 @@ class ApplicationTitleText extends React.Component {
       headingElement.textContent = headingElement.ariaLabel;
 
       /* Set the text to its maximum potential size and reset the whiteSpace CSS property so that there is no text wrap */
-      headingElement.style.fontSize = `${maxRem}rem`;
+      headingElement.style.fontSize = `${maxEm}em`;
       headingElement.style.whiteSpace = 'nowrap';
       this.setIsWrapped(false);
     }
