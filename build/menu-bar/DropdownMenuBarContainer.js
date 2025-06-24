@@ -55,7 +55,7 @@ function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf 
  */
 var containerMaximumWidth = 328;
 var dropdownHyperlinkContainerCss = 'dropdown-menu-bar-container-row-hyperlink-container';
-var maximumHyperlinkTitleHeight = 18;
+var maximumHyperlinkTitleHeight = 19;
 var rightmostScreenPadding = 16;
 
 /**
