@@ -19,8 +19,19 @@ const getMenuBarData = () => {
       title: 'Puppies',
     },
     {
-      href: '#',
-      id: 'dog-showing-page',
+      dropdownMenuBarItemsList: [
+        {
+          href: '#',
+          id: 'item-1-page',
+          title: 'Mock Item 1...',
+        },
+        {
+          href: '#',
+          id: 'item-2-page',
+          title: 'Mock Item 2...',
+        },
+      ],
+      id: 'dog-showing-menu',
       title: 'Dog Showing',
     },
     {
