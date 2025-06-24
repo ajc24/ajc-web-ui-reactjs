@@ -45,6 +45,17 @@ export const UnderlinedTitleText = {
   render: Template_PageTitleText,
 };
 
+export const WithCursiveStyle = {
+  args: {
+    alignment: 'centre',
+    children: 'Page Title Text In Cursive Font',
+    fontStyle: 'cursive',
+    id: 'cursive-font',
+    underline: false,
+  },
+  render: Template_PageTitleText,
+};
+
 export const MobilePhoneTest = {
   args: {
     alignment: 'centre',
