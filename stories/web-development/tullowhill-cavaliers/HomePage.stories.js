@@ -9,9 +9,9 @@ import {
   MenuBar,
   ThreePhotoCollage,
 } from '../../../src';
-import benjiAndFreddiePhoto from './images/benji-and-freddie.jpg';
-import benjiPhoto from './images/benji.jpg';
-import freddiePhoto from './images/freddie.jpg';
+import bbbAndOwitpPhoto from './images/bbb-and-owitp.jpg';
+import bbbPhoto from './images/bbb.jpg';
+import owitpPhoto from './images/owitp.jpg';
 import tullowhillCavaliersLogo from './images/tullowhill-cavaliers-logo.png';
 import { getMenuBarData } from './data';
 
@@ -21,16 +21,16 @@ export default {
 };
 
 const imageLowerData = {
-  alt: 'A photo of Benji and Freddie playing together in the garden.',
-  src: benjiAndFreddiePhoto,
+  alt: 'A photo of Bannow Benjamin Black and Owencurra Walk In The Park playing together in the garden.',
+  src: bbbAndOwitpPhoto,
 };
 const imageUpperLeftData = {
-  alt: 'A picture of Benji, standing tall and proud in the garden.',
-  src: benjiPhoto,
+  alt: 'A picture of Bannow Benjamin Black, standing tall and proud in the garden.',
+  src: bbbPhoto,
 };
 const imageUpperRightData = {
-  alt: 'A picture of Freddie eagerly awaiting his turn to enter the ring at Crufts 2025.',
-  src: freddiePhoto,
+  alt: 'A picture of Owencurra Walk In The park eagerly awaiting his turn to enter the ring at Crufts 2025.',
+  src: owitpPhoto,
 };
 
 /**
@@ -41,12 +41,13 @@ const imageUpperRightData = {
 const Template_HomePage = () => {
   return <React.Fragment>
     <HeaderTallLogo
-      alt="Logo image for Tullowhill Cavaliers showing two outlines of Benji, our ruby Cavalier dog and the Tullowhill Cavaliers title text below him."
+      alt="Logo image for Tullowhill Cavaliers showing two outlines of Bannow Benjamin Black, our ruby Cavalier dog with the Tullowhill Cavaliers title text below him."
       backgroundColour="grey" id="tullowhill-cavaliers-logo" src={tullowhillCavaliersLogo}
     />
     <MenuBar backgroundColour="navy-and-gold" id="tullowhill-cavaliers-navigation" menuBarItemsList={getMenuBarData()} />
     <Main backgroundColour="grey" id="tullowhill-cavaliers-home-page" title="Home Page - Tullowhill Cavaliers">
-      <ThreePhotoCollage id="tullowhill-cavaliers-dogs" imageLowerData={imageLowerData} imageUpperLeftData={imageUpperLeftData} imageUpperRightData={imageUpperRightData} />
+      <ThreePhotoCollage borderColour="grey" id="tullowhill-cavaliers-dogs" imageLowerData={imageLowerData} imageUpperLeftData={imageUpperLeftData}
+        imageUpperRightData={imageUpperRightData} />
     </Main>
     <Footer backgroundColour="navy-and-gold" id="tullowhill-cavaliers-footer" isBoldFont={true}>
       Website Designed and Developed by Anthony Cox and Susan Mitchell in 2025
