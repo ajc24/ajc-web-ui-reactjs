@@ -11,7 +11,7 @@ import './css/menu-bar-dropdown-container.css';
 
 const containerMaximumWidth = 328;
 const dropdownHyperlinkContainerCss = 'dropdown-menu-bar-container-row-hyperlink-container';
-const maximumHyperlinkTitleHeight = 18;
+const maximumHyperlinkTitleHeight = 19;
 const rightmostScreenPadding = 16;
 
 /**
