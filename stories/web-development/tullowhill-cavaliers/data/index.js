@@ -10,8 +10,13 @@ const getMenuBarData = () => {
     },
     {
       href: '#',
-      id: 'our-dogs-menu',
+      id: 'our-dogs-page',
       title: 'Our Dogs',
+    },
+    {
+      href: '#',
+      id: 'puppies-page',
+      title: 'Puppies',
     },
     {
       href: '#',
@@ -27,6 +32,11 @@ const getMenuBarData = () => {
       href: '#',
       id: 'contact-us-page',
       title: 'Contact Us',
+    },
+    {
+      href: '#',
+      id: 'login-page',
+      title: 'Login',
     },
   ];
 }
