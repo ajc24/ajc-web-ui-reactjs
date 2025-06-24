@@ -7,6 +7,7 @@ import {
   HeaderTallLogo,
   Main,
   MenuBar,
+  PageTitleText,
   ThreePhotoCollage,
 } from '../../../src';
 import bbbAndOwitpPhoto from './images/bbb-and-owitp.jpg';
@@ -46,6 +47,9 @@ const Template_HomePage = () => {
     />
     <MenuBar backgroundColour="navy-and-gold" id="tullowhill-cavaliers-navigation" menuBarItemsList={getMenuBarData()} />
     <Main backgroundColour="grey" id="tullowhill-cavaliers-home-page" title="Home Page - Tullowhill Cavaliers">
+      <PageTitleText alignment="centre" id="tullowhill-cavaliers-home-page" underline={true}>
+        Welcome to Tullowhill Cavaliers
+      </PageTitleText>
       <ThreePhotoCollage borderColour="grey" id="tullowhill-cavaliers-dogs" imageLowerData={imageLowerData} imageUpperLeftData={imageUpperLeftData}
         imageUpperRightData={imageUpperRightData} />
     </Main>
