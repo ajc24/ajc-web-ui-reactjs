@@ -30,6 +30,15 @@ const getBoundingClientRect = domElement => {
 };
 
 /**
+ * Returns the pageYOffset value set to the current window. This value can be used
+ * to determine how far the user has scrolled up or down in the current window.
+ * @returns {number}
+ */
+const getWindowPageYOffset_Integer = () => {
+  return parseInt_Default(window.pageYOffset);
+};
+
+/**
  * Multiplies two numbers and parses the answer to an integer value
  * @param {number} number1 
  * @param {number} number2 
@@ -51,6 +60,6 @@ const parseInt_Default = number => {
 export {
   divide_Integer,
   getBoundingClientRect,
+  getWindowPageYOffset_Integer,
   multiply_Integer,
-  parseInt_Default,
 };
