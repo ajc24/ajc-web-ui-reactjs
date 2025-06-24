@@ -4,7 +4,7 @@ require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.parseInt_Default = exports.multiply_Integer = exports.getBoundingClientRect = exports.divide_Integer = void 0;
+exports.multiply_Integer = exports.getWindowPageYOffset_Integer = exports.getBoundingClientRect = exports.divide_Integer = void 0;
 require("core-js/modules/es.parse-int.js");
 /**
  * Developed by Anthony Cox in 2025
@@ -38,6 +38,15 @@ var getBoundingClientRect = exports.getBoundingClientRect = function getBounding
 };
 
 /**
+ * Returns the pageYOffset value set to the current window. This value can be used
+ * to determine how far the user has scrolled up or down in the current window.
+ * @returns {number}
+ */
+var getWindowPageYOffset_Integer = exports.getWindowPageYOffset_Integer = function getWindowPageYOffset_Integer() {
+  return parseInt_Default(window.pageYOffset);
+};
+
+/**
  * Multiplies two numbers and parses the answer to an integer value
  * @param {number} number1 
  * @param {number} number2 
@@ -52,6 +61,6 @@ var multiply_Integer = exports.multiply_Integer = function multiply_Integer(numb
  * @param {number} number 
  * @returns {number}
  */
-var parseInt_Default = exports.parseInt_Default = function parseInt_Default(number) {
+var parseInt_Default = function parseInt_Default(number) {
   return parseInt(number, 10);
 };
