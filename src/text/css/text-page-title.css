@@ -6,16 +6,16 @@
   display: flex;
   flex-direction: row;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 1.5em;
+  font-size: 2em;
   height: auto;
   line-height: 1.2;
   margin: 0px;
   max-width: 1248px;
   min-width: 328px;
-  padding-bottom: 16px;
+  padding-bottom: 32px;
   padding-left: 0px;
   padding-right: 0px;
-  padding-top: 0px;
+  padding-top: 16px;
   user-select: none;
   width: 100%;
 }
