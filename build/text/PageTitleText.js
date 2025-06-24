@@ -22,6 +22,7 @@ var PageTitleText = function PageTitleText(props) {
   /* Set the styling for the container element */
   var containerCss = 'page-title-text font-black';
   props.alignment === 'centre' ? containerCss += ' page-title-text-alignment-centre' : containerCss += ' page-title-text-alignment-left';
+  props.fontStyle === 'cursive' ? containerCss += ' page-title-text-font-cursive' : containerCss += ' page-title-text-font-normal';
   props.underline === true ? containerCss += ' page-title-text-underline' : containerCss += ''.trim();
   return /*#__PURE__*/React.createElement("h2", {
     "aria-label": props.children,
@@ -34,6 +35,8 @@ PageTitleText.propTypes = {
   alignment: _propTypes["default"].oneOf(['centre', 'left']),
   /** The content to be displayed as the pages title text. */
   children: _propTypes["default"].string,
+  /** The font style at which the page title text is rendered. The default font is Arial while you can also specify a cursive font. */
+  fontStyle: _propTypes["default"].oneOf(['default', 'cursive']),
   /** The unique identifier for this component. */
   id: _propTypes["default"].string.isRequired,
   /** Switch to enable or disable underlining the page title text content. By default the page title text content is not underlined. */
