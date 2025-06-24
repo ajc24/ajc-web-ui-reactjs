@@ -26,13 +26,13 @@ require("core-js/modules/es.array.includes.js");
 require("core-js/modules/es.function.bind.js");
 require("core-js/modules/es.object.proto.js");
 require("core-js/modules/es.object.set-prototype-of.js");
-require("core-js/modules/es.parse-int.js");
 require("core-js/modules/es.string.includes.js");
 require("core-js/modules/es.string.trim.js");
 var _react = _interopRequireDefault(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _DropdownMenuBarContainer = _interopRequireDefault(require("./DropdownMenuBarContainer"));
 var _colourCombinations = require("../data/colour-combinations");
+var _domMeasurements = require("../data/dom-measurements");
 require("../css/common.css");
 require("./css/menu-bar-common.css");
 require("./css/menu-bar-dropdown-item.css");
@@ -211,15 +211,15 @@ var DropdownMenuBarItem = /*#__PURE__*/function (_React$Component) {
         } else if (this.state.isSelected === false) {
           /* Get the overall dimensions of the button element */
           var buttonElement = this.getButtonDOMElement();
-          var buttonElementDimensions = buttonElement.getBoundingClientRect();
+          var buttonElementDimensions = (0, _domMeasurements.getBoundingClientRect)(buttonElement);
 
           /**
            * Retrieve the bottom and left positions of the button - these will act as the top and the left positions
            * of the dropdown menu bar container component. Add an extra pixel to the bottom position to ensure that
            * there is a nice decorative space between the menu bar item and the menu bar container
            */
-          var bottom = parseInt(buttonElementDimensions.bottom + window.pageYOffset, 10) + 1;
-          var left = parseInt(buttonElementDimensions.left, 10);
+          var bottom = buttonElementDimensions.bottom + (0, _domMeasurements.parseInt_Default)(window.pageYOffset) + 1;
+          var left = buttonElementDimensions.left;
           this.setState({
             enableAutoFocus: newEnableAutoFocus,
             isSelected: true,
@@ -352,18 +352,22 @@ var DropdownMenuBarItem = /*#__PURE__*/function (_React$Component) {
     value: function handleTextContentHeight() {
       /* Retrieve the title text span element from the DOM and determine its height and text content */
       var spanElement = this.getTitleDOMElement();
-      var spanHeight = parseInt(spanElement.getBoundingClientRect().height, 10);
-      var spanTextContent = spanElement.textContent;
-      while (spanTextContent.length > 0 && spanHeight > maximumMenuBarItemButtonHeight) {
-        /* Remove the last character in the string and add three dots to the string end to suggest truncation has occurred */
-        spanTextContent = "".concat(spanTextContent.substring(0, spanTextContent.length - 1).trim(), "...");
+      if (spanElement !== null) {
+        var spanDimensions = (0, _domMeasurements.getBoundingClientRect)(spanElement);
+        var spanHeight = spanDimensions.height;
+        var spanTextContent = spanElement.textContent;
+        while (spanTextContent.length > 0 && spanHeight > maximumMenuBarItemButtonHeight) {
+          /* Remove the last character in the string and add three dots to the string end to suggest truncation has occurred */
+          spanTextContent = "".concat(spanTextContent.substring(0, spanTextContent.length - 1).trim(), "...");
 
-        /* Set the new text content string and determine the new height of the element */
-        spanElement.textContent = spanTextContent;
-        spanHeight = parseInt(spanElement.getBoundingClientRect().height, 10);
-        if (spanHeight > maximumMenuBarItemButtonHeight) {
-          /* Remove the obsolete three dots at the end of the string for the next iteration of the loop */
-          spanTextContent = spanTextContent.substring(0, spanTextContent.length - 3).trim();
+          /* Set the new text content string and determine the new height of the element */
+          spanElement.textContent = spanTextContent;
+          spanDimensions = (0, _domMeasurements.getBoundingClientRect)(spanElement);
+          spanHeight = spanDimensions.height;
+          if (spanHeight > maximumMenuBarItemButtonHeight) {
+            /* Remove the obsolete three dots at the end of the string for the next iteration of the loop */
+            spanTextContent = spanTextContent.substring(0, spanTextContent.length - 3).trim();
+          }
         }
       }
     }

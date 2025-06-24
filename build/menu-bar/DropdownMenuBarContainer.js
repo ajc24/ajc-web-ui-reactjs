@@ -28,13 +28,13 @@ require("core-js/modules/es.iterator.map.js");
 require("core-js/modules/es.object.proto.js");
 require("core-js/modules/es.object.set-prototype-of.js");
 require("core-js/modules/es.object.to-string.js");
-require("core-js/modules/es.parse-int.js");
 require("core-js/modules/es.regexp.exec.js");
 require("core-js/modules/es.string.replace.js");
 require("core-js/modules/es.string.trim.js");
 var _react = _interopRequireDefault(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _colourCombinations = require("../data/colour-combinations");
+var _domMeasurements = require("../data/dom-measurements");
 require("../css/common.css");
 require("./css/menu-bar-common.css");
 require("./css/menu-bar-dropdown-container.css");
@@ -241,7 +241,8 @@ var DropdownMenuBarContainer = /*#__PURE__*/function (_React$Component) {
       for (var index = 0; index < allHyperlinkTitleElements.length; index += 1) {
         /* Determine the initial height of the text content + the arrow icon */
         var hyperlinkTitleElement = allHyperlinkTitleElements[index];
-        var hyperlinkTitleHeight = parseInt(hyperlinkTitleElement.getBoundingClientRect().height, 10);
+        var hyperlinkTitleDimensions = (0, _domMeasurements.getBoundingClientRect)(hyperlinkTitleElement);
+        var hyperlinkTitleHeight = hyperlinkTitleDimensions.height;
         while (hyperlinkTitleHeight > maximumHyperlinkTitleHeight) {
           /* Reduce the hyperlink title text content character by character until it fits perfectly within the allocated size of the container */
           var currentTitle = hyperlinkTitleElement.textContent;
@@ -253,7 +254,8 @@ var DropdownMenuBarContainer = /*#__PURE__*/function (_React$Component) {
           hyperlinkTitleElement.textContent = currentTitle;
 
           /* Determine the new height of the text content now that we have truncated the text */
-          hyperlinkTitleHeight = parseInt(hyperlinkTitleElement.getBoundingClientRect().height, 10);
+          hyperlinkTitleDimensions = (0, _domMeasurements.getBoundingClientRect)(hyperlinkTitleElement);
+          hyperlinkTitleHeight = hyperlinkTitleDimensions.height;
         }
       }
     }

@@ -24,11 +24,11 @@ exports["default"] = void 0;
 require("core-js/modules/es.function.bind.js");
 require("core-js/modules/es.object.proto.js");
 require("core-js/modules/es.object.set-prototype-of.js");
-require("core-js/modules/es.parse-int.js");
 require("core-js/modules/web.timers.js");
 var _react = _interopRequireDefault(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _InformativeImage = _interopRequireDefault(require("./InformativeImage"));
+var _domMeasurements = require("../data/dom-measurements");
 require("./css/image-three-photo-collage.css");
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
@@ -148,7 +148,7 @@ var ThreePhotoCollage = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "getUpperImageRightContainerDOMElement",
     value: function getUpperImageRightContainerDOMElement() {
-      return document.querySelector("div[id=\"".concat(this.getIdUpperImagesContainerDOMElement(), "\"] > div[class=\"three-photo-collage-image-container\"]"));
+      return document.querySelector("div[id=\"".concat(this.getIdUpperImagesContainerDOMElement(), "\"] > div[class*=\"three-photo-collage--upper-image-right\"]"));
     }
 
     /**
@@ -162,14 +162,15 @@ var ThreePhotoCollage = /*#__PURE__*/function (_React$Component) {
       var rightUpperImageContainerElement = this.getUpperImageRightContainerDOMElement();
       if (rightUpperImageContainerElement !== null) {
         /* Get the full width of the image container */
-        var imageContainerWidth = parseInt(rightUpperImageContainerElement.getBoundingClientRect().width, 10);
+        var imageContainerDimensions = (0, _domMeasurements.getBoundingClientRect)(rightUpperImageContainerElement);
+        var imageContainerWidth = imageContainerDimensions.width;
 
         /* Get the lower image container element */
         var lowerImageContainerElement = this.getLowerImageContainerDOMElement();
 
         /* For every 15 pixels less than the maximum permitted width - reduce the margin top allowance by 1px */
         var imagePixelReduction = maximumImageWidth - imageContainerWidth;
-        var marginTopPixelReduction = parseInt(imagePixelReduction / 15);
+        var marginTopPixelReduction = (0, _domMeasurements.divide_Integer)(imagePixelReduction, 15);
         var marginTop = "-".concat(initialMarginTop - marginTopPixelReduction, "px");
 
         /* Set the new margin top CSS value to the lower image container element */
@@ -177,7 +178,7 @@ var ThreePhotoCollage = /*#__PURE__*/function (_React$Component) {
 
         /* Set the height and width of the images based on the current container width */
         this.setState({
-          height: parseInt(imageContainerWidth * 0.75, 10),
+          height: (0, _domMeasurements.multiply_Integer)(imageContainerWidth, 0.75),
           width: imageContainerWidth
         }, function () {
           /* If this is the first time we have loaded the page - blend in the photos now everything has been loaded and set */
@@ -198,10 +199,10 @@ var ThreePhotoCollage = /*#__PURE__*/function (_React$Component) {
       var upperImagesContainerCss = 'three-photo-collage-upper-images-container';
 
       /* Set the styling for the leftmost image container in the upper images container element */
-      var upperImageLeftContainerCss = 'three-photo-collage-image-container three-photo-collage-image-container-spacing';
+      var upperImageLeftContainerCss = 'three-photo-collage--upper-image-left three-photo-collage-image-container three-photo-collage-image-container-spacing';
 
       /* Set the styling for the rightmost image container in the upper images container element */
-      var upperImageRightContainerCss = 'three-photo-collage-image-container';
+      var upperImageRightContainerCss = 'three-photo-collage--upper-image-right three-photo-collage-image-container';
 
       /* Set the styling for the lower image container element */
       var lowerImageContainerCss = 'three-photo-collage-lower-image-container';

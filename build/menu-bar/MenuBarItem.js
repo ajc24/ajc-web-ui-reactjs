@@ -25,11 +25,11 @@ require("core-js/modules/es.array.concat.js");
 require("core-js/modules/es.function.bind.js");
 require("core-js/modules/es.object.proto.js");
 require("core-js/modules/es.object.set-prototype-of.js");
-require("core-js/modules/es.parse-int.js");
 require("core-js/modules/es.string.trim.js");
 var _react = _interopRequireDefault(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _colourCombinations = require("../data/colour-combinations");
+var _domMeasurements = require("../data/dom-measurements");
 require("../css/common.css");
 require("./css/menu-bar-common.css");
 require("./css/menu-bar-item.css");
@@ -192,18 +192,22 @@ var MenuBarItem = /*#__PURE__*/function (_React$Component) {
     value: function handleTextContentHeight() {
       /* Retrieve the span element from the DOM and determine its height and text content */
       var spanElement = this.getSpanDOMElement();
-      var spanHeight = parseInt(spanElement.getBoundingClientRect().height, 10);
-      var spanTextContent = spanElement.textContent;
-      while (spanTextContent.length > 0 && spanHeight > maximumMenuItemLinkHeight) {
-        /* Remove the last character in the string and add three dots to the string end to suggest truncation has occurred */
-        spanTextContent = "".concat(spanTextContent.substring(0, spanTextContent.length - 1).trim(), "...");
+      if (spanElement !== null) {
+        var spanDimensions = (0, _domMeasurements.getBoundingClientRect)(spanElement);
+        var spanHeight = spanDimensions.height;
+        var spanTextContent = spanElement.textContent;
+        while (spanTextContent.length > 0 && spanHeight > maximumMenuItemLinkHeight) {
+          /* Remove the last character in the string and add three dots to the string end to suggest truncation has occurred */
+          spanTextContent = "".concat(spanTextContent.substring(0, spanTextContent.length - 1).trim(), "...");
 
-        /* Set the new text content string and determine the new height of the element */
-        spanElement.textContent = spanTextContent;
-        spanHeight = parseInt(spanElement.getBoundingClientRect().height, 10);
-        if (spanHeight > maximumMenuItemLinkHeight) {
-          /* Remove the obsolete three dots at the end of the string for the next iteration of the loop */
-          spanTextContent = spanTextContent.substring(0, spanTextContent.length - 3).trim();
+          /* Set the new text content string and determine the new height of the element */
+          spanElement.textContent = spanTextContent;
+          spanDimensions = (0, _domMeasurements.getBoundingClientRect)(spanElement);
+          spanHeight = spanDimensions.height;
+          if (spanHeight > maximumMenuItemLinkHeight) {
+            /* Remove the obsolete three dots at the end of the string for the next iteration of the loop */
+            spanTextContent = spanTextContent.substring(0, spanTextContent.length - 3).trim();
+          }
         }
       }
     }

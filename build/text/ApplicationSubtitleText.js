@@ -24,10 +24,10 @@ exports["default"] = void 0;
 require("core-js/modules/es.function.bind.js");
 require("core-js/modules/es.object.proto.js");
 require("core-js/modules/es.object.set-prototype-of.js");
-require("core-js/modules/es.parse-int.js");
 require("core-js/modules/es.string.trim.js");
 var _react = _interopRequireDefault(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
+var _domMeasurements = require("../data/dom-measurements");
 require("../css/common.css");
 require("./css/text-application-subtitle.css");
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
@@ -106,8 +106,9 @@ var ApplicationSubtitleText = /*#__PURE__*/function (_React$Component) {
       var subtitleContainerElement = document.querySelector("[id=\"".concat(this.props.id, "--application-subtitle-text\"]"));
       if (subtitleContainerElement !== null) {
         /* Check 1: Does the paragraph element exceed the width of the container */
+        var subtitleContainerDimensions = (0, _domMeasurements.getBoundingClientRect)(subtitleContainerElement);
         var paragraphRightPos = this.state.paragraphRightPos;
-        var containerRightPos = parseInt(subtitleContainerElement.getBoundingClientRect().right, 10);
+        var containerRightPos = subtitleContainerDimensions.right;
         if (paragraphRightPos > 0 && containerRightPos > 0) {
           if (paragraphRightPos > containerRightPos) {
             /* The subtitle will exceed the screen limits - hide the subtitle component */
@@ -198,8 +199,9 @@ var ApplicationSubtitleText = /*#__PURE__*/function (_React$Component) {
       if (this.subtitleTextRef.current !== null && this.state.isResizing === false) {
         if (this.state.isHidden === false) {
           /* The subtitle text element is visible - set the rightmost position of the element and then start resizing process */
+          var subtitleTextRefDimensions = (0, _domMeasurements.getBoundingClientRect)(this.subtitleTextRef.current);
           this.setState({
-            paragraphRightPos: parseInt(this.subtitleTextRef.current.getBoundingClientRect().right, 10)
+            paragraphRightPos: subtitleTextRefDimensions.right
           }, this.setIsResizingStart);
         } else {
           /* The subtitle text is hidden so we can not set a new rightmost position - go straight to the resizing process */

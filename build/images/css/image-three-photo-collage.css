@@ -41,6 +41,18 @@
   z-index: 1;
 }
 
+.three-photo-collage--upper-image-left {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.three-photo-collage--upper-image-right {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
 .three-photo-collage-upper-images-container {
   display: flex;
   flex-direction: row;

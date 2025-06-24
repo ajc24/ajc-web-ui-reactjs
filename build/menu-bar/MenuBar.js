@@ -28,7 +28,6 @@ require("core-js/modules/es.iterator.map.js");
 require("core-js/modules/es.object.proto.js");
 require("core-js/modules/es.object.set-prototype-of.js");
 require("core-js/modules/es.object.to-string.js");
-require("core-js/modules/es.parse-int.js");
 require("core-js/modules/web.timers.js");
 var _react = _interopRequireDefault(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
@@ -37,6 +36,7 @@ var _MenuBarItem = _interopRequireDefault(require("./MenuBarItem"));
 var _DropdownMenuBarItem = _interopRequireDefault(require("./DropdownMenuBarItem"));
 var _ScrollMenuBarItemsLeft = _interopRequireDefault(require("./ScrollMenuBarItemsLeft"));
 var _ScrollMenuBarItemsRight = _interopRequireDefault(require("./ScrollMenuBarItemsRight"));
+var _domMeasurements = require("../data/dom-measurements");
 require("./css/menu-bar.css");
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
@@ -204,7 +204,8 @@ var MenuBar = /*#__PURE__*/function (_React$Component) {
       /* Determine the current width of the central content element */
       var centralContentElement = this.getCentralContentElement();
       if (centralContentElement !== null) {
-        var centralContentWidth = parseInt(centralContentElement.getBoundingClientRect().width, 10);
+        var centralContentDimensions = (0, _domMeasurements.getBoundingClientRect)(centralContentElement);
+        var centralContentWidth = centralContentDimensions.width;
 
         /* Reset the current index and determine how many elements will fit within the width of the element */
         var newIndex = 0;
@@ -215,7 +216,7 @@ var MenuBar = /*#__PURE__*/function (_React$Component) {
           centralContentWidth -= menuBarItemWidth;
         }
         /* Now account for all of the other menu bar item widths which will include margins */
-        var remainder = parseInt(centralContentWidth / menuBarItemWidthWithMargin, 10);
+        var remainder = (0, _domMeasurements.divide_Integer)(centralContentWidth, menuBarItemWidthWithMargin);
         newMaxIndex += remainder;
 
         /* Set these indexes in state */
