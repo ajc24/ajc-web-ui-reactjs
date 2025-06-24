@@ -61,6 +61,10 @@ var menuBarItemHyperlinkId = '--menu-bar-item-hyperlink';
 /* CSS styling parameters */
 var maximumMenuBarItemButtonHeight = 55;
 
+/* Arrow icon inner HTML settings */
+var downArrowInnerHTML = '&nbsp;<br />&darr;';
+var upArrowInnerHTML = '&nbsp;<br />&uarr;';
+
 /**
  * Dropdown Menu Bar Item component which is intended for use with the Menu Bar component. This component will render
  * a clickable menu bar item to the user. Clicking this item will open a dropdown menu container element which contains
@@ -85,6 +89,7 @@ var DropdownMenuBarItem = /*#__PURE__*/function (_React$Component) {
       enableAutoFocus: false,
       isHidden: true,
       isSelected: false,
+      itemArrowInnerHTML: downArrowInnerHTML,
       top: 0,
       left: 0
     };
@@ -218,6 +223,7 @@ var DropdownMenuBarItem = /*#__PURE__*/function (_React$Component) {
           this.setState({
             enableAutoFocus: newEnableAutoFocus,
             isSelected: true,
+            itemArrowInnerHTML: upArrowInnerHTML,
             left: left,
             top: bottom
           });
@@ -315,7 +321,7 @@ var DropdownMenuBarItem = /*#__PURE__*/function (_React$Component) {
       /* Reset the width of the arrow element and remove the arrow icon */
       arrowElement.style.minWidth = '5px';
       arrowElement.style.width = '5px';
-      arrowElement.innerHTML = '';
+      arrowElement.style.visibility = 'hidden';
     }
 
     /**
@@ -334,7 +340,7 @@ var DropdownMenuBarItem = /*#__PURE__*/function (_React$Component) {
       /* Increase the width of the arrow element and render the arrow icon */
       arrowElement.style.minWidth = '10px';
       arrowElement.style.width = '10px';
-      arrowElement.innerHTML = '&nbsp;<br />&darr;';
+      arrowElement.style.visibility = 'visible';
     }
 
     /**
@@ -374,7 +380,8 @@ var DropdownMenuBarItem = /*#__PURE__*/function (_React$Component) {
       var deselectedFromKeyboardEvent = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
       this.setState({
         enableAutoFocus: false,
-        isSelected: false
+        isSelected: false,
+        itemArrowInnerHTML: downArrowInnerHTML
       }, function () {
         /**
          * If a keyboard event was used to deselect the menu item (which in turn hides the container element) then make sure
@@ -459,7 +466,10 @@ var DropdownMenuBarItem = /*#__PURE__*/function (_React$Component) {
         className: buttonTitleCss
       }, this.props.dropdownMenuBarItemData.title), /*#__PURE__*/_react["default"].createElement("span", {
         onClick: this.handleOnClickButtonSpan,
-        className: buttonArrowCss
+        className: buttonArrowCss,
+        dangerouslySetInnerHTML: {
+          __html: "".concat(this.state.itemArrowInnerHTML)
+        }
       })), /*#__PURE__*/_react["default"].createElement(_DropdownMenuBarContainer["default"], {
         backgroundColour: this.props.backgroundColour,
         dropdownMenuBarItemsList: this.props.dropdownMenuBarItemData.dropdownMenuBarItemsList,
