@@ -7,7 +7,7 @@ import DropdownMenuBarContainer from './DropdownMenuBarContainer';
 import { getColourCombination } from '../data/colour-combinations';
 import {
   getBoundingClientRect,
-  parseInt_Default,
+  getWindowPageYOffset_Integer,
 } from '../data/dom-measurements';
 import '../css/common.css';
 import './css/menu-bar-common.css';
@@ -161,7 +161,7 @@ class DropdownMenuBarItem extends React.Component {
          * of the dropdown menu bar container component. Add an extra pixel to the bottom position to ensure that
          * there is a nice decorative space between the menu bar item and the menu bar container
          */
-        const bottom = buttonElementDimensions.bottom + parseInt_Default(window.pageYOffset) + 1;
+        const bottom = buttonElementDimensions.bottom + getWindowPageYOffset_Integer() + 1;
         const left = buttonElementDimensions.left;
         this.setState({
           enableAutoFocus: newEnableAutoFocus,
