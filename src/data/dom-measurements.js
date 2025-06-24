@@ -49,6 +49,15 @@ const multiply_Integer = (number1, number2) => {
 };
 
 /**
+ * Parses the current floating point number to one decimal place
+ * @param {number} number 
+ * @returns {number}
+ */
+const parseFloat_1DecimalPlace = number => {
+  return parseFloat(number.toFixed(1));
+};
+
+/**
  * Parses the specified number to an integer using the default / common radix
  * @param {number} number 
  * @returns {number}
@@ -62,4 +71,6 @@ export {
   getBoundingClientRect,
   getWindowPageYOffset_Integer,
   multiply_Integer,
+  parseFloat_1DecimalPlace,
+  parseInt_Default,
 };
