@@ -150,8 +150,8 @@ class ThreePhotoCollage extends React.Component {
     /* Set the styling for the lower image container element */
     const lowerImageContainerCss = 'three-photo-collage-lower-image-container';
 
-    /* */
-    let lowerImageRenderCss = 'three-photo-collage-lower-image-render';
+    /* Set the styling for the lower image render element */
+    let lowerImageRenderCss = '';
     this.props.borderColour === 'grey' ? lowerImageRenderCss += ' three-photo-collage-image-border-grey' : lowerImageRenderCss += ' three-photo-collage-image-border-white';
 
     return (
