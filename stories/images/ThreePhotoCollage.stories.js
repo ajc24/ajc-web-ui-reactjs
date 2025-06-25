@@ -3,7 +3,9 @@
  */
 import React from 'react';
 import { ThreePhotoCollage } from '../../src';
-import storybookLogoSquare from './files/storybook-logo-square.svg';
+import rage1 from './files/rage-1.png';
+import rage2 from './files/rage-2.png';
+import rage3 from './files/rage-3.png';
 
 export default {
   title: 'Images/Three Photo Collage',
@@ -23,16 +25,16 @@ export const Default = {
   args: {
     id: 'default',
     imageLowerData: {
-      alt: 'Storybook logo rendered centrally in the lower section of the collage.',
-      src: storybookLogoSquare,
+      alt: 'A screenshot taken from the Rage videogame. Screenshot 3 of 3.',
+      src: rage3,
     },
     imageUpperLeftData: {
-      alt: 'Storybook logo rendered in the upper left section of the collage.',
-      src: storybookLogoSquare,
+      alt: 'A screenshot taken from the Rage videogame. Screenshot 1 of 3.',
+      src: rage1,
     },
     imageUpperRightData: {
-      alt: 'Storybook logo rendered in the upper right section of the collage.',
-      src: storybookLogoSquare,
+      alt: 'A screenshot taken from the Rage videogame. Screenshot 2 of 3.',
+      src: rage2,
     },
   },
   render: Template_ThreePhotoCollage,
@@ -42,16 +44,16 @@ export const MobilePhoneTest = {
   args: {
     id: 'mobile-phone-test',
     imageLowerData: {
-      alt: 'Storybook logo rendered centrally in the lower section of the collage.',
-      src: storybookLogoSquare,
+      alt: 'A screenshot taken from the Rage videogame. Screenshot 3 of 3.',
+      src: rage3,
     },
     imageUpperLeftData: {
-      alt: 'Storybook logo rendered in the upper left section of the collage.',
-      src: storybookLogoSquare,
+      alt: 'A screenshot taken from the Rage videogame. Screenshot 1 of 3.',
+      src: rage1,
     },
     imageUpperRightData: {
-      alt: 'Storybook logo rendered in the upper right section of the collage.',
-      src: storybookLogoSquare,
+      alt: 'A screenshot taken from the Rage videogame. Screenshot 2 of 3.',
+      src: rage2,
     },
   },
   globals: {
