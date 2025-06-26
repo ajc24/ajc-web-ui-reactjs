@@ -207,8 +207,8 @@ var ThreePhotoCollage = /*#__PURE__*/function (_React$Component) {
       /* Set the styling for the lower image container element */
       var lowerImageContainerCss = 'three-photo-collage-lower-image-container';
 
-      /* */
-      var lowerImageRenderCss = 'three-photo-collage-lower-image-render';
+      /* Set the styling for the lower image render element */
+      var lowerImageRenderCss = '';
       this.props.borderColour === 'grey' ? lowerImageRenderCss += ' three-photo-collage-image-border-grey' : lowerImageRenderCss += ' three-photo-collage-image-border-white';
       return /*#__PURE__*/_react["default"].createElement("div", {
         className: rootCss,
