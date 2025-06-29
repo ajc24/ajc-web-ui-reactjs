@@ -32,6 +32,7 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 var _domMeasurements = require("../data/dom-measurements");
 require("../css/common.css");
 require("./css/text-application-title.css");
+var _jsxRuntime = require("react/jsx-runtime");
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
 function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
@@ -345,15 +346,17 @@ var ApplicationTitleText = /*#__PURE__*/function (_React$Component) {
       /* Set the styling for the title text font */
       var textOutputCss = 'title-text-font-default';
       this.props.textColour === 'white' ? textOutputCss += ' title-text-font-white' : textOutputCss += ' title-text-font-black';
-      return /*#__PURE__*/_react["default"].createElement("div", {
+      return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
         id: "".concat(this.state.id),
         className: containerCss,
-        "data-wrap": "".concat(this.state.isWrapped)
-      }, /*#__PURE__*/_react["default"].createElement("h1", {
-        className: textOutputCss,
-        "aria-label": "".concat(this.props.children),
-        title: "".concat(this.props.children)
-      }, this.props.children));
+        "data-wrap": "".concat(this.state.isWrapped),
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)("h1", {
+          className: textOutputCss,
+          "aria-label": "".concat(this.props.children),
+          title: "".concat(this.props.children),
+          children: this.props.children
+        })
+      });
     }
   }]);
 }(_react["default"].Component);

@@ -30,6 +30,7 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 var _InformativeImage = _interopRequireDefault(require("./InformativeImage"));
 var _domMeasurements = require("../data/dom-measurements");
 require("./css/image-three-photo-collage.css");
+var _jsxRuntime = require("react/jsx-runtime");
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
 function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
@@ -210,40 +211,46 @@ var ThreePhotoCollage = /*#__PURE__*/function (_React$Component) {
       /* Set the styling for the lower image render element */
       var lowerImageRenderCss = '';
       this.props.borderColour === 'grey' ? lowerImageRenderCss += ' three-photo-collage-image-border-grey' : lowerImageRenderCss += ' three-photo-collage-image-border-white';
-      return /*#__PURE__*/_react["default"].createElement("div", {
+      return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
         className: rootCss,
-        id: this.getIdRootContainerDOMElement()
-      }, /*#__PURE__*/_react["default"].createElement("div", {
-        className: upperImagesContainerCss,
-        id: this.getIdUpperImagesContainerDOMElement()
-      }, /*#__PURE__*/_react["default"].createElement("div", {
-        className: upperImageLeftContainerCss
-      }, /*#__PURE__*/_react["default"].createElement(_InformativeImage["default"], {
-        alt: this.props.imageUpperLeftData.alt,
-        height: this.state.height,
-        id: this.props.id,
-        src: this.props.imageUpperLeftData.src,
-        width: this.state.width
-      })), /*#__PURE__*/_react["default"].createElement("div", {
-        className: upperImageRightContainerCss
-      }, /*#__PURE__*/_react["default"].createElement(_InformativeImage["default"], {
-        alt: this.props.imageUpperRightData.alt,
-        height: this.state.height,
-        id: this.props.id,
-        src: this.props.imageUpperRightData.src,
-        width: this.state.width
-      }))), /*#__PURE__*/_react["default"].createElement("div", {
-        className: lowerImageContainerCss,
-        id: this.getIdLowerImageContainerDOMElement()
-      }, /*#__PURE__*/_react["default"].createElement("div", {
-        className: lowerImageRenderCss
-      }, /*#__PURE__*/_react["default"].createElement(_InformativeImage["default"], {
-        alt: this.props.imageLowerData.alt,
-        height: this.state.height,
-        id: this.props.id,
-        src: this.props.imageLowerData.src,
-        width: this.state.width
-      }))));
+        id: this.getIdRootContainerDOMElement(),
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+          className: upperImagesContainerCss,
+          id: this.getIdUpperImagesContainerDOMElement(),
+          children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+            className: upperImageLeftContainerCss,
+            children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_InformativeImage["default"], {
+              alt: this.props.imageUpperLeftData.alt,
+              height: this.state.height,
+              id: this.props.id,
+              src: this.props.imageUpperLeftData.src,
+              width: this.state.width
+            })
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+            className: upperImageRightContainerCss,
+            children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_InformativeImage["default"], {
+              alt: this.props.imageUpperRightData.alt,
+              height: this.state.height,
+              id: this.props.id,
+              src: this.props.imageUpperRightData.src,
+              width: this.state.width
+            })
+          })]
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+          className: lowerImageContainerCss,
+          id: this.getIdLowerImageContainerDOMElement(),
+          children: /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+            className: lowerImageRenderCss,
+            children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_InformativeImage["default"], {
+              alt: this.props.imageLowerData.alt,
+              height: this.state.height,
+              id: this.props.id,
+              src: this.props.imageLowerData.src,
+              width: this.state.width
+            })
+          })
+        })]
+      });
     }
   }]);
 }(_react["default"].Component);

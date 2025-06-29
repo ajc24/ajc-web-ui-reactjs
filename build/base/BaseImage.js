@@ -27,6 +27,7 @@ require("core-js/modules/es.object.set-prototype-of.js");
 var _react = _interopRequireDefault(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
 require("./css/base-image.css");
+var _jsxRuntime = require("react/jsx-runtime");
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
 function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
@@ -139,7 +140,7 @@ var BaseImage = /*#__PURE__*/function (_React$Component) {
         /* Set the custom width for the image */
         imageWidth = this.props.width;
       }
-      return /*#__PURE__*/_react["default"].createElement("img", {
+      return /*#__PURE__*/(0, _jsxRuntime.jsx)("img", {
         id: this.props.id !== undefined ? this.props.id : 'default--base-image',
         className: imageCss,
         src: this.props.src,

@@ -30,6 +30,7 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 var _domMeasurements = require("../data/dom-measurements");
 require("../css/common.css");
 require("./css/text-application-subtitle.css");
+var _jsxRuntime = require("react/jsx-runtime");
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
 function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
@@ -44,8 +45,7 @@ function _getPrototypeOf(t) { return _getPrototypeOf = Object.setPrototypeOf ? O
 function _inherits(t, e) { if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function"); t.prototype = Object.create(e && e.prototype, { constructor: { value: t, writable: !0, configurable: !0 } }), Object.defineProperty(t, "prototype", { writable: !1 }), e && _setPrototypeOf(t, e); }
 function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function (t, e) { return t.__proto__ = e, t; }, _setPrototypeOf(t, e); } /**
  * Developed by Anthony Cox in 2025
- */
-/**
+ */ /**
  * Application subtitle text component which renders the supporting text for the title text of the web application to the user. This component is
  * intended for use underneath the Application Title Text component, rendered inside both the default and tall Header components but can also be rendered
  * standalone. The subtitle text content can be left aligned or centre aligned.
@@ -233,14 +233,16 @@ var ApplicationSubtitleText = /*#__PURE__*/function (_React$Component) {
       var textOutputCss = 'subtitle-text-font-default';
       this.props.textColour === 'white' ? textOutputCss += ' font-white' : textOutputCss += ' font-black';
       this.state.isHidden === true ? textOutputCss += ' hidden' : textOutputCss += ''.trim();
-      return /*#__PURE__*/_react["default"].createElement("div", {
+      return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
         id: "".concat(this.props.id, "--application-subtitle-text"),
-        className: containerCss
-      }, /*#__PURE__*/_react["default"].createElement("p", {
-        className: textOutputCss,
-        ref: this.subtitleTextRef,
-        "aria-hidden": this.state.isHidden
-      }, this.props.children));
+        className: containerCss,
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)("p", {
+          className: textOutputCss,
+          ref: this.subtitleTextRef,
+          "aria-hidden": this.state.isHidden,
+          children: this.props.children
+        })
+      });
     }
   }]);
 }(_react["default"].Component);

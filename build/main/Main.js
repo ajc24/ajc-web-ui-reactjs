@@ -10,6 +10,7 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 var _PageTemplateConfig = _interopRequireDefault(require("../modules/PageTemplateConfig"));
 require("../css/common.css");
 require("./css/main.css");
+var _jsxRuntime = require("react/jsx-runtime");
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 /**
  * Developed by Anthony Cox in 2025
@@ -21,8 +22,7 @@ function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default":
  * 
  * The minimum height of the component is 370px which suits rendering on mobile devices. This minimum height will expand to fit larger sizes and render
  * more content as and when required.
- */
-var Main = function Main(props) {
+ */var Main = function Main(props) {
   (0, _react.useEffect)(function () {
     /* Setup the default CSS styling for the page which is rendering this component */
     _PageTemplateConfig["default"].setupDocumentBodyCss();
@@ -40,15 +40,18 @@ var Main = function Main(props) {
 
   /* Set the styling for the inner content element */
   var innerContentCss = 'main-inner screen-width-content-inner';
-  return /*#__PURE__*/React.createElement("main", {
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)("main", {
     id: props.id !== undefined ? props.id : 'default--main',
     className: mainCss,
-    "aria-label": props.title
-  }, /*#__PURE__*/React.createElement("div", {
-    className: outerContentCss
-  }, /*#__PURE__*/React.createElement("div", {
-    className: innerContentCss
-  }, props.children)));
+    "aria-label": props.title,
+    children: /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      className: outerContentCss,
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        className: innerContentCss,
+        children: props.children
+      })
+    })
+  });
 };
 Main.propTypes = {
   /** The background colour for the main content area. The default colour for the background is white. */

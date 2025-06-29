@@ -38,6 +38,7 @@ var _domMeasurements = require("../data/dom-measurements");
 require("../css/common.css");
 require("./css/menu-bar-common.css");
 require("./css/menu-bar-dropdown-container.css");
+var _jsxRuntime = require("react/jsx-runtime");
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
 function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
@@ -417,43 +418,47 @@ var DropdownMenuBarContainer = /*#__PURE__*/function (_React$Component) {
       /* Set the styling for the rows of hyperlinks to be rendered in the container */
       var hyperlinkCss = "dropdown-menu-bar-container-row-hyperlink background-".concat(backgroundColour, " font-default font-").concat(fontColour);
       var hyperlinkTitleCss = 'dropdown-menu-bar-container-row-hyperlink-title';
-      return /*#__PURE__*/_react["default"].createElement("div", {
+      return /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
         "aria-hidden": this.state.isHidden,
         className: containerCss,
-        id: "".concat(this.props.id, "--").concat(this.props.backgroundColour || 'white', "--dropdown-menu-bar-container")
-      }, /*#__PURE__*/_react["default"].createElement("div", {
-        className: topRowCss
-      }, /*#__PURE__*/_react["default"].createElement("button", {
-        "aria-label": "Close this dropdown menu.",
-        className: topRowCloseButtonCss,
-        dangerouslySetInnerHTML: {
-          __html: '&nbsp;&nbsp;&nbsp;&Chi;&nbsp;&nbsp;&nbsp;'
-        },
-        id: "".concat(this.getIdCloseButtonDOMElement()),
-        onClick: this.handleOnClickClose,
-        onKeyDown: this.handleOnKeyDownCloseButton,
-        tabIndex: this.state.isHidden === true ? '-1' : '0',
-        title: "Close this dropdown menu."
-      })), /*#__PURE__*/_react["default"].createElement("div", {
-        className: dropdownHyperlinkContainerCss
-      }, this.props.dropdownMenuBarItemsList.map(function (dropdownMenuBarItemData, index) {
-        return /*#__PURE__*/_react["default"].createElement("a", {
-          "aria-label": "".concat(dropdownMenuBarItemData.title),
-          className: hyperlinkCss,
-          href: dropdownMenuBarItemData.href,
-          id: "".concat(index, "--").concat(dropdownMenuBarItemData.id, "--dropdown-menu-bar-container-item"),
-          key: "".concat(index, "--").concat(dropdownMenuBarItemData.id, "--dropdown-menu-bar-container-item"),
-          onClick: _this5.handleOnClickHyperlink,
-          onKeyDown: _this5.handleOnKeyDownHyperlink,
-          tabIndex: _this5.state.isHidden === true ? '-1' : '0',
-          title: "".concat(dropdownMenuBarItemData.title)
-        }, /*#__PURE__*/_react["default"].createElement("span", {
-          id: "".concat(index, "--").concat(dropdownMenuBarItemData.id, "--title--dropdown-menu-bar-container-item"),
-          className: hyperlinkTitleCss
-        }, dropdownMenuBarItemData.title));
-      })), /*#__PURE__*/_react["default"].createElement("div", {
-        className: bottomRowCss
-      }));
+        id: "".concat(this.props.id, "--").concat(this.props.backgroundColour || 'white', "--dropdown-menu-bar-container"),
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+          className: topRowCss,
+          children: /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
+            "aria-label": "Close this dropdown menu.",
+            className: topRowCloseButtonCss,
+            dangerouslySetInnerHTML: {
+              __html: '&nbsp;&nbsp;&nbsp;&Chi;&nbsp;&nbsp;&nbsp;'
+            },
+            id: "".concat(this.getIdCloseButtonDOMElement()),
+            onClick: this.handleOnClickClose,
+            onKeyDown: this.handleOnKeyDownCloseButton,
+            tabIndex: this.state.isHidden === true ? '-1' : '0',
+            title: "Close this dropdown menu."
+          })
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+          className: dropdownHyperlinkContainerCss,
+          children: this.props.dropdownMenuBarItemsList.map(function (dropdownMenuBarItemData, index) {
+            return /*#__PURE__*/(0, _jsxRuntime.jsx)("a", {
+              "aria-label": "".concat(dropdownMenuBarItemData.title),
+              className: hyperlinkCss,
+              href: dropdownMenuBarItemData.href,
+              id: "".concat(index, "--").concat(dropdownMenuBarItemData.id, "--dropdown-menu-bar-container-item"),
+              onClick: _this5.handleOnClickHyperlink,
+              onKeyDown: _this5.handleOnKeyDownHyperlink,
+              tabIndex: _this5.state.isHidden === true ? '-1' : '0',
+              title: "".concat(dropdownMenuBarItemData.title),
+              children: /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+                id: "".concat(index, "--").concat(dropdownMenuBarItemData.id, "--title--dropdown-menu-bar-container-item"),
+                className: hyperlinkTitleCss,
+                children: dropdownMenuBarItemData.title
+              })
+            }, "".concat(index, "--").concat(dropdownMenuBarItemData.id, "--dropdown-menu-bar-container-item"));
+          })
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+          className: bottomRowCss
+        })]
+      });
     }
   }]);
 }(_react["default"].Component);

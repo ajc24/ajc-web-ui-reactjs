@@ -38,6 +38,7 @@ var _ScrollMenuBarItemsLeft = _interopRequireDefault(require("./ScrollMenuBarIte
 var _ScrollMenuBarItemsRight = _interopRequireDefault(require("./ScrollMenuBarItemsRight"));
 var _domMeasurements = require("../data/dom-measurements");
 require("./css/menu-bar.css");
+var _jsxRuntime = require("react/jsx-runtime");
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
 function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
@@ -277,52 +278,53 @@ var MenuBar = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this5 = this;
       var centralContentCss = 'menu-bar-central-content';
-      return /*#__PURE__*/_react["default"].createElement(_BaseMenuBar["default"], {
+      return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_BaseMenuBar["default"], {
         backgroundColour: this.props.backgroundColour,
-        id: "".concat(this.props.id, "--").concat(this.props.backgroundColour, "--menu-bar")
-      }, /*#__PURE__*/_react["default"].createElement(_ScrollMenuBarItemsLeft["default"], {
-        backgroundColour: this.props.backgroundColour,
-        id: this.props.id,
-        isHidden: this.state.scrollMenuBarItemsLeftHidden,
-        onClick: this.handleOnClickScrollMenuBarItemsLeft
-      }), /*#__PURE__*/_react["default"].createElement("div", {
-        id: "".concat(this.props.id, "--central-content--").concat(this.props.backgroundColour, "--menu-bar"),
-        className: centralContentCss
-      }, this.props.menuBarItemsList.map(function (menuBarItemData, index) {
-        if (index >= _this5.state.index && index < _this5.state.index + _this5.state.maxIndex) {
-          var addRightSideSpacing = true;
-          if (index === _this5.state.index + _this5.state.maxIndex - 1 || index === _this5.props.menuBarItemsList.length - 1) {
-            /* Do not add right side spacing for the last rendered item in the current output and / or the last rendered item in the list */
-            addRightSideSpacing = false;
-          }
-          if (menuBarItemData.dropdownMenuBarItemsList === undefined) {
-            return /*#__PURE__*/_react["default"].createElement(_MenuBarItem["default"], {
-              addRightSideSpacing: addRightSideSpacing,
-              backgroundColour: _this5.props.backgroundColour,
-              href: menuBarItemData.href,
-              id: menuBarItemData.id,
-              isHidden: _this5.state.menuBarItemsHidden,
-              key: menuBarItemData.id
-            }, menuBarItemData.title);
-          }
-          if (menuBarItemData.dropdownMenuBarItemsList !== undefined) {
-            return /*#__PURE__*/_react["default"].createElement(_DropdownMenuBarItem["default"], {
-              addRightSideSpacing: addRightSideSpacing,
-              backgroundColour: _this5.props.backgroundColour,
-              dropdownMenuBarItemData: menuBarItemData,
-              id: menuBarItemData.id,
-              isHidden: _this5.state.menuBarItemsHidden,
-              key: menuBarItemData.id
-            });
-          }
-        }
-        return null;
-      })), /*#__PURE__*/_react["default"].createElement(_ScrollMenuBarItemsRight["default"], {
-        backgroundColour: this.props.backgroundColour,
-        id: this.props.id,
-        isHidden: this.state.scrollMenuBarItemsRightHidden,
-        onClick: this.handleOnClickScrollMenuBarItemsRight
-      }));
+        id: "".concat(this.props.id, "--").concat(this.props.backgroundColour, "--menu-bar"),
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_ScrollMenuBarItemsLeft["default"], {
+          backgroundColour: this.props.backgroundColour,
+          id: this.props.id,
+          isHidden: this.state.scrollMenuBarItemsLeftHidden,
+          onClick: this.handleOnClickScrollMenuBarItemsLeft
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+          id: "".concat(this.props.id, "--central-content--").concat(this.props.backgroundColour, "--menu-bar"),
+          className: centralContentCss,
+          children: this.props.menuBarItemsList.map(function (menuBarItemData, index) {
+            if (index >= _this5.state.index && index < _this5.state.index + _this5.state.maxIndex) {
+              var addRightSideSpacing = true;
+              if (index === _this5.state.index + _this5.state.maxIndex - 1 || index === _this5.props.menuBarItemsList.length - 1) {
+                /* Do not add right side spacing for the last rendered item in the current output and / or the last rendered item in the list */
+                addRightSideSpacing = false;
+              }
+              if (menuBarItemData.dropdownMenuBarItemsList === undefined) {
+                return /*#__PURE__*/(0, _jsxRuntime.jsx)(_MenuBarItem["default"], {
+                  addRightSideSpacing: addRightSideSpacing,
+                  backgroundColour: _this5.props.backgroundColour,
+                  href: menuBarItemData.href,
+                  id: menuBarItemData.id,
+                  isHidden: _this5.state.menuBarItemsHidden,
+                  children: menuBarItemData.title
+                }, menuBarItemData.id);
+              }
+              if (menuBarItemData.dropdownMenuBarItemsList !== undefined) {
+                return /*#__PURE__*/(0, _jsxRuntime.jsx)(_DropdownMenuBarItem["default"], {
+                  addRightSideSpacing: addRightSideSpacing,
+                  backgroundColour: _this5.props.backgroundColour,
+                  dropdownMenuBarItemData: menuBarItemData,
+                  id: menuBarItemData.id,
+                  isHidden: _this5.state.menuBarItemsHidden
+                }, menuBarItemData.id);
+              }
+            }
+            return null;
+          })
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ScrollMenuBarItemsRight["default"], {
+          backgroundColour: this.props.backgroundColour,
+          id: this.props.id,
+          isHidden: this.state.scrollMenuBarItemsRightHidden,
+          onClick: this.handleOnClickScrollMenuBarItemsRight
+        })]
+      });
     }
   }]);
 }(_react["default"].Component);

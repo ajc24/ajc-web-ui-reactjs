@@ -37,6 +37,7 @@ require("../css/common.css");
 require("./css/menu-bar-common.css");
 require("./css/menu-bar-dropdown-item.css");
 require("./css/menu-bar-item.css");
+var _jsxRuntime = require("react/jsx-runtime");
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
 function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
@@ -51,8 +52,7 @@ function _getPrototypeOf(t) { return _getPrototypeOf = Object.setPrototypeOf ? O
 function _inherits(t, e) { if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function"); t.prototype = Object.create(e && e.prototype, { constructor: { value: t, writable: !0, configurable: !0 } }), Object.defineProperty(t, "prototype", { writable: !1 }), e && _setPrototypeOf(t, e); }
 function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function (t, e) { return t.__proto__ = e, t; }, _setPrototypeOf(t, e); } /**
  * Developed by Anthony Cox in 2025
- */
-/* Set the external IDs which may be interacted with via mouse or keyboard events */
+ */ /* Set the external IDs which may be interacted with via mouse or keyboard events */
 var containerCloseButtonId = '--close--dropdown-menu-bar-container';
 var containerHyperlinkId = '--dropdown-menu-bar-container-item';
 var dropdownMenuBarItemButtonId = '--button--dropdown-menu-bar-item';
@@ -452,37 +452,41 @@ var DropdownMenuBarItem = /*#__PURE__*/function (_React$Component) {
       /* Set the styling for the button and arrow elements */
       var buttonTitleCss = 'dropdown-menu-bar-button-title';
       var buttonArrowCss = 'dropdown-menu-bar-button-arrow';
-      return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement("button", {
-        "aria-label": "".concat(this.props.dropdownMenuBarItemData.title, " dropdown menu item."),
-        className: buttonCss,
-        "data-isselected": "".concat(this.state.isSelected),
-        id: this.getIdButtonDOMElement(),
-        onBlur: this.handleOnMouseLeave,
-        onClick: this.handleOnClickDropdownMenuBarItem,
-        onFocus: this.handleOnMouseOver,
-        onKeyDown: this.handleOnKeyDownButton,
-        onMouseLeave: this.handleOnMouseLeave,
-        onMouseOver: this.handleOnMouseOver,
-        tabIndex: this.state.isHidden === true ? '-1' : '0',
-        title: "".concat(this.props.dropdownMenuBarItemData.title)
-      }, /*#__PURE__*/_react["default"].createElement("span", {
-        onClick: this.handleOnClickButtonSpan,
-        className: buttonTitleCss
-      }, this.props.dropdownMenuBarItemData.title), /*#__PURE__*/_react["default"].createElement("span", {
-        onClick: this.handleOnClickButtonSpan,
-        className: buttonArrowCss,
-        dangerouslySetInnerHTML: {
-          __html: "".concat(this.state.itemArrowInnerHTML)
-        }
-      })), /*#__PURE__*/_react["default"].createElement(_DropdownMenuBarContainer["default"], {
-        backgroundColour: this.props.backgroundColour,
-        dropdownMenuBarItemsList: this.props.dropdownMenuBarItemData.dropdownMenuBarItemsList,
-        enableAutoFocus: this.state.enableAutoFocus,
-        id: this.props.id,
-        isHidden: !this.state.isSelected,
-        left: this.state.left,
-        top: this.state.top
-      }));
+      return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_react["default"].Fragment, {
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsxs)("button", {
+          "aria-label": "".concat(this.props.dropdownMenuBarItemData.title, " dropdown menu item."),
+          className: buttonCss,
+          "data-isselected": "".concat(this.state.isSelected),
+          id: this.getIdButtonDOMElement(),
+          onBlur: this.handleOnMouseLeave,
+          onClick: this.handleOnClickDropdownMenuBarItem,
+          onFocus: this.handleOnMouseOver,
+          onKeyDown: this.handleOnKeyDownButton,
+          onMouseLeave: this.handleOnMouseLeave,
+          onMouseOver: this.handleOnMouseOver,
+          tabIndex: this.state.isHidden === true ? '-1' : '0',
+          title: "".concat(this.props.dropdownMenuBarItemData.title),
+          children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+            onClick: this.handleOnClickButtonSpan,
+            className: buttonTitleCss,
+            children: this.props.dropdownMenuBarItemData.title
+          }), /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+            onClick: this.handleOnClickButtonSpan,
+            className: buttonArrowCss,
+            dangerouslySetInnerHTML: {
+              __html: "".concat(this.state.itemArrowInnerHTML)
+            }
+          })]
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_DropdownMenuBarContainer["default"], {
+          backgroundColour: this.props.backgroundColour,
+          dropdownMenuBarItemsList: this.props.dropdownMenuBarItemData.dropdownMenuBarItemsList,
+          enableAutoFocus: this.state.enableAutoFocus,
+          id: this.props.id,
+          isHidden: !this.state.isSelected,
+          left: this.state.left,
+          top: this.state.top
+        })]
+      });
     }
   }]);
 }(_react["default"].Component);

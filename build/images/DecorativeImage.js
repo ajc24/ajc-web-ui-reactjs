@@ -7,6 +7,7 @@ Object.defineProperty(exports, "__esModule", {
 exports["default"] = void 0;
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _ = require("../");
+var _jsxRuntime = require("react/jsx-runtime");
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 /**
  * Developed by Anthony Cox in 2025
@@ -16,9 +17,8 @@ function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default":
  * Decorative Image component which describes an image which is used solely for decoration in a web application.
  * The height and width of the image are fully customisable. You can not define alt text for this image.
  * On click events are fully disabled.
- */
-var DecorativeImage = function DecorativeImage(props) {
-  return /*#__PURE__*/React.createElement(_.BaseImage, {
+ */var DecorativeImage = function DecorativeImage(props) {
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_.BaseImage, {
     id: "".concat(props.id, "--decorative-image"),
     src: props.src,
     height: props.height,

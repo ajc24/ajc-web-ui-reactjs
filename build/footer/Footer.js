@@ -9,6 +9,7 @@ var _react = _interopRequireDefault(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _BaseFooter = _interopRequireDefault(require("../base/BaseFooter"));
 require("./css/footer.css");
+var _jsxRuntime = require("react/jsx-runtime");
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 /**
  * Developed by Anthony Cox in 2025
@@ -19,16 +20,23 @@ function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default":
  * as supporting information to the web page content or the web application itself.
  * 
  * The text will be centrally aligned both vertically and horizontally within the footer and can be rendered in bold if desired.
- */
-var Footer = function Footer(props) {
+ */var Footer = function Footer(props) {
   var containerCss = 'footer-small-container';
   props.isBoldFont === true ? containerCss += ' footer-small-font-bold' : containerCss += ' footer-small-font-not-bold';
-  return /*#__PURE__*/_react["default"].createElement(_BaseFooter["default"], {
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_BaseFooter["default"], {
     backgroundColour: props.backgroundColour,
-    id: "".concat(props.id, "--footer")
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: containerCss
-  }, props.isBoldFont === undefined && /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, props.children), props.isBoldFont !== undefined && props.isBoldFont === true && /*#__PURE__*/_react["default"].createElement("b", null, props.children), props.isBoldFont !== undefined && props.isBoldFont === false && /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, props.children)));
+    id: "".concat(props.id, "--footer"),
+    children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      className: containerCss,
+      children: [props.isBoldFont === undefined && /*#__PURE__*/(0, _jsxRuntime.jsx)(_react["default"].Fragment, {
+        children: props.children
+      }), props.isBoldFont !== undefined && props.isBoldFont === true && /*#__PURE__*/(0, _jsxRuntime.jsx)("b", {
+        children: props.children
+      }), props.isBoldFont !== undefined && props.isBoldFont === false && /*#__PURE__*/(0, _jsxRuntime.jsx)(_react["default"].Fragment, {
+        children: props.children
+      })]
+    })
+  });
 };
 Footer.propTypes = {
   /** The background colour for the footer. The default colour for the background is white. */

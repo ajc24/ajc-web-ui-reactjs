@@ -8,6 +8,7 @@ exports["default"] = void 0;
 var _react = require("react");
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _BaseHeader = _interopRequireDefault(require("./BaseHeader"));
+var _jsxRuntime = require("react/jsx-runtime");
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 /**
  * Developed by Anthony Cox in 2025
@@ -28,10 +29,11 @@ var BaseHeaderBgImage = function BaseHeaderBgImage(props) {
     headerOuterContentElement.style.backgroundImage = "url(".concat(props.backgroundImageSrc, ")");
     headerOuterContentElement.dataset.headerbgimage = 'true';
   });
-  return /*#__PURE__*/React.createElement(_BaseHeader["default"], {
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_BaseHeader["default"], {
     backgroundColour: "white",
-    id: headerId
-  }, props.children);
+    id: headerId,
+    children: props.children
+  });
 };
 BaseHeaderBgImage.propTypes = {
   /** The background image data to be displayed. Your background image should be tailored to suit the dimensions of 1920x165. */

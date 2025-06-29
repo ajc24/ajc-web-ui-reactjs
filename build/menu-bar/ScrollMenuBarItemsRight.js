@@ -31,6 +31,7 @@ var _colourCombinations = require("../data/colour-combinations");
 require("../css/common.css");
 require("./css/menu-bar-common.css");
 require("./css/menu-bar-scroll-items.css");
+var _jsxRuntime = require("react/jsx-runtime");
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
 function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
@@ -45,8 +46,7 @@ function _getPrototypeOf(t) { return _getPrototypeOf = Object.setPrototypeOf ? O
 function _inherits(t, e) { if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function"); t.prototype = Object.create(e && e.prototype, { constructor: { value: t, writable: !0, configurable: !0 } }), Object.defineProperty(t, "prototype", { writable: !1 }), e && _setPrototypeOf(t, e); }
 function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function (t, e) { return t.__proto__ = e, t; }, _setPrototypeOf(t, e); } /**
  * Developed by Anthony Cox in 2025
- */
-/**
+ */ /**
  * Scroll Menu Bar Items Right button component intended for use with the Menu Bar component. This component allows a user to click to view the next set
  * of menu bar items in the menu bar. This button is necessary in circumstances where there are too many menu bar items to comfortably fit within the width
  * of the screen. Keyboard events are also supported with both the spacebar and enter key interactions acting as click events on the button.
@@ -182,22 +182,23 @@ var ScrollMenuBarItemsRight = /*#__PURE__*/function (_React$Component) {
 
       /* Set the styling for the button element */
       var buttonCss = "scroll-menu-items-button background-".concat(backgroundColour, " font-default font-").concat(fontColour);
-      return /*#__PURE__*/_react["default"].createElement("div", {
+      return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
         className: containerCss,
-        id: "".concat(this.props.id, "--container--scroll-menu-bar-items-right")
-      }, /*#__PURE__*/_react["default"].createElement("button", {
-        "aria-hidden": "".concat(this.state.isHidden),
-        "aria-label": "Scroll the list of menu bar items to the right.",
-        className: buttonCss,
-        id: "".concat(this.props.id, "--scroll-menu-bar-items-right"),
-        onClick: this.handleOnClick,
-        onKeyDown: this.handleOnKeyDown,
-        tabIndex: this.state.isHidden === true ? '-1' : '0',
-        type: "button",
-        dangerouslySetInnerHTML: {
-          __html: 'Next<br />&rarr;'
-        }
-      }));
+        id: "".concat(this.props.id, "--container--scroll-menu-bar-items-right"),
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)("button", {
+          "aria-hidden": "".concat(this.state.isHidden),
+          "aria-label": "Scroll the list of menu bar items to the right.",
+          className: buttonCss,
+          id: "".concat(this.props.id, "--scroll-menu-bar-items-right"),
+          onClick: this.handleOnClick,
+          onKeyDown: this.handleOnKeyDown,
+          tabIndex: this.state.isHidden === true ? '-1' : '0',
+          type: "button",
+          dangerouslySetInnerHTML: {
+            __html: 'Next<br />&rarr;'
+          }
+        })
+      });
     }
   }]);
 }(_react["default"].Component);

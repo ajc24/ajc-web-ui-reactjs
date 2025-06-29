@@ -11,6 +11,7 @@ var _ApplicationTitleText = _interopRequireDefault(require("../text/ApplicationT
 var _BaseHeaderBgImage = _interopRequireDefault(require("../base/BaseHeaderBgImage"));
 var _DecorativeImage = _interopRequireDefault(require("../images/DecorativeImage"));
 require("./css/header.css");
+var _jsxRuntime = require("react/jsx-runtime");
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 /**
  * Developed by Anthony Cox in 2025
@@ -25,40 +26,45 @@ function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default":
  * 
  * Since the logo image is supported by the application title text and subtitle text, the image type for the logo is automatically set to that of
  * a decorative image type.
- */
-var HeaderAll = function HeaderAll(props) {
+ */var HeaderAll = function HeaderAll(props) {
   var containerCss = 'header-all-container';
   var logoContainerCss = 'header-all-logo-container';
   var textContainerCss = 'header-all-text-container';
   var textSpacingCss = 'header-all-text-spacing';
-  return /*#__PURE__*/React.createElement(_BaseHeaderBgImage["default"], {
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_BaseHeaderBgImage["default"], {
     backgroundImageSrc: props.backgroundImageSrc,
-    id: "".concat(props.id, "--header-all")
-  }, /*#__PURE__*/React.createElement("div", {
-    className: containerCss
-  }, /*#__PURE__*/React.createElement("div", {
-    id: "".concat(props.id, "--header-all--logo-container"),
-    className: logoContainerCss
-  }, /*#__PURE__*/React.createElement(_DecorativeImage["default"], {
-    height: "133",
-    id: props.id,
-    src: props.logoImageSrc,
-    width: "133"
-  })), /*#__PURE__*/React.createElement("div", {
-    id: "".concat(props.id, "--header-all--text-container"),
-    className: textContainerCss
-  }, /*#__PURE__*/React.createElement(_ApplicationTitleText["default"], {
-    alignment: "left",
-    headerId: props.id,
-    id: props.id,
-    textColour: props.titleTextColour
-  }, props.titleTextContent), /*#__PURE__*/React.createElement(_ApplicationSubtitleText["default"], {
-    alignment: "left",
-    applicationTitleTextId: props.id,
-    headerId: props.id,
-    id: props.id,
-    textColour: props.subtitleTextColour
-  }, props.subtitleTextContent))));
+    id: "".concat(props.id, "--header-all"),
+    children: /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+      className: containerCss,
+      children: [/*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+        id: "".concat(props.id, "--header-all--logo-container"),
+        className: logoContainerCss,
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_DecorativeImage["default"], {
+          height: "133",
+          id: props.id,
+          src: props.logoImageSrc,
+          width: "133"
+        })
+      }), /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+        id: "".concat(props.id, "--header-all--text-container"),
+        className: textContainerCss,
+        children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_ApplicationTitleText["default"], {
+          alignment: "left",
+          headerId: props.id,
+          id: props.id,
+          textColour: props.titleTextColour,
+          children: props.titleTextContent
+        }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_ApplicationSubtitleText["default"], {
+          alignment: "left",
+          applicationTitleTextId: props.id,
+          headerId: props.id,
+          id: props.id,
+          textColour: props.subtitleTextColour,
+          children: props.subtitleTextContent
+        })]
+      })]
+    })
+  });
 };
 HeaderAll.propTypes = {
   /** The background image data to be displayed. Your background image should be tailored to suit the dimensions of 1920x165. */

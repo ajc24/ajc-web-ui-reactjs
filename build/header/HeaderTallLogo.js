@@ -9,6 +9,7 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 var _BaseHeaderTall = _interopRequireDefault(require("../base/BaseHeaderTall"));
 var _InformativeImage = _interopRequireDefault(require("../images/InformativeImage"));
 require("./css/header.css");
+var _jsxRuntime = require("react/jsx-runtime");
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 /**
  * Developed by Anthony Cox in 2025
@@ -20,21 +21,22 @@ function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default":
  * 
  * The logo image is a centrally aligned informative image rendered within the tall header and is set to a maximum of 328px in width and 304px in
  * height to cater for the smallest supported screen size.
- */
-var HeaderTallLogo = function HeaderTallLogo(props) {
+ */var HeaderTallLogo = function HeaderTallLogo(props) {
   var containerCss = 'tall-header-logo-container';
-  return /*#__PURE__*/React.createElement(_BaseHeaderTall["default"], {
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)(_BaseHeaderTall["default"], {
     backgroundColour: props.backgroundColour,
-    id: "".concat(props.id, "--header-tall-logo")
-  }, /*#__PURE__*/React.createElement("div", {
-    className: containerCss
-  }, /*#__PURE__*/React.createElement(_InformativeImage["default"], {
-    alt: props.alt,
-    height: "304",
-    id: props.id,
-    src: props.src,
-    width: "328"
-  })));
+    id: "".concat(props.id, "--header-tall-logo"),
+    children: /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+      className: containerCss,
+      children: /*#__PURE__*/(0, _jsxRuntime.jsx)(_InformativeImage["default"], {
+        alt: props.alt,
+        height: "304",
+        id: props.id,
+        src: props.src,
+        width: "328"
+      })
+    })
+  });
 };
 HeaderTallLogo.propTypes = {
   /** The alternate text to be attached to the image and read out by screen readers. */

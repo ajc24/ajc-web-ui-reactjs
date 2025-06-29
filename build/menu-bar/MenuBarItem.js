@@ -33,6 +33,7 @@ var _domMeasurements = require("../data/dom-measurements");
 require("../css/common.css");
 require("./css/menu-bar-common.css");
 require("./css/menu-bar-item.css");
+var _jsxRuntime = require("react/jsx-runtime");
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
 function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
@@ -265,24 +266,27 @@ var MenuBarItem = /*#__PURE__*/function (_React$Component) {
 
       /* Set the styling for the hyperlinks internal text content */
       var hyperlinkInnerContentCss = 'menu-bar-item-inner-content';
-      return /*#__PURE__*/_react["default"].createElement("div", {
+      return /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
         className: containerCss,
-        id: "".concat(this.props.id, "--menu-bar-item")
-      }, /*#__PURE__*/_react["default"].createElement("a", {
-        "aria-hidden": "".concat(this.state.isHidden),
-        "aria-label": this.props.children,
-        className: hyperlinkCss,
-        href: "".concat(this.props.href),
-        id: "".concat(this.getIdHyperlinkDOMElement()),
-        onClick: this.handleOnClick,
-        onKeyDown: this.handleOnKeyDown,
-        role: "link",
-        tabIndex: this.state.isHidden === true ? '-1' : '0',
-        title: this.props.children
-      }, /*#__PURE__*/_react["default"].createElement("span", {
-        className: hyperlinkInnerContentCss,
-        onClick: this.handleOnClickSpan
-      }, this.props.children)));
+        id: "".concat(this.props.id, "--menu-bar-item"),
+        children: /*#__PURE__*/(0, _jsxRuntime.jsx)("a", {
+          "aria-hidden": "".concat(this.state.isHidden),
+          "aria-label": this.props.children,
+          className: hyperlinkCss,
+          href: "".concat(this.props.href),
+          id: "".concat(this.getIdHyperlinkDOMElement()),
+          onClick: this.handleOnClick,
+          onKeyDown: this.handleOnKeyDown,
+          role: "link",
+          tabIndex: this.state.isHidden === true ? '-1' : '0',
+          title: this.props.children,
+          children: /*#__PURE__*/(0, _jsxRuntime.jsx)("span", {
+            className: hyperlinkInnerContentCss,
+            onClick: this.handleOnClickSpan,
+            children: this.props.children
+          })
+        })
+      });
     }
   }]);
 }(_react["default"].Component);
